@@ -1,4 +1,4 @@
-![PC](https://images.cnblogs.com/cnblogs_com/esofar/972540/o_screenshot_1.png)
+![PC](src/images/screenshot_1.png)
 
 # Cnblogs Theme - Silence
 [![Cnblogs](https://img.shields.io/badge/dependencies-jQuery-yellow.svg)](https://www.cnblogs.com)
