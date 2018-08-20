@@ -1,3 +1,4 @@
+@charset "utf-8";
 body {
     min-height: 100% !important;
     font-family: Lato, "Microsoft Jhenghei", "Hiragino Sans GB", "Microsoft YaHei", sans-serif !important;
@@ -123,8 +124,12 @@ a:hover {
     width: 960px;
     margin: 0 auto;
     padding-top: 75px;
-    -webkit-animation-name: fadeIn;
-    animation-name: fadeIn;
+    animation-name:  fadeIn;
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+    -webkit-animation-name:fadeIn;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-iteration-count: 1; 
 }
 
 #mainContent {
@@ -653,7 +658,7 @@ pre {
     color: #555;
     border: 1px solid #d2d2d2;
     border-radius: 3px;
-    min-width: 140px;
+    min-width: 150px;
     opacity: 1;
     font-size: inherit;
     background-color: #fff;
@@ -1042,21 +1047,12 @@ div.commentform textarea {
     border-radius: 1px;
 }
 
-@-webkit-keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
 @keyframes fadeIn {
-    from {
-        opacity: 0;
+    0% { 
+      opacity: 0;
     }
-    to {
-        opacity: 1;
+    100% {
+      opacity: 1;
     }
 }
 
