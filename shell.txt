@@ -1,4 +1,0 @@
-babel src/silence.js -o src/silence.es5.js
-uglifyjs src/silence.es5.js -o dist/silence.min.js -c -m
-
-lessc src/silence.less dist/silence.min.css -clean-css
