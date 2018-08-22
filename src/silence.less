@@ -285,17 +285,16 @@ a {
     a {
         &:link,
         &:visited,
-        &:active{
+        &:active {
             color: @base;
             text-decoration: none;
         }
-
     }
 }
 
 .postBody ul,
-.postBody ol{
-    li{
+.postBody ol {
+    li {
         margin-bottom: 5px;
         font-size: 16px;
         font-family: Lato, "Microsoft Jhenghei", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
@@ -310,6 +309,10 @@ a {
     font-family: inherit;
 }
 
+.forFlow{
+    margin-right: 15px;
+}
+
 .forFlow .c_b_p_desc a {
     border: 1px solid;
     border-radius: 3px;
@@ -318,16 +321,14 @@ a {
     margin-top: 10px;
     text-decoration: none;
     display: table;
-    &:after{
+    &:after {
         content: ' »';
     }
-
     &:hover {
-        color: @base !important;
+        color: @base  !important;
         border: 1px solid @base;
     }
 }
-
 
 .postBodyHead (@fontSize: 20px) {
     font-size: @fontSize;
@@ -378,7 +379,7 @@ a {
     color: #555;
     border-left: none;
     background: rgba(18, 126, 186, 0) !important;
-    &:before{
+    &:before {
         content: "\201C";
         display: block;
         font-family: times;
@@ -408,15 +409,19 @@ a {
 
 #footer {
     border-top: 1px solid #eef2f8;
-    div{
+    div {
         margin: 5px auto;
     }
-    &:after{
+    &:after {
         content: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAB+UlEQVRIS72UP4sTURTFzxmDGrGYL2Blo2Blo4gIuoW6+K8QBAsJC1uIybwXrIX5AJK8N6MIihiwEMHCFdbCvyAsWivYWfkFEhBjsZkjs+yum5BksrtZXzXMu+/83n3n3kvs8OIO6+P/AyqVyt4wDG8DuCTpIIAPkh4kSfJxY7ZRFJ0meRPAGZI/JC10Op1Gq9X6szGuL4NqtXqoVCq9AXBg8OkkPep2u7fy/+Vy+T7J+SHP+7PX651L0/T72l4fwBizRPLEKF8kvQawh+TMGO++hWF4NI7j5TxmHVCv1y9KejUN07Msm0uS5EkfwBjTIFmfBgBA6pyLBgGLJGenBFh0zl3oA1hr7wFYMXEKq+GcyyvxnwfW2jkAj6cgDkmXvfcrfq6bHMdxqd1ufwVweJuQJefcyaFlGkXREZKfSe7fCkTSryzLjo3sg1y0VqsdD4LgPcl9m4FI+p1l2Uyapl9GdvLahjHmFMm3AHZPApGUj4ez3vtPg/Ejh10URbNBECwAKBVAlkmebzab74bFjZ2m1torkl6Q3DXssKQeyavOuZejLlE4ro0x1wA8IzkYm0m67r1/Pi7DQkB+2BgzT/LhgNAN59zTIo8mAqxCqiTT/FtSzXufd37hmhiQK1lr7wDoOufuFiqvBmwKMKloYR9sRWjLVbRd2F/t8awZAq/aHAAAAABJRU5ErkJggg==")
     }
 }
 
 /* 代码块 */
+
+.cnblogs-markdown pre{
+    white-space: pre !important;
+}
 
 .cnblogs-markdown .hljs {
     display: block !important;
@@ -528,7 +533,7 @@ a {
             color: rgba(0, 0, 0, .65);
             background-color: rgba(255, 255, 255, .97);
             &:hover {
-                color: @base !important;
+                color: @base  !important;
                 border: 1px solid @base;
                 text-decoration: none;
             }
@@ -652,7 +657,6 @@ a {
     }
 }
 
-
 /* 签名 */
 
 .esa-post-signature {
@@ -688,7 +692,6 @@ a {
         color: #555 !important;
     }
 }
-
 
 /* 消息 */
 
@@ -743,18 +746,17 @@ a {
         margin: 0 30px;
         text-align: center;
     }
-
     .wechat,
     .alipay {
-    position: relative;
-    display: inline-block;
-    width: 200px;
-    height: 200px;
-    padding: 10px;
-    border: 5px solid #ff7300;
-    border-radius: 10px;
-    box-sizing: border-box;
-    margin: 10px;
+        position: relative;
+        display: inline-block;
+        width: 200px;
+        height: 200px;
+        padding: 10px;
+        border: 5px solid #ff7300;
+        border-radius: 10px;
+        box-sizing: border-box;
+        margin: 10px;
         &:after {
             content: '';
             position: absolute;
@@ -767,7 +769,6 @@ a {
             width: auto;
             text-align: center;
         }
-
         img {
             width: 100%;
         }
@@ -1037,29 +1038,33 @@ div.commentform textarea {
     .esa-mobile-menu {
         display: block;
     }
+    .forFlow{
+        margin-right: 0px;
+    }
     #header {
         width: auto;
+        #navigator {
+            display: none;
+            width: 100%;
+            margin-top: 60px;
+        }
     }
-    #navigator {
-        display: none;
-        width: 100%;
-        margin-top: 60px;
-    }
+   
     #navList {
         width: inherit;
         li {
             float: none;
         }
-        a{
+        a {
             &:link,
             &:visited,
-            &:active{
+            &:active {
                 width: 100%;
                 background-color: #2c3e50;
-                color: #fff;
+                color: #fff !important;
                 padding: 15px 0;
             }
-            &:hover{
+            &:hover {
                 color: #2c3e50;
                 background-color: #000;
             }
