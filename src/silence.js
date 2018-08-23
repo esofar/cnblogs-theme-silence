@@ -34,7 +34,7 @@
         }
 
         get version() {
-            return '1.0.0';
+            return '1.0.1';
         }
 
         get cnblogs() {
@@ -206,6 +206,8 @@
                         }
                     }, 500);
                 }
+            }else{
+                $('#div_digg').width(200);
             }
         }
 
