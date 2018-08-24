@@ -39,6 +39,7 @@
 
         get cnblogs() {
             return {
+                header: '#header',
                 navigator: '#navigator',
                 sideBar: '#sideBar',
                 forFlow: '.forFlow',
@@ -60,15 +61,15 @@
             if (options) {
                 $.extend(true, this.defaluts, options);
             }
-            this.buildMobileMenu();
-            this.buildCopyright();
             if (this.isPostDetail) {
-                this.hideSideBar();
+                this.goIntoReadingMode();
                 this.buildPostCatalog();
                 this.buildPostSignature();
                 this.buildPostReward();
                 this.buildPostCommentAvatar();
             }
+            this.buildCopyright();
+            this.buildMobileMenu();
         }
 
         showMessage(content) {
@@ -85,22 +86,34 @@
             }, 2500);
         }
 
-        hideSideBar() {
-            let _that = this;
-            $(_that.cnblogs.sideBar).fadeOut(500, function () {
-                $(_that.cnblogs.forFlow).css({
-                    margin: '0 auto',
-                    maxWidth: '960px',
+        goIntoReadingMode() {
+            let $win = $(window);
+            if ($win.width() > 767) {
+                let _that = this;
+                $(_that.cnblogs.sideBar).fadeOut(1000, function () {
+                    $(_that.cnblogs.forFlow).css({
+                        margin: '0 auto',
+                        maxWidth: '960px',
+                    });
                 });
-            });
+                $win.scroll(function (e) {
+                    if (this.scrollY > 150) {
+                        $(_that.cnblogs.header).slideUp();
+                    } else {
+                        $(_that.cnblogs.header).slideDown();
+                    }
+                });
+            }
         }
 
         buildMobileMenu() {
-            let _that = this;
-            $('body').prepend('<div class="esa-mobile-menu"></div>');
-            $('.esa-mobile-menu').on('click', function () {
-                $(_that.cnblogs.navigator).fadeToggle(200);
-            });
+            if ($(window).width() <= 767) {
+                let _that = this;
+                $('body').prepend('<div class="esa-mobile-menu"></div>');
+                $('.esa-mobile-menu').on('click', function () {
+                    $(_that.cnblogs.navigator).fadeToggle(200);
+                });
+            }
         }
 
         buildCopyright() {
@@ -206,7 +219,7 @@
                         }
                     }, 500);
                 }
-            }else{
+            } else {
                 $('#div_digg').width(200);
             }
         }

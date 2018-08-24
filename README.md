@@ -209,3 +209,4 @@ git clone https://github.com/esofar/cnblogs-theme-silence.git
 * 修复博客目录因标题过长导致换行问题。
 * 优化评论区分页样式效果。
 * 设置博客赞赏模块二维码固定宽高。
+* 优化阅读模式、新增收缩标题栏效果。
