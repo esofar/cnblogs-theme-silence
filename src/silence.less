@@ -187,6 +187,9 @@ a {
 #sidebar_categories li>a:active {
     color: #6E7173;
     text-decoration: none;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 #sidebar_toptags li:hover,
@@ -573,6 +576,16 @@ a {
     }
 }
 
+.pager span.current {
+    padding: 3px 7px;
+    border: 1px solid #fff;
+    border-radius: 4px;
+    font-family: Monospaced Number;
+    margin: 0 3px;
+    text-decoration: none;
+    background-color: @base;
+}
+
 /* 菜单 */
 
 .esa-mobile-menu {
@@ -655,6 +668,10 @@ a {
     li {
         margin-top: 5px;
         margin-right: 5px;
+        max-width: 300px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
         cursor: pointer;
         a:hover {
             color: @base;
@@ -777,6 +794,8 @@ a {
         }
         img {
             width: 100%;
+            width: 170px;
+            height: 170px;
         }
     }
     .alipay:after {
@@ -941,6 +960,10 @@ div.commentform p {
     float: left;
 }
 
+#comments_pager_top{
+    display: none;
+}
+
 #commentbox_opt {
     display: block !important;
 }
@@ -970,12 +993,11 @@ div.commentform textarea {
     font-size: 12px;
     border-radius: 5px;
     transition: color .2s linear, background-color .2s linear, border .2s linear, box-shadow .2s linear;
-}
-
-#btn_comment_submit:hover {
-    color: #fff;
-    background-color: #57a3f3;
-    border-color: #57a3f3;
+    &:hover {
+        color: #fff;
+        background-color: #57a3f3;
+        border-color: #57a3f3;
+    }
 }
 
 /* 滚动条 */
