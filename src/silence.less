@@ -2,7 +2,7 @@
 @base : #2D8CF0;
 body {
     min-height: 100% !important;
-    font-family: Lato, "Microsoft Jhenghei", "Hiragino Sans GB", "Microsoft YaHei", sans-serif !important;
+    font-family: 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
     color: #555 !important;
 }
 
@@ -205,24 +205,24 @@ a {
 }
 
 #sidebar_topviewedposts li,
-#sidebar_topdiggedposts li {
+#sidebar_topdiggedposts li{
     margin: 8px 0;
     font-size: 15px;
     padding: 0 15px;
+    color: #6E7173;
+    text-align: justify;
+    a{
+        &:link,
+        &:visited,
+        &:active,
+        &:hover
+        {
+            color: #6E7173;
+            text-align: justify;
+        }
+    }
 }
 
-#sidebar_topviewedposts li,
-#sidebar_topviewedposts li>a:link,
-#sidebar_topviewedposts li>a:visited,
-#sidebar_topviewedposts li>a:active,
-#sidebar_topviewedposts li>a:hover,
-#sidebar_topdiggedposts li,
-#sidebar_topdiggedposts li>a:link,
-#sidebar_topdiggedposts li>a:visited,
-#sidebar_topdiggedposts li>a:active,
-#sidebar_topdiggedposts li>a:hover {
-    color: #6E7173;
-}
 
 .entrylistTitle,
 .PostListTitle,
@@ -258,7 +258,7 @@ a {
     text-align: justify;
 }
 
-.day .postSeparator{
+.day .postSeparator {
     margin-top: 15px;
     margin-bottom: 25px;
     border-top: 1px solid #eef2f8;
@@ -269,6 +269,7 @@ a {
     font-size: 15px;
     font-weight: 300;
     border-bottom: none !important;
+    font-family: Lato,"Microsoft Jhenghei","Hiragino Sans GB","Microsoft YaHei",sans-serif!important;
 }
 
 .postTitle>a:active,
@@ -309,7 +310,6 @@ a {
     li {
         margin-bottom: 5px;
         font-size: 16px;
-        font-family: Lato, "Microsoft Jhenghei", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
     }
 }
 
@@ -321,7 +321,7 @@ a {
     font-family: inherit;
 }
 
-.forFlow{
+.forFlow {
     margin-right: 15px;
 }
 
@@ -333,6 +333,8 @@ a {
     margin-top: 10px;
     text-decoration: none;
     display: table;
+    color: #555;
+    border-color: #555;
     &:after {
         content: ' »';
     }
@@ -344,6 +346,7 @@ a {
 
 .postBodyHead (@fontSize: 20px) {
     font-size: @fontSize;
+    font-family: Lato,"Microsoft Jhenghei","Hiragino Sans GB","Microsoft YaHei",sans-serif!important;
     color: #2c3e50;
     margin-top: 20px;
 }
@@ -414,7 +417,7 @@ a {
     font-weight: normal;
     line-height: 1.2;
     font-family: consolas !important;
-    font-size: 16px !important;
+    font-size: 16px;
     vertical-align: middle;
     border: 1px solid #F6F6F6 !important;
 }
@@ -431,7 +434,7 @@ a {
 
 /* 代码块 */
 
-.cnblogs-markdown pre{
+.cnblogs-markdown pre {
     white-space: pre !important;
 }
 
@@ -963,7 +966,7 @@ div.commentform p {
     float: left;
 }
 
-#comments_pager_top{
+#comments_pager_top {
     display: none;
 }
 
@@ -1069,7 +1072,7 @@ div.commentform textarea {
     .esa-mobile-menu {
         display: block;
     }
-    .forFlow{
+    .forFlow {
         margin-right: 0px;
     }
     #header {
@@ -1080,7 +1083,6 @@ div.commentform textarea {
             margin-top: 60px;
         }
     }
-   
     #navList {
         width: inherit;
         li {
