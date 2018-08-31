@@ -71,6 +71,8 @@
                 this.buildPostSignature();
                 this.buildPostReward();
                 this.buildPostCommentAvatar();
+            } else {
+                this.goIntoNormalMode();
             }
         }
 
@@ -89,21 +91,22 @@
         }
 
         goIntoReadingMode() {
-            let $win = $(window);
             let _that = this;
-            $(_that.cnblogs.sideBar).fadeOut(1000, function () {
-                $(_that.cnblogs.forFlow).css({
-                    margin: '0 auto',
-                    maxWidth: '960px',
-                });
-            });
-            $win.scroll(function (e) {
+            $(window).scroll(function () {
                 if (this.scrollY > 150) {
                     $(_that.cnblogs.header).slideUp();
                 } else {
                     $(_that.cnblogs.header).slideDown();
                 }
             });
+        }
+
+        goIntoNormalMode() {
+            let _that = this;
+            $(_that.cnblogs.forFlow).css({
+                marginLeft: '22em'
+            });
+            $(_that.cnblogs.sideBar).fadeIn(700);
         }
 
         buildNavHoverEle() {
