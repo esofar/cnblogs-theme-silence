@@ -132,7 +132,7 @@ a {
 #main {
     width: 960px;
     margin: 0 auto;
-    padding-top: 75px;
+    padding: 70px 10px 0px 10px;
     animation-name: fadeIn;
     animation-duration: 1s;
     animation-iteration-count: 1;
@@ -142,7 +142,27 @@ a {
     #mainContent {
         background-color: transparent;
         .forFlow {
+            margin: 0px auto;
             margin-left: 0px;
+            max-width: 960px;
+            .c_b_p_desc a {
+                border: 1px solid;
+                border-radius: 3px;
+                padding: 2px 9px;
+                font-size: 13px;
+                margin-top: 10px;
+                text-decoration: none;
+                display: table;
+                color: #555;
+                border-color: #555;
+                &:after {
+                    content: ' »';
+                }
+                &:hover {
+                    color: @baseColor  !important;
+                    border: 1px solid @baseColor;
+                }
+            }
         }
     }
 }
@@ -349,29 +369,6 @@ a {
     font-weight: 300;
     color: #555;
     font-family: inherit;
-}
-
-.forFlow {
-    margin: 0px auto;
-    max-width: 960px;
-    .c_b_p_desc a {
-        border: 1px solid;
-        border-radius: 3px;
-        padding: 2px 9px;
-        font-size: 13px;
-        margin-top: 10px;
-        text-decoration: none;
-        display: table;
-        color: #555;
-        border-color: #555;
-        &:after {
-            content: ' »';
-        }
-        &:hover {
-            color: @baseColor  !important;
-            border: 1px solid @baseColor;
-        }
-    }
 }
 
 .postBodyHead (@fontSize: 20px) {
@@ -628,7 +625,7 @@ a {
     display: none;
     position: fixed;
     top: 7px;
-    right: 17px;
+    right: 15px;
     z-index: 941113;
     font-size: 1.5em;
     cursor: pointer;
@@ -1064,18 +1061,10 @@ div.commentform textarea {
 }
 
 @media screen and (min-width:768px) and (max-width:980px) {
-    #blogTitle {
-        margin-left: 15px;
-    }
-    #topics .postTitle {
-        padding-left: 10px;
-    }
-    #navigator {
-        right: 25px;
-    }
     #blog-comments-placeholder,
     #comment_form {
-        margin: 0 10px;
+        padding: 10px;
+        margin-left: 0px;
     }
 }
 
@@ -1086,17 +1075,23 @@ div.commentform textarea {
         display: none;
     }
     #blogTitle {
-        margin-left: 20px !important;
+        padding-left: 15px;
     }
     #main {
         margin-top: 60px;
-        padding: 10px !important;
+        padding: 0 15px !important;
+    }
+    #topics .postTitle {
+        padding-left: 0px;
+        padding-top: 10px;
+        text-align: center;
     }
     #commentbox_main,
     #comment_nav {
         margin: 0px;
     }
-    .commentform {
+    #comment_form {
+        padding: 5px;
         margin-left: 0px;
     }
     .esa-mobile-menu {
@@ -1104,6 +1099,7 @@ div.commentform textarea {
     }
     .forFlow {
         margin-right: 0px;
+        margin-left: 0px !important;
     }
     #header {
         width: auto;

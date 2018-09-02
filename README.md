@@ -216,3 +216,8 @@ git clone https://github.com/esofar/cnblogs-theme-silence.git
 * 优化标签列表页面部分样式。
 * 优化侧边栏以及博客头部样式。
 
+### v1.0.4
+* 优化阅读、正常模式切换效果。
+* 修复移动端部分样式存在的问题。
+
+

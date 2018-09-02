@@ -92,21 +92,27 @@
 
         goIntoReadingMode() {
             let _that = this;
-            $(window).scroll(function () {
-                if (this.scrollY > 150) {
-                    $(_that.cnblogs.header).slideUp();
-                } else {
-                    $(_that.cnblogs.header).slideDown();
-                }
-            });
+            let $win = $(window);
+            if ($win.width() > 767) {
+                $win.scroll(function () {
+                    if (this.scrollY > 150) {
+                        $(_that.cnblogs.header).slideUp();
+                    } else {
+                        $(_that.cnblogs.header).slideDown();
+                    }
+                });
+            }
         }
 
         goIntoNormalMode() {
             let _that = this;
-            $(_that.cnblogs.forFlow).css({
-                marginLeft: '22em'
-            });
-            $(_that.cnblogs.sideBar).fadeIn(700);
+            let $win = $(window);
+            if ($win.width() > 767) {
+                $(_that.cnblogs.forFlow).css({
+                    marginLeft: '22em'
+                });
+                $(_that.cnblogs.sideBar).fadeIn(700);
+            }
         }
 
         buildNavHoverEle() {
