@@ -4,7 +4,7 @@
 body {
     min-height: 100% !important;
     font-family: 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
-    color: #555 !important;
+    color: #314659 !important;
 }
 
 a {
@@ -113,8 +113,9 @@ a {
                 font-size: 16px;
                 padding-top: 0px;
                 border-right: 0px;
-                color: #666;
+                color: #314659;
                 display: block;
+                font-weight: 300;
                 padding: 20px 0;
                 height: inherit;
                 -webkit-transition: all .3s;
@@ -153,8 +154,8 @@ a {
                 margin-top: 10px;
                 text-decoration: none;
                 display: table;
-                color: #555;
-                border-color: #555;
+                color: #314659;
+                border-color: #314659;
                 &:after {
                     content: ' »';
                 }
@@ -171,22 +172,23 @@ a {
 
 #sideBar {
     border-right: 1px solid @borderColor;
+    font-weight: 300;
     display: none;
     .newsItem {
         padding: 0px;
-        color: #6E7173;
+        color: #314659;
         #blog-news {
             font-size: 15px;
             padding: 0 0 0 20px;
             a {
-                color: #6E7173;
+                color: #314659;
             }
         }
     }
 }
 
 .catListTitle {
-    color: #6E7173;
+    color: #314659;
     text-align: left;
     margin-top: 25px;
     padding-left: 23px;
@@ -219,7 +221,7 @@ a {
     padding-left: 23px;
     padding-right: 15px;
     line-height: 42px;
-    color: #6E7173;
+    color: #314659;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -231,14 +233,14 @@ a {
     font-size: 15px;
     padding-left: 23px;
     padding-right: 15px;
-    color: #6E7173;
+    color: #314659;
     text-align: justify;
     a {
         &:link,
         &:visited,
         &:active,
         &:hover {
-            color: #6E7173;
+            color: #314659;
             text-align: justify;
         }
     }
@@ -250,7 +252,7 @@ a {
 #sidebar_categories li>a:link,
 #sidebar_categories li>a:visited,
 #sidebar_categories li>a:active {
-    color: #6E7173;
+    color: #314659;
     text-decoration: none;
     white-space: nowrap;
     overflow: hidden;
@@ -274,7 +276,7 @@ a {
     padding-bottom: 3px;
     padding-right: 10px;
     width: 100%;
-    color: #6E7173;
+    color: #314659;
     text-align: left;
     border-bottom: 0px !important;
     font-size: 23px;
@@ -295,7 +297,7 @@ a {
     a {
         &:link,
         &:visited {
-            color: #555;
+            color: #314659;
         }
     }
 }
@@ -320,6 +322,7 @@ a {
     font-weight: 300;
     border-bottom: none !important;
     font-family: Lato, "Microsoft Jhenghei", "Hiragino Sans GB", "Microsoft YaHei", sans-serif !important;
+    padding-left: 0px !important;
 }
 
 .postTitle>a:active,
@@ -343,7 +346,7 @@ a {
 .postBody {
     padding: 5px 15px;
     line-height: 1.5;
-    color: #555;
+    color: #314659;
     border-bottom: 1px solid @borderColor;
     a {
         &:link,
@@ -367,7 +370,7 @@ a {
 .entrylistPostSummary {
     font-size: 16px;
     font-weight: 300;
-    color: #555;
+    color: #314659;
     font-family: inherit;
 }
 
@@ -402,7 +405,7 @@ a {
 #cnblogs_post_body {
     p {
         font-size: 16px !important;
-        color: #555;
+        color: #314659;
         line-height: 1.7;
         font-weight: normal;
         text-align: justify;
@@ -414,43 +417,31 @@ a {
 }
 
 #cnblogs_post_body blockquote {
-    box-sizing: border-box;
-    margin: 2.5em 0;
     border: none;
-    padding: 0 0 0 45px;
-    color: #555;
-    border-left: none;
-    background: rgba(18, 126, 186, 0) !important;
-    &:before {
-        content: "\201C";
-        display: block;
-        font-family: times;
-        font-style: normal;
-        font-size: 45px;
-        color: #444;
-        font-weight: bold;
-        line-height: 30px;
-        margin-left: -45px;
-        position: absolute;
-        z-index: -1;
-    }
+    padding: 0 0 0 10px;
+    min-height: 30px;
+    background: transparent;
+    border-left: 4px solid #ebedf0;
 }
 
 #cnblogs_post_body p code,
 #cnblogs_post_body li code,
 #cnblogs_post_body table code {
-    margin: auto 1px;
-    color: #c7254e;
-    font-weight: normal;
-    line-height: 1.2;
+    color: #314659;
+    line-height: 1;
     font-family: consolas !important;
-    font-size: 16px;
     vertical-align: middle;
-    border: 1px solid #F6F6F6 !important;
+    margin: 0 1px;
+    background: #f2f4f5;
+    font-size: 14px !important;
+    padding: .2em .4em !important;
+    border-radius: 3px !important;
+    border: 1px solid #eee !important;
 }
 
 #footer {
     border-top: 1px solid @borderColor;
+    font-weight: 300;
     div {
         margin: 5px auto;
     }
@@ -641,7 +632,7 @@ a {
 
 .esa-catalog {
     position: fixed;
-    top: 160px;
+    top: 120px;
     right: 1px;
     width: auto;
     height: auto;
@@ -655,9 +646,9 @@ a {
     padding: 7px 2px 7px 2px;
     float: right;
     width: 25px;
-    color: #555;
+    color: #314659;
     font-size: 14px;
-    border: 1px solid @borderColor;
+    border: 1px solid #d2d2d2;
     border-radius: 3px;
     text-align: center;
 }
@@ -670,7 +661,7 @@ a {
     line-height: 36px;
     border-bottom: 1px solid #eee;
     font-size: 14px;
-    color: #555;
+    color: #314659;
     overflow: hidden;
 }
 
@@ -684,7 +675,7 @@ a {
 
 .esa-catalog-contents {
     overflow: hidden;
-    color: #555;
+    color: #314659;
     border: 1px solid #d2d2d2;
     border-radius: 3px;
     min-width: 150px;
@@ -745,7 +736,7 @@ a {
         font-size: 14px;
     }
     a {
-        color: #555 !important;
+        color: #314659 !important;
     }
 }
 
@@ -1042,8 +1033,8 @@ div.commentform textarea {
 
 ::-webkit-scrollbar-thumb {
     border-radius: 1px;
-    box-shadow: inset 0 0 5px #6E7173;
-    background: #6E7173;
+    box-shadow: inset 0 0 5px #314659;
+    background: #314659;
 }
 
 ::-webkit-scrollbar-track {

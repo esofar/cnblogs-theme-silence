@@ -220,4 +220,9 @@ git clone https://github.com/esofar/cnblogs-theme-silence.git
 * 优化阅读、正常模式切换效果。
 * 修复移动端部分样式存在的问题。
 
+### v1.0.5
+* 调整全局字体样式。
+* 调整博文引用样式。
+* 调整博文行内代码样式。
+
 
