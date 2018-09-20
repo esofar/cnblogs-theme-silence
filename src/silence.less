@@ -69,6 +69,7 @@ a {
             width: auto;
             margin-left: 0px;
             margin-top: 12px;
+            padding-left: 15px;
             a {
                 color: #404040;
                 &:hover {
@@ -133,6 +134,7 @@ a {
 #main {
     width: 960px;
     margin: 0 auto;
+    min-height: 750px;
     padding: 70px 10px 0px 10px;
     animation-name: fadeIn;
     animation-duration: 1s;
@@ -174,6 +176,7 @@ a {
     border-right: 1px solid @borderColor;
     font-weight: 300;
     display: none;
+    min-height: 750px;
     .newsItem {
         padding: 0px;
         color: #314659;
@@ -322,6 +325,12 @@ a {
     font-weight: 300;
     border-bottom: none !important;
     font-family: Lato, "Microsoft Jhenghei", "Hiragino Sans GB", "Microsoft YaHei", sans-serif !important;
+}
+
+.postTitle{
+    padding-left: 15px !important;
+}
+.entrylistPosttitle {
     padding-left: 0px !important;
 }
 
@@ -1065,15 +1074,12 @@ div.commentform textarea {
     .esa-catalog {
         display: none;
     }
-    #blogTitle {
-        padding-left: 15px;
-    }
     #main {
         margin-top: 60px;
         padding: 0 15px !important;
     }
     #topics .postTitle {
-        padding-left: 0px;
+        padding-left: 0px !important;
         padding-top: 10px;
         text-align: center;
     }

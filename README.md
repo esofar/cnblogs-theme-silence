@@ -225,4 +225,8 @@ git clone https://github.com/esofar/cnblogs-theme-silence.git
 * 调整博文引用样式。
 * 调整博文行内代码样式。
 
+### v1.0.6
+* 调整博客、博文标题左侧边距。
+* 设置首页侧边栏、主体DOM元素默认最小高度。
+
 
