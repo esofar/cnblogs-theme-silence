@@ -1,16 +1,17 @@
 @charset "utf-8";
-@baseColor : #2D8CF0;
-@borderColor: #eef2f8;
+@base-color: #2D8CF0;
+@border-color: #eef2f8;
+@font-color: #314659;
 body {
     min-height: 100% !important;
+    color: @font-color  !important;
     font-family: 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
-    color: #314659 !important;
 }
 
 a {
     transition: all 0.3s ease !important;
     &:hover {
-        color: @baseColor  !important;
+        color: @base-color  !important;
         text-decoration: none !important;
     }
 }
@@ -54,7 +55,7 @@ a {
     margin: 0 auto;
     border-top: 0px;
     background: rgba(255, 255, 255, .95);
-    border-bottom: 1px @borderColor solid;
+    border-bottom: 1px @border-color solid;
     padding-bottom: 0px;
     display: block;
     box-shadow: inset 0 -1px 0 rgba(255, 255, 255, .5);
@@ -100,7 +101,7 @@ a {
         li i {
             width: 0;
             height: 4px;
-            background-color: #008DE8;
+            background-color: @base-color;
             content: "";
             position: absolute;
             left: 50%;
@@ -114,7 +115,7 @@ a {
                 font-size: 16px;
                 padding-top: 0px;
                 border-right: 0px;
-                color: #314659;
+                color: @font-color;
                 display: block;
                 font-weight: 300;
                 padding: 20px 0;
@@ -156,14 +157,14 @@ a {
                 margin-top: 10px;
                 text-decoration: none;
                 display: table;
-                color: #314659;
-                border-color: #314659;
+                color: @font-color;
+                border-color: @font-color;
                 &:after {
                     content: ' »';
                 }
                 &:hover {
-                    color: @baseColor  !important;
-                    border: 1px solid @baseColor;
+                    color: @base-color  !important;
+                    border: 1px solid @base-color;
                 }
             }
         }
@@ -173,25 +174,25 @@ a {
 /* 侧边栏 */
 
 #sideBar {
-    border-right: 1px solid @borderColor;
+    border-right: 1px solid @border-color;
     font-weight: 300;
     display: none;
     min-height: 750px;
     .newsItem {
         padding: 0px;
-        color: #314659;
+        color: @font-color;
         #blog-news {
             font-size: 15px;
             padding: 0 0 0 20px;
             a {
-                color: #314659;
+                color: @font-color;
             }
         }
     }
 }
 
 .catListTitle {
-    color: #314659;
+    color: @font-color;
     text-align: left;
     margin-top: 25px;
     padding-left: 23px;
@@ -224,7 +225,7 @@ a {
     padding-left: 23px;
     padding-right: 15px;
     line-height: 42px;
-    color: #314659;
+    color: @font-color;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -236,14 +237,14 @@ a {
     font-size: 15px;
     padding-left: 23px;
     padding-right: 15px;
-    color: #314659;
+    color: @font-color;
     text-align: justify;
     a {
         &:link,
         &:visited,
         &:active,
         &:hover {
-            color: #314659;
+            color: @font-color;
             text-align: justify;
         }
     }
@@ -255,7 +256,7 @@ a {
 #sidebar_categories li>a:link,
 #sidebar_categories li>a:visited,
 #sidebar_categories li>a:active {
-    color: #314659;
+    color: @font-color;
     text-decoration: none;
     white-space: nowrap;
     overflow: hidden;
@@ -279,7 +280,7 @@ a {
     padding-bottom: 3px;
     padding-right: 10px;
     width: 100%;
-    color: #314659;
+    color: @font-color;
     text-align: left;
     border-bottom: 0px !important;
     font-size: 23px;
@@ -290,7 +291,7 @@ a {
     margin-left: 0px;
     .PostList {
         font-size: 13px;
-        border-bottom: 1px solid @borderColor;
+        border-bottom: 1px solid @border-color;
         padding: 6px 6px 10px 0px;
         margin-right: 0;
     }
@@ -300,7 +301,7 @@ a {
     a {
         &:link,
         &:visited {
-            color: #314659;
+            color: @font-color;
         }
     }
 }
@@ -308,7 +309,7 @@ a {
 .day,
 .entrylistItem {
     width: auto;
-    border-bottom: 1px solid @borderColor;
+    border-bottom: 1px solid @border-color;
     padding: 10px 0px 15px 0px;
     text-align: justify;
 }
@@ -316,7 +317,7 @@ a {
 .day .postSeparator {
     margin-top: 15px;
     margin-bottom: 25px;
-    border-top: 1px solid @borderColor;
+    border-top: 1px solid @border-color;
 }
 
 .postTitle,
@@ -327,9 +328,10 @@ a {
     font-family: Lato, "Microsoft Jhenghei", "Hiragino Sans GB", "Microsoft YaHei", sans-serif !important;
 }
 
-.postTitle{
+.postTitle {
     padding-left: 15px !important;
 }
+
 .entrylistPosttitle {
     padding-left: 0px !important;
 }
@@ -349,19 +351,19 @@ a {
 
 .postTitle>a:hover,
 .entrylistPosttitle>a:hover {
-    color: @baseColor;
+    color: @base-color;
 }
 
 .postBody {
     padding: 5px 15px;
     line-height: 1.5;
-    color: #314659;
-    border-bottom: 1px solid @borderColor;
+    color: @font-color;
+    border-bottom: 1px solid @border-color;
     a {
         &:link,
         &:visited,
         &:active {
-            color: @baseColor;
+            color: @base-color;
             text-decoration: none;
         }
     }
@@ -371,7 +373,7 @@ a {
 .postBody ol {
     li {
         margin-bottom: 5px;
-        font-size: 16px;
+        font-size: 15px;
     }
 }
 
@@ -379,11 +381,17 @@ a {
 .entrylistPostSummary {
     font-size: 16px;
     font-weight: 300;
-    color: #314659;
+    color: @font-color;
     font-family: inherit;
+    .c_b_p_desc {
+        img {
+            height: 100px;
+            margin-left: 10px;
+        }
+    }
 }
 
-.postBodyHead (@fontSize: 20px) {
+.postBodyHeader (@fontSize: 20px) {
     font-size: @fontSize;
     font-family: Lato, "Microsoft Jhenghei", "Hiragino Sans GB", "Microsoft YaHei", sans-serif !important;
     color: #2c3e50;
@@ -392,29 +400,29 @@ a {
 
 #cnblogs_post_body {
     h1 {
-        .postBodyHead;
+        .postBodyHeader;
     }
     h2 {
-        .postBodyHead(19px);
+        .postBodyHeader(19px);
     }
     h3 {
-        .postBodyHead(18px);
+        .postBodyHeader(18px);
     }
     h4 {
-        .postBodyHead(17px);
+        .postBodyHeader(17px);
     }
     h5 {
-        .postBodyHead(16px);
+        .postBodyHeader(16px);
     }
     h6 {
-        .postBodyHead(15px);
+        .postBodyHeader(15px);
     }
 }
 
 #cnblogs_post_body {
     p {
-        font-size: 16px !important;
-        color: #314659;
+        font-size: 15px !important;
+        color: @font-color;
         line-height: 1.7;
         font-weight: normal;
         text-align: justify;
@@ -436,20 +444,24 @@ a {
 #cnblogs_post_body p code,
 #cnblogs_post_body li code,
 #cnblogs_post_body table code {
-    color: #314659;
+    color: @font-color;
     line-height: 1;
     font-family: consolas !important;
     vertical-align: middle;
-    margin: 0 1px;
+    margin: 0 3px;
     background: #f2f4f5;
     font-size: 14px !important;
-    padding: .2em .4em !important;
+    padding: .2em .3em !important;
     border-radius: 3px !important;
     border: 1px solid #eee !important;
 }
 
+#BlogPostCategory a {
+    margin-left: 5px;
+}
+
 #footer {
-    border-top: 1px solid @borderColor;
+    border-top: 1px solid @border-color;
     font-weight: 300;
     div {
         margin: 5px auto;
@@ -575,8 +587,8 @@ a {
             color: rgba(0, 0, 0, .65);
             background-color: rgba(255, 255, 255, .97);
             &:hover {
-                color: @baseColor  !important;
-                border: 1px solid @baseColor;
+                color: @base-color  !important;
+                border: 1px solid @base-color;
                 text-decoration: none;
             }
         }
@@ -603,8 +615,8 @@ a {
         color: #515a6e;
         transition: border .2s ease-in-out, color .2s ease-in-out;
         &:hover {
-            color: @baseColor;
-            border: 1px solid @baseColor;
+            color: @base-color;
+            border: 1px solid @base-color;
         }
     }
 }
@@ -616,7 +628,7 @@ a {
     font-family: Monospaced Number;
     margin: 0 3px;
     text-decoration: none;
-    background-color: @baseColor;
+    background-color: @base-color;
 }
 
 /* 菜单 */
@@ -655,7 +667,7 @@ a {
     padding: 7px 2px 7px 2px;
     float: right;
     width: 25px;
-    color: #314659;
+    color: @font-color;
     font-size: 14px;
     border: 1px solid #d2d2d2;
     border-radius: 3px;
@@ -670,7 +682,7 @@ a {
     line-height: 36px;
     border-bottom: 1px solid #eee;
     font-size: 14px;
-    color: #314659;
+    color: @font-color;
     overflow: hidden;
 }
 
@@ -684,7 +696,7 @@ a {
 
 .esa-catalog-contents {
     overflow: hidden;
-    color: #314659;
+    color: @font-color;
     border: 1px solid #d2d2d2;
     border-radius: 3px;
     min-width: 150px;
@@ -707,7 +719,7 @@ a {
         text-overflow: ellipsis;
         cursor: pointer;
         a:hover {
-            color: @baseColor;
+            color: @base-color;
             text-decoration: none;
         }
     }
@@ -745,7 +757,7 @@ a {
         font-size: 14px;
     }
     a {
-        color: #314659 !important;
+        color: @font-color  !important;
     }
 }
 
@@ -859,7 +871,7 @@ a {
     }
 }
 
-/* 推荐|反对|赞赏 按钮 */
+/* 推荐|反对|赞赏 */
 
 #div_digg {
     position: static;
@@ -941,7 +953,7 @@ a {
 .feedbackCon {
     background: none;
     padding: 10px 0px 10px 0px;
-    border-bottom: 1px solid @borderColor;
+    border-bottom: 1px solid @border-color;
     .esa-comment-avatar {
         float: left;
         margin-right: 10px;
@@ -979,7 +991,7 @@ a {
 }
 
 .feedback_area_title {
-    border-bottom: 1px solid @borderColor;
+    border-bottom: 1px solid @border-color;
     margin-bottom: 15px;
 }
 
@@ -1004,13 +1016,19 @@ div.commentform p {
 div.commentform textarea {
     width: 100% !important;
     height: 200px !important;
-    border: 1px solid @borderColor;
+    border: 1px solid @border-color;
     border-radius: 6px;
     padding: 5px;
     font-family: inherit;
     font-size: 14px;
     resize: none;
     box-sizing: border-box;
+    &:focus {
+        outline: 0;
+    }
+    &:hover {
+        border-color: @base-color;
+    }
 }
 
 #btn_comment_submit {
@@ -1019,8 +1037,8 @@ div.commentform textarea {
     border-width: 0px;
     cursor: pointer;
     color: #fff;
-    background-color: @baseColor;
-    border-color: @baseColor;
+    background-color: @base-color;
+    border-color: @base-color;
     user-select: none;
     padding: 5px 20px;
     font-size: 12px;
@@ -1033,8 +1051,6 @@ div.commentform textarea {
     }
 }
 
-/* 滚动条 */
-
 ::-webkit-scrollbar {
     width: 4px;
     height: 4px;
@@ -1042,13 +1058,18 @@ div.commentform textarea {
 
 ::-webkit-scrollbar-thumb {
     border-radius: 1px;
-    box-shadow: inset 0 0 5px #314659;
-    background: #314659;
+    box-shadow: inset 0 0 5px @font-color;
+    background: @font-color;
 }
 
 ::-webkit-scrollbar-track {
     background: transparent;
     border-radius: 1px;
+}
+
+::selection,
+::-moz-selection {
+    color: @base-color;
 }
 
 @keyframes fadeIn {
@@ -1121,7 +1142,7 @@ div.commentform textarea {
                 padding: 15px 0;
             }
             &:hover {
-                color: @baseColor ;
+                color: @base-color ;
                 background-color: #2c3e50 !important;
             }
         }

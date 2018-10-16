@@ -34,7 +34,7 @@
         }
 
         get version() {
-            return '1.0.3';
+            return '1.0.6';
         }
 
         get cnblogs() {
@@ -62,6 +62,7 @@
             if (options) {
                 $.extend(true, this.defaluts, options);
             }
+            this.printVersion();
             this.buildNavHoverEle();
             this.buildMobileMenu();
             this.buildCopyright();
@@ -88,6 +89,10 @@
                     $('.esa-layer-content').empty();
                 });
             }, 2500);
+        }
+
+        printVersion() {
+            console.log('%cSilence v' + this.version + ' - https://github.com/esofar/cnblogs-theme-silence', 'color:red');
         }
 
         goIntoReadingMode() {
