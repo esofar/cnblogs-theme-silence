@@ -233,6 +233,6 @@ git clone https://github.com/esofar/cnblogs-theme-silence.git
 * 控制台输出版本号。
 * 去除评论框outline效果。
 * 博文字体大小调整为`15px`。
-  博文自定义摘要图片样式优化。
+* 博文自定义摘要图片样式优化。
 
 
