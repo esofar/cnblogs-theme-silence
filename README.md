@@ -230,7 +230,7 @@ git clone https://github.com/esofar/cnblogs-theme-silence.git
 * 设置首页侧边栏、主体DOM元素默认最小高度。
 
 ### v1.0.7
-* 控制台输出版本号。
+* 版权信息输出主题版本号。
 * 去除评论框outline效果。
 * 博文字体大小调整为`15px`。
 * 博文自定义摘要图片样式优化。
