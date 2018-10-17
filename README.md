@@ -235,4 +235,9 @@ git clone https://github.com/esofar/cnblogs-theme-silence.git
 * 博文字体大小调整为`15px`。
 * 博文自定义摘要图片样式优化。
 
+### v1.0.8
+* 重新调整博文中Table表格样式。
+* 调整博客目录最大宽高，优化笔记本小屏幕显示效果。
+* 新增博客收藏收藏功能（[#2](https://github.com/esofar/cnblogs-theme-silence/issues/2)）。
+
 

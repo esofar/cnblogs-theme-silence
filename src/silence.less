@@ -5,7 +5,7 @@
 body {
     min-height: 100% !important;
     color: @font-color  !important;
-    font-family: 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
+    font-family: 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif !important;
 }
 
 a {
@@ -417,9 +417,6 @@ a {
     h6 {
         .postBodyHeader(15px);
     }
-}
-
-#cnblogs_post_body {
     p {
         font-size: 15px !important;
         color: @font-color;
@@ -428,17 +425,39 @@ a {
         text-align: justify;
         margin: 5px auto;
     }
+    blockquote {
+        border: none;
+        padding: 0 0 0 10px;
+        min-height: 30px;
+        background: transparent;
+        border-left: 4px solid #ebedf0;
+    }
     em {
         padding-right: 3px;
     }
-}
-
-#cnblogs_post_body blockquote {
-    border: none;
-    padding: 0 0 0 10px;
-    min-height: 30px;
-    background: transparent;
-    border-left: 4px solid #ebedf0;
+    table {
+        font-size: 13px;
+        border-collapse: collapse;
+        border-spacing: 0;
+        empty-cells: show;
+        border: 1px solid #e9e9e9;
+        width: 100%;
+        margin-bottom: 24px;
+        th {
+            font-family: inherit;
+            font-size: inherit;
+            background: #f7f7f7;
+            white-space: nowrap;
+            color: #5c6b77;
+            font-weight: 600;
+            border: 1px solid #e9e9e9;
+            padding: 8px 16px;
+        }
+        td {
+            border: 1px solid #e9e9e9;
+            padding: 8px 16px;
+        }
+    }
 }
 
 #cnblogs_post_body p code,
@@ -704,23 +723,30 @@ a {
     font-size: inherit;
     background-color: #fff;
     z-index: 19941112;
-}
-
-.esa-catalog-contents ul {
-    padding: 10px 15px 10px 15px;
-    max-height: 290px;
-    overflow-y: auto;
-    li {
-        margin-top: 5px;
-        margin-right: 5px;
-        max-width: 300px;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        cursor: pointer;
-        a:hover {
-            color: @base-color;
-            text-decoration: none;
+    ul {
+        padding: 10px 15px 10px 15px;
+        max-height: 390px;
+        overflow-y: auto;
+        li {
+            margin-top: 5px;
+            max-width: 170px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            cursor: pointer;
+            a:hover {
+                color: @base-color;
+                text-decoration: none;
+            }
+            .level1 {
+                margin-left: 0px;
+            }
+            .level2 {
+                margin-left: 10px;
+            }
+            .level3 {
+                margin-left: 26px;
+            }
         }
     }
 }
@@ -878,7 +904,8 @@ a {
     float: none;
     margin: 75px auto;
     z-index: -1;
-    width: 260px;
+    width: 370px;
+    .favorite,
     .reward,
     .diggit,
     .buryit {
@@ -891,13 +918,23 @@ a {
         cursor: pointer;
         color: #fff;
         user-select: none;
-        padding: 0px 15px;
+        padding: 0px 10px;
         border-radius: 5px;
         transition: color .2s linear, background-color .2s linear, border .2s linear, box-shadow .2s linear;
+    }
+    .favorite {
+        background-color: #2db7f5;
+        border-color: #2db7f5;
+        margin: 0 5px;
+        &:hover {
+            background-color: #57c5f7;
+            border-color: #57c5f7;
+        }
     }
     .reward {
         background-color: #e13d13;
         border-color: #e13d13;
+        margin: 0 5px;
         &:hover {
             background-color: #f16643;
             border-color: #f16643;
@@ -921,6 +958,7 @@ a {
     }
 }
 
+#div_digg .favorite .favoritenum,
 #div_digg .reward .rewardnum,
 #div_digg .diggit .diggnum,
 #div_digg .buryit .burynum {
@@ -929,6 +967,12 @@ a {
     font-size: 15px;
     position: relative;
     top: 5px;
+    width: 65px;
+}
+
+#div_digg .favorite .favoritenum:before {
+    content: '收藏';
+    font-size: 15px;
 }
 
 #div_digg .reward .rewardnum:before {

@@ -34,7 +34,7 @@
         }
 
         get version() {
-            return '1.0.7';
+            return 'v1.0.8';
         }
 
         get cnblogs() {
@@ -58,25 +58,34 @@
             return $(this.cnblogs.postDetail).length > 0;
         }
 
+        /**
+         * 初始化
+         * @param {Object} options 配置选项
+         */
         init(options) {
             if (options) {
                 $.extend(true, this.defaluts, options);
             }
-            this.printVersion();
-            this.buildNavHoverEle();
+            this.buildNavHoverDom();
             this.buildMobileMenu();
             this.buildCopyright();
+
             if (this.isPostDetail) {
                 this.goIntoReadingMode();
                 this.buildPostCatalog();
                 this.buildPostSignature();
-                this.buildPostReward();
+                this.buildPostFavoriteBtn();
+                this.buildPostRewardBtn();
                 this.buildPostCommentAvatar();
             } else {
                 this.goIntoNormalMode();
             }
         }
 
+        /**
+         * 消息弹窗
+         * @param {String} content 消息内容
+         */
         showMessage(content) {
             let $layer = $('.esa-layer');
             if (!$layer.length) {
@@ -91,10 +100,9 @@
             }, 2500);
         }
 
-        printVersion() {
-            console.log('%cSilence v' + this.version + ' - https://github.com/esofar/cnblogs-theme-silence', 'color:red');
-        }
-
+        /**
+         * 进入阅读模式
+         */
         goIntoReadingMode() {
             let _that = this;
             let $win = $(window);
@@ -109,6 +117,9 @@
             }
         }
 
+        /**
+         * 进入正常模式
+         */
         goIntoNormalMode() {
             let _that = this;
             let $win = $(window);
@@ -120,13 +131,19 @@
             }
         }
 
-        buildNavHoverEle() {
+        /**
+         * 构建导航栏选项追加DOM元素
+         */
+        buildNavHoverDom() {
             var $lis = $(this.cnblogs.navList).find('li');
             $.each($lis, function (index, ele) {
                 $(ele).append('<i></i>');
             });
         }
 
+        /**
+         * 构建移动端菜单按钮
+         */
         buildMobileMenu() {
             let _that = this;
             $('body').prepend('<div class="esa-mobile-menu"></div>');
@@ -135,16 +152,20 @@
             });
         }
 
+        /**
+         * 构建主题版权信息
+         */
         buildCopyright() {
             // please don't delete this function.
             $(this.cnblogs.footer).append('<div>\
             Powered By \
-            <a href="https://www.cnblogs.com" target="_blank">Cnblogs</a> | \
-            <a href="https://github.com/esofar/cnblogs-theme-silence" target="_blank">Silence</a> \
-            Theme By \
-            <a href="https://www.cnblogs.com/esofar" target="_blank">Esofar</a></div>');
+            <a href="https://www.cnblogs.com" target="_blank">Cnblogs</a> | Theme \
+            <a href="https://github.com/esofar/cnblogs-theme-silence/releases" target="_blank">Silence ' + this.version + '</a></div>');
         }
 
+        /**
+         * 构建博客签名
+         */
         buildPostSignature() {
             let config = this.defaluts.signature;
             if (config.enable) {
@@ -158,6 +179,9 @@
             }
         }
 
+        /**
+         * 构建评论者头像
+         */
         buildPostCommentAvatar() {
             let _that = this;
             var builder = function () {
@@ -184,16 +208,19 @@
                         clearInterval(intervalId);
                         builder();
                     }
-                    if (count == 5) {
+                    if (count == 10) {
                         // no feedback.
                         clearInterval(intervalId);
                     }
                     count++;
-                }, 1000);
+                }, 500);
             }
         }
 
-        buildPostReward() {
+        /**
+         * 构建赞赏按钮
+         */
+        buildPostRewardBtn() {
             let config = this.defaluts.reward;
             if (config.enable) {
                 if (!config.wechat && !config.alipay) {
@@ -236,13 +263,35 @@
                             clearInterval(intervalId);
                             builder();
                         }
-                    }, 500);
+                    }, 200);
                 }
             } else {
-                $('#div_digg').width(200);
+                $('#div_digg').width(300);
             }
         }
 
+        /**
+         * 构建收藏按钮
+         */
+        buildPostFavoriteBtn() {
+            let builder = function () {
+                $('#div_digg').prepend('<div class="favorite" onclick="AddToWz(cb_entryId);return false;"><span class="favoritenum" id="favorite_count"></span></div>');
+            };
+            if ($('#div_digg').length) {
+                builder();
+            } else {
+                let intervalId = setInterval(function () {
+                    if ($('#div_digg').length) {
+                        clearInterval(intervalId);
+                        builder();
+                    }
+                }, 200);
+            }
+        }
+
+        /**
+         * 构建博客目录
+         */
         buildPostCatalog() {
             let config = this.defaluts.catalog;
             if (config.enable) {
@@ -270,13 +319,13 @@
                     if (!config.index) {
                         switch (tagName) {
                             case config.level1:
-                                titleContent = titleContent;
+                                titleContent = '<span class="level1">' + titleContent + '</span>';
                                 break;
                             case config.level2:
-                                titleContent = '&nbsp;&nbsp;' + titleContent;
+                                titleContent = '<span class="level2">' + titleContent + '</span>';
                                 break;
                             case config.level3:
-                                titleContent = '&nbsp;&nbsp;&nbsp;&nbsp;' + titleContent;
+                                titleContent = '<span class="level3">' + titleContent + '</span>';
                                 break;
                         }
                     } else {
@@ -284,14 +333,14 @@
                             h1c++;
                             h2c = 0;
                             h3c = 0;
-                            titleIndex = h1c + ".&nbsp;";
+                            titleIndex = '<span class="level1">' + h1c + '. </span>';
                         } else if (tagName === config.level2) {
                             h2c++;
                             h3c = 0;
-                            titleIndex = "&nbsp;&nbsp;" + h1c + "." + h2c + ".&nbsp;";
+                            titleIndex = '<span class="level2">' + h1c + "." + h2c + '. </span>';
                         } else if (tagName === config.level3) {
                             h3c++;
-                            titleIndex = "&nbsp;&nbsp;&nbsp;&nbsp;" + h1c + "." + h2c + "." + h3c + ".&nbsp;";
+                            titleIndex = '<span class="level3">' + h1c + "." + h2c + "." + h3c + '. </span>'
                         }
                     }
                     catalogContents += '<li class="li_' + tagName + '" title="' + titleContent + '"><i id="esa_index_' + index + '"></i><a class="esa-anchor-link">' + (titleIndex + titleContent) + '</a></li>';
