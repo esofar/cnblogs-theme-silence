@@ -1,7 +1,6 @@
-![PC](src/images/screenshot_1.png)
-
 # Silence
-[![Cnblogs](https://img.shields.io/badge/dependencies-jQuery-yellow.svg)](https://www.cnblogs.com)
+[![Cnblogs](https://img.shields.io/badge/latest-v1.0.9-brightgreen.svg)](https://github.com/esofar/cnblogs-theme-silence/releases)
+[![Cnblogs](https://img.shields.io/badge/dependencies-jQuery-blue.svg)](https://www.cnblogs.com)
 [![GitHub issues](https://img.shields.io/github/issues/esofar/cnblogs-theme-silence.svg)](https://github.com/esofar/cnblogs-theme-silence/issues)
 [![GitHub license](https://img.shields.io/github/license/esofar/cnblogs-theme-silence.svg)](https://github.com/esofar/cnblogs-theme-silence/blob/master/LICENSE)
 
@@ -14,6 +13,9 @@ Silence 是一款界面简洁、运行高效的博客园主题，主要面向于
 * 事无巨细的部署文档；
 * 兼容移动端浏览器；
 * 源码结构清晰、易扩展。
+
+![PC](src/images/screenshot_1.png)
+
 
 ## 安装
 
@@ -72,6 +74,12 @@ git clone https://github.com/esofar/cnblogs-theme-silence.git
             title: '感谢您的支持，我会继续努力',
             wechat: 'https://images.cnblogs.com/cnblogs_com/esofar/972540/o_wechat.png',
             alipay: 'https://images.cnblogs.com/cnblogs_com/esofar/972540/o_alipay.png',
+        },        
+        github: {
+            enable: true,
+            color: '#fff',
+            fill: '#151513',
+            link: 'https://github.com/esofar',
         }
     });
 </script>
@@ -137,7 +145,7 @@ git clone https://github.com/esofar/cnblogs-theme-silence.git
             <td>author</td>
             <td>作者显示名称</td>
             <td>String</td>
-            <td>当前博客用户名</td>
+            <td>登录用户名</td>
         </tr>
         <tr>
             <td>home</td>
@@ -158,7 +166,7 @@ git clone https://github.com/esofar/cnblogs-theme-silence.git
             <td>https://creativecommons.org/licenses/by/4.0</td>
         </tr>
         <tr>
-            <td rowspan="5">reward</td>
+            <td rowspan="4">reward</td>
             <td>enable</td>
             <td>是否启用</td>
             <td>Boolean</td>
@@ -168,19 +176,44 @@ git clone https://github.com/esofar/cnblogs-theme-silence.git
             <td>title</td>
             <td>标题</td>
             <td>String</td>
-            <td>null</td>
+            <td>-</td>
         </tr>
         <tr>
             <td>wechat</td>
             <td>微信二维码</td>
             <td>String</td>
-            <td>null</td>
+            <td>-</td>
         </tr>
         <tr>
             <td>alipay</td>
             <td>支付宝二维码</td>
             <td>String</td>
-            <td>null</td>
+            <td>-</td>
+        </tr>
+        <tr>
+            <td rowspan="4">github</td>
+            <td>enable</td>
+            <td>是否启用</td>
+            <td>Boolean</td>
+            <td>false</td>
+        </tr>
+        <tr>
+            <td>fill</td>
+            <td>背景填充色</td>
+            <td>String</td>
+            <td>#151513</td>
+        </tr>
+        <tr>
+            <td>color</td>
+            <td>'章鱼猫'颜色</td>
+            <td>String</td>
+            <td>#fff</td>
+        </tr>
+        <tr>
+            <td>link</td>
+            <td>Github 链接</td>
+            <td>String</td>
+            <td>-</td>
         </tr>
     </tbody>
 </table>
@@ -239,5 +272,11 @@ git clone https://github.com/esofar/cnblogs-theme-silence.git
 * 重新调整博文中Table表格样式。
 * 调整博客目录最大宽高，优化笔记本小屏幕显示效果。
 * 新增博客收藏收藏功能（[#2](https://github.com/esofar/cnblogs-theme-silence/issues/2)）。
+
+### v1.0.9
+* 优化移动端浏览器存在的若干样式问题。
+* 博客导航在移动端浏览器中显示标签页链接。
+* 修复博文标题行内代码样式不统一的问题。
+* 新增 [GitHub Corners](http://tholman.com/github-corners/)，通过`github`选项配置相关参数。
 
 

@@ -97,6 +97,9 @@ a {
                 width: 100%;
                 left: 0;
             }
+            #blog_nav_tags {
+                display: none;
+            }
         }
         li i {
             width: 0;
@@ -178,6 +181,7 @@ a {
     font-weight: 300;
     display: none;
     min-height: 750px;
+    padding: 0px;
     .newsItem {
         padding: 0px;
         color: @font-color;
@@ -292,8 +296,8 @@ a {
     .PostList {
         font-size: 13px;
         border-bottom: 1px solid @border-color;
-        padding: 6px 6px 10px 0px;
-        margin-right: 0;
+        padding: 6px 0px 10px 0px;
+        margin-right: 0px;
     }
     .pager:first-of-type {
         display: none;
@@ -400,7 +404,7 @@ a {
 
 #cnblogs_post_body {
     h1 {
-        .postBodyHeader;
+        .postBodyHeader(20px);
     }
     h2 {
         .postBodyHeader(19px);
@@ -435,6 +439,9 @@ a {
     em {
         padding-right: 3px;
     }
+    img {
+        max-width: 930px;
+    }
     table {
         font-size: 13px;
         border-collapse: collapse;
@@ -460,19 +467,27 @@ a {
     }
 }
 
-#cnblogs_post_body p code,
-#cnblogs_post_body li code,
-#cnblogs_post_body table code {
-    color: @font-color;
-    line-height: 1;
-    font-family: consolas !important;
-    vertical-align: middle;
-    margin: 0 3px;
-    background: #f2f4f5;
-    font-size: 14px !important;
-    padding: .2em .3em !important;
-    border-radius: 3px !important;
-    border: 1px solid #eee !important;
+#cnblogs_post_body {
+    h1 code,
+    h2 code,
+    h3 code,
+    h4 code,
+    h5 code,
+    h6 code,
+    p code,
+    li code,
+    table code {
+        color: @font-color;
+        line-height: 1;
+        font-family: consolas !important;
+        vertical-align: middle;
+        margin: 0 3px;
+        background: #f2f4f5;
+        font-size: 14px !important;
+        padding: .2em .3em !important;
+        border-radius: 3px !important;
+        border: 1px solid #eee !important;
+    }
 }
 
 #BlogPostCategory a {
@@ -724,8 +739,8 @@ a {
     background-color: #fff;
     z-index: 19941112;
     ul {
-        padding: 10px 15px 10px 15px;
-        max-height: 390px;
+        padding: 10px 15px;
+        max-height: 350px;
         overflow-y: auto;
         li {
             margin-top: 5px;
@@ -823,8 +838,8 @@ a {
     height: auto;
     padding-bottom: 30px;
     background: #fff;
-    box-shadow: 0 0 0 2000px rgba(0, 0, 0, .5);
-    border-radius: 10px;
+    box-shadow: 0 0 0 2000px rgba(0, 0, 0, .65);
+    border-radius: 4px;
     z-index: 1000000;
     h2 {
         text-align: center;
@@ -1095,6 +1110,36 @@ div.commentform textarea {
     }
 }
 
+/* Github 角标 */
+
+.github-corner:hover .octo-arm {
+    animation: octocat-wave 560ms ease-in-out
+}
+
+@keyframes octocat-wave {
+    0%,
+    100% {
+        transform: rotate(0)
+    }
+    20%,
+    60% {
+        transform: rotate(-25deg)
+    }
+    40%,
+    80% {
+        transform: rotate(10deg)
+    }
+}
+
+@media (max-width:500px) {
+    .github-corner:hover .octo-arm {
+        animation: none
+    }
+    .github-corner .octo-arm {
+        animation: octocat-wave 560ms ease-in-out
+    }
+}
+
 ::-webkit-scrollbar {
     width: 4px;
     height: 4px;
@@ -1134,10 +1179,21 @@ div.commentform textarea {
 }
 
 @media only screen and (max-width:767px) {
+    body {
+        font-size: 12px !important;
+    }
+    #mainContent {
+        .forFlow {
+            padding-top: 15px;
+        }
+    }
     #sideBar,
     .postDesc,
     .esa-catalog {
         display: none;
+    }
+    .postBody {
+        padding: 0px !important;
     }
     #main {
         margin-top: 60px;
@@ -1146,7 +1202,15 @@ div.commentform textarea {
     #topics .postTitle {
         padding-left: 0px !important;
         padding-top: 10px;
-        text-align: center;
+    }
+    #cnblogs_post_body {
+        table {
+            display: table;
+        }
+        img {
+            max-width: none !important;
+            width: 100%;
+        }
     }
     #commentbox_main,
     #comment_nav {
@@ -1165,6 +1229,9 @@ div.commentform textarea {
     }
     #header {
         width: auto;
+        #blogTitle h1 {
+            padding-left: 42px;
+        }
         #navigator {
             display: none;
             width: 100%;
@@ -1175,6 +1242,9 @@ div.commentform textarea {
         width: inherit;
         li {
             float: none;
+            #blog_nav_tags {
+                display: block !important;
+            }
         }
         a {
             &:link,
@@ -1193,5 +1263,26 @@ div.commentform textarea {
     }
     .feedbackItem .feedbackManage {
         width: auto;
+    }
+    .github-corner svg {
+        fill: transparent !important;
+        color: #404040 !important;
+        top: 10px !important;
+        left: -8px !important;
+        -webkit-transform: rotate(-45deg) !important;
+        transform: rotate(-45deg) !important;
+    }
+}
+
+@media only screen and (max-width:410px) {
+    #div_digg {
+        display: grid;
+        width: 100%;
+        .reward,
+        .favorite,
+        .diggit,
+        .buryit {
+            margin: 5px 0px;
+        }
     }
 }

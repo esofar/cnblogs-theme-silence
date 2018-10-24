@@ -19,22 +19,28 @@
                 },
                 signature: {
                     enable: false,
-                    author: currentBlogApp || '--',
+                    author: currentBlogApp,
                     home: 'https://www.cnblogs.com',
                     license: '署名 4.0 国际',
                     link: 'https://creativecommons.org/licenses/by/4.0'
                 },
                 reward: {
                     enable: false,
-                    title: null,
+                    title: '我是猴子派来收钱的',
                     wechat: null,
                     alipay: null,
+                },
+                github: {
+                    enable: false,
+                    color: '#fff',
+                    fill: '#151513',
+                    link: null,
                 }
             };
         }
 
         get version() {
-            return 'v1.0.8';
+            return 'v1.0.9';
         }
 
         get cnblogs() {
@@ -47,6 +53,7 @@
                 postTitle: '#cb_post_title_url',
                 postDetail: '#post_detail',
                 postBody: '#cnblogs_post_body',
+                postDigg: '#div_digg',
                 postCommentBody: '.blog_comment_body',
                 feedbackContent: '.feedbackCon',
                 mySignature: '#MySignature',
@@ -54,7 +61,7 @@
             };
         }
 
-        get isPostDetail() {
+        get isPostPage() {
             return $(this.cnblogs.postDetail).length > 0;
         }
 
@@ -66,11 +73,10 @@
             if (options) {
                 $.extend(true, this.defaluts, options);
             }
-            this.buildNavHoverDom();
-            this.buildMobileMenu();
+            this.buildNavCustomElements();
             this.buildCopyright();
-
-            if (this.isPostDetail) {
+            this.buildGithubCorners();
+            if (this.isPostPage) {
                 this.goIntoReadingMode();
                 this.buildPostCatalog();
                 this.buildPostSignature();
@@ -89,7 +95,7 @@
         showMessage(content) {
             let $layer = $('.esa-layer');
             if (!$layer.length) {
-                $('body').prepend('<div class="esa-layer"><span class="esa-layer-content"></span></div>');
+                $('body').prepend(`<div class="esa-layer"><span class="esa-layer-content"></span></div>`);
             }
             $('.esa-layer-content').html(content);
             $('.esa-layer').fadeIn(250);
@@ -132,21 +138,18 @@
         }
 
         /**
-         * 构建导航栏选项追加DOM元素
+         * 构建导航栏自定义DOM元素
          */
-        buildNavHoverDom() {
-            var $lis = $(this.cnblogs.navList).find('li');
-            $.each($lis, function (index, ele) {
-                $(ele).append('<i></i>');
-            });
-        }
-
-        /**
-         * 构建移动端菜单按钮
-         */
-        buildMobileMenu() {
+        buildNavCustomElements() {
             let _that = this;
-            $('body').prepend('<div class="esa-mobile-menu"></div>');
+            // build a tags button in navbar.
+            var $navList = $(this.cnblogs.navList);
+            $navList.find('li').eq(1).after(`<li><a id="blog_nav_tags" class="menu" href="https://www.cnblogs.com/${currentBlogApp}/tag">标签</a></li>`);
+            $.each($navList.find('li'), function (index, nav) {
+                $(nav).append('<i></i>');
+            });
+            // build a mobile browser menu button.
+            $('body').prepend(`<div class="esa-mobile-menu"></div>`);
             $('.esa-mobile-menu').on('click', function () {
                 $(_that.cnblogs.navigator).fadeToggle(200);
             });
@@ -157,10 +160,9 @@
          */
         buildCopyright() {
             // please don't delete this function.
-            $(this.cnblogs.footer).append('<div>\
-            Powered By \
-            <a href="https://www.cnblogs.com" target="_blank">Cnblogs</a> | Theme \
-            <a href="https://github.com/esofar/cnblogs-theme-silence/releases" target="_blank">Silence ' + this.version + '</a></div>');
+            var content = `<div> Powered By <a href="https://www.cnblogs.com" target="_blank">Cnblogs</a> |
+            Theme <a href="https://github.com/esofar/cnblogs-theme-silence" target="_blank">Silence ${this.version}</a></div>`;
+            $(this.cnblogs.footer).append(content);
         }
 
         /**
@@ -170,11 +172,12 @@
             let config = this.defaluts.signature;
             if (config.enable) {
                 let postUrl = $(this.cnblogs.postTitle).attr('href');
-                let content = '<div class="esa-post-signature"> \
-                                <p>作者：<a href="' + config.home + '">' + config.author + '</a></p> \
-                                <p>出处：<a href="' + postUrl + '">' + postUrl + '</a></p> \
-                                <p>本站使用「<a href="' + (config.link || '#') + '"  target="_blank">' + config.license + '</a>」创作共享协议，转载请在文章明显位置注明作者及出处。</p> \
-                               </div>';
+                let content = 
+                `<div class="esa-post-signature"> 
+                    <p>作者：<a href="${config.home}">${config.author}</a></p> 
+                    <p>出处：<a href="${postUrl}">${postUrl}</a></p> 
+                    <p>本站使用「<a href="${config.link}"  target="_blank">${config.license}</a>」创作共享协议，转载请在文章明显位置注明作者及出处。</p> 
+                </div>`;
                 $(this.cnblogs.mySignature).html(content).show();
             }
         }
@@ -185,13 +188,13 @@
         buildPostCommentAvatar() {
             let _that = this;
             var builder = function () {
-                $(_that.cnblogs.postCommentBody).before("<div class='esa-comment-avatar'><a target='_blank'><img /></a></div>");
+                $(_that.cnblogs.postCommentBody).before(`<div class='esa-comment-avatar'><a target='_blank'><img /></a></div>`);
                 let feedbackCon = $(_that.cnblogs.feedbackContent);
                 for (var i = 0; i < feedbackCon.length; i++) {
                     let avatar = 'https://pic.cnblogs.com/face/sample_face.gif';
                     let span = $(feedbackCon[i]).find("span:last")[0];
                     if (span) {
-                        avatar = $(span).html().replace('http://', 'https://');
+                        avatar = $(span).html().replace('http://', '//');
                     }
                     $(feedbackCon[i]).find(".esa-comment-avatar img").attr("src", avatar);
                     let href = $(feedbackCon[i]).parent().find(".comment_date").next().attr("href");
@@ -222,26 +225,23 @@
          */
         buildPostRewardBtn() {
             let config = this.defaluts.reward;
+            let _that = this;
             if (config.enable) {
                 if (!config.wechat && !config.alipay) {
-                    throw new Error('Reward module, both `wechat` and `alipay` are null.');
+                    throw new Error(`silence error: both 'wechat' and 'alipay' are null in reward module.`);
                 }
 
-                let content = '<div class="esa-reward"> \
-                        <div class="esa-reward-close">+</div> \
-                        <h2>"' + (config.title || '') + '"</h2> \
-                        <div class="esa-reward-container">';
+                let content = `<div class="esa-reward">
+                <div class="esa-reward-close">+</div>
+                <h2>"${config.title}"</h2>
+                <div class="esa-reward-container">`;
                 if (config.wechat) {
-                    content += '<div class="wechat"> \
-                                        <img src="' + config.wechat + '" alt="微信支付"> \
-                                    </div>'
+                    content += `<div class="wechat"><img src="${config.wechat}" alt="微信支付"></div>`
                 }
                 if (config.alipay) {
-                    content += '<div class="alipay"> \
-                                        <img src="' + config.alipay + '" alt="支付宝支付"> \
-                                    </div>'
+                    content += `<div class="alipay"><img src="${config.alipay}" alt="支付宝支付"></div>`;
                 }
-                content += '</div></div>';
+                content += `</div></div>`;
                 $('body').append(content);
 
                 $('.esa-reward-close').on('click', function () {
@@ -249,24 +249,24 @@
                 });
 
                 let builder = function () {
-                    $('#div_digg').prepend('<div class="reward"><span class="rewardnum" id="reward_count"></span></div>');
-                    $('#div_digg .reward').on('click', function () {
+                    $(_that.cnblogs.postDigg).prepend(`<div class="reward"><span class="rewardnum" id="reward_count"></span></div>`);
+                    $(_that.cnblogs.postDigg).find('.reward').on('click', function () {
                         $(".esa-reward").fadeIn();
                     });
                 };
 
-                if ($('#div_digg').length) {
+                if ($(_that.cnblogs.postDigg).length) {
                     builder();
                 } else {
                     let intervalId = setInterval(function () {
-                        if ($('#div_digg').length) {
+                        if ($(_that.cnblogs.postDigg).length) {
                             clearInterval(intervalId);
                             builder();
                         }
                     }, 200);
                 }
             } else {
-                $('#div_digg').width(300);
+                $(_that.cnblogs.postDigg).width(300);
             }
         }
 
@@ -274,14 +274,15 @@
          * 构建收藏按钮
          */
         buildPostFavoriteBtn() {
+            let _that = this;
             let builder = function () {
-                $('#div_digg').prepend('<div class="favorite" onclick="AddToWz(cb_entryId);return false;"><span class="favoritenum" id="favorite_count"></span></div>');
+                $(_that.cnblogs.postDigg).prepend(`<div class="favorite" onclick="AddToWz(cb_entryId);return false;"><span class="favoritenum" id="favorite_count"></span></div>`);
             };
-            if ($('#div_digg').length) {
+            if ($(_that.cnblogs.postDigg).length) {
                 builder();
             } else {
                 let intervalId = setInterval(function () {
-                    if ($('#div_digg').length) {
+                    if ($(_that.cnblogs.postDigg).length) {
                         clearInterval(intervalId);
                         builder();
                     }
@@ -300,13 +301,15 @@
                 if (!$headers.length) {
                     return false;
                 }
-                let $catalog = $('<div class="esa-catalog"> \
-                                    <div class="esa-catalog-tab"><h2>目录</h2></div> \
-                                    <div class="esa-catalog-contents"> \
-                                        <div class="esa-catalog-title"><h2>目录</h2></div> \
-                                        <a class="esa-catalog-close">X</a> \
-                                    </div> \
-                                </div>');
+
+                let $catalog = $(
+                    `<div class="esa-catalog">
+                        <div class="esa-catalog-tab"><h2>目录</h2></div>
+                        <div class="esa-catalog-contents">
+                            <div class="esa-catalog-title"><h2>目录</h2></div>
+                            <a class="esa-catalog-close">X</a>
+                        </div>
+                    </div>`);
                 let h1c = 0;
                 let h2c = 0;
                 let h3c = 0;
@@ -319,13 +322,13 @@
                     if (!config.index) {
                         switch (tagName) {
                             case config.level1:
-                                titleContent = '<span class="level1">' + titleContent + '</span>';
+                                titleContent = `<span class="level1">${titleContent}</span>`;
                                 break;
                             case config.level2:
-                                titleContent = '<span class="level2">' + titleContent + '</span>';
+                                titleContent = `<span class="level2">${titleContent}</span>`;
                                 break;
                             case config.level3:
-                                titleContent = '<span class="level3">' + titleContent + '</span>';
+                                titleContent = `<span class="level3">${titleContent}</span>`;
                                 break;
                         }
                     } else {
@@ -333,20 +336,24 @@
                             h1c++;
                             h2c = 0;
                             h3c = 0;
-                            titleIndex = '<span class="level1">' + h1c + '. </span>';
+                            titleIndex = `<span class="level1">${h1c}. </span>`;
                         } else if (tagName === config.level2) {
                             h2c++;
                             h3c = 0;
-                            titleIndex = '<span class="level2">' + h1c + "." + h2c + '. </span>';
+                            titleIndex = `<span class="level2">${h1c}.${h2c}. </span>`;
                         } else if (tagName === config.level3) {
                             h3c++;
-                            titleIndex = '<span class="level3">' + h1c + "." + h2c + "." + h3c + '. </span>'
+                            titleIndex = `<span class="level3">${h1c}.${h2c}.${h3c}. </span>`;
                         }
                     }
-                    catalogContents += '<li class="li_' + tagName + '" title="' + titleContent + '"><i id="esa_index_' + index + '"></i><a class="esa-anchor-link">' + (titleIndex + titleContent) + '</a></li>';
-                    $(header).attr('id', 'esa_index_' + index);
+                    catalogContents += 
+                    `<li class="li_${tagName}" title="${titleContent}">
+                        <i id="esa_index_${index}"></i><a class="esa-anchor-link">${(titleIndex + titleContent)}</a>
+                    </li>`;
+                    $(header).attr('id', `esa_index_${index}`);
                 });
-                catalogContents += '</ul>';
+                catalogContents += `</ul>`;
+
                 $catalog.find('.esa-catalog-contents').append(catalogContents);
                 $catalog.appendTo('body');
 
@@ -382,12 +389,11 @@
                         move.pois = [poisX, poisY];
                     });
                     $(document).on('mousemove', function (e) {
+                        e.preventDefault();
                         if (move.start) {
                             let offsetX = e.clientX - move.pois[0];
                             let offsetY = e.clientY - move.pois[1];
                             let fixed = $('.esa-catalog').css('position') === 'fixed';
-
-                            e.preventDefault();
 
                             move.stX = fixed ? 0 : $(window).scrollLeft();
                             move.stY = fixed ? 0 : $(window).scrollTop();
@@ -412,6 +418,23 @@
                         }
                     });
                 }
+            }
+        }
+
+        /**
+         * 构建 Github 角标 
+         */
+        buildGithubCorners() {
+            let config = this.defaluts.github;
+            if (config.enable) {
+                $('body').append(
+                    `<a href="${config.link}" class="github-corner" title="Follow me on GitHub">
+                        <svg width="60" height="60" viewBox="0 0 250 250" style="fill:${config.fill}; color:${config.color}; z-index: 999999; position: fixed; top: 0; border: 0; left: 0; transform: scale(-1, 1);" aria-hidden="true">
+                            <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+                            <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+                            <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path>
+                        </svg>
+                    </a>`);
             }
         }
     }
