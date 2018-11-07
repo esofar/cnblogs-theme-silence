@@ -334,10 +334,12 @@ a {
 
 .postTitle {
     padding-left: 15px !important;
+    font-size: 22px !important;
 }
 
 .entrylistPosttitle {
     padding-left: 0px !important;
+    font-size: 22px !important;
 }
 
 .postTitle>a:active,
@@ -371,13 +373,16 @@ a {
             text-decoration: none;
         }
     }
-}
-
-.postBody ul,
-.postBody ol {
-    li {
-        margin-bottom: 5px;
-        font-size: 15px;
+    ul,
+    ol {
+        li {
+            margin: 5px 0px;
+            font-size: 15px;
+            color: @font-color;
+            p {
+                margin: 0px !important;
+            }
+        }
     }
 }
 
@@ -399,27 +404,23 @@ a {
     font-size: @fontSize;
     font-family: Lato, "Microsoft Jhenghei", "Hiragino Sans GB", "Microsoft YaHei", sans-serif !important;
     color: #2c3e50;
-    margin-top: 20px;
+    margin: 15px 0px;
 }
 
 #cnblogs_post_body {
     h1 {
-        .postBodyHeader(20px);
+        .postBodyHeader(22px);
     }
     h2 {
-        .postBodyHeader(19px);
+        .postBodyHeader(20px);
     }
     h3 {
         .postBodyHeader(18px);
     }
-    h4 {
-        .postBodyHeader(17px);
-    }
-    h5 {
-        .postBodyHeader(16px);
-    }
+    h4,
+    h5,
     h6 {
-        .postBodyHeader(15px);
+        .postBodyHeader(16px);
     }
     p {
         font-size: 15px !important;
@@ -427,7 +428,7 @@ a {
         line-height: 1.7;
         font-weight: normal;
         text-align: justify;
-        margin: 5px auto;
+        margin: 15px auto;
     }
     blockquote {
         border: none;
@@ -441,6 +442,8 @@ a {
     }
     img {
         max-width: 930px;
+        display: block;
+        margin: 0 auto;
     }
     table {
         font-size: 13px;
@@ -488,6 +491,23 @@ a {
         border-radius: 3px !important;
         border: 1px solid #eee !important;
     }
+    .cnblogs_code {
+        background-color: #f2f4f5;
+        border: none;
+        border-radius: 2px;
+        img {
+            display: inline;
+        }
+        pre,
+        span {
+            font-family: Lucida Console, Consolas, Monaco, Andale Mono, Ubuntu Mono, monospace !important;
+        }
+        .cnblogs_code_collapse {
+            padding: 4px 3px 3px 3px;
+            border: 1px solid #d0d0d0;
+            border-radius: 2px;
+        }
+    }
 }
 
 #BlogPostCategory a {
@@ -509,6 +529,7 @@ a {
 
 .cnblogs-markdown pre {
     white-space: pre !important;
+    position: relative !important;
 }
 
 .cnblogs-markdown .hljs {
@@ -517,7 +538,7 @@ a {
     padding: 1em !important;
     background: #282c34 !important;
     border: 1px solid #fff !important;
-    border-radius: 5px !important;
+    border-radius: 4px !important;
     font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace !important;
     font-size: 15px !important;
 }
@@ -665,6 +686,48 @@ a {
     background-color: @base-color;
 }
 
+/* 代码复制 */
+
+.esa-clipboard-button {
+    font-size: 12px;
+    color: #c7c7c7;
+    cursor: pointer;
+    position: absolute;
+    right: 10px;
+    top: 5px;
+}
+
+/* 关注按钮 */
+
+.esa-follow-button {
+    display: none;
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    height: 45px;
+    width: 45px;
+    font-weight: 400;
+    outline: none;
+    cursor: pointer;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    font-size: 12px;
+    border-radius: 50px;
+    transition: color .2s linear,background-color .2s linear,border .2s linear,box-shadow .2s linear;
+    color: #515a6e;
+    background-color: #fff;
+    border-color: #dcdee2;
+    &:hover {
+        color: @base-color;
+        border-color: @base-color;
+        background-color: #fff;
+    }
+}
+
 /* 菜单 */
 
 .esa-mobile-menu {
@@ -703,7 +766,7 @@ a {
     width: 25px;
     color: @font-color;
     font-size: 14px;
-    border: 1px solid #d2d2d2;
+    border: 1px solid #dcdee2;
     border-radius: 3px;
     text-align: center;
 }
@@ -714,7 +777,7 @@ a {
     width: 100%;
     height: 35px;
     line-height: 36px;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid @border-color;
     font-size: 14px;
     color: @font-color;
     overflow: hidden;
@@ -730,8 +793,9 @@ a {
 
 .esa-catalog-contents {
     overflow: hidden;
+    display: none;
     color: @font-color;
-    border: 1px solid #d2d2d2;
+    border: 1px solid #dcdee2;
     border-radius: 3px;
     min-width: 150px;
     opacity: 1;
@@ -818,9 +882,10 @@ a {
 
 .esa-layer-content {
     position: relative;
-    background: rgba(0, 0, 0, .6);
-    max-width: 400px;
-    padding: 5px 10px;
+    background: rgba(0, 0, 0, .7);
+    max-width: 250px;
+    padding: 3px 9px;
+    font-size: 13px;
     border-radius: 5px;
     color: #FFF;
     display: inline-block;
@@ -1205,11 +1270,10 @@ div.commentform textarea {
     }
     #cnblogs_post_body {
         table {
-            display: table;
+            display: table !important;
         }
         img {
             max-width: none !important;
-            width: 100%;
         }
     }
     #commentbox_main,

@@ -50,7 +50,7 @@ git clone https://github.com/esofar/cnblogs-theme-silence.git
 </script>
 ```
 
-该主题新增了三个自动化模块：博客目录、博客签名、支持赞赏，并且支持参数配置，由于可能会稍微影响页面加载速度，默认不启用。如需开启请修改上述代码。参考示例：
+同时，该主题自定义了一些其他模块：博客目录、博客签名、支持赞赏等，提供参数配置。由于可能会稍微影响页面加载速度，默认不启用。如需开启请修改上述代码。参考示例：
 ```
 <script type="text/javascript">
     $.silence({
@@ -234,7 +234,7 @@ git clone https://github.com/esofar/cnblogs-theme-silence.git
 ## 更新日志
 
 ### v1.0.1
-* 赞赏按钮不显示时，适当调整其外层DOM元素宽度。
+* 赞赏按钮不显示时，适当调整其外层 DOM 元素宽度。
 * 修复首页随笔分隔符样式不统一的问题。
 
 ### v1.0.2
@@ -271,7 +271,7 @@ git clone https://github.com/esofar/cnblogs-theme-silence.git
 ### v1.0.8
 * 重新调整博文中Table表格样式。
 * 调整博客目录最大宽高，优化笔记本小屏幕显示效果。
-* 新增博客收藏收藏功能（[#2](https://github.com/esofar/cnblogs-theme-silence/issues/2)）。
+* 博客详情页面新增博客收藏按钮（[#2](https://github.com/esofar/cnblogs-theme-silence/issues/2)）。
 
 ### v1.0.9
 * 优化移动端浏览器存在的若干样式问题。
@@ -279,4 +279,9 @@ git clone https://github.com/esofar/cnblogs-theme-silence.git
 * 修复博文标题行内代码样式不统一的问题。
 * 新增 [GitHub Corners](http://tholman.com/github-corners/)，通过`github`选项配置相关参数。
 
-
+### v1.1.0
+* 调整博客图片为居中显示。
+* 调整博客标题、段落上下间距。
+* 调整非 markdown 编辑模式下代码风格。
+* 新增代码复制按钮，该功能依赖 [clipboard.js](https://github.com/zenorocha/clipboard.js) 插件完成。
+* 博客详情页面新增博主关注按钮（[#1](https://github.com/esofar/cnblogs-theme-silence/issues/1)）。

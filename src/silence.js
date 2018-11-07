@@ -40,7 +40,7 @@
         }
 
         get version() {
-            return 'v1.0.9';
+            return 'v1.1.0';
         }
 
         get cnblogs() {
@@ -83,6 +83,8 @@
                 this.buildPostFavoriteBtn();
                 this.buildPostRewardBtn();
                 this.buildPostCommentAvatar();
+                this.buildPostCodeCopyBtn();
+                this.buildFollowBtn();
             } else {
                 this.goIntoNormalMode();
             }
@@ -98,12 +100,12 @@
                 $('body').prepend(`<div class="esa-layer"><span class="esa-layer-content"></span></div>`);
             }
             $('.esa-layer-content').html(content);
-            $('.esa-layer').fadeIn(250);
+            $('.esa-layer').fadeIn(200);
             setTimeout(function () {
-                $('.esa-layer').fadeOut(500, function () {
+                $('.esa-layer').fadeOut(200, function () {
                     $('.esa-layer-content').empty();
                 });
-            }, 2500);
+            }, 2000);
         }
 
         /**
@@ -111,14 +113,17 @@
          */
         goIntoReadingMode() {
             let _that = this;
+            var oldScrollY = 0;
             let $win = $(window);
             if ($win.width() > 767) {
                 $win.scroll(function () {
-                    if (this.scrollY > 150) {
+                    var newScrollY = this.scrollY;
+                    if (newScrollY > oldScrollY) {
                         $(_that.cnblogs.header).slideUp();
                     } else {
                         $(_that.cnblogs.header).slideDown();
                     }
+                    oldScrollY = this.scrollY;
                 });
             }
         }
@@ -172,8 +177,8 @@
             let config = this.defaluts.signature;
             if (config.enable) {
                 let postUrl = $(this.cnblogs.postTitle).attr('href');
-                let content = 
-                `<div class="esa-post-signature"> 
+                let content =
+                    `<div class="esa-post-signature"> 
                     <p>作者：<a href="${config.home}">${config.author}</a></p> 
                     <p>出处：<a href="${postUrl}">${postUrl}</a></p> 
                     <p>本站使用「<a href="${config.link}"  target="_blank">${config.license}</a>」创作共享协议，转载请在文章明显位置注明作者及出处。</p> 
@@ -310,6 +315,7 @@
                             <a class="esa-catalog-close">X</a>
                         </div>
                     </div>`);
+
                 let h1c = 0;
                 let h2c = 0;
                 let h3c = 0;
@@ -346,8 +352,8 @@
                             titleIndex = `<span class="level3">${h1c}.${h2c}.${h3c}. </span>`;
                         }
                     }
-                    catalogContents += 
-                    `<li class="li_${tagName}" title="${titleContent}">
+                    catalogContents +=
+                        `<li class="li_${tagName}" title="${titleContent}">
                         <i id="esa_index_${index}"></i><a class="esa-anchor-link">${(titleIndex + titleContent)}</a>
                     </li>`;
                     $(header).attr('id', `esa_index_${index}`);
@@ -356,6 +362,11 @@
 
                 $catalog.find('.esa-catalog-contents').append(catalogContents);
                 $catalog.appendTo('body');
+
+                let $tab = $('.esa-catalog-tab');
+                let $tabContent = $('.esa-catalog-contents');
+
+                $tabContent.fadeIn();
 
                 let fixedOffsetTop = 70;
                 $('.esa-anchor-link').on('click', function () {
@@ -366,13 +377,13 @@
                     }, 300);
                 });
 
-                $('.esa-catalog-tab').on('click', function () {
+                $tab.on('click', function () {
                     $(this).hide();
-                    $('.esa-catalog-contents').show();
+                    $tabContent.show();
                 });
                 $('.esa-catalog-close').on('click', function () {
-                    $('.esa-catalog-contents').hide();
-                    $('.esa-catalog-tab').show();
+                    $tabContent.hide();
+                    $tab.show();
                 });
 
                 if (config.move) {
@@ -380,7 +391,7 @@
                         start: false,
                         pois: [0, 0],
                     };
-                    $('.esa-catalog-title').on('mousedown', function (e) {
+                    $('.esa-catalog-title, .esa-catalog').on('mousedown', function (e) {
                         e.preventDefault();
                         move.start = true;
                         let position = $('.esa-catalog').position();
@@ -389,11 +400,12 @@
                         move.pois = [poisX, poisY];
                     });
                     $(document).on('mousemove', function (e) {
-                        e.preventDefault();
                         if (move.start) {
                             let offsetX = e.clientX - move.pois[0];
                             let offsetY = e.clientY - move.pois[1];
                             let fixed = $('.esa-catalog').css('position') === 'fixed';
+
+                            e.preventDefault();
 
                             move.stX = fixed ? 0 : $(window).scrollLeft();
                             move.stY = fixed ? 0 : $(window).scrollTop();
@@ -436,6 +448,60 @@
                         </svg>
                     </a>`);
             }
+        }
+
+        /**
+         * 构建代码复制按钮
+         */
+        buildPostCodeCopyBtn() {
+            let _that = this;
+
+            let $pres = $(this.cnblogs.postBody).find('pre');
+            if (!$pres.length) {
+                return false;
+            }
+            $.each($pres, function (index, pre) {
+                $(pre).find('code').attr('id', `copy_target_${index}`);
+                $(pre).prepend(`<div class="esa-clipboard-button" data-clipboard-target="#copy_target_${index}">Copy</div>`);
+            });
+
+            $.getScript(`https://unpkg.com/clipboard@2.0.0/dist/clipboard.min.js`, function () {
+                var clipboard = new ClipboardJS('.esa-clipboard-button');
+                clipboard.on('success', function (e) {
+                    _that.showMessage('复制成功');
+                    e.clearSelection();
+                });
+                clipboard.on('error', function (e) {
+                    _that.showMessage('复制失败');
+                });
+            });
+        }
+
+        /**
+         * 构建关注按钮
+         */
+        buildFollowBtn() {
+            let _that = this;
+            $('body').append(`<button class="esa-follow-button">关注</button>`);
+            let $btn = $('.esa-follow-button');
+
+            $btn.on('click', function () {
+                if (!isLogined) {
+                    login();
+                }
+                if (c_has_follwed) {
+                    return _that.showMessage('您已经关注过我了');
+                }
+                follow(cb_blogUserGuid);
+            });
+
+            $(window).scroll(function () {
+                if (this.scrollY > 200) {
+                    $btn.fadeIn();
+                } else {
+                    $btn.fadeOut();
+                }
+            });
         }
     }
 })(jQuery);
