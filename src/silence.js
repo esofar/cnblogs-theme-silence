@@ -456,7 +456,7 @@
         buildPostCodeCopyBtn() {
             let _that = this;
 
-            let $pres = $(this.cnblogs.postBody).find('pre');
+            let $pres = $('.postBody .cnblogs-markdown').find('pre');
             if (!$pres.length) {
                 return false;
             }
