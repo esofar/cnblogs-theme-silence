@@ -486,13 +486,28 @@
             let $btn = $('.esa-follow-button');
 
             $btn.on('click', function () {
-                if (!isLogined) {
-                    login();
-                }
-                if (c_has_follwed) {
-                    return _that.showMessage('您已经关注过我了');
-                }
-                follow(cb_blogUserGuid);
+                loadLink(location.protocol + "//common.cnblogs.com/scripts/artDialog/ui-dialog.css", function () {
+                    loadScript(location.protocol + "//common.cnblogs.com/scripts/artDialog/dialog-min.js", function () {
+                        if (!isLogined) {
+                            return login();
+                        }
+                        if (c_has_follwed) {
+                            return _that.showMessage('您已经关注过该博主');
+                        }
+                        var n = cb_blogUserGuid;
+                        $.ajax({
+                            url: "/mvc/Follow/FollowBlogger.aspx",
+                            data: '{"blogUserGuid":"' + n + '"}',
+                            dataType: "text",
+                            type: "post",
+                            contentType: "application/json; charset=utf-8",
+                            success: function (msg) {
+                                msg == "未登录" ? login() : (msg == "关注成功" && followByGroup(n, !0));
+                                _that.showMessage(msg);
+                            }
+                        })
+                    })
+                })
             });
 
             $(window).scroll(function () {
