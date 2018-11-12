@@ -325,6 +325,8 @@
                     let tagName = $(header)[0].tagName.toLowerCase();
                     let titleIndex = '';
                     let titleContent = $(header).text();
+                    let title = titleContent;
+                    debugger
                     if (!config.index) {
                         switch (tagName) {
                             case config.level1:
@@ -353,7 +355,7 @@
                         }
                     }
                     catalogContents +=
-                        `<li class="li_${tagName}" title="${titleContent}">
+                        `<li class="li_${tagName}" title="${title}">
                         <i id="esa_index_${index}"></i><a class="esa-anchor-link">${(titleIndex + titleContent)}</a>
                     </li>`;
                     $(header).attr('id', `esa_index_${index}`);
