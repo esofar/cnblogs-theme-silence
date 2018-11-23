@@ -464,17 +464,17 @@
             }
             $.each($pres, function (index, pre) {
                 $(pre).find('code').attr('id', `copy_target_${index}`);
-                $(pre).prepend(`<div class="esa-clipboard-button" data-clipboard-target="#copy_target_${index}">Copy</div>`);
+                $(pre).prepend(`<div class="esa-clipboard-button" data-clipboard-target="#copy_target_${index}" title="复制代码">Copy</div>`);
             });
 
             $.getScript(`https://unpkg.com/clipboard@2.0.0/dist/clipboard.min.js`, function () {
                 var clipboard = new ClipboardJS('.esa-clipboard-button');
                 clipboard.on('success', function (e) {
-                    _that.showMessage('复制成功');
+                    _that.showMessage('代码复制成功');
                     e.clearSelection();
                 });
                 clipboard.on('error', function (e) {
-                    _that.showMessage('复制失败');
+                    _that.showMessage('代码复制失败');
                 });
             });
         }
