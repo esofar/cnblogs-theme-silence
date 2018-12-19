@@ -40,7 +40,7 @@
         }
 
         get version() {
-            return 'v1.1.0';
+            return 'v1.1.1';
         }
 
         get cnblogs() {
@@ -119,9 +119,9 @@
                 $win.scroll(function () {
                     var newScrollY = this.scrollY;
                     if (newScrollY > oldScrollY) {
-                        $(_that.cnblogs.header).slideUp();
+                        $(_that.cnblogs.header).slideUp('fast');
                     } else {
-                        $(_that.cnblogs.header).slideDown();
+                        $(_that.cnblogs.header).slideDown('fast');
                     }
                     oldScrollY = this.scrollY;
                 });
@@ -302,7 +302,7 @@
             let config = this.defaluts.catalog;
             if (config.enable) {
                 let levels = [config.level1, config.level2, config.level3];
-                let $headers = $(this.cnblogs.postBody).find(levels.join(','));
+                let $headers = $(this.cnblogs.postBody).find('> ' + levels.join(','));
                 if (!$headers.length) {
                     return false;
                 }
@@ -324,9 +324,8 @@
                 $.each($headers, function (index, header) {
                     let tagName = $(header)[0].tagName.toLowerCase();
                     let titleIndex = '';
-                    let titleContent = $(header).text();
+                    let titleContent = $(header).html();
                     let title = titleContent;
-                    debugger
                     if (!config.index) {
                         switch (tagName) {
                             case config.level1:
@@ -356,9 +355,16 @@
                     }
                     catalogContents +=
                         `<li class="li_${tagName}" title="${title}">
-                        <i id="esa_index_${index}"></i><a class="esa-anchor-link">${(titleIndex + titleContent)}</a>
-                    </li>`;
-                    $(header).attr('id', `esa_index_${index}`);
+                            <i class="idx_${index}" ></i><a class="esa-anchor-link">${(titleIndex + titleContent)}</a>
+                        </li>`;
+
+                    $(header).attr('id', `idx_${index}`)
+                        .html(`<span>${titleContent}</span><a href="#idx_${index}" class="esa-anchor">#</a>`)
+                        .hover(function () {
+                            $(this).find('.esa-anchor').css('opacity', 1);
+                        }, function () {
+                            $(this).find('.esa-anchor').css('opacity', 0);
+                        });
                 });
                 catalogContents += `</ul>`;
 
@@ -370,12 +376,10 @@
 
                 $tabContent.fadeIn();
 
-                let fixedOffsetTop = 70;
                 $('.esa-anchor-link').on('click', function () {
-                    let href = $(this).prev('i').attr('id');
-                    let position = $('#' + href).offset().top - fixedOffsetTop;
+                    let position = $('#' + ($(this).prev('i').attr('class'))).offset().top;
                     $('html, body').animate({
-                        scrollTop: position
+                        scrollTop: position - 70
                     }, 300);
                 });
 
@@ -393,7 +397,7 @@
                         start: false,
                         pois: [0, 0],
                     };
-                    $('.esa-catalog-title, .esa-catalog').on('mousedown', function (e) {
+                    $('.esa-catalog-title').on('mousedown', function (e) {
                         e.preventDefault();
                         move.start = true;
                         let position = $('.esa-catalog').position();
@@ -436,7 +440,7 @@
         }
 
         /**
-         * 构建 Github 角标 
+         * 构建 Github Corner 
          */
         buildGithubCorners() {
             let config = this.defaluts.github;

@@ -271,7 +271,7 @@ git clone https://github.com/esofar/cnblogs-theme-silence.git
 ### v1.0.8
 * 重新调整博文中Table表格样式。
 * 调整博客目录最大宽高，优化笔记本小屏幕显示效果。
-* 博客详情页面新增博客收藏按钮（[#2](https://github.com/esofar/cnblogs-theme-silence/issues/2)）。
+* 博客详情页面新增博客收藏按钮 [#2](https://github.com/esofar/cnblogs-theme-silence/issues/2) 。
 
 ### v1.0.9
 * 优化移动端浏览器存在的若干样式问题。
@@ -284,4 +284,13 @@ git clone https://github.com/esofar/cnblogs-theme-silence.git
 * 调整博客标题、段落上下间距。
 * 调整非 markdown 编辑模式下代码风格。
 * 新增代码复制按钮，该功能依赖 [clipboard.js](https://github.com/zenorocha/clipboard.js) 插件完成。
-* 博客详情页面新增博主关注按钮（[#1](https://github.com/esofar/cnblogs-theme-silence/issues/1)）。
+* 博客详情页面新增博主关注按钮 [#1](https://github.com/esofar/cnblogs-theme-silence/issues/1) 。
+
+### v1.1.1
+* 修复代码复制按钮在非 markdown 编辑模式下位置错乱问题。
+* 修复关注按钮被博客签名区域遮挡问题 [#6](https://github.com/esofar/cnblogs-theme-silence/issues/6) 。
+* 优化关注按钮点击事件内部逻辑。
+* 修复目录有序索引 title 显示异常问题。
+* 修复手机端博文图片缩放问题。
+* 优化博文标题显示效果。
+

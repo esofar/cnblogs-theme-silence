@@ -100,16 +100,16 @@ a {
             #blog_nav_tags {
                 display: none;
             }
-        }
-        li i {
-            width: 0;
-            height: 4px;
-            background-color: @base-color;
-            content: "";
-            position: absolute;
-            left: 50%;
-            bottom: 0;
-            transition: 1s;
+            i {
+                width: 0;
+                height: 4px;
+                background-color: @base-color;
+                content: "";
+                position: absolute;
+                left: 50%;
+                bottom: 0;
+                transition: 1s;
+            }
         }
         a {
             &:link,
@@ -427,7 +427,7 @@ a {
         color: @font-color;
         line-height: 1.7;
         font-weight: normal;
-        text-align: justify;
+        // text-align: justify;
         margin: 15px auto;
     }
     blockquote {
@@ -718,7 +718,7 @@ a {
     user-select: none;
     font-size: 12px;
     border-radius: 50px;
-    transition: color .2s linear,background-color .2s linear,border .2s linear,box-shadow .2s linear;
+    transition: color .2s linear, background-color .2s linear, border .2s linear, box-shadow .2s linear;
     color: #515a6e;
     background-color: #fff;
     border-color: #dcdee2;
@@ -829,6 +829,13 @@ a {
             }
         }
     }
+}
+
+.esa-anchor {
+    opacity: 0;
+    -webkit-transition: opacity .3s ease;
+    transition: opacity .3s ease;
+    margin-left: 8px;
 }
 
 /* 签名 */
