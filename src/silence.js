@@ -40,7 +40,7 @@
         }
 
         get version() {
-            return 'v1.0.9';
+            return 'v1.1.1';
         }
 
         get cnblogs() {
@@ -83,6 +83,8 @@
                 this.buildPostFavoriteBtn();
                 this.buildPostRewardBtn();
                 this.buildPostCommentAvatar();
+                this.buildPostCodeCopyBtn();
+                this.buildFollowBtn();
             } else {
                 this.goIntoNormalMode();
             }
@@ -98,12 +100,12 @@
                 $('body').prepend(`<div class="esa-layer"><span class="esa-layer-content"></span></div>`);
             }
             $('.esa-layer-content').html(content);
-            $('.esa-layer').fadeIn(250);
+            $('.esa-layer').fadeIn(200);
             setTimeout(function () {
-                $('.esa-layer').fadeOut(500, function () {
+                $('.esa-layer').fadeOut(200, function () {
                     $('.esa-layer-content').empty();
                 });
-            }, 2500);
+            }, 2000);
         }
 
         /**
@@ -111,14 +113,17 @@
          */
         goIntoReadingMode() {
             let _that = this;
+            var oldScrollY = 0;
             let $win = $(window);
             if ($win.width() > 767) {
                 $win.scroll(function () {
-                    if (this.scrollY > 150) {
-                        $(_that.cnblogs.header).slideUp();
+                    var newScrollY = this.scrollY;
+                    if (newScrollY > oldScrollY) {
+                        $(_that.cnblogs.header).slideUp('fast');
                     } else {
-                        $(_that.cnblogs.header).slideDown();
+                        $(_that.cnblogs.header).slideDown('fast');
                     }
+                    oldScrollY = this.scrollY;
                 });
             }
         }
@@ -172,8 +177,8 @@
             let config = this.defaluts.signature;
             if (config.enable) {
                 let postUrl = $(this.cnblogs.postTitle).attr('href');
-                let content = 
-                `<div class="esa-post-signature"> 
+                let content =
+                    `<div class="esa-post-signature"> 
                     <p>作者：<a href="${config.home}">${config.author}</a></p> 
                     <p>出处：<a href="${postUrl}">${postUrl}</a></p> 
                     <p>本站使用「<a href="${config.link}"  target="_blank">${config.license}</a>」创作共享协议，转载请在文章明显位置注明作者及出处。</p> 
@@ -297,7 +302,7 @@
             let config = this.defaluts.catalog;
             if (config.enable) {
                 let levels = [config.level1, config.level2, config.level3];
-                let $headers = $(this.cnblogs.postBody).find(levels.join(','));
+                let $headers = $(this.cnblogs.postBody).find('> ' + levels.join(','));
                 if (!$headers.length) {
                     return false;
                 }
@@ -310,6 +315,7 @@
                             <a class="esa-catalog-close">X</a>
                         </div>
                     </div>`);
+
                 let h1c = 0;
                 let h2c = 0;
                 let h3c = 0;
@@ -318,7 +324,8 @@
                 $.each($headers, function (index, header) {
                     let tagName = $(header)[0].tagName.toLowerCase();
                     let titleIndex = '';
-                    let titleContent = $(header).text();
+                    let titleContent = $(header).html();
+                    let title = titleContent;
                     if (!config.index) {
                         switch (tagName) {
                             case config.level1:
@@ -346,33 +353,43 @@
                             titleIndex = `<span class="level3">${h1c}.${h2c}.${h3c}. </span>`;
                         }
                     }
-                    catalogContents += 
-                    `<li class="li_${tagName}" title="${titleContent}">
-                        <i id="esa_index_${index}"></i><a class="esa-anchor-link">${(titleIndex + titleContent)}</a>
-                    </li>`;
-                    $(header).attr('id', `esa_index_${index}`);
+                    catalogContents +=
+                        `<li class="li_${tagName}" title="${title}">
+                            <i class="idx_${index}" ></i><a class="esa-anchor-link">${(titleIndex + titleContent)}</a>
+                        </li>`;
+
+                    $(header).attr('id', `idx_${index}`)
+                        .html(`<span>${titleContent}</span><a href="#idx_${index}" class="esa-anchor">#</a>`)
+                        .hover(function () {
+                            $(this).find('.esa-anchor').css('opacity', 1);
+                        }, function () {
+                            $(this).find('.esa-anchor').css('opacity', 0);
+                        });
                 });
                 catalogContents += `</ul>`;
 
                 $catalog.find('.esa-catalog-contents').append(catalogContents);
                 $catalog.appendTo('body');
 
-                let fixedOffsetTop = 70;
+                let $tab = $('.esa-catalog-tab');
+                let $tabContent = $('.esa-catalog-contents');
+
+                $tabContent.fadeIn();
+
                 $('.esa-anchor-link').on('click', function () {
-                    let href = $(this).prev('i').attr('id');
-                    let position = $('#' + href).offset().top - fixedOffsetTop;
+                    let position = $('#' + ($(this).prev('i').attr('class'))).offset().top;
                     $('html, body').animate({
-                        scrollTop: position
+                        scrollTop: position - 70
                     }, 300);
                 });
 
-                $('.esa-catalog-tab').on('click', function () {
+                $tab.on('click', function () {
                     $(this).hide();
-                    $('.esa-catalog-contents').show();
+                    $tabContent.show();
                 });
                 $('.esa-catalog-close').on('click', function () {
-                    $('.esa-catalog-contents').hide();
-                    $('.esa-catalog-tab').show();
+                    $tabContent.hide();
+                    $tab.show();
                 });
 
                 if (config.move) {
@@ -389,11 +406,12 @@
                         move.pois = [poisX, poisY];
                     });
                     $(document).on('mousemove', function (e) {
-                        e.preventDefault();
                         if (move.start) {
                             let offsetX = e.clientX - move.pois[0];
                             let offsetY = e.clientY - move.pois[1];
                             let fixed = $('.esa-catalog').css('position') === 'fixed';
+
+                            e.preventDefault();
 
                             move.stX = fixed ? 0 : $(window).scrollLeft();
                             move.stY = fixed ? 0 : $(window).scrollTop();
@@ -422,7 +440,7 @@
         }
 
         /**
-         * 构建 Github 角标 
+         * 构建 Github Corner 
          */
         buildGithubCorners() {
             let config = this.defaluts.github;
@@ -436,6 +454,75 @@
                         </svg>
                     </a>`);
             }
+        }
+
+        /**
+         * 构建代码复制按钮
+         */
+        buildPostCodeCopyBtn() {
+            let _that = this;
+
+            let $pres = $('.postBody .cnblogs-markdown').find('pre');
+            if (!$pres.length) {
+                return false;
+            }
+            $.each($pres, function (index, pre) {
+                $(pre).find('code').attr('id', `copy_target_${index}`);
+                $(pre).prepend(`<div class="esa-clipboard-button" data-clipboard-target="#copy_target_${index}" title="复制代码">Copy</div>`);
+            });
+
+            $.getScript(`https://unpkg.com/clipboard@2.0.0/dist/clipboard.min.js`, function () {
+                var clipboard = new ClipboardJS('.esa-clipboard-button');
+                clipboard.on('success', function (e) {
+                    _that.showMessage('代码复制成功');
+                    e.clearSelection();
+                });
+                clipboard.on('error', function (e) {
+                    _that.showMessage('代码复制失败');
+                });
+            });
+        }
+
+        /**
+         * 构建关注按钮
+         */
+        buildFollowBtn() {
+            let _that = this;
+            $('body').append(`<button class="esa-follow-button">关注</button>`);
+            let $btn = $('.esa-follow-button');
+
+            $btn.on('click', function () {
+                loadLink(location.protocol + "//common.cnblogs.com/scripts/artDialog/ui-dialog.css", function () {
+                    loadScript(location.protocol + "//common.cnblogs.com/scripts/artDialog/dialog-min.js", function () {
+                        if (!isLogined) {
+                            return login();
+                        }
+                        if (c_has_follwed) {
+                            return _that.showMessage('您已经关注过该博主');
+                        }
+                        var n = cb_blogUserGuid;
+                        $.ajax({
+                            url: "/mvc/Follow/FollowBlogger.aspx",
+                            data: '{"blogUserGuid":"' + n + '"}',
+                            dataType: "text",
+                            type: "post",
+                            contentType: "application/json; charset=utf-8",
+                            success: function (msg) {
+                                msg == "未登录" ? login() : (msg == "关注成功" && followByGroup(n, !0));
+                                _that.showMessage(msg);
+                            }
+                        })
+                    })
+                })
+            });
+
+            $(window).scroll(function () {
+                if (this.scrollY > 200) {
+                    $btn.fadeIn();
+                } else {
+                    $btn.fadeOut();
+                }
+            });
         }
     }
 })(jQuery);
