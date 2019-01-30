@@ -295,6 +295,7 @@ a {
     margin-left: 0px;
     .PostList {
         font-size: 13px;
+        font-weight: 300;
         border-bottom: 1px solid @border-color;
         padding: 6px 0px 10px 0px;
         margin-right: 0px;
@@ -426,8 +427,7 @@ a {
         font-size: 15px !important;
         color: @font-color;
         line-height: 1.7;
-        font-weight: normal;
-        // text-align: justify;
+        font-weight: normal; // text-align: justify;
         margin: 15px auto;
     }
     blockquote {
@@ -497,6 +497,7 @@ a {
         border-radius: 2px !important;
         img {
             display: inline;
+            width: auto;
         }
         pre,
         span {
@@ -766,8 +767,8 @@ a {
     float: right;
     width: 25px;
     color: @font-color;
+    border: 1px solid @border-color;
     font-size: 14px;
-    border: 1px solid #dcdee2;
     border-radius: 3px;
     text-align: center;
 }
@@ -796,7 +797,7 @@ a {
     overflow: hidden;
     display: none;
     color: @font-color;
-    border: 1px solid #dcdee2;
+    border: 1px solid @border-color;
     border-radius: 3px;
     min-width: 150px;
     opacity: 1;
@@ -1082,6 +1083,26 @@ a {
 
 /* 评论区 */
 
+.feedbackItem {
+    .feedbackListSubtitle {
+        color: transparent;
+    }
+    .louzhu {
+        background: #687a86 !important;
+        color: white;
+        border-radius: 2px;
+        margin: 0px 2px;
+        padding: 0px 6px 2px 6px !important;
+    }
+    .comment_date {
+        color: #666;
+    }
+    .comment_quote{
+        border: 1px dashed #ccc;
+        border-radius: 5px;
+    }
+}
+
 .feedbackCon {
     background: none;
     padding: 10px 0px 10px 0px;
@@ -1106,7 +1127,7 @@ a {
         }
     }
     .blog_comment_body {
-        border-radius: 8px;
+        border-radius: 5px;
         padding: 8px;
         margin-top: 5px;
         margin-right: 10px;
@@ -1252,7 +1273,7 @@ div.commentform textarea {
 }
 
 @media only screen and (max-width:767px) {
-    body {
+    #home {
         font-size: 12px !important;
     }
     #mainContent {
@@ -1302,9 +1323,6 @@ div.commentform textarea {
     }
     #header {
         width: auto;
-        #blogTitle h1 {
-            padding-left: 42px;
-        }
         #navigator {
             display: none;
             width: 100%;
@@ -1334,16 +1352,13 @@ div.commentform textarea {
             }
         }
     }
-    .feedbackItem .feedbackManage {
-        width: auto;
+    .feedbackItem {
+        .feedbackManage {
+            width: auto;
+        }
     }
-    .github-corner svg {
-        fill: transparent !important;
-        color: #404040 !important;
-        top: 10px !important;
-        left: -8px !important;
-        -webkit-transform: rotate(-45deg) !important;
-        transform: rotate(-45deg) !important;
+    .github-corner {
+        display: none;
     }
 }
 

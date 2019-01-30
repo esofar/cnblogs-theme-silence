@@ -1,5 +1,5 @@
 # Silence
-[![Cnblogs](https://img.shields.io/badge/latest-v1.1.0-brightgreen.svg)](https://github.com/esofar/cnblogs-theme-silence/releases)
+[![Cnblogs](https://img.shields.io/badge/latest-v1.1.2-brightgreen.svg)](https://github.com/esofar/cnblogs-theme-silence/releases)
 [![Cnblogs](https://img.shields.io/badge/dependencies-jQuery-blue.svg)](https://www.cnblogs.com)
 [![GitHub issues](https://img.shields.io/github/issues/esofar/cnblogs-theme-silence.svg)](https://github.com/esofar/cnblogs-theme-silence/issues)
 [![GitHub license](https://img.shields.io/github/license/esofar/cnblogs-theme-silence.svg)](https://github.com/esofar/cnblogs-theme-silence/blob/master/LICENSE)
@@ -71,7 +71,7 @@ git clone https://github.com/esofar/cnblogs-theme-silence.git
         },
         reward: {
             enable: true,
-            title: '感谢您的支持，我会继续努力',
+            title: '我是猴子派来收钱的',
             wechat: 'https://images.cnblogs.com/cnblogs_com/esofar/972540/o_wechat.png',
             alipay: 'https://images.cnblogs.com/cnblogs_com/esofar/972540/o_alipay.png',
         },        
@@ -205,7 +205,7 @@ git clone https://github.com/esofar/cnblogs-theme-silence.git
         </tr>
         <tr>
             <td>color</td>
-            <td>'章鱼猫'颜色</td>
+            <td>章鱼猫颜色</td>
             <td>String</td>
             <td>#fff</td>
         </tr>
@@ -293,4 +293,8 @@ git clone https://github.com/esofar/cnblogs-theme-silence.git
 * 修复目录有序索引 title 显示异常问题。
 * 修复手机端博文图片缩放问题。
 * 优化博文标题显示效果。
+
+### v1.1.2
+* 修复若干手机端适配问题。
+* 调整标签列表页面显示效果。
 
