@@ -37,10 +37,8 @@
                     link: null,
                 }
             };
-        }
 
-        get version() {
-            return 'v1.1.1';
+            this.version = '1.1.2';
         }
 
         get cnblogs() {
@@ -67,7 +65,7 @@
 
         /**
          * 初始化
-         * @param {Object} options 配置选项
+         * @param {Object} options 全局配置选项
          */
         init(options) {
             if (options) {
@@ -82,7 +80,7 @@
                 this.buildPostSignature();
                 this.buildPostFavoriteBtn();
                 this.buildPostRewardBtn();
-                this.buildPostCommentAvatar();
+                this.buildPostCommentAvatars();
                 this.buildPostCodeCopyBtn();
                 this.buildFollowBtn();
             } else {
@@ -143,7 +141,7 @@
         }
 
         /**
-         * 构建导航栏自定义DOM元素
+         * 构建导航栏自定义 DOM 元素
          */
         buildNavCustomElements() {
             let _that = this;
@@ -166,7 +164,7 @@
         buildCopyright() {
             // please don't delete this function.
             var content = `<div> Powered By <a href="https://www.cnblogs.com" target="_blank">Cnblogs</a> |
-            Theme <a href="https://github.com/esofar/cnblogs-theme-silence" target="_blank">Silence ${this.version}</a></div>`;
+            Theme <a href="https://github.com/esofar/cnblogs-theme-silence" target="_blank">Silence v${this.version}</a></div>`;
             $(this.cnblogs.footer).append(content);
         }
 
@@ -174,7 +172,7 @@
          * 构建博客签名
          */
         buildPostSignature() {
-            let config = this.defaluts.signature;
+            const config = this.defaluts.signature;
             if (config.enable) {
                 let postUrl = $(this.cnblogs.postTitle).attr('href');
                 let content =
@@ -190,7 +188,7 @@
         /**
          * 构建评论者头像
          */
-        buildPostCommentAvatar() {
+        buildPostCommentAvatars() {
             let _that = this;
             var builder = function () {
                 $(_that.cnblogs.postCommentBody).before(`<div class='esa-comment-avatar'><a target='_blank'><img /></a></div>`);
@@ -229,7 +227,7 @@
          * 构建赞赏按钮
          */
         buildPostRewardBtn() {
-            let config = this.defaluts.reward;
+            const config = this.defaluts.reward;
             let _that = this;
             if (config.enable) {
                 if (!config.wechat && !config.alipay) {
@@ -299,7 +297,7 @@
          * 构建博客目录
          */
         buildPostCatalog() {
-            let config = this.defaluts.catalog;
+            const config = this.defaluts.catalog;
             if (config.enable) {
                 let levels = [config.level1, config.level2, config.level3];
                 let $headers = $(this.cnblogs.postBody).find('> ' + levels.join(','));
@@ -312,7 +310,7 @@
                         <div class="esa-catalog-tab"><h2>目录</h2></div>
                         <div class="esa-catalog-contents">
                             <div class="esa-catalog-title"><h2>目录</h2></div>
-                            <a class="esa-catalog-close">X</a>
+                            <a class="esa-catalog-close">×</a>
                         </div>
                     </div>`);
 
@@ -379,7 +377,7 @@
                 $('.esa-anchor-link').on('click', function () {
                     let position = $('#' + ($(this).prev('i').attr('class'))).offset().top;
                     $('html, body').animate({
-                        scrollTop: position - 70
+                        scrollTop: position
                     }, 300);
                 });
 
@@ -443,7 +441,7 @@
          * 构建 Github Corner 
          */
         buildGithubCorners() {
-            let config = this.defaluts.github;
+            const config = this.defaluts.github;
             if (config.enable) {
                 $('body').append(
                     `<a href="${config.link}" class="github-corner" title="Follow me on GitHub">
