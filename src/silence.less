@@ -1,5 +1,5 @@
 @charset "utf-8";
-@base-color: #2D8CF0;
+@style-color: #2D8CF0;
 @border-color: #eef2f8;
 @font-color: #314659;
 body {
@@ -11,7 +11,7 @@ body {
 a {
     transition: all 0.3s ease !important;
     &:hover {
-        color: @base-color  !important;
+        color: @style-color  !important;
         text-decoration: none !important;
     }
 }
@@ -103,7 +103,7 @@ a {
             i {
                 width: 0;
                 height: 4px;
-                background-color: @base-color;
+                background-color: @style-color;
                 content: "";
                 position: absolute;
                 left: 50%;
@@ -166,8 +166,8 @@ a {
                     content: ' »';
                 }
                 &:hover {
-                    color: @base-color  !important;
-                    border: 1px solid @base-color;
+                    color: @style-color  !important;
+                    border: 1px solid @style-color;
                 }
             }
         }
@@ -358,7 +358,7 @@ a {
 
 .postTitle>a:hover,
 .entrylistPosttitle>a:hover {
-    color: @base-color;
+    color: @style-color;
 }
 
 .postBody {
@@ -370,7 +370,7 @@ a {
         &:link,
         &:visited,
         &:active {
-            color: @base-color;
+            color: @style-color;
             text-decoration: none;
         }
     }
@@ -493,15 +493,18 @@ a {
     }
     .cnblogs_code {
         background-color: #f2f4f5 !important;
+        padding-left: 1em;
+        padding-right: 1em;
         border: none !important;
-        border-radius: 2px !important;
+        border-radius: 3px !important;
         img {
             display: inline;
             width: auto;
         }
-        pre,
-        span {
-            font-family: Lucida Console, Consolas, Monaco, Andale Mono, Ubuntu Mono, monospace !important;
+        pre {
+            span {
+                font-family: Lucida Console, Consolas, Monaco, Andale Mono, Ubuntu Mono, monospace !important;
+            }
         }
         .cnblogs_code_collapse {
             padding: 4px 3px 3px 3px;
@@ -533,89 +536,79 @@ a {
     position: relative !important;
 }
 
+/**
+ * GitHub Gist Theme
+ * Author : Louis Barranqueiro - https://github.com/LouisBarranqueiro
+ */
+
 .cnblogs-markdown .hljs {
-    display: block !important;
-    overflow-x: auto !important;
-    padding: 1em !important;
-    background: #282c34 !important;
-    border: 1px solid #fff !important;
-    border-radius: 4px !important;
+    display: block;
+    color: #333;
+    overflow-x: auto;
+    background: #F2F4F5 !important;
+    border: none !important;
     font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace !important;
-    font-size: 15px !important;
-}
-
-.hljs,
-.hljs-tag,
-.hljs-subst {
-    color: #f8f8f2 !important;
-}
-
-.hljs-strong,
-.hljs-emphasis {
-    color: #a8a8a2 !important;
-}
-
-.hljs-bullet,
-.hljs-quote,
-.hljs-number,
-.hljs-literal,
-.hljs-link {
-    color: #ae81ff !important;
-}
-
-.hljs-regexp,
-.hljs-meta {
-    color: #fd971f !important;
-}
-
-.hljs-code,
-.hljs-title,
-.hljs-section,
-.hljs-built_in,
-.hljs-builtin-name,
-.hljs-selector-class {
-    color: #a6e22e !important;
-}
-
-.hljs-strong {
-    font-weight: bold;
-}
-
-.hljs-emphasis {
-    font-style: italic !important;
-}
-
-.hljs-selector-tag,
-.hljs-symbol,
-.hljs-name,
-.hljs-attr {
-    color: #f74449 !important;
-}
-
-.hljs-keyword,
-.hljs-attribute {
-    color: #66d9ef !important;
-}
-
-.hljs-params,
-.hljs-class .hljs-title {
-    color: #f8f8f2 !important;
-}
-
-.hljs-string,
-.hljs-type,
-.hljs-selector-id,
-.hljs-selector-attr,
-.hljs-selector-pseudo,
-.hljs-addition,
-.hljs-variable,
-.hljs-template-variable {
-    color: #e6db74 !important;
+    padding: 1em !important;
+    font-size: 14px !important;
 }
 
 .hljs-comment,
+.hljs-meta {
+    color: #969896;
+}
+
+.hljs-string,
+.hljs-variable,
+.hljs-template-variable,
+.hljs-strong,
+.hljs-emphasis,
+.hljs-quote {
+    color: #df5000;
+}
+
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-type {
+    color: #a71d5d;
+}
+
+.hljs-literal,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-attribute {
+    color: #0086b3;
+}
+
+.hljs-section,
+.hljs-name {
+    color: #63a35c;
+}
+
+.hljs-tag {
+    color: #333333;
+}
+
+.hljs-title,
+.hljs-attr,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-selector-attr,
+.hljs-selector-pseudo {
+    color: #795da3;
+}
+
+.hljs-addition {
+    color: #55a532;
+    background-color: #eaffea;
+}
+
 .hljs-deletion {
-    color: #999 !important;
+    color: #bd2c00;
+    background-color: #ffecec;
+}
+
+.hljs-link {
+    text-decoration: underline;
 }
 
 /* 标签列表 */
@@ -643,8 +636,8 @@ a {
             color: rgba(0, 0, 0, .65);
             background-color: rgba(255, 255, 255, .97);
             &:hover {
-                color: @base-color  !important;
-                border: 1px solid @base-color;
+                color: @style-color  !important;
+                border: 1px solid @style-color;
                 text-decoration: none;
             }
         }
@@ -671,8 +664,8 @@ a {
         color: #515a6e;
         transition: border .2s ease-in-out, color .2s ease-in-out;
         &:hover {
-            color: @base-color;
-            border: 1px solid @base-color;
+            color: @style-color;
+            border: 1px solid @style-color;
         }
     }
 }
@@ -684,21 +677,72 @@ a {
     font-family: Monospaced Number;
     margin: 0 3px;
     text-decoration: none;
-    background-color: @base-color;
+    background-color: @style-color;
 }
 
 /* 代码复制 */
 
 .esa-clipboard-button {
     font-size: 12px;
-    color: #c7c7c7;
     cursor: pointer;
     position: absolute;
-    right: 10px;
-    top: 5px;
+    right: 6px;
+    top: 6px;
+    box-shadow: 0 0 15px 0 rgba(0, 0, 0, .1);
+    color: #5e6687;
+    padding: 0px 6px;
+    border-radius: 5px;
 }
 
-/* 关注按钮 */
+/* 底部工具栏 */
+
+.esa-toolbar {
+    position: fixed;
+    display: grid;
+    z-index: 999;
+    bottom: 30px;
+    right: 30px;
+    .esa-toolbar-gotop,
+    .esa-toolbar-contents,
+    .esa-toolbar-follow {
+        height: 45px;
+        width: 45px;
+        font-weight: 400;
+        position: relative;
+        outline: none;
+        cursor: pointer;
+        border: 1px solid transparent;
+        transition: color .2s linear, background-color .2s linear, border .2s linear, box-shadow .2s linear;
+        margin-top: 5px;
+        color: #515a6e;
+        border-color: #dcdee2;
+        background-color: #fff;
+        background-position: center;
+        background-repeat: no-repeat;
+        .tips {
+            position: absolute;
+            left: -60px;
+            top: 15px;
+            display: none;
+            color: #9daab6;
+            font-size: 12px;
+        }
+        &:hover {
+            color: @style-color;
+            border-color: @style-color;
+        }
+    }
+    .esa-toolbar-gotop {
+        display: none;
+        background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAYAAADE6YVjAAACL0lEQVRIS+3TwWvTUBwH8O/vJSLrFBURFPSkoIiCVz3IilObFA/aNR0yEEk6EXfxH1D0L5DdyroMHaJL1a1Ikw3H6kVBHHjyIKKgMEQmbOqsTpv8JOkmna4mvQyRvVv4/fL78L7vPcIKLFoBA6tIUyn/e3H1F+xjYB4B8EyGp53RTkxF2VLkneQLTieYBwmQ/cEMfgsJh41U8k0YFAnJW3YPAb2Afxv5CZj2gdAK8BQgjuia8uJvUCiSt+wrBFxaGOJ8WYeTsQr2kscTAG1k5g+eJLV1dySeN4IaIsxMpuXkQMjW4kFh55aW0/F4vOp/D9wZ2+N67gQB25h5RmJx/Gyn8nQ5aFmk17bXtn7mGyDSAoBh6ppiEBHXDzFvje3wpADaxcAcGAkjoz76HfoDyVkPNsj44QA4GDQzrukZ9WKjKK7fG99crX4vA9gP8FePhJpNKw/r+5cgfXft7cLFOIDdCxFdNjT1atjt6S8W12NeHgXoEAPzgEgZWqK0+N8vZMAqHfAAB6CtzOwBlDUyqhkGLNYt63HLJ8zaBLQxUCWQpmvKsF8PEHNotN0jt0igGBjfIHBKT6t+ZE0t/yxjc3yfQEcBdplEl5FWblOfZWcE+CZAEgMfSXC73pGcbGp6XXMuN7lG3vR+GKBkcGeIz1N+qDRIRF1RH1YUvFwuy6+nKyM1iGepluVMtytJ1rlU4l2UIVF6fOjVdOUCs3gZ+uKjDAzrWUXCElpS/3/i+gn3gM6tu0xSdwAAAABJRU5ErkJggg==");
+    }
+    .esa-toolbar-contents {
+        background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAYAAADE6YVjAAAAuUlEQVRIS2NkoANgpIMdDPSxZO6qbQeQffOf+X98SrD3w0WLdnL/5vi7lRo+ZZy7att/ZIMYGRi0k8K8rs1ctZufheH3B6pYMnv1dgdkg/5x/DmV7uv7bdWqVcwfGXltqWIJNQwhZAZ9Ip6QK6ghP4x8Mnfl1gaUJMzIODUpzOv1pG3b2Lk//6+kSnDRJZ/QxSfUCA5CZgyj1EXIq9SQp09w0aUUpk8+oUelRY2IJWQGfSKekCuoIQ8At39XNxqN1mQAAAAASUVORK5CYII=");
+    }
+    .esa-toolbar-follow {
+        background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAYAAADE6YVjAAAAsUlEQVRIS2NkIAHMXbU98D/D/zn/GRlTU0M91xGrlZFYhSB1c1Zu62RkZChj+M/QmxzuVUKs3lFLRoOLcFoZTV30ySdzV29zY2BgtGT494+ghf8ZGF0YGRmskXP8pG3b2Lm/MqQx/PsvjBGrTEz/Gf8xHmWcs3LrC0ZGRnHC0Y6kAqlYmbNyqx0jI+NBnPr/M/xgpKlPwDYzPiUYRMguHE3Co8E1WtQTzvPDJ5+Q2+4CADezs7EkSK8aAAAAAElFTkSuQmCC");
+    }
+}
 
 .esa-follow-button {
     z-index: 999;
@@ -719,13 +763,12 @@ a {
     user-select: none;
     font-size: 12px;
     border-radius: 50px;
-    transition: color .2s linear, background-color .2s linear, border .2s linear, box-shadow .2s linear;
     color: #515a6e;
     background-color: #fff;
     border-color: #dcdee2;
     &:hover {
-        color: @base-color;
-        border-color: @base-color;
+        color: @style-color;
+        border-color: @style-color;
         background-color: #fff;
     }
 }
@@ -760,19 +803,6 @@ a {
     z-index: 999999;
 }
 
-.esa-catalog-tab {
-    cursor: pointer;
-    display: none;
-    padding: 7px 2px 7px 2px;
-    float: right;
-    width: 25px;
-    color: @font-color;
-    border: 1px solid @border-color;
-    font-size: 14px;
-    border-radius: 3px;
-    text-align: center;
-}
-
 .esa-catalog-title {
     cursor: move;
     padding-left: 12px;
@@ -780,9 +810,13 @@ a {
     height: 35px;
     line-height: 36px;
     border-bottom: 1px solid @border-color;
-    font-size: 14px;
-    color: @font-color;
-    overflow: hidden;
+    font-size: 12px;
+    font-weight: 600;
+    color: #9daab6;
+    &:before {
+        content: '☲';
+        margin-right: 5px;
+    }
 }
 
 .esa-catalog-close {
@@ -790,7 +824,7 @@ a {
     right: 15px;
     top: 10px;
     cursor: pointer;
-    text-decoration: none;
+    color: #9daab6;
 }
 
 .esa-catalog-contents {
@@ -815,8 +849,9 @@ a {
             overflow: hidden;
             text-overflow: ellipsis;
             cursor: pointer;
+            color: #74818D;
             a:hover {
-                color: @base-color;
+                color: @style-color;
                 text-decoration: none;
             }
             .level1 {
@@ -918,7 +953,7 @@ a {
     h2 {
         text-align: center;
         font-size: 20px;
-        color: #666;
+        color: @font-color;
         font-weight: normal;
         margin: 20px 0 10px 0;
     }
@@ -936,7 +971,7 @@ a {
         width: 200px;
         height: 200px;
         padding: 10px;
-        border: 5px solid #ff7300;
+        border: 2px solid @style-color;
         border-radius: 10px;
         box-sizing: border-box;
         margin: 10px;
@@ -944,8 +979,8 @@ a {
             content: '';
             position: absolute;
             left: 30px;
-            bottom: -12px;
-            color: #666;
+            bottom: -10px;
+            color: @font-color;
             background: #fff;
             padding: 0 10px;
             font-size: 16px;
@@ -968,21 +1003,18 @@ a {
 
 .esa-reward-close {
     position: absolute;
-    font-size: 30px;
-    color: #999;
-    top: 0;
-    right: 0px;
-    width: 20px;
-    height: 20px;
+    font-size: 15px;
+    color: @font-color;
+    top: 7px;
+    right: 10px;
     cursor: pointer;
-    transform: rotate(45deg);
     &:hover {
         transition: all .2s;
-        color: #bbb;
+        color: @style-color;
     }
     &:active {
         transition: all .2s;
-        color: #666;
+        color: @style-color;
     }
 }
 
@@ -1097,10 +1129,14 @@ a {
     .comment_date {
         color: #666;
     }
-    .comment_quote{
+    .comment_quote {
         border: 1px dashed #ccc;
         border-radius: 5px;
     }
+}
+
+#comment_nav {
+    visibility: hidden;
 }
 
 .feedbackCon {
@@ -1180,7 +1216,7 @@ div.commentform textarea {
         outline: 0;
     }
     &:hover {
-        border-color: @base-color;
+        border-color: @style-color;
     }
 }
 
@@ -1190,8 +1226,8 @@ div.commentform textarea {
     border-width: 0px;
     cursor: pointer;
     color: #fff;
-    background-color: @base-color;
-    border-color: @base-color;
+    background-color: @style-color;
+    border-color: @style-color;
     user-select: none;
     padding: 5px 20px;
     font-size: 12px;
@@ -1225,15 +1261,6 @@ div.commentform textarea {
     }
 }
 
-@media (max-width:500px) {
-    .github-corner:hover .octo-arm {
-        animation: none
-    }
-    .github-corner .octo-arm {
-        animation: octocat-wave 560ms ease-in-out
-    }
-}
-
 ::-webkit-scrollbar {
     width: 4px;
     height: 4px;
@@ -1252,7 +1279,7 @@ div.commentform textarea {
 
 ::selection,
 ::-moz-selection {
-    color: @base-color;
+    color: @style-color;
 }
 
 @keyframes fadeIn {
@@ -1347,7 +1374,7 @@ div.commentform textarea {
                 padding: 15px 0;
             }
             &:hover {
-                color: @base-color ;
+                color: @style-color ;
                 background-color: #2c3e50 !important;
             }
         }

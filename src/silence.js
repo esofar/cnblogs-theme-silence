@@ -1,6 +1,6 @@
 (function ($) {
     $.extend({
-        silence: function (options) {
+        silence: (options) => {
             var silence = new Silence();
             silence.init(options);
         }
@@ -38,7 +38,7 @@
                 }
             };
 
-            this.version = '1.1.2';
+            this.version = '1.1.3';
         }
 
         get cnblogs() {
@@ -81,8 +81,8 @@
                 this.buildPostFavoriteBtn();
                 this.buildPostRewardBtn();
                 this.buildPostCommentAvatars();
-                this.buildPostCodeCopyBtn();
-                this.buildFollowBtn();
+                this.buildPostCodeCopyBtns();
+                this.buildToolbar();
             } else {
                 this.goIntoNormalMode();
             }
@@ -93,16 +93,11 @@
          * @param {String} content 消息内容
          */
         showMessage(content) {
+            $('body').prepend(`<div class="esa-layer"><span class="esa-layer-content">${content}</span></div>`);
             let $layer = $('.esa-layer');
-            if (!$layer.length) {
-                $('body').prepend(`<div class="esa-layer"><span class="esa-layer-content"></span></div>`);
-            }
-            $('.esa-layer-content').html(content);
-            $('.esa-layer').fadeIn(200);
-            setTimeout(function () {
-                $('.esa-layer').fadeOut(200, function () {
-                    $('.esa-layer-content').empty();
-                });
+            $layer.fadeIn(200);
+            setTimeout(() => {
+                $layer.remove();
             }, 2000);
         }
 
@@ -130,13 +125,12 @@
          * 进入正常模式
          */
         goIntoNormalMode() {
-            let _that = this;
             let $win = $(window);
             if ($win.width() > 767) {
-                $(_that.cnblogs.forFlow).css({
+                $(this.cnblogs.forFlow).css({
                     marginLeft: '22em'
                 });
-                $(_that.cnblogs.sideBar).fadeIn(700);
+                $(this.cnblogs.sideBar).fadeIn(700);
             }
         }
 
@@ -144,17 +138,16 @@
          * 构建导航栏自定义 DOM 元素
          */
         buildNavCustomElements() {
-            let _that = this;
             // build a tags button in navbar.
             var $navList = $(this.cnblogs.navList);
             $navList.find('li').eq(1).after(`<li><a id="blog_nav_tags" class="menu" href="https://www.cnblogs.com/${currentBlogApp}/tag">标签</a></li>`);
-            $.each($navList.find('li'), function (index, nav) {
+            $.each($navList.find('li'), (index, nav) => {
                 $(nav).append('<i></i>');
             });
             // build a mobile browser menu button.
             $('body').prepend(`<div class="esa-mobile-menu"></div>`);
-            $('.esa-mobile-menu').on('click', function () {
-                $(_that.cnblogs.navigator).fadeToggle(200);
+            $('.esa-mobile-menu').on('click', () => {
+                $(this.cnblogs.navigator).fadeToggle(200);
             });
         }
 
@@ -189,10 +182,9 @@
          * 构建评论者头像
          */
         buildPostCommentAvatars() {
-            let _that = this;
-            var builder = function () {
-                $(_that.cnblogs.postCommentBody).before(`<div class='esa-comment-avatar'><a target='_blank'><img /></a></div>`);
-                let feedbackCon = $(_that.cnblogs.feedbackContent);
+            var builder = () => {
+                $(this.cnblogs.postCommentBody).before(`<div class='esa-comment-avatar'><a target='_blank'><img /></a></div>`);
+                let feedbackCon = $(this.cnblogs.feedbackContent);
                 for (var i = 0; i < feedbackCon.length; i++) {
                     let avatar = 'https://pic.cnblogs.com/face/sample_face.gif';
                     let span = $(feedbackCon[i]).find("span:last")[0];
@@ -204,13 +196,13 @@
                     $(feedbackCon[i]).find(".esa-comment-avatar a").attr("href", href);
                 }
             }
-            if ($(_that.cnblogs.postCommentBody).length) {
+            if ($(this.cnblogs.postCommentBody).length) {
                 builder();
             } else {
                 let count = 1;
                 // poll whether the feedbacks is loaded.
-                let intervalId = setInterval(function () {
-                    if ($(_that.cnblogs.postCommentBody).length) {
+                let intervalId = setInterval(() => {
+                    if ($(this.cnblogs.postCommentBody).length) {
                         clearInterval(intervalId);
                         builder();
                     }
@@ -228,12 +220,11 @@
          */
         buildPostRewardBtn() {
             const config = this.defaluts.reward;
-            let _that = this;
             if (config.enable) {
                 if (!config.wechat && !config.alipay) {
-                    throw new Error(`silence error: both 'wechat' and 'alipay' are null in reward module.`);
+                    this.showMessage(`请配置微信或支付宝赞赏二维码`);
+                    return;
                 }
-
                 let content = `<div class="esa-reward">
                 <div class="esa-reward-close">+</div>
                 <h2>"${config.title}"</h2>
@@ -247,22 +238,22 @@
                 content += `</div></div>`;
                 $('body').append(content);
 
-                $('.esa-reward-close').on('click', function () {
+                $('.esa-reward-close').on('click', () => {
                     $(".esa-reward").fadeOut();
                 });
 
-                let builder = function () {
-                    $(_that.cnblogs.postDigg).prepend(`<div class="reward"><span class="rewardnum" id="reward_count"></span></div>`);
-                    $(_that.cnblogs.postDigg).find('.reward').on('click', function () {
+                let builder = () => {
+                    $(this.cnblogs.postDigg).prepend(`<div class="reward"><span class="rewardnum" id="reward_count"></span></div>`);
+                    $(this.cnblogs.postDigg).find('.reward').on('click', () => {
                         $(".esa-reward").fadeIn();
                     });
                 };
 
-                if ($(_that.cnblogs.postDigg).length) {
+                if ($(this.cnblogs.postDigg).length) {
                     builder();
                 } else {
-                    let intervalId = setInterval(function () {
-                        if ($(_that.cnblogs.postDigg).length) {
+                    let intervalId = setInterval(() => {
+                        if ($(this.cnblogs.postDigg).length) {
                             clearInterval(intervalId);
                             builder();
                         }
@@ -277,15 +268,14 @@
          * 构建收藏按钮
          */
         buildPostFavoriteBtn() {
-            let _that = this;
-            let builder = function () {
-                $(_that.cnblogs.postDigg).prepend(`<div class="favorite" onclick="AddToWz(cb_entryId);return false;"><span class="favoritenum" id="favorite_count"></span></div>`);
+            let builder = () => {
+                $(this.cnblogs.postDigg).prepend(`<div class="favorite" onclick="AddToWz(cb_entryId);return false;"><span class="favoritenum" id="favorite_count"></span></div>`);
             };
-            if ($(_that.cnblogs.postDigg).length) {
+            if ($(this.cnblogs.postDigg).length) {
                 builder();
             } else {
-                let intervalId = setInterval(function () {
-                    if ($(_that.cnblogs.postDigg).length) {
+                let intervalId = setInterval(() => {
+                    if ($(this.cnblogs.postDigg).length) {
                         clearInterval(intervalId);
                         builder();
                     }
@@ -307,10 +297,9 @@
 
                 let $catalog = $(
                     `<div class="esa-catalog">
-                        <div class="esa-catalog-tab"><h2>目录</h2></div>
                         <div class="esa-catalog-contents">
-                            <div class="esa-catalog-title"><h2>目录</h2></div>
-                            <a class="esa-catalog-close">×</a>
+                            <div class="esa-catalog-title">CONTENTS</div>
+                            <a class="esa-catalog-close">✕</a>
                         </div>
                     </div>`);
 
@@ -319,8 +308,8 @@
                 let h3c = 0;
 
                 let catalogContents = '<ul>';
-                $.each($headers, function (index, header) {
-                    let tagName = $(header)[0].tagName.toLowerCase();
+                $.each($headers, (index, header) => {
+                    const tagName = $(header)[0].tagName.toLowerCase();
                     let titleIndex = '';
                     let titleContent = $(header).html();
                     let title = titleContent;
@@ -358,10 +347,10 @@
 
                     $(header).attr('id', `idx_${index}`)
                         .html(`<span>${titleContent}</span><a href="#idx_${index}" class="esa-anchor">#</a>`)
-                        .hover(function () {
-                            $(this).find('.esa-anchor').css('opacity', 1);
-                        }, function () {
-                            $(this).find('.esa-anchor').css('opacity', 0);
+                        .hover(() => {
+                            $(header).find('.esa-anchor').css('opacity', 1);
+                        }, () => {
+                            $(header).find('.esa-anchor').css('opacity', 0);
                         });
                 });
                 catalogContents += `</ul>`;
@@ -369,7 +358,6 @@
                 $catalog.find('.esa-catalog-contents').append(catalogContents);
                 $catalog.appendTo('body');
 
-                let $tab = $('.esa-catalog-tab');
                 let $tabContent = $('.esa-catalog-contents');
 
                 $tabContent.fadeIn();
@@ -381,13 +369,8 @@
                     }, 300);
                 });
 
-                $tab.on('click', function () {
-                    $(this).hide();
-                    $tabContent.show();
-                });
-                $('.esa-catalog-close').on('click', function () {
+                $('.esa-catalog-close').on('click', () => {
                     $tabContent.hide();
-                    $tab.show();
                 });
 
                 if (config.move) {
@@ -403,7 +386,7 @@
                         let poisY = e.clientY - parseFloat(position.top);
                         move.pois = [poisX, poisY];
                     });
-                    $(document).on('mousemove', function (e) {
+                    $(document).on('mousemove', (e) => {
                         if (move.start) {
                             let offsetX = e.clientX - move.pois[0];
                             let offsetY = e.clientY - move.pois[1];
@@ -428,7 +411,7 @@
                                 right: 'auto',
                             });
                         }
-                    }).on('mouseup', function (_e) {
+                    }).on('mouseup', (_e) => {
                         if (move.start) {
                             move.start = false;
                         }
@@ -457,70 +440,106 @@
         /**
          * 构建代码复制按钮
          */
-        buildPostCodeCopyBtn() {
-            let _that = this;
-
+        buildPostCodeCopyBtns() {
             let $pres = $('.postBody .cnblogs-markdown').find('pre');
             if (!$pres.length) {
                 return false;
             }
-            $.each($pres, function (index, pre) {
+            $.each($pres, (index, pre) => {
                 $(pre).find('code').attr('id', `copy_target_${index}`);
                 $(pre).prepend(`<div class="esa-clipboard-button" data-clipboard-target="#copy_target_${index}" title="复制代码">Copy</div>`);
             });
 
-            $.getScript(`https://unpkg.com/clipboard@2.0.0/dist/clipboard.min.js`, function () {
-                var clipboard = new ClipboardJS('.esa-clipboard-button');
-                clipboard.on('success', function (e) {
-                    _that.showMessage('代码复制成功');
+            $.getScript(`https://unpkg.com/clipboard@2.0.0/dist/clipboard.min.js`, () => {
+                let clipboard = new ClipboardJS('.esa-clipboard-button');
+                clipboard.on('success', (e) => {
+                    this.showMessage('代码已复制到粘贴板中');
                     e.clearSelection();
                 });
-                clipboard.on('error', function (e) {
-                    _that.showMessage('代码复制失败');
+                clipboard.on('error', (e) => {
+                    this.showMessage('代码复制失败');
                 });
             });
         }
 
         /**
-         * 构建关注按钮
+         * 构建工具栏
          */
-        buildFollowBtn() {
-            let _that = this;
-            $('body').append(`<button class="esa-follow-button">关注</button>`);
-            let $btn = $('.esa-follow-button');
+        buildToolbar() {
+            const catalog = this.defaluts.catalog;
+            $('body').append(`<div class="esa-toolbar">
+                <button class="esa-toolbar-gotop"><div class="tips">返回顶部</div></button>
+                <button class="esa-toolbar-contents"><div class="tips">阅读目录</div></button>
+                <button class="esa-toolbar-follow"><div class="tips">关注博主</div></button>
+            </div>`);
 
-            $btn.on('click', function () {
-                loadLink(location.protocol + "//common.cnblogs.com/scripts/artDialog/ui-dialog.css", function () {
-                    loadScript(location.protocol + "//common.cnblogs.com/scripts/artDialog/dialog-min.js", function () {
+            let $btnGotop = $('.esa-toolbar-gotop');
+            let $btnContents = $('.esa-toolbar-contents');
+            let $btnFollow = $('.esa-toolbar-follow');
+
+            if (catalog.enable) {
+                $btnContents.on('click', () => {
+                    let $catalog = $('.esa-catalog-contents');
+                    if ($catalog.css('display') == 'none') {
+                        $catalog.fadeIn();
+                    } else {
+                        $catalog.hide();
+                    }
+                }).hover(() => {
+                    $btnContents.find('.tips').show();
+                }, () => {
+                    $btnContents.find('.tips').hide();
+                });
+            } else {
+                $btnContents.remove();
+            }
+
+            $btnGotop.on('click', () => {
+                $(window).scrollTop(0);
+            }).hover(() => {
+                $btnGotop.find('.tips').show();
+            }, () => {
+                $btnGotop.find('.tips').hide();
+            });
+
+            $(window).scroll(function () {
+                if (this.scrollY > 200) {
+                    $btnGotop.fadeIn();
+                } else {
+                    $btnGotop.fadeOut();
+                }
+            });
+
+            $btnFollow.on('click', () => {
+                loadLink(location.protocol + "//common.cnblogs.com/scripts/artDialog/ui-dialog.css", () => {
+                    loadScript(location.protocol + "//common.cnblogs.com/scripts/artDialog/dialog-min.js", () => {
                         if (!isLogined) {
                             return login();
                         }
                         if (c_has_follwed) {
-                            return _that.showMessage('您已经关注过该博主');
+                            return this.showMessage('您已经关注过该博主');
                         }
-                        var n = cb_blogUserGuid;
+                        const n = cb_blogUserGuid;
                         $.ajax({
                             url: "/mvc/Follow/FollowBlogger.aspx",
                             data: '{"blogUserGuid":"' + n + '"}',
                             dataType: "text",
                             type: "post",
                             contentType: "application/json; charset=utf-8",
-                            success: function (msg) {
+                            success: (msg) => {
                                 msg == "未登录" ? login() : (msg == "关注成功" && followByGroup(n, !0));
-                                _that.showMessage(msg);
+                                this.showMessage(msg);
                             }
                         })
                     })
                 })
+            }).hover(() => {
+                $btnFollow.find('.tips').show();
+            }, () => {
+                $btnFollow.find('.tips').hide();
             });
 
-            $(window).scroll(function () {
-                if (this.scrollY > 200) {
-                    $btn.fadeIn();
-                } else {
-                    $btn.fadeOut();
-                }
-            });
+
         }
     }
 })(jQuery);

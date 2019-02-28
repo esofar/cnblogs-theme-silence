@@ -298,3 +298,7 @@ git clone https://github.com/esofar/cnblogs-theme-silence.git
 * 修复若干手机端适配问题。
 * 调整标签列表页面显示效果。
 
+### v1.1.3
+* 新增右下角快捷操作工具栏。
+* markdown 编辑模式下代码背景调整为亮色。
+
