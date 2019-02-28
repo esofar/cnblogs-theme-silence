@@ -1,5 +1,5 @@
 # Silence
-[![Cnblogs](https://img.shields.io/badge/latest-v1.1.2-brightgreen.svg)](https://github.com/esofar/cnblogs-theme-silence/releases)
+[![Cnblogs](https://img.shields.io/badge/latest-v1.1.3-brightgreen.svg)](https://github.com/esofar/cnblogs-theme-silence/releases)
 [![Cnblogs](https://img.shields.io/badge/dependencies-jQuery-blue.svg)](https://www.cnblogs.com)
 [![GitHub issues](https://img.shields.io/github/issues/esofar/cnblogs-theme-silence.svg)](https://github.com/esofar/cnblogs-theme-silence/issues)
 [![GitHub license](https://img.shields.io/github/license/esofar/cnblogs-theme-silence.svg)](https://github.com/esofar/cnblogs-theme-silence/blob/master/LICENSE)
