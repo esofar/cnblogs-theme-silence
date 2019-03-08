@@ -222,11 +222,11 @@
             const config = this.defaluts.reward;
             if (config.enable) {
                 if (!config.wechat && !config.alipay) {
-                    this.showMessage(`请配置微信或支付宝赞赏二维码`);
+                    this.showMessage(`Error：请至少配置一个微信或支付宝赞赏二维码`);
                     return;
                 }
                 let content = `<div class="esa-reward">
-                <div class="esa-reward-close">+</div>
+                <div class="esa-reward-close">✕</div>
                 <h2>"${config.title}"</h2>
                 <div class="esa-reward-container">`;
                 if (config.wechat) {
@@ -260,7 +260,7 @@
                     }, 200);
                 }
             } else {
-                $(_that.cnblogs.postDigg).width(300);
+                $(this.cnblogs.postDigg).width(300);
             }
         }
 
