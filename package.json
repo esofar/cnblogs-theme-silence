@@ -19,7 +19,9 @@
   "homepage": "https://github.com/esofar/cnblogs-theme-silence#readme",
   "devDependencies": {
     "babel-cli": "^6.26.0",
-    "babel-preset-es2015": "^6.24.1"
+    "babel-preset-es2015": "^6.24.1",
+    "less": "^3.9.0",
+    "uglify-js": "^3.5.3"
   },
   "dependencies": {
     "less-plugin-clean-css": "^1.5.1"
