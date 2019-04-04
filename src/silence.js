@@ -9,6 +9,11 @@
     class Silence {
         constructor() {
             this.defaluts = {
+                profile: {
+                    enable: false,
+                    avatar: null,
+                    favicon: null,
+                },
                 catalog: {
                     enable: false,
                     move: true,
@@ -19,9 +24,8 @@
                 },
                 signature: {
                     enable: false,
-                    author: currentBlogApp,
                     home: 'https://www.cnblogs.com',
-                    license: '署名 4.0 国际',
+                    license: 'CC BY 4.0',
                     link: 'https://creativecommons.org/licenses/by/4.0'
                 },
                 reward: {
@@ -33,20 +37,23 @@
                 github: {
                     enable: false,
                     color: '#fff',
-                    fill: '#151513',
+                    fill: null,
                     link: null,
                 }
             };
 
-            this.version = '1.1.3';
+            this.version = '2.0.0';
         }
 
         get cnblogs() {
             return {
                 header: '#header',
+                blogTitle: '#blogTitle',
+                publicProfile: '#profile_block',
                 navigator: '#navigator',
                 navList: '#navList',
                 sideBar: '#sideBar',
+                sideBarMain: '#sideBarMain',
                 forFlow: '.forFlow',
                 postTitle: '#cb_post_title_url',
                 postDetail: '#post_detail',
@@ -54,7 +61,7 @@
                 postDigg: '#div_digg',
                 postCommentBody: '.blog_comment_body',
                 feedbackContent: '.feedbackCon',
-                mySignature: '#MySignature',
+                postSignature: '#MySignature',
                 footer: '#footer',
             };
         }
@@ -71,20 +78,22 @@
             if (options) {
                 $.extend(true, this.defaluts, options);
             }
-            this.buildNavCustomElements();
+            this.buildCustomElements();
+            this.buildGithubCorner();
             this.buildCopyright();
-            this.buildGithubCorners();
+            this.buildBloggerProfile();
             if (this.isPostPage) {
                 this.goIntoReadingMode();
                 this.buildPostCatalog();
+                this.buildPostCodeCopyBtns();
                 this.buildPostSignature();
                 this.buildPostFavoriteBtn();
                 this.buildPostRewardBtn();
-                this.buildPostCommentAvatars();
-                this.buildPostCodeCopyBtns();
                 this.buildToolbar();
+                this.buildPostCommentAvatars();
             } else {
                 this.goIntoNormalMode();
+
             }
         }
 
@@ -130,21 +139,29 @@
                 $(this.cnblogs.forFlow).css({
                     marginLeft: '22em'
                 });
-                $(this.cnblogs.sideBar).fadeIn(700);
+                $(this.cnblogs.sideBar).fadeIn(500);
             }
         }
 
         /**
-         * 构建导航栏自定义 DOM 元素
+         * 构建自定义 DOM 元素
          */
-        buildNavCustomElements() {
-            // build a tags button in navbar.
-            var $navList = $(this.cnblogs.navList);
+        buildCustomElements() {
+            // Change page title.
+            const blogTitle = $(this.cnblogs.blogTitle).find('h1 a').html();
+            const autherName = $(this.cnblogs.publicProfile).find('a:eq(0)').html();
+            let $title = $('head').find('title');
+            $title.html($title.html().replace(`${autherName} - 博客园`, `${blogTitle}`));
+
+            // Build a tags button on navbar.
+            let $navList = $(this.cnblogs.navList);
             $navList.find('li').eq(1).after(`<li><a id="blog_nav_tags" class="menu" href="https://www.cnblogs.com/${currentBlogApp}/tag">标签</a></li>`);
+
             $.each($navList.find('li'), (index, nav) => {
                 $(nav).append('<i></i>');
             });
-            // build a mobile browser menu button.
+
+            // Build a menu button on mobile browser.
             $('body').prepend(`<div class="esa-mobile-menu"></div>`);
             $('.esa-mobile-menu').on('click', () => {
                 $(this.cnblogs.navigator).fadeToggle(200);
@@ -167,14 +184,17 @@
         buildPostSignature() {
             const config = this.defaluts.signature;
             if (config.enable) {
-                let postUrl = $(this.cnblogs.postTitle).attr('href');
-                let content =
+                const postUrl = $(this.cnblogs.postTitle).attr('href');
+                const authorName = $(this.cnblogs.publicProfile).find('a:eq(0)').html();
+
+                const content =
                     `<div class="esa-post-signature"> 
-                    <p>作者：<a href="${config.home}">${config.author}</a></p> 
+                    <p>作者：<a href="${config.home}">${authorName}</a></p> 
                     <p>出处：<a href="${postUrl}">${postUrl}</a></p> 
                     <p>本站使用「<a href="${config.link}"  target="_blank">${config.license}</a>」创作共享协议，转载请在文章明显位置注明作者及出处。</p> 
                 </div>`;
-                $(this.cnblogs.mySignature).html(content).show();
+
+                $(this.cnblogs.postSignature).html(content).show();
             }
         }
 
@@ -222,7 +242,7 @@
             const config = this.defaluts.reward;
             if (config.enable) {
                 if (!config.wechat && !config.alipay) {
-                    this.showMessage(`Error：请至少配置一个微信或支付宝赞赏二维码`);
+                    this.showMessage(`Error：微信或支付宝赞赏二维码请至少配置一个`);
                     return;
                 }
                 let content = `<div class="esa-reward">
@@ -230,10 +250,10 @@
                 <h2>"${config.title}"</h2>
                 <div class="esa-reward-container">`;
                 if (config.wechat) {
-                    content += `<div class="wechat"><img src="${config.wechat}" alt="微信支付"></div>`
+                    content += `<div class="wechat"><img src="${config.wechat}"></div>`
                 }
                 if (config.alipay) {
-                    content += `<div class="alipay"><img src="${config.alipay}" alt="支付宝支付"></div>`;
+                    content += `<div class="alipay"><img src="${config.alipay}"></div>`;
                 }
                 content += `</div></div>`;
                 $('body').append(content);
@@ -271,6 +291,7 @@
             let builder = () => {
                 $(this.cnblogs.postDigg).prepend(`<div class="favorite" onclick="AddToWz(cb_entryId);return false;"><span class="favoritenum" id="favorite_count"></span></div>`);
             };
+
             if ($(this.cnblogs.postDigg).length) {
                 builder();
             } else {
@@ -288,9 +309,11 @@
          */
         buildPostCatalog() {
             const config = this.defaluts.catalog;
+
             if (config.enable) {
                 let levels = [config.level1, config.level2, config.level3];
                 let $headers = $(this.cnblogs.postBody).find('> ' + levels.join(','));
+
                 if (!$headers.length) {
                     return false;
                 }
@@ -308,6 +331,10 @@
                 let h3c = 0;
 
                 let catalogContents = '<ul>';
+
+                let cryptoObj = window.crypto || window.msCrypto; // for IE 11
+                let eleIds = cryptoObj.getRandomValues(new Uint32Array($headers.length));
+
                 $.each($headers, (index, header) => {
                     const tagName = $(header)[0].tagName.toLowerCase();
                     let titleIndex = '';
@@ -340,13 +367,16 @@
                             titleIndex = `<span class="level3">${h1c}.${h2c}.${h3c}. </span>`;
                         }
                     }
+
+                    var idx = eleIds[index];
+
                     catalogContents +=
                         `<li class="li_${tagName}" title="${title}">
-                            <i class="idx_${index}" ></i><a class="esa-anchor-link">${(titleIndex + titleContent)}</a>
+                            <i class="${idx}" ></i><a class="esa-anchor-link">${(titleIndex + titleContent)}</a>
                         </li>`;
 
-                    $(header).attr('id', `idx_${index}`)
-                        .html(`<span>${titleContent}</span><a href="#idx_${index}" class="esa-anchor">#</a>`)
+                    $(header).attr('id', `${idx}`)
+                        .html(`<span>${titleContent}</span><a href="#${idx}" class="esa-anchor">#</a>`)
                         .hover(() => {
                             $(header).find('.esa-anchor').css('opacity', 1);
                         }, () => {
@@ -423,12 +453,13 @@
         /**
          * 构建 Github Corner 
          */
-        buildGithubCorners() {
+        buildGithubCorner() {
             const config = this.defaluts.github;
             if (config.enable) {
+                let fillStyle = config.fill ? `fill:${config.fill};` : '';
                 $('body').append(
-                    `<a href="${config.link}" class="github-corner" title="Follow me on GitHub">
-                        <svg width="60" height="60" viewBox="0 0 250 250" style="fill:${config.fill}; color:${config.color}; z-index: 999999; position: fixed; top: 0; border: 0; left: 0; transform: scale(-1, 1);" aria-hidden="true">
+                    `<a href="${config.link}" class="github-corner" title="Fork me on GitHub">
+                        <svg width="60" height="60" viewBox="0 0 250 250" style="${fillStyle} color:${config.color}; z-index: 999999; position: fixed; top: 0; border: 0; left: 0; transform: scale(-1, 1);" aria-hidden="true">
                             <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
                             <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
                             <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path>
@@ -442,9 +473,11 @@
          */
         buildPostCodeCopyBtns() {
             let $pres = $('.postBody .cnblogs-markdown').find('pre');
+
             if (!$pres.length) {
                 return false;
             }
+
             $.each($pres, (index, pre) => {
                 $(pre).find('code').attr('id', `copy_target_${index}`);
                 $(pre).prepend(`<div class="esa-clipboard-button" data-clipboard-target="#copy_target_${index}" title="复制代码">Copy</div>`);
@@ -467,6 +500,7 @@
          */
         buildToolbar() {
             const catalog = this.defaluts.catalog;
+
             $('body').append(`<div class="esa-toolbar">
                 <button class="esa-toolbar-gotop"><div class="tips">返回顶部</div></button>
                 <button class="esa-toolbar-contents"><div class="tips">阅读目录</div></button>
@@ -476,7 +510,7 @@
             let $btnGotop = $('.esa-toolbar-gotop');
             let $btnContents = $('.esa-toolbar-contents');
             let $btnFollow = $('.esa-toolbar-follow');
-
+            
             if (catalog.enable) {
                 $btnContents.on('click', () => {
                     let $catalog = $('.esa-catalog-contents');
@@ -538,8 +572,25 @@
             }, () => {
                 $btnFollow.find('.tips').hide();
             });
+        }
 
+        /**
+         * 构建博主信息
+         */
+        buildBloggerProfile() {
+            const config = this.defaluts.profile;
 
+            if (!config.enable) {
+                return;
+            }
+
+            if (!this.isPostPage && config.avatar) {
+                $(this.cnblogs.sideBarMain).prepend(`<img class="esa-profile-avatar" src="${config.avatar}" />`);
+            };
+
+            if (config.favicon) {
+                $('head').append(`<link rel="shortcut icon" href="${config.favicon}" type="image/x-icon" />`);
+            }
         }
     }
 })(jQuery);
