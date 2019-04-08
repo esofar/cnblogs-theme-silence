@@ -48,12 +48,15 @@
 
 本主题的样式通过 Less 将一些颜色值作为变量抽取出来，通过不同颜色搭配形成了三种不同的主题风格。当然您也可以搭配自己喜欢的色系，编译一套属于自己的主题风格，也非常欢迎有兴趣的园友贡献更多的配色方案。
 
-克隆源码，进入项目目录，安装依赖：
+克隆源码，进入项目目录：
 
 ```
 git clone https://github.com/esofar/cnblogs-theme-silence.git
 cd cnblogs-theme-silence
-npm install
+```
+全局安装用的的一些工具：
+```
+npm install less less-plugin-clean-css babel-cli uglify-js -g
 ```
 
 > 如上操作需要依赖 Node.js 环境和 Git 客户端。
@@ -66,16 +69,18 @@ npm install
 @blog-border-color: #ffebf2;                    // 博客边框颜色
 @blog-font-color: #61687C;                      // 博客字体颜色
 @blog-title-color: #61687C;                     // 博客标题颜色
-@blog-github-fill-color: #FFC6DE;               // GitHub Corners 背景填充色
+@blog-github-fill-color: #FFC6DE;               // GitHub 角标背景色
 
 @post-catalog-bg-color: #fffafa;                // 博文目录背景色
 @post-catalog-font-color: #a2a2a2;              // 博文目录字体色
 @post-table-thead-bg-color: #f9f9f9;            // 博文表格标题背景色
 @post-table-border-color: #fbdfeb;              // 博文表格标题边框颜色
-@post-code-bg-color: #fbfbfb;                   // 博文行内代码背景色
-@post-code-border-color: #eee;                  // 博文行内代码边框颜色
+@post-inline-code-bg-color: #fbfbfb;            // 博文行内代码背景色
+@post-inline-code-border-color: #eee;           // 博文行内代码边框颜色
+@post-cnblogs-code-bg-color: #f2f4f5;           // 博文默认代码块背景色
+@post-cnblogs-code-font-color: #656c73;         // 博文默认代码块字体色
 @post-signature-bg-color: #f8f8f8;              // 博文签名背景色
-@post-blockquote-left-border-color:#FFC6DE;     // 博文引用边框颜色
+@post-blockquote-border-color:#FFC6DE;          // 博文引用边框颜色
 
 @comment-font-color: #858ca5;                   // 评论字体色
 @comment-bg-color: #ffecf4;                     // 评论背景色
@@ -150,38 +155,14 @@ npm install
     text-decoration: underline;
 }
 
-.cnblogs_code {
-    background-color: #f2f4f5 !important;
-    padding-left: 1em;
-    padding-right: 1em;
-    border: none !important;
-    border-radius: 3px !important;
-
-    img {
-        display: inline;
-        margin: 0;
-    }
-
-    pre {
-        span {
-            font-family: Lucida Console, Consolas, Monaco, Andale Mono, Ubuntu Mono, monospace !important;
-        }
-    }
-
-    .cnblogs_code_collapse {
-        padding: 4px 3px 3px 3px;
-        border: 1px solid #d0d0d0;
-        border-radius: 2px;
-    }
-}
-
-// 以上是一些必须设置颜色值和样式，根据自己的喜好调整。下面可以参考博客园的 DOM 结构自由发挥写一些自己定制的样式。
+// 以上是一些主题必须设置颜色值和样式，可以根据自己的喜好调整。
+// 以下可以参考博客园的 DOM 结构自由发挥写一些自己定制的样式。
 
 ...
 
 ```
 
-文件保存后，需要在公共动态样式文件`silence.less`头部引入主题`example.less`，并注释其他主题的引用。
+文件保存后，需要在公共样式文件`silence.less`头部引入主题`example.less`，并注释其他主题的引用。
 ```
 // @import "./themes/default.less";
 // @import "./themes/goddess.less";
@@ -190,7 +171,6 @@ npm install
 
 ...
 ```
-
 
 然后通过如下命令将动态样式文件`silence.less`转义为普通样式文件并压缩，输出至`dist/themes/example.min.css`：
 

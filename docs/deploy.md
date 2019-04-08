@@ -4,7 +4,7 @@
 
 ## 主题下载
 
-点击 [下载](https://github.com/esofar/cnblogs-theme-silence/archive/master.zip)  本主题最新版本源码包，下载完毕后，使用解压工具解压并进入解压后目录，其结构大致如下所示。
+点击 [下载](https://github.com/esofar/cnblogs-theme-silence/archive/master.zip)  本主题最新版本源码包，下载完毕后，使用解压工具解压并进入解压后目录，其结构大致如下所示：
 
 ```
 │  .babelrc                                                   
@@ -66,12 +66,12 @@ goddess.min.css         // 女神 · 粉
 
 本地打开`./dist`目录，获取主题的 JS 脚本文件`silence.min.js`。
 
-进入『[文件](https://i.cnblogs.com/Files.aspx)』界面，将该文件上传到自己的博客中。上传完成后，点击文件名便可在浏览器地址栏中获取上传文件的外链，类似如下地址。
+进入『[文件](https://i.cnblogs.com/Files.aspx)』界面，将该文件上传到自己的博客中。上传完成后，点击文件名便可在浏览器地址栏中获取上传文件的外链，类似如下所示：
 ```
 https://blog-static.cnblogs.com/files/esofar/silence.min.js
 ```
 
-然后使用`<script>`标签将外链包裹，生成一个网页脚本引用，类似如下。
+然后使用`<script>`标签将外链包裹，生成一个网页脚本引用，类似如下所示：
 
 ```
 <script src="https://blog-static.cnblogs.com/files/esofar/silence.min.js"></script>
@@ -277,23 +277,23 @@ https://blog-static.cnblogs.com/files/esofar/silence.min.js
 
 进入『[设置](https://i.cnblogs.com/Configure.aspx)』界面，在「标题」文本框中设置博客标题，注意不支持显示「子标题」，在「博客皮肤」处选择博客园官方标准模板 **Custom**，并且把「禁用模板默认CSS」复选框取消勾选，最后点击「保存」按钮。
 
-进入『[选项](https://i.cnblogs.com/Preferences.aspx)』界面，在「控件显示设置」中需要勾选的博客园官方功能模块如下几个。
+进入『[选项](https://i.cnblogs.com/Preferences.aspx)』界面，在「控件显示设置」中需要勾选的博客园官方功能模块如下几个：
 
 - 必须要勾选：公告、我的标签、随笔分类、阅读排行榜、推荐排行榜
 - 自定义勾选：博客园链接、首页链接、RSS订阅、联系
 
-其他模块取消勾选（可选操作），最后点击「SAVE」按钮保存操作。
+其他模块取消勾选(可选操作)，最后点击「SAVE」按钮保存操作。
 
 至此，本主题部署完毕。
-
-如果您在部署遇到任何问题请给我发邮件 esofar@qq.com。
 
 ## 写在最后
 
 熟悉博客园的朋友都清楚，博客园提供了多种编辑器供我们选择，不同编辑器模式下发表的博文样式可能有所差别，本主题可能无法全面测试覆盖重写，所以本主题肯定会存在一些不足之处，如果您在使用遇到问题欢迎提交 Issues，我会及时响应。
 
-不过本主题对 Markdown 编辑模式下的博文样式支持相对较好，所以斗胆推荐您使用 Markdown 编辑器编辑发表新的博文，具体设置如下。
+不过本主题对 Markdown 编辑模式下的博文样式支持相对较好，所以斗胆推荐您使用 Markdown 编辑器编辑发表新的博文，具体设置如下：
 
 进入『[选项](https://i.cnblogs.com/Preferences.aspx)』界面，在「默认编辑器」中选择 Markdown 选项，然后点击「SAVE」按钮保存操作。
 
 > 如果您还不知道什么是 [Markdown](https://en.wikipedia.org/wiki/Markdown) ，是不是有点跟不上队伍了。
+
+如果您在部署遇到任何问题请给我发邮件 esofar@qq.com。

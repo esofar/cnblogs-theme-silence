@@ -1,7 +1,7 @@
 {
   "name": "cnblogs-theme-silence",
   "version": "1.0.0",
-  "description": "![PC](src/images/screenshot_1.png)",
+  "description": "一款专注于阅读的博客园主题",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -21,9 +21,10 @@
     "babel-cli": "^6.26.0",
     "babel-preset-es2015": "^6.24.1",
     "less": "^3.9.0",
-    "uglify-js": "^3.5.3"
+    "uglify-js": "^3.5.3",
+    "less-plugin-clean-css": "^1.5.1"
   },
   "dependencies": {
-    "less-plugin-clean-css": "^1.5.1"
+
   }
 }

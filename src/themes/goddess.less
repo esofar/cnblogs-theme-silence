@@ -9,10 +9,12 @@
 @post-catalog-font-color: #a2a2a2;
 @post-table-thead-bg-color: #f9f9f9;
 @post-table-border-color: #fbdfeb;
-@post-code-bg-color: #fbfbfb;
-@post-code-border-color: #eee;
+@post-inline-code-bg-color: #fbfbfb;
+@post-inline-code-border-color: #eee;
+@post-cnblogs-code-bg-color: #f2f4f5;
+@post-cnblogs-code-font-color: #656c73;
 @post-signature-bg-color: #f8f8f8;
-@post-blockquote-left-border-color:#FFC6DE;
+@post-blockquote-border-color:#FFC6DE;
 
 @comment-font-color: #858ca5;
 @comment-bg-color: #ffecf4;
@@ -85,29 +87,4 @@
 
 .hljs-link {
     text-decoration: underline;
-}
-
-.cnblogs_code {
-    background-color: #f2f4f5 !important;
-    padding-left: 1em;
-    padding-right: 1em;
-    border: none !important;
-    border-radius: 3px !important;
-
-    img {
-        display: inline;
-        margin: 0;
-    }
-
-    pre {
-        span {
-            font-family: Lucida Console, Consolas, Monaco, Andale Mono, Ubuntu Mono, monospace !important;
-        }
-    }
-
-    .cnblogs_code_collapse {
-        padding: 4px 3px 3px 3px;
-        border: 1px solid #d0d0d0;
-        border-radius: 2px;
-    }
 }

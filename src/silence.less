@@ -465,7 +465,7 @@ a {
             padding: 0 0 0 10px;
             min-height: 20px;
             background: transparent;
-            border-left: 4px solid @post-blockquote-left-border-color;
+            border-left: 4px solid @post-blockquote-border-color;
         }
 
         em {
@@ -535,11 +535,11 @@ a {
             font-family: consolas !important;
             vertical-align: middle;
             margin: 0 3px;
-            background: @post-code-bg-color  !important;
+            background: @post-inline-code-bg-color  !important;
             font-size: 14px !important;
             padding: .2em .3em !important;
             border-radius: 3px !important;
-            border: 1px solid @post-code-border-color  !important;
+            border: 1px solid @post-inline-code-border-color  !important;
         }
 
         #BlogPostCategory {
@@ -565,6 +565,74 @@ a {
         }
     }
 
+}
+
+
+.cnblogs_code {
+    background-color: @post-cnblogs-code-bg-color;
+    padding-left: 1em;
+    padding-right: 1em;
+    border: none !important;
+    border-radius: 3px !important;
+    font-family: Lucida Console, Consolas, Monaco, Andale Mono, Ubuntu Mono, monospace !important;
+
+    div {
+        background-color: transparent;
+        color: @post-cnblogs-code-font-color;
+    }
+
+    img {
+        margin: 0 !important;
+    }
+
+    pre {
+        color: @post-cnblogs-code-font-color;
+        font-family: inherit !important;
+
+        span {
+            font-family: inherit !important;
+            color: inherit !important;
+        }
+    }
+
+    textarea {
+        font-family: inherit !important;
+        padding: 5px;
+        border: 1px solid #3e4c42;
+        color: #c5d4ef;
+        background-color: #282c34;
+
+        &:focus {
+            outline: 0;
+        }
+    }
+
+    .code_img_closed,
+    .code_img_opened {
+        display: none !important;
+    }
+
+    .cnblogs_code_toolbar {
+        width: 20px;
+
+        span {
+            padding-right: 0;
+        }
+
+        a:link img {
+            background-color: transparent !important;
+        }
+    }
+
+    .cnblogs_code_collapse {
+        color: @post-cnblogs-code-font-color;
+        border: 1px solid @post-cnblogs-code-font-color + #333;
+        border-radius: 2px;
+        background-color: transparent;
+        display: inline-block;
+        cursor: pointer;
+        padding: 5px 5px 2px 5px;
+    }
 }
 
 .github-corner {
