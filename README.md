@@ -54,7 +54,7 @@
 git clone https://github.com/esofar/cnblogs-theme-silence.git
 cd cnblogs-theme-silence
 ```
-全局安装用的的一些工具：
+全局安装用到的一些工具：
 ```
 npm install less less-plugin-clean-css babel-cli uglify-js -g
 ```
