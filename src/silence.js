@@ -23,6 +23,7 @@
                     level3: 'h4',
                 },
                 signature: {
+                    author: null,
                     enable: false,
                     home: 'https://www.cnblogs.com',
                     license: 'CC BY 4.0',
@@ -185,7 +186,7 @@
             const config = this.defaluts.signature;
             if (config.enable) {
                 const postUrl = $(this.cnblogs.postTitle).attr('href');
-                const authorName = $(this.cnblogs.publicProfile).find('a:eq(0)').html();
+                const authorName = config.author || $(this.cnblogs.publicProfile).find('a:eq(0)').html();
 
                 const content =
                     `<div class="esa-post-signature"> 
