@@ -31,7 +31,7 @@
                 },
                 reward: {
                     enable: false,
-                    title: '我是猴子派来收钱的',
+                    title: 'Buy Me A Coffee',
                     wechat: null,
                     alipay: null,
                 },
@@ -313,7 +313,7 @@
 
             if (config.enable) {
                 let levels = [config.level1, config.level2, config.level3];
-                let $headers = $(this.cnblogs.postBody).find('> ' + levels.join(','));
+                let $headers = $(this.cnblogs.postBody).find(levels.join(','));
 
                 if (!$headers.length) {
                     return false;

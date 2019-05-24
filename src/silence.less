@@ -1,6 +1,6 @@
 // @import "./themes/default.less";
-// @import "./themes/goddess.less";
-@import "./themes/dark.less";
+@import "./themes/goddess.less";
+// @import "./themes/dark.less";
 
 body {
     background: @blog-bg-color;
@@ -43,6 +43,7 @@ a {
 #sidebar_postarchive,
 #sidebar_imagecategory,
 #comments_pager_top,
+#tip_comment2,
 .commentbox_title_left,
 .commentform p {
     display: none;
@@ -187,6 +188,10 @@ a {
         margin-top: 0px;
         font-size: 15px;
         padding-left: 15px;
+
+        #p_b_follow{
+            margin-top: 10px;
+        }
 
         a {
             color: @blog-font-color;
@@ -456,6 +461,13 @@ a {
 
         p {
             margin: 17px auto;
+        }
+
+        hr {
+            border-left: none;
+            border-right: none;
+            border-top: none;
+            border-bottom: 1px solid @blog-border-color;
         }
 
         blockquote {
@@ -820,7 +832,6 @@ a {
     margin-top: 15px;
     border-radius: 3px;
     width: 200px;
-    border: 1px solid @blog-border-color;
 }
 
 .esa-follow-button {
@@ -932,6 +943,10 @@ a {
             text-overflow: ellipsis;
             cursor: pointer;
             color: @post-catalog-font-color;
+
+            code{
+                font-family: inherit;
+            }
 
             a:hover {
                 color: @blog-theme-color;
@@ -1407,6 +1422,28 @@ a {
         &:hover {
             opacity: .7;
         }
+    }
+
+    .comment_my_posted {
+
+        &>img {
+            display: none;
+        }
+
+        &>a b {
+            font-size: 16px;
+            font-weight: 300;
+        }
+    }
+
+    .bq_post_comment {
+        margin-top: 5px;
+        font-size: 13px;
+        display: block;
+        color: @comment-font-color;
+        background-color: @comment-bg-color;
+        border: none;
+        border-radius: 3px;
     }
 }
 
