@@ -109,7 +109,7 @@ https://blog-static.cnblogs.com/files/esofar/silence.min.js
         },
         reward: {
             enable: true,
-            title: '请我喝杯咖啡会写的更来劲哦',
+            title: 'Buy Me A Coffee',
             wechat: 'https://images.cnblogs.com/cnblogs_com/esofar/972540/o_wechat.png',
             alipay: 'https://images.cnblogs.com/cnblogs_com/esofar/972540/o_alipay.png'
         },
@@ -123,7 +123,7 @@ https://blog-static.cnblogs.com/files/esofar/silence.min.js
 </script>
 ```
 
-为了极尽可能满足不同园友的各类需求，对于一些相对的通用功能模块做了开关和参数配置，请注意根据自己的需求确定是否启用。如果确认启用某个功能模块再根据个人信息或写作习惯修改其中的一些参数。
+> 为了极尽可能满足不同园友的各类需求，对于一些相对的通用功能模块做了开关和参数配置，请注意根据自己的需求确定是否启用。如果确认启用某个功能模块再根据个人信息或写作习惯修改其中的一些参数。
 
 具体配置参数说明详见下表：
 <table>
@@ -194,11 +194,17 @@ https://blog-static.cnblogs.com/files/esofar/silence.min.js
             <td>h4</td>
         </tr>
         <tr>
-            <td rowspan="4" align="center">signature（博文签名）</td>
+            <td rowspan="5" align="center">signature（博文签名）</td>
             <td>enable</td>
             <td>是否启用</td>
             <td>Boolean</td>
             <td>false</td>
+        </tr>
+        <tr>
+            <td>auther</td>
+            <td>作者名字</td>
+            <td>String</td>
+            <td>[Blog Nickname]</td>
         </tr>
         <tr>
             <td>home</td>
@@ -254,7 +260,7 @@ https://blog-static.cnblogs.com/files/esofar/silence.min.js
             <td>fill</td>
             <td>背景填充色</td>
             <td>String</td>
-            <td>Current theme color</td>
+            <td>[Silence Theme Color]</td>
         </tr>
         <tr>
             <td>color</td>
