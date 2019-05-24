@@ -1,8 +1,8 @@
-
-
 <div align="center">
 
 <img src="./docs/logo.png" height="150" />
+
+# Silence
 
 [![Cnblogs](https://img.shields.io/badge/latest-v2.0.0-brightgreen.svg)](https://github.com/esofar/cnblogs-theme-silence/releases)
 [![Cnblogs](https://img.shields.io/badge/dependencies-jQuery-blue.svg)](https://www.cnblogs.com)
@@ -11,7 +11,7 @@
 
 </div>
 
-# Silence
+## 介绍
 
 一款专注阅读的博客园主题，主要面向于经常混迹 [博客园](https://www.cnblogs.com/) 的朋友。其追求大道至简的终极真理，界面追求简洁、运行追求高效、部署追求简单。
 
