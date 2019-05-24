@@ -1,6 +1,6 @@
 # 部署文档
 
-> 操作之前请先确保您的博客园账号已正常登陆并已经成功申请开通了 JS 权限。
+> 操作之前请先确保您的博客园账号已正常登陆并且已经成功申请开通了 JS 权限。
 
 ## 主题下载
 
@@ -48,7 +48,7 @@
 
 ## 使用样式
 
-本地打开`./dist/themes`目录，选择一款自己心仪的主题风格代码文件。
+打开`./dist/themes`文件夹，选择一款自己心仪的主题风格代码文件。
 
 ```
 default.min.css         // 简约 · 蓝
@@ -64,7 +64,7 @@ goddess.min.css         // 女神 · 粉
 
 ## 上传脚本
 
-本地打开`./dist`目录，获取主题的 JS 脚本文件`silence.min.js`。
+打开`./dist`文件夹，获取主题的 JS 脚本文件`silence.min.js`。
 
 进入『[文件](https://i.cnblogs.com/Files.aspx)』界面，将该文件上传到自己的博客中。上传完成后，点击文件名便可在浏览器地址栏中获取上传文件的外链，类似如下所示：
 ```
@@ -83,13 +83,14 @@ https://blog-static.cnblogs.com/files/esofar/silence.min.js
 
 ## 使用脚本
 
-进入『[设置](https://i.cnblogs.com/Configure.aspx)』界面，将如下脚本代码引用 **追加** 到「博客侧边栏公告」文本域中。
+为了提高园友的阅读体验，主题在博客园原有功能基础上追加了一些辅助阅读、以及人性化的功能模块。其中部分模块做了参数配置，用户可根据自己意愿选择是否启用。若启用，再根据自己的信息或写作习惯设置相关参数。
+
+进入『[设置](https://i.cnblogs.com/Configure.aspx)』界面，将如下脚本代码引用 **追加** 到「博客侧边栏公告」文本域中，其中配置参数根据下表自行修改。
 
 ```
 <script type="text/javascript">
     $.silence({
-        profile: {
-            enable: true,
+	base: {
             avatar: 'http://images.cnblogs.com/cnblogs_com/esofar/972540/o_avatar.jpg',
             favicon: 'https://files.cnblogs.com/files/esofar/favicon.ico',
         },
@@ -107,25 +108,21 @@ https://blog-static.cnblogs.com/files/esofar/silence.min.js
             license: 'CC BY 4.0',
             link: 'https://creativecommons.org/licenses/by/4.0'
         },
-        reward: {
+        sponsor: {
             enable: true,
-            title: '请我喝杯咖啡会写的更来劲哦',
+            paypal: null,
             wechat: 'https://images.cnblogs.com/cnblogs_com/esofar/972540/o_wechat.png',
             alipay: 'https://images.cnblogs.com/cnblogs_com/esofar/972540/o_alipay.png'
         },
         github: {
             enable: true,
-            color: '#fff',
-            fill: null,
             link: 'https://github.com/esofar'
         }
     });
 </script>
 ```
 
-为了极尽可能满足不同园友的各类需求，对于一些相对的通用功能模块做了开关和参数配置，请注意根据自己的需求确定是否启用。如果确认启用某个功能模块再根据个人信息或写作习惯修改其中的一些参数。
-
-具体配置参数说明详见下表：
+配置参数说明表：
 <table>
     <thead>
         <tr>
@@ -138,15 +135,9 @@ https://blog-static.cnblogs.com/files/esofar/silence.min.js
     </thead>
     <tbody>
         <tr>
-            <td rowspan="3" align="center">profile（博主信息）</td>
-            <td>enable</td>
-            <td>是否启用</td>
-            <td>Boolean</td>
-            <td>false</td>
-        </tr>
-        <tr>
+            <td rowspan="2" align="center">base（基础信息）</td>
             <td>avatar</td>
-            <td>头像</td>
+            <td>博主头像</td>
             <td>String</td>
             <td>null</td>
         </tr>
@@ -194,11 +185,17 @@ https://blog-static.cnblogs.com/files/esofar/silence.min.js
             <td>h4</td>
         </tr>
         <tr>
-            <td rowspan="4" align="center">signature（博文签名）</td>
+            <td rowspan="5" align="center">signature（博文签名）</td>
             <td>enable</td>
             <td>是否启用</td>
             <td>Boolean</td>
             <td>false</td>
+        </tr>
+        <tr>
+            <td>auther</td>
+            <td>作者名字</td>
+            <td>String</td>
+            <td>[Blog Nickname]</td>
         </tr>
         <tr>
             <td>home</td>
@@ -219,27 +216,33 @@ https://blog-static.cnblogs.com/files/esofar/silence.min.js
             <td>https://creativecommons.org/licenses/by/4.0</td>
         </tr>
         <tr>
-            <td rowspan="4" align="center">reward（博文赞赏）</td>
+            <td rowspan="5" align="center">sponsor（博文赞赏）</td>
             <td>enable</td>
             <td>是否启用</td>
             <td>Boolean</td>
             <td>false</td>
         </tr>
         <tr>
-            <td>title</td>
+            <td>text</td>
             <td>标题</td>
+            <td>String</td>
+            <td>Sponsor</td>
+        </tr>
+        <tr>
+            <td>paypal</td>
+            <td>PayPal 收款地址</td>
+            <td>String</td>
+            <td>null</td>
+        </tr>
+         <tr>
+            <td>alipay</td>
+            <td>支付宝收款二维码</td>
             <td>String</td>
             <td>null</td>
         </tr>
         <tr>
             <td>wechat</td>
-            <td>微信二维码</td>
-            <td>String</td>
-            <td>null</td>
-        </tr>
-        <tr>
-            <td>alipay</td>
-            <td>支付宝二维码</td>
+            <td>微信收款二维码</td>
             <td>String</td>
             <td>null</td>
         </tr>
@@ -254,7 +257,7 @@ https://blog-static.cnblogs.com/files/esofar/silence.min.js
             <td>fill</td>
             <td>背景填充色</td>
             <td>String</td>
-            <td>Current theme color</td>
+            <td>[Silence Theme Color]</td>
         </tr>
         <tr>
             <td>color</td>
@@ -275,16 +278,16 @@ https://blog-static.cnblogs.com/files/esofar/silence.min.js
 
 ## 其他配置
 
-进入『[设置](https://i.cnblogs.com/Configure.aspx)』界面，在「标题」文本框中设置博客标题，注意不支持显示「子标题」，在「博客皮肤」处选择博客园官方标准模板 **Custom**，并且把「禁用模板默认CSS」复选框取消勾选，最后点击「保存」按钮。
+进入『[设置](https://i.cnblogs.com/Configure.aspx)』界面，在「标题」文本框中设置博客标题，注意不支持显示「子标题」；在「博客皮肤」处选择博客园官方标准模板 **Custom**；把「禁用模板默认CSS」复选框取消勾选。最后，点击「保存」按钮保存上述 3 步操作。
 
 进入『[选项](https://i.cnblogs.com/Preferences.aspx)』界面，在「控件显示设置」中需要勾选的博客园官方功能模块如下几个：
 
 - 必须要勾选：公告、我的标签、随笔分类、阅读排行榜、推荐排行榜
 - 自定义勾选：博客园链接、首页链接、RSS订阅、联系
 
-其他模块取消勾选(可选操作)，最后点击「SAVE」按钮保存操作。
+其他模块取消勾选(可选操作)。最后，点击「SAVE」按钮保存操作。
 
-至此，本主题部署完毕。
+> 至此，主题部署完成。
 
 ## 写在最后
 

@@ -1,5 +1,5 @@
-// @import "./themes/default.less";
-@import "./themes/goddess.less";
+@import "./themes/default.less";
+// @import "./themes/goddess.less";
 // @import "./themes/dark.less";
 
 body {
@@ -69,7 +69,7 @@ a {
     padding-bottom: 0px;
     display: block;
     height: 60px;
-    z-index: 941112;
+    z-index: 999;
 
     #blogTitle {
         position: relative;
@@ -184,12 +184,15 @@ a {
     min-height: 750px;
     padding: 0px;
 
-    #profile_block {
-        margin-top: 0px;
-        font-size: 15px;
+    #blog-news {
         padding-left: 15px;
+    }
 
-        #p_b_follow{
+    #profile_block {
+        // margin-top: 0px;
+        font-size: 15px;
+
+        #p_b_follow {
             margin-top: 10px;
         }
 
@@ -797,15 +800,6 @@ a {
         background-position: center;
         background-repeat: no-repeat;
 
-        .tips {
-            position: absolute;
-            left: -60px;
-            top: 15px;
-            display: none;
-            color: @blog-theme-color;
-            font-size: 12px;
-        }
-
         &:hover {
             color: @blog-theme-color;
             border-color: @blog-theme-color;
@@ -891,7 +885,7 @@ a {
     right: 1px;
     width: auto;
     height: auto;
-    z-index: 999999;
+    z-index: 1000;
 }
 
 .esa-catalog-title {
@@ -944,7 +938,7 @@ a {
             cursor: pointer;
             color: @post-catalog-font-color;
 
-            code{
+            code {
                 font-family: inherit;
             }
 
@@ -1042,110 +1036,15 @@ a {
     display: inline-block;
 }
 
-/* 赞赏弹出层 */
-
-.esa-reward {
-    display: none;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: auto;
-    height: auto;
-    padding-bottom: 30px;
-    background: #fff;
-    box-shadow: 0 0 0 2000px rgba(0, 0, 0, .65);
-    border-radius: 4px;
-    z-index: 1000000;
-
-    h2 {
-        text-align: center;
-        font-size: 20px;
-        color: @blog-font-color;
-        font-weight: normal;
-        margin: 20px 0 10px 0;
-    }
-
-    p {
-        text-align: center;
-    }
-
-    .esa-reward-container {
-        margin: 0 30px;
-        text-align: center;
-    }
-
-    .wechat,
-    .alipay {
-        position: relative;
-        display: inline-block;
-        width: 200px;
-        height: 200px;
-        padding: 10px;
-        border: 2px solid @blog-theme-color;
-        border-radius: 10px;
-        box-sizing: border-box;
-        margin: 10px;
-
-        &:after {
-            content: '';
-            position: absolute;
-            left: 30px;
-            bottom: -10px;
-            color: @blog-font-color;
-            background: #fff;
-            padding: 0 10px;
-            font-size: 16px;
-            width: auto;
-            text-align: center;
-        }
-
-        img {
-            width: 100%;
-            width: 170px;
-            height: 170px;
-        }
-    }
-
-    .alipay:after {
-        content: '支付宝，扫一扫';
-    }
-
-    .wechat:after {
-        content: '微信，扫一扫';
-    }
-}
-
-.esa-reward-close {
-    position: absolute;
-    font-size: 15px;
-    color: @blog-font-color;
-    top: 7px;
-    right: 10px;
-    cursor: pointer;
-
-    &:hover {
-        transition: all .2s;
-        color: @blog-theme-color;
-    }
-
-    &:active {
-        transition: all .2s;
-        color: @blog-theme-color;
-    }
-}
-
-/* 推荐|收藏|反对|赞赏 */
+/* 推荐|收藏|反对 */
 
 #div_digg {
     position: static;
     float: none;
-    margin: 75px auto;
+    margin: 35px auto 85px auto;
     z-index: -1;
-    width: 370px;
+    width: 200px;
 
-    .favorite,
-    .reward,
     .diggit,
     .buryit {
         background: #FFF;
@@ -1160,28 +1059,6 @@ a {
         padding: 0px 10px;
         border-radius: 5px;
         transition: color .2s linear, background-color .2s linear, border .2s linear, box-shadow .2s linear;
-    }
-
-    .favorite {
-        background-color: #2db7f5;
-        border-color: #2db7f5;
-        margin: 0 5px;
-
-        &:hover {
-            background-color: #57c5f7;
-            border-color: #57c5f7;
-        }
-    }
-
-    .reward {
-        background-color: #e13d13;
-        border-color: #e13d13;
-        margin: 0 5px;
-
-        &:hover {
-            background-color: #f16643;
-            border-color: #f16643;
-        }
     }
 
     .diggit {
@@ -1205,8 +1082,6 @@ a {
     }
 }
 
-#div_digg .favorite .favoritenum,
-#div_digg .reward .rewardnum,
 #div_digg .diggit .diggnum,
 #div_digg .buryit .burynum {
     color: #fffafa;
@@ -1215,16 +1090,6 @@ a {
     position: relative;
     top: 5px;
     width: 65px;
-}
-
-#div_digg .favorite .favoritenum:before {
-    content: '收藏';
-    font-size: 15px;
-}
-
-#div_digg .reward .rewardnum:before {
-    content: '赞赏';
-    font-size: 15px;
 }
 
 #div_digg .diggit .diggnum:before {
@@ -1627,11 +1492,289 @@ a {
         display: grid;
         width: 100%;
 
-        .reward,
         .favorite,
         .diggit,
         .buryit {
             margin: 5px 0px;
+        }
+    }
+}
+
+
+[data-tips] {
+    overflow: hidden;
+}
+
+[data-tips]:hover {
+    overflow: visible;
+}
+
+[data-tips]::before,
+[data-tips]::after {
+    position: absolute;
+    transition: all .3s;
+    transform: translate3d(-50%, 0, 0);
+    opacity: 0;
+    left: 37px;
+    z-index: 10;
+}
+
+[data-tips]::before {
+    content: attr(data-tips);
+    border-radius: 6px;
+    background-color: rgba(100, 100, 100, 0.8);
+    color: #fff;
+    height: 24px;
+    line-height: 24px;
+    padding: 0 6px;
+    font-size: 12px;
+    white-space: nowrap;
+    top: -24px;
+    left: 50%;
+}
+
+[data-tips]::after {
+    content: '';
+    border: 5px solid #333;
+    border-color: rgba(100, 100, 100, 0.8) transparent transparent transparent;
+    top: 0;
+    left: 50%;
+}
+
+[data-tips]:hover::before,
+[data-tips]:hover::after {
+    opacity: 1;
+}
+
+[data-tips]:hover::before,
+[data-tips]:hover::after {
+    transform: translate3d(-50%, -7px, 0);
+}
+
+.esa-sponsor {
+    position: relative;
+    width: 100%;
+    margin-top: 70px;
+    height: 160px;
+
+    .posa {
+        position: absolute;
+    }
+
+    .tr3 {
+        transition: all .3s;
+    }
+
+    .blur {
+        -webkit-filter: blur(3px);
+        filter: blur(3px);
+    }
+
+    .text {
+        position: absolute;
+        left: calc(50% - 120px);
+        top: calc(50% - 60px);
+        font-size: 12px;
+        width: 70px;
+        height: 70px;
+        line-height: 70px;
+        color: #fff;
+        background: #ffd886 url(http://images.cnblogs.com/cnblogs_com/esofar/1504962/o_like.png) no-repeat center 10px;
+        background-size: 20px;
+        border-radius: 35px;
+        text-align: center;
+        z-index: -1;
+        transform: rotatez(-15deg);
+    }
+
+    .github {
+        position: absolute;
+        left: calc(50% + 135px);
+        top: calc(50% - 30px);
+        width: 24px;
+        height: 24px;
+        background: no-repeat center center url(http://images.cnblogs.com/cnblogs_com/esofar/1504962/o_github.png);
+        background-size: contain;
+        opacity: 0.3;
+        transform: rotatez(15deg);
+    }
+
+    .box {
+        left: calc(50% - 150px);
+        top: calc(50% - 15px);
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        width: 299px;
+        height: 28px;
+        float: left;
+        z-index: 1;
+        margin-left: 0;
+
+        li {
+            width: 99px;
+            float: left;
+            margin: 0 !important;
+            text-align: center;
+            border-left: 1px solid #ddd;
+            background: no-repeat center center;
+            background-color: rgba(204, 217, 220, 0.1);
+            background-size: 45px;
+            transition: all .3s;
+            cursor: pointer;
+            overflow: hidden;
+            line-height: 600px;
+            height: 28px;
+            -webkit-filter: grayscale(1);
+            filter: grayscale(1);
+            opacity: 0.5;
+
+            list-style: none;
+            list-style-type: none;
+            margin: 0px;
+            padding: 0px;
+
+            &:hover {
+                background-color: rgba(204, 217, 220, 0.3);
+                -webkit-filter: grayscale(0);
+                filter: grayscale(0);
+                opacity: 1;
+            }
+
+            &:first-child {
+                border-width: 0;
+            }
+
+            a {
+                display: block;
+            }
+        }
+
+        .paypal {
+            background-image: url(http://images.cnblogs.com/cnblogs_com/esofar/1504962/o_paypal.png);
+        }
+
+        .alipay {
+            background-image: url(http://images.cnblogs.com/cnblogs_com/esofar/1504962/o_alipay.png);
+        }
+
+        .wechat {
+            background-image: url(http://images.cnblogs.com/cnblogs_com/esofar/1504962/o_wechat.png);
+        }
+    }
+
+    #QRBox {
+        top: 0;
+        left: 0;
+        z-index: 1;
+        background-color: rgba(255, 255, 255, 0.3);
+        display: none;
+        perspective: 400px;
+        width: 100%;
+        height: 100%;
+
+        #MainBox {
+            cursor: pointer;
+            position: absolute;
+            text-align: center;
+            width: 200px;
+            height: 200px;
+            left: calc(50% - 100px);
+            top: calc(50% - 100px);
+            background: #fff no-repeat center center;
+            background-size: 190px;
+            border-radius: 6px;
+            box-shadow: 0px 2px 7px rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            transition: all 1s ease-in-out;
+            transform-style: preserve-3d;
+            transform-origin: center center;
+            overflow: hidden;
+        }
+    }
+
+    #MainBox.showQR {
+        opacity: 1;
+        animation-name: showQR;
+        animation-duration: 3s;
+        animation-timing-function: ease-in-out;
+        animation-iteration-count: 1;
+        animation-fill-mode: forwards;
+        -webkit-animation: showQR 3s ease-in-out 0s 1 normal forwards;
+    }
+
+    @keyframes showQR {
+        from {
+            transform: rotateX(90deg);
+        }
+
+        8% {
+            opacity: 1;
+            transform: rotateX(-60deg);
+        }
+
+        18% {
+            opacity: 1;
+            transform: rotateX(40deg);
+        }
+
+        34% {
+            opacity: 1;
+            transform: rotateX(-28deg);
+        }
+
+        44% {
+            opacity: 1;
+            transform: rotateX(18deg);
+        }
+
+        58% {
+            opacity: 1;
+            transform: rotateX(-12deg);
+        }
+
+        72% {
+            opacity: 1;
+            transform: rotateX(9deg);
+        }
+
+        88% {
+            opacity: 1;
+            transform: rotateX(-5deg);
+        }
+
+        96% {
+            opacity: 1;
+            transform: rotateX(2deg);
+        }
+
+        to {
+            opacity: 1;
+        }
+    }
+
+    #MainBox.hideQR {
+        opacity: 1;
+        animation-name: hideQR;
+        animation-duration: 0.5s;
+        animation-timing-function: ease-in-out;
+        animation-iteration-count: 1;
+        animation-fill-mode: forwards;
+        -webkit-animation: hideQR 0.5s ease-in-out 0s 1 normal forwards;
+    }
+
+    @keyframes hideQR {
+        from {}
+
+        20%,
+        50% {
+            transform: scale(1.08, 1.08);
+            opacity: 1;
+        }
+
+        to {
+            opacity: 0;
+            transform: rotateZ(40deg) scale(0.6, 0.6);
         }
     }
 }

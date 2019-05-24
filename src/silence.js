@@ -6,11 +6,21 @@
         }
     });
 
+
+    const CDN = {
+        lightbox: {
+            css: 'https://unpkg.com/lightbox2@2.11.1/dist/css/lightbox.min.css',
+            js: 'https://unpkg.com/lightbox2@2.11.1/dist/js/lightbox.min.js',
+        },
+        clipboard: {
+            js: 'https://unpkg.com/clipboard@2.0.0/dist/clipboard.min.js'
+        }
+    };
+
     class Silence {
         constructor() {
             this.defaluts = {
-                profile: {
-                    enable: false,
+                base: {
                     avatar: null,
                     favicon: null,
                 },
@@ -29,9 +39,10 @@
                     license: 'CC BY 4.0',
                     link: 'https://creativecommons.org/licenses/by/4.0'
                 },
-                reward: {
+                sponsor: {
                     enable: false,
-                    title: 'Buy Me A Coffee',
+                    text: null,
+                    paypal: null,
                     wechat: null,
                     alipay: null,
                 },
@@ -43,7 +54,7 @@
                 }
             };
 
-            this.version = '2.0.0';
+            this.version = '2.0.1';
         }
 
         get cnblogs() {
@@ -87,14 +98,13 @@
                 this.goIntoReadingMode();
                 this.buildPostCatalog();
                 this.buildPostCodeCopyBtns();
+                this.buildPostLightbox();
                 this.buildPostSignature();
-                this.buildPostFavoriteBtn();
-                this.buildPostRewardBtn();
+                this.buildPostSponsor();
                 this.buildToolbar();
                 this.buildPostCommentAvatars();
             } else {
                 this.goIntoNormalMode();
-
             }
         }
 
@@ -192,7 +202,7 @@
                     `<div class="esa-post-signature"> 
                     <p>作者：<a href="${config.home}">${authorName}</a></p> 
                     <p>出处：<a href="${postUrl}">${postUrl}</a></p> 
-                    <p>本站使用「<a href="${config.link}"  target="_blank">${config.license}</a>」创作共享协议，转载请在文章明显位置注明作者及出处。</p> 
+                    <p>版权：本站使用「<a href="${config.link}"  target="_blank">${config.license}</a>」创作共享协议，转载请在文章明显位置注明作者及出处。</p> 
                 </div>`;
 
                 $(this.cnblogs.postSignature).html(content).show();
@@ -237,72 +247,73 @@
         }
 
         /**
-         * 构建赞赏按钮
+         * 构建赞赏模块
          */
-        buildPostRewardBtn() {
-            const config = this.defaluts.reward;
-            if (config.enable) {
-                if (!config.wechat && !config.alipay) {
-                    this.showMessage(`Error：微信或支付宝赞赏二维码请至少配置一个`);
-                    return;
-                }
-                let content = `<div class="esa-reward">
-                <div class="esa-reward-close">✕</div>
-                <h2>"${config.title}"</h2>
-                <div class="esa-reward-container">`;
-                if (config.wechat) {
-                    content += `<div class="wechat"><img src="${config.wechat}"></div>`
-                }
-                if (config.alipay) {
-                    content += `<div class="alipay"><img src="${config.alipay}"></div>`;
-                }
-                content += `</div></div>`;
-                $('body').append(content);
+        buildPostSponsor() {
+            const sponsor = this.defaluts.sponsor;
+            const github = this.defaluts.github;
+            const that = this;
+            if (!sponsor.enable) {
+                return;
+            }
 
-                $('.esa-reward-close').on('click', () => {
-                    $(".esa-reward").fadeOut();
+            $('#blog_post_info').prepend(`
+            <div class="esa-sponsor">
+                <a class="github" href="${github.enable ? github.link : 'https://github.com/Kaiyuan/donate-page'}" target="_blank" class="posa tr3" title="Github"></a>
+                <div class="text tr3">${sponsor.text || 'Sponsor'}</div>
+                <ul class="box posa tr3">
+                    <li class="paypal">PayPal</li>
+                    <li class="alipay">AliPay</li>
+                    <li class="wechat">WeChat</li>
+                </ul>
+                <div id="QRBox" class="posa left-100">
+                    <div id="MainBox"></div>
+                </div>
+            </div>`);
+
+            const $sponsor = $('.esa-sponsor');
+            const QRBox = $('#QRBox');
+            const MainBox = $('#MainBox');
+
+            function showQR(QR) {
+                if (QR) {
+                    MainBox.css('background-image', 'url(' + QR + ')');
+                }
+                $sponsor.find('.text, .box, .github').addClass('blur');
+                QRBox.fadeIn(300, function () {
+                    MainBox.addClass('showQR');
                 });
-
-                let builder = () => {
-                    $(this.cnblogs.postDigg).prepend(`<div class="reward"><span class="rewardnum" id="reward_count"></span></div>`);
-                    $(this.cnblogs.postDigg).find('.reward').on('click', () => {
-                        $(".esa-reward").fadeIn();
-                    });
-                };
-
-                if ($(this.cnblogs.postDigg).length) {
-                    builder();
-                } else {
-                    let intervalId = setInterval(() => {
-                        if ($(this.cnblogs.postDigg).length) {
-                            clearInterval(intervalId);
-                            builder();
-                        }
-                    }, 200);
-                }
-            } else {
-                $(this.cnblogs.postDigg).width(300);
             }
-        }
 
-        /**
-         * 构建收藏按钮
-         */
-        buildPostFavoriteBtn() {
-            let builder = () => {
-                $(this.cnblogs.postDigg).prepend(`<div class="favorite" onclick="AddToWz(cb_entryId);return false;"><span class="favoritenum" id="favorite_count"></span></div>`);
-            };
-
-            if ($(this.cnblogs.postDigg).length) {
-                builder();
-            } else {
-                let intervalId = setInterval(() => {
-                    if ($(this.cnblogs.postDigg).length) {
-                        clearInterval(intervalId);
-                        builder();
+            $sponsor.find('.box>li').click(function () {
+                var type = $(this).attr('class');
+                if (type === 'paypal') {
+                    if (!sponsor.paypal) {
+                        return that.showMessage('博主忘记设置 PayPal 收款地址');
                     }
-                }, 200);
-            }
+                    window.open(sponsor.paypal, '_blank');
+                } else if (type === 'alipay') {
+                    if (!sponsor.alipay) {
+                        return that.showMessage('博主忘记设置支付宝收款二维码');
+                    }
+                    showQR(sponsor.alipay);
+                } else if (type === 'wechat') {
+                    if (!sponsor.wechat) {
+                        return that.showMessage('博主忘记设置微信收款二维码');
+                    }
+                    showQR(sponsor.wechat);
+                }
+            });
+
+            MainBox.click(function () {
+                MainBox.removeClass('showQR').addClass('hideQR');
+                setTimeout(function (a) {
+                    QRBox.fadeOut(300, function () {
+                        MainBox.removeClass('hideQR');
+                    });
+                    $sponsor.find('.text, .box, .github').removeClass('blur');
+                }, 600);
+            });
         }
 
         /**
@@ -409,6 +420,7 @@
                         start: false,
                         pois: [0, 0],
                     };
+
                     $('.esa-catalog-title').on('mousedown', function (e) {
                         e.preventDefault();
                         move.start = true;
@@ -417,6 +429,7 @@
                         let poisY = e.clientY - parseFloat(position.top);
                         move.pois = [poisX, poisY];
                     });
+
                     $(document).on('mousemove', (e) => {
                         if (move.start) {
                             let offsetX = e.clientX - move.pois[0];
@@ -460,7 +473,7 @@
                 let fillStyle = config.fill ? `fill:${config.fill};` : '';
                 $('body').append(
                     `<a href="${config.link}" class="github-corner" title="Fork me on GitHub">
-                        <svg width="60" height="60" viewBox="0 0 250 250" style="${fillStyle} color:${config.color}; z-index: 999999; position: fixed; top: 0; border: 0; left: 0; transform: scale(-1, 1);" aria-hidden="true">
+                        <svg width="60" height="60" viewBox="0 0 250 250" style="${fillStyle} color:${config.color}; z-index: 999; position: fixed; top: 0; border: 0; left: 0; transform: scale(-1, 1);" aria-hidden="true">
                             <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
                             <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
                             <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path>
@@ -474,20 +487,17 @@
          */
         buildPostCodeCopyBtns() {
             let $pres = $('.postBody .cnblogs-markdown').find('pre');
-
             if (!$pres.length) {
                 return false;
             }
-
             $.each($pres, (index, pre) => {
                 $(pre).find('code').attr('id', `copy_target_${index}`);
-                $(pre).prepend(`<div class="esa-clipboard-button" data-clipboard-target="#copy_target_${index}" title="复制代码">Copy</div>`);
+                $(pre).prepend(`<div data-tips="复制代码" class="esa-clipboard-button" data-clipboard-target="#copy_target_${index}">Copy</div>`);
             });
-
-            $.getScript(`https://unpkg.com/clipboard@2.0.0/dist/clipboard.min.js`, () => {
+            $.getScript(CDN.clipboard.js, () => {
                 let clipboard = new ClipboardJS('.esa-clipboard-button');
                 clipboard.on('success', (e) => {
-                    this.showMessage('代码已复制到粘贴板中');
+                    this.showMessage('代码已复制');
                     e.clearSelection();
                 });
                 clipboard.on('error', (e) => {
@@ -503,15 +513,15 @@
             const catalog = this.defaluts.catalog;
 
             $('body').append(`<div class="esa-toolbar">
-                <button class="esa-toolbar-gotop"><div class="tips">返回顶部</div></button>
-                <button class="esa-toolbar-contents"><div class="tips">阅读目录</div></button>
-                <button class="esa-toolbar-follow"><div class="tips">关注博主</div></button>
+                <button class="esa-toolbar-gotop" data-tips="返回顶部"></button>
+                <button class="esa-toolbar-contents" data-tips="阅读目录"></button>
+                <button class="esa-toolbar-follow" data-tips="关注博主"></button>
             </div>`);
 
             let $btnGotop = $('.esa-toolbar-gotop');
             let $btnContents = $('.esa-toolbar-contents');
             let $btnFollow = $('.esa-toolbar-follow');
-            
+
             if (catalog.enable) {
                 $btnContents.on('click', () => {
                     let $catalog = $('.esa-catalog-contents');
@@ -520,10 +530,6 @@
                     } else {
                         $catalog.hide();
                     }
-                }).hover(() => {
-                    $btnContents.find('.tips').show();
-                }, () => {
-                    $btnContents.find('.tips').hide();
                 });
             } else {
                 $btnContents.remove();
@@ -531,10 +537,6 @@
 
             $btnGotop.on('click', () => {
                 $(window).scrollTop(0);
-            }).hover(() => {
-                $btnGotop.find('.tips').show();
-            }, () => {
-                $btnGotop.find('.tips').hide();
             });
 
             $(window).scroll(function () {
@@ -552,7 +554,7 @@
                             return login();
                         }
                         if (c_has_follwed) {
-                            return this.showMessage('您已经关注过该博主');
+                            return this.showMessage('您已经关注过该博主啦');
                         }
                         const n = cb_blogUserGuid;
                         $.ajax({
@@ -562,36 +564,43 @@
                             type: "post",
                             contentType: "application/json; charset=utf-8",
                             success: (msg) => {
-                                msg == "未登录" ? login() : (msg == "关注成功" && followByGroup(n, !0));
+                                msg == "未登录" ? login() : (msg == "关注成功，请选择分组" && followByGroup(n, !0));
                                 this.showMessage(msg);
                             }
                         })
                     })
                 })
-            }).hover(() => {
-                $btnFollow.find('.tips').show();
-            }, () => {
-                $btnFollow.find('.tips').hide();
             });
         }
 
         /**
-         * 构建博主信息
+         * 构建博客基础信息
          */
         buildBloggerProfile() {
-            const config = this.defaluts.profile;
+            const base = this.defaluts.base;
 
-            if (!config.enable) {
-                return;
-            }
-
-            if (!this.isPostPage && config.avatar) {
-                $(this.cnblogs.sideBarMain).prepend(`<img class="esa-profile-avatar" src="${config.avatar}" />`);
+            if (!this.isPostPage && base.avatar) {
+                $(this.cnblogs.sideBarMain).prepend(`<img class="esa-profile-avatar" src="${base.avatar}" />`);
             };
-
-            if (config.favicon) {
-                $('head').append(`<link rel="shortcut icon" href="${config.favicon}" type="image/x-icon" />`);
+            if (base.favicon) {
+                $('head').append(`<link rel="shortcut icon" href="${base.favicon}" type="image/x-icon" />`);
             }
+        }
+
+        /**
+         * 构建博文图片灯箱
+         */
+        buildPostLightbox() {
+            $('head').append(`<link rel="stylesheet" href="${CDN.lightbox.css}"/>`);
+            $.getScript(CDN.lightbox.js, () => {
+                $(this.cnblogs.postBody).find('img').wrap(function () {
+                    const src = $(this).attr("src");
+                    const title = $(this).attr("title") || '';
+                    const alt = $(this).attr("alt") || '';
+                    return `<a href="${src}" data-title="${title}" data-alt="${alt}" data-lightbox="roadtrip"></a>`;
+                });
+                $(".code_img_closed, .code_img_opened").unwrap();
+            });
         }
     }
 })(jQuery);

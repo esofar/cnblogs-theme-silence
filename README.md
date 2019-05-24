@@ -4,7 +4,7 @@
 
 # Silence
 
-[![Cnblogs](https://img.shields.io/badge/latest-v2.0.0-brightgreen.svg)](https://github.com/esofar/cnblogs-theme-silence/releases)
+[![Cnblogs](https://img.shields.io/badge/latest-v2.0.1-brightgreen.svg)](https://github.com/esofar/cnblogs-theme-silence/releases)
 [![Cnblogs](https://img.shields.io/badge/dependencies-jQuery-blue.svg)](https://www.cnblogs.com)
 [![GitHub issues](https://img.shields.io/github/issues/esofar/cnblogs-theme-silence.svg)](https://github.com/esofar/cnblogs-theme-silence/issues)
 [![GitHub license](https://img.shields.io/github/license/esofar/cnblogs-theme-silence.svg)](https://github.com/esofar/cnblogs-theme-silence/blob/master/LICENSE)
@@ -46,7 +46,7 @@
 
 ## 扩展
 
-本主题的样式通过 Less 将一些颜色值作为变量抽取出来，通过不同颜色搭配形成了三种不同的主题风格。当然您也可以搭配自己喜欢的色系，编译一套属于自己的主题风格，也非常欢迎有兴趣的园友贡献更多的配色方案。
+主题的样式通过 Less 将一些颜色值作为变量抽取出来，然后通过不同颜色搭配形成了三种不同的主题风格。当然，您也可以搭配自己喜欢的色系，编译一套属于自己的主题风格，也非常欢迎有兴趣的园友参与进来，贡献更多的风格方案。
 
 克隆源码，进入项目目录：
 
@@ -178,11 +178,11 @@ npm install less less-plugin-clean-css babel-cli uglify-js -g
 lessc src/silence.less dist/themes/example.min.css -clean-css
 ```
 
-OK，这样一套自己的主题就搞定了。
+OK，这样一套属于自己的主题样式就搞定了。
 
-如果您需要新增一些交互功能模块，就需要更改`./src/silence.js`脚本文件了，该脚本文件结构非常简单并且有注释。您只要略懂一点 JavaScript 的 ES6 语法就可以很轻松地读懂代码，快速实现自己的定制功能。
+如果您需要新增一些交互功能模块，就需要更改`./src/silence.js`脚本文件了，该脚本文件结构非常简单并且有注释，只要略懂一点 JavaScript 的 ES6 语法就可以很轻松地读懂代码，快速实现自己的定制功能。
 
-定制功能完成后需要通过如下两个命令将脚本文件转义为 ES5 语法，并压缩混淆，输出至`./dist/silence.min.js`：
+定制功能完成后，需要通过如下两个命令将脚本文件转义为 ES5 语法，并压缩混淆，输出至`./dist/silence.min.js`：
 
 ```
 babel src/silence.js -o src/silence.es5.js

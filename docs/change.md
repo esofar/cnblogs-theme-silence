@@ -1,5 +1,10 @@
 # 更新日志
 
+## v2.0.1
+* 基于 [sponsor-page](https://github.com/Kaiyuan/sponsor-page/) 重构博文赞赏模块功能。
+* 基于 [Lightbox2](https://lokeshdhakar.com/projects/lightbox2/) 新增博文图片灯箱功能。
+* 移除自定义收藏按钮，其他部分元素细节调整。
+
 ## v2.0.0
 * 支持多种主题风格。
 * 新增博主信息模块功能。
