@@ -349,9 +349,11 @@
 
                 $.each($headers, (index, header) => {
                     const tagName = $(header)[0].tagName.toLowerCase();
+                    const text = $(header).text();
+
                     let titleIndex = '';
-                    let titleContent = $(header).html();
-                    let title = titleContent;
+                    let titleContent = text;
+
                     if (!config.index) {
                         switch (tagName) {
                             case config.level1:
@@ -383,12 +385,12 @@
                     var idx = eleIds[index];
 
                     catalogContents +=
-                        `<li class="li_${tagName}" title="${title}">
+                        `<li class="li_${tagName}" title="${text}">
                             <i class="${idx}" ></i><a class="esa-anchor-link">${(titleIndex + titleContent)}</a>
                         </li>`;
 
                     $(header).attr('id', `${idx}`)
-                        .html(`<span>${titleContent}</span><a href="#${idx}" class="esa-anchor">#</a>`)
+                        .append(`<a href="#${idx}" class="esa-anchor">#</a>`)
                         .hover(() => {
                             $(header).find('.esa-anchor').css('opacity', 1);
                         }, () => {
