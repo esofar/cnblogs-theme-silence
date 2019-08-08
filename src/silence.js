@@ -601,7 +601,7 @@
                     const alt = $(this).attr("alt") || '';
                     return `<a href="${src}" data-title="${title}" data-alt="${alt}" data-lightbox="roadtrip"></a>`;
                 });
-                $(".code_img_closed, .code_img_opened").unwrap();
+                $(".code_img_closed, .code_img_opened, .cnblogs_code_copy img").unwrap();
             });
         }
     }
