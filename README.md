@@ -26,24 +26,6 @@
 * :green_heart: 提供事无巨细的部署文档。
 * :yellow_heart: 源码结构清晰并且注释完整，方便扩展。
 
-## 风格
-
-<div align="center">
-
-简约 · 蓝
-
-![](./docs/theme_default.png)
-
-暗黑 · 绿
-
-![](./docs/theme_dark.png)
-
-女神 · 粉
-
-![](./docs/theme_goddess.png)
-
-</div> 
-
 ## 开发
 
 > 请先确保您正在使用的机器已经安装 [Node.js](https://nodejs.org) 和 [Git](https://git-scm.com) 客户端。
@@ -57,9 +39,7 @@ npm run build                                                   # 重新构建
 
 ### 自定义功能
 
-如果您想要新增一些个性化的交互功能模块，那么您应该先修改项目`./src/silence.js`脚本文件。您需要在该文件中为将要新增的功能模块添加一些新的方法，然后在入口方法`init()`中的适当位置去调用它们。
-
-该文件代码结构清晰、注释完整，若您具备一定的 Javascript 开发经验，应该可以很容易看明白，这里就不再过多赘述。
+如果您想要新增一些个性化的交互功能模块，那么您应该先修改项目`./src/silence.js`脚本文件。您需要在该文件中为将要新增的功能模块添加一些新的方法，然后在入口方法`init()`中的适当位置去调用它们。该文件代码结构清晰、注释完整，若您具备一定的 Javascript 开发经验，应该可以很容易看明白，这里就不再过多赘述。
 
 如果您想要自定义某些元素的样式或者是新增交互功能模块需要添加新的样式，那么您应该修改项目`./src/themes/*.less`样式文件，`*.less`取决于您选择应用的主题风格，您需要在该文件中编写自定义的样式。在修改之前，建议您先了解 [Less](http://lesscss.org/) 的基础用法。
 
@@ -88,3 +68,21 @@ npm run build                                                   # 重新构建
 ```
 
 最后，在终端中执行`npm run build`命令重新构建项目，新增的主题风格`example`便会被输出至项目`./dist`发布目录。
+
+## 风格
+
+<div align="center">
+
+简约 · 蓝
+
+![](./docs/theme_default.png)
+
+暗黑 · 绿
+
+![](./docs/theme_dark.png)
+
+女神 · 粉
+
+![](./docs/theme_goddess.png)
+
+</div> 
