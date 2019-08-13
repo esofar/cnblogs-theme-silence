@@ -4,7 +4,7 @@
 
 # Silence
 
-[![Cnblogs](https://img.shields.io/badge/latest-v2.0.1-brightgreen.svg)](https://github.com/esofar/cnblogs-theme-silence/releases)
+[![Cnblogs](https://img.shields.io/badge/latest-v2.0.2-brightgreen.svg)](https://github.com/esofar/cnblogs-theme-silence/releases)
 [![Cnblogs](https://img.shields.io/badge/dependencies-jQuery-blue.svg)](https://www.cnblogs.com)
 [![GitHub issues](https://img.shields.io/github/issues/esofar/cnblogs-theme-silence.svg)](https://github.com/esofar/cnblogs-theme-silence/issues)
 [![GitHub license](https://img.shields.io/github/license/esofar/cnblogs-theme-silence.svg)](https://github.com/esofar/cnblogs-theme-silence/blob/master/LICENSE)
@@ -44,150 +44,47 @@
 
 </div> 
 
-## 扩展
+## 开发
 
-主题的样式通过 Less 将一些颜色值作为变量抽取出来，然后通过不同颜色搭配形成了三种不同的主题风格。当然，您也可以搭配自己喜欢的色系，编译一套属于自己的主题风格，也非常欢迎有兴趣的园友参与进来，贡献更多的风格方案。
-
-克隆源码，进入项目目录：
+> 请先确保您正在使用的机器已经安装 [Node.js](https://nodejs.org) 和 [Git](https://git-scm.com) 客户端。
 
 ```
-git clone https://github.com/esofar/cnblogs-theme-silence.git
-cd cnblogs-theme-silence
-```
-全局安装用到的一些工具：
-```
-npm install less less-plugin-clean-css babel-cli uglify-js -g
+git clone https://github.com/esofar/cnblogs-theme-silence.git   # 克隆源码
+cd cnblogs-theme-silence                                        # 进入项目
+npm install                                                     # 安装依赖
+npm run build                                                   # 重新构建
 ```
 
-> 如上操作需要依赖 Node.js 环境和 Git 客户端。
+### 自定义功能
 
-本地打开`./src/themes`目录，新建主题样式文件`example.less`，其至少具备类似如下内容结构：
+如果您想要新增一些个性化的交互功能模块，那么您应该先修改项目`./src/silence.js`脚本文件。您需要在该文件中为将要新增的功能模块添加一些新的方法，然后在入口方法`init()`中的适当位置去调用它们。
 
-```
-@blog-bg-color: #fff;                           // 博客背景颜色
-@blog-theme-color: #FF85B8;                     // 博客主题色
-@blog-border-color: #ffebf2;                    // 博客边框颜色
-@blog-font-color: #61687C;                      // 博客字体颜色
-@blog-title-color: #61687C;                     // 博客标题颜色
-@blog-github-fill-color: #FFC6DE;               // GitHub 角标背景色
+该文件代码结构清晰、注释完整，若您具备一定的 Javascript 开发经验，应该可以很容易看明白，这里就不再过多赘述。
 
-@post-catalog-bg-color: #fffafa;                // 博文目录背景色
-@post-catalog-font-color: #a2a2a2;              // 博文目录字体色
-@post-table-thead-bg-color: #f9f9f9;            // 博文表格标题背景色
-@post-table-border-color: #fbdfeb;              // 博文表格标题边框颜色
-@post-inline-code-bg-color: #fbfbfb;            // 博文行内代码背景色
-@post-inline-code-border-color: #eee;           // 博文行内代码边框颜色
-@post-cnblogs-code-bg-color: #f2f4f5;           // 博文默认代码块背景色
-@post-cnblogs-code-font-color: #656c73;         // 博文默认代码块字体色
-@post-signature-bg-color: #f8f8f8;              // 博文签名背景色
-@post-blockquote-border-color:#FFC6DE;          // 博文引用边框颜色
+如果您想要自定义某些元素的样式或者是新增交互功能模块需要添加新的样式，那么您应该修改项目`./src/themes/*.less`样式文件，`*.less`取决于您选择应用的主题风格，您需要在该文件中编写自定义的样式。在修改之前，建议您先了解 [Less](http://lesscss.org/) 的基础用法。
 
-@comment-font-color: #858ca5;                   // 评论字体色
-@comment-bg-color: #ffecf4;                     // 评论背景色
+若您想要将自定义的样式应用到所有主题风格，建议您直接修改项目`./src/silence.less`公共样式文件，不过在编写样式代码的时候需要考虑各个主题风格的兼容性。
 
-.cnblogs-markdown .hljs {                       // Markdown 编辑器模式代码块样式
-    display: block;
-    color: #333;
-    overflow-x: auto;
-    background: #F2F4F5 !important;
-    border: none !important;
-    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace !important;
-    padding: 1em !important;
-    font-size: 14px !important;
-}
+完成您想做的一切后，在终端中执行`npm run build`命令重新构建项目，该命令会编译、压缩所有风格的样式文件`./src/themes/*.less`和脚本文件`./src/silence.js`，并将结果输出至项目`./dist`发布目录。
 
-.hljs-comment,
-.hljs-meta {
-    color: #969896;
-}
+最后，参考「[部署文档](./docs/deploy.md)」重新安装主题即可。
 
-.hljs-string,
-.hljs-variable,
-.hljs-template-variable,
-.hljs-strong,
-.hljs-emphasis,
-.hljs-quote {
-    color: #df5000;
-}
+### 新增主题风格
 
-.hljs-keyword,
-.hljs-selector-tag,
-.hljs-type {
-    color: #a71d5d;
-}
+如果您不满意官方提供主题风格，那么您可以参考本节内容新增一个自己的主题风格。
 
-.hljs-literal,
-.hljs-symbol,
-.hljs-bullet,
-.hljs-attribute {
-    color: #0086b3;
-}
+首先进入项目`./src/themes`目录，新建一个新的主题风格样式文件，例如：`example.less`，然后在该文件中编写样式代码即可。其代码结构、编写规则请参考 [goddess.less](./src/themes/goddess.less) 文件。
 
-.hljs-section,
-.hljs-name {
-    color: #63a35c;
-}
+样式代码编写完成后，需要在项目工程中配置该文件的编译命令，具体做法如下。
 
-.hljs-tag {
-    color: #333333;
-}
-
-.hljs-title,
-.hljs-attr,
-.hljs-selector-id,
-.hljs-selector-class,
-.hljs-selector-attr,
-.hljs-selector-pseudo {
-    color: #795da3;
-}
-
-.hljs-addition {
-    color: #55a532;
-    background-color: #eaffea;
-}
-
-.hljs-deletion {
-    color: #bd2c00;
-    background-color: #ffecec;
-}
-
-.hljs-link {
-    text-decoration: underline;
-}
-
-// 以上是一些主题必须设置颜色值和样式，可以根据自己的喜好调整。
-// 以下可以参考博客园的 DOM 结构自由发挥写一些自己定制的样式。
-
-...
+打开项目`package.json`文件，找到`scripts`节点，新增一个命令`theme-example`，用来编译样式文件`example.less`：
 
 ```
-
-文件保存后，需要在公共样式文件`silence.less`头部引入主题`example.less`，并注释其他主题的引用。
+"theme-example": "lessc ./src/themes/example.less ./dist/themes/example.min.css -clean-css",
 ```
-// @import "./themes/default.less";
-// @import "./themes/goddess.less";
-// @import "./themes/dark.less";
-@import "./themes/example.less";
-
-...
+然后，在`build`构建命令中追加上述样式文件编译命令`theme-example`：
+```
+... & npm run theme-goddess
 ```
 
-然后通过如下命令将动态样式文件`silence.less`转义为普通样式文件并压缩，输出至`dist/themes/example.min.css`：
-
-```
-lessc src/silence.less dist/themes/example.min.css -clean-css
-```
-
-OK，这样一套属于自己的主题样式就搞定了。
-
-如果您需要新增一些交互功能模块，就需要更改`./src/silence.js`脚本文件了，该脚本文件结构非常简单并且有注释，只要略懂一点 JavaScript 的 ES6 语法就可以很轻松地读懂代码，快速实现自己的定制功能。
-
-定制功能完成后，需要通过如下两个命令将脚本文件转义为 ES5 语法，并压缩混淆，输出至`./dist/silence.min.js`：
-
-```
-babel src/silence.js -o src/silence.es5.js
-uglifyjs src/silence.es5.js -o dist/silence.min.js -c -m
-```
-
-最后，再按照「部署文档」中的步骤重新安装即可。
-
+最后，在终端中执行`npm run build`命令重新构建项目，新增的主题风格`example`便会被输出至项目`./dist`发布目录。

@@ -6,7 +6,6 @@
         }
     });
 
-
     const CDN = {
         lightbox: {
             css: 'https://unpkg.com/lightbox2@2.11.1/dist/css/lightbox.min.css',
@@ -54,7 +53,7 @@
                 }
             };
 
-            this.version = '2.0.1';
+            this.version = '2.0.2';
         }
 
         get cnblogs() {
@@ -95,7 +94,6 @@
             this.buildCopyright();
             this.buildBloggerProfile();
             if (this.isPostPage) {
-                this.goIntoReadingMode();
                 this.buildPostCatalog();
                 this.buildPostCodeCopyBtns();
                 this.buildPostLightbox();
@@ -104,7 +102,7 @@
                 this.buildToolbar();
                 this.buildPostCommentAvatars();
             } else {
-                this.goIntoNormalMode();
+                this.showSideBar();
             }
         }
 
@@ -122,35 +120,15 @@
         }
 
         /**
-         * 进入阅读模式
+         * 显示左侧边栏
          */
-        goIntoReadingMode() {
-            let _that = this;
-            var oldScrollY = 0;
-            let $win = $(window);
-            if ($win.width() > 767) {
-                $win.scroll(function () {
-                    var newScrollY = this.scrollY;
-                    if (newScrollY > oldScrollY) {
-                        $(_that.cnblogs.header).slideUp('fast');
-                    } else {
-                        $(_that.cnblogs.header).slideDown('fast');
-                    }
-                    oldScrollY = this.scrollY;
-                });
-            }
-        }
-
-        /**
-         * 进入正常模式
-         */
-        goIntoNormalMode() {
+        showSideBar() {
             let $win = $(window);
             if ($win.width() > 767) {
                 $(this.cnblogs.forFlow).css({
                     marginLeft: '22em'
                 });
-                $(this.cnblogs.sideBar).fadeIn(500);
+                $(this.cnblogs.sideBar).fadeIn(600);
             }
         }
 
@@ -164,7 +142,7 @@
             let $title = $('head').find('title');
             $title.html($title.html().replace(`${autherName} - 博客园`, `${blogTitle}`));
 
-            // Build a tags button on navbar.
+            // Build a tags button on mobile browser.
             let $navList = $(this.cnblogs.navList);
             $navList.find('li').eq(1).after(`<li><a id="blog_nav_tags" class="menu" href="https://www.cnblogs.com/${currentBlogApp}/tag">标签</a></li>`);
 
@@ -409,7 +387,7 @@
                 $('.esa-anchor-link').on('click', function () {
                     let position = $('#' + ($(this).prev('i').attr('class'))).offset().top;
                     $('html, body').animate({
-                        scrollTop: position
+                        scrollTop: position - 70
                     }, 300);
                 });
 

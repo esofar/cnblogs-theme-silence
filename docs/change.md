@@ -1,5 +1,12 @@
 # 更新日志
 
+## v2.0.2
+* 优化项目工程结构，包括去除全局工具依赖、封装构建命令等。
+* 博文段落字号统一调整为`16px`，加粗字体权重调整为`500`。
+* 博文详细页面移除博客标题动态显隐效果，避免引发界面交互上的一些其他问题。
+* 修复博文标题出现链接导致生成的目录显示异常问题 [#26](https://github.com/esofar/cnblogs-theme-silence/issues/26)。
+* 修复 TinyMCE 编辑器下的博文代码复制按钮点击异常跳转问题 [#31](https://github.com/esofar/cnblogs-theme-silence/issues/31)。
+
 ## v2.0.1
 * 基于 [sponsor-page](https://github.com/Kaiyuan/sponsor-page/) 重构博文赞赏模块功能。
 * 基于 [Lightbox2](https://lokeshdhakar.com/projects/lightbox2/) 新增博文图片灯箱功能。

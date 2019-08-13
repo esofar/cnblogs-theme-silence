@@ -1,11 +1,11 @@
 // @import "./themes/default.less";
 // @import "./themes/goddess.less";
-@import "./themes/dark.less";
+// @import "./themes/dark.less";
 
 body {
     background: @blog-bg-color;
     min-height: 100% !important;
-    color: @blog-font-color  !important;
+    color: @blog-font-color !important;
     font-family: 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif !important;
 }
 
@@ -189,7 +189,7 @@ a {
     }
 
     #profile_block {
-        // margin-top: 0px;
+        margin-top: 10px;
         font-size: 15px;
 
         #p_b_follow {
@@ -402,6 +402,17 @@ a {
 
 /* 博文内容 */
 
+
+.postHeader(@fontSize) {
+    font-size: @fontSize  !important;
+    color: @blog-font-color;
+
+    a:not([class='esa-anchor']) {
+        color: inherit !important;
+        text-decoration: underline;
+    }
+}
+
 .post {
     .postTitle {
         font-size: 20px !important;
@@ -416,9 +427,9 @@ a {
 
     .postBody {
         font-weight: 300;
-        font-size: 15px;
+        font-size: 16px;
         padding: 5px 15px;
-        line-height: 1.7;
+        line-height: 1.75;
         color: @blog-font-color;
         border-bottom: 1px solid @blog-border-color;
 
@@ -433,62 +444,31 @@ a {
         }
 
         h1 {
-            font-size: 21px !important;
-            color: @blog-font-color;
+            .postHeader(21px);
         }
 
         h2 {
-            font-size: 20px !important;
-            color: @blog-font-color;
-
-            a:not([class='esa-anchor']) {
-                color: inherit !important;
-                text-decoration: underline;
-            }
+            .postHeader(20px);
         }
 
         h3 {
-            font-size: 19px !important;
-            color: @blog-font-color;
-
-            a:not([class='esa-anchor']) {
-                color: inherit !important;
-                text-decoration: underline;
-            }
+            .postHeader(19px);
         }
 
         h4 {
-            font-size: 18px !important;
-            color: @blog-font-color;
-
-            a:not([class='esa-anchor']) {
-                color: inherit !important;
-                text-decoration: underline;
-            }
+            .postHeader(18px);
         }
 
         h5 {
-            font-size: 17px !important;
-            color: @blog-font-color;
-
-            a:not([class='esa-anchor']) {
-                color: inherit !important;
-                text-decoration: underline;
-            }
+            .postHeader(17px);
         }
 
         h6 {
-            font-size: 16px !important;
-            color: @blog-font-color;
-
-            a:not([class='esa-anchor']) {
-                color: inherit !important;
-                text-decoration: underline;
-            }
+            .postHeader(16px);
         }
 
         p {
-            margin: 17px auto;
+            line-height: inherit !important;
         }
 
         hr {
@@ -505,6 +485,7 @@ a {
             padding: 0 0 0 10px;
             min-height: 20px;
             background: transparent;
+            line-height: inherit;
             border-left: 4px solid @post-blockquote-border-color;
         }
 
@@ -514,12 +495,13 @@ a {
 
         strong {
             margin: 0 3px;
+            font-weight: 500;
         }
 
         img {
             max-width: 930px !important;
             display: block;
-            margin: 30px auto;
+            margin: 15px auto 30px auto;
             border-radius: 3px;
         }
 
@@ -527,7 +509,7 @@ a {
         ol {
             li {
                 margin: 3px 0px;
-                font-size: 15px;
+                font-size: 16px;
                 color: @blog-font-color;
 
                 p {
@@ -833,15 +815,15 @@ a {
 
     .esa-toolbar-gotop {
         display: none;
-        background-image: data-uri('./images/gotop.png');
+        background-image: data-uri('../images/gotop.png');
     }
 
     .esa-toolbar-contents {
-        background-image: data-uri('./images/contents.png');
+        background-image: data-uri('../images/contents.png');
     }
 
     .esa-toolbar-follow {
-        background-image: data-uri('./images/follow.png');
+        background-image: data-uri('../images/follow.png');
     }
 }
 

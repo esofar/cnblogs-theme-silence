@@ -1,30 +1,32 @@
 {
-  "name": "cnblogs-theme-silence",
-  "version": "1.0.0",
-  "description": "一款专注于阅读的博客园主题",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/esofar/cnblogs-theme-silence.git"
-  },
-  "keywords": [],
-  "author": "Esofar",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/esofar/cnblogs-theme-silence/issues"
-  },
-  "homepage": "https://github.com/esofar/cnblogs-theme-silence#readme",
-  "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-preset-es2015": "^6.24.1",
-    "less": "^3.9.0",
-    "uglify-js": "^3.5.3",
-    "less-plugin-clean-css": "^1.5.1"
-  },
-  "dependencies": {
-
-  }
+    "name": "cnblogs-theme-silence",
+    "version": "2.0.2",
+    "description": "一款专注于阅读的博客园主题",
+    "main": "index.js",
+    "scripts": {
+        "theme-default": "lessc ./src/themes/default.less ./dist/themes/default.min.css -clean-css",
+        "theme-dark": "lessc ./src/themes/dark.less ./dist/themes/dark.min.css -clean-css",
+        "theme-goddess": "lessc ./src/themes/goddess.less ./dist/themes/goddess.min.css -clean-css",
+        "script": "babel src/silence.js -o src/silence.es5.js && uglifyjs src/silence.es5.js -o dist/silence.min.js -c -m",
+        "build": "npm run script & npm run theme-default & npm run theme-dark & npm run theme-goddess"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/esofar/cnblogs-theme-silence.git"
+    },
+    "keywords": [],
+    "author": "Esofar",
+    "license": "TIM",
+    "bugs": {
+        "url": "https://github.com/esofar/cnblogs-theme-silence/issues"
+    },
+    "homepage": "https://github.com/esofar/cnblogs-theme-silence#readme",
+    "devDependencies": {
+        "babel-cli": "^6.26.0",
+        "babel-preset-es2015": "^6.24.1",
+        "less": "^3.9.0",
+        "less-plugin-clean-css": "^1.5.1",
+        "uglify-js": "^3.6.0"
+    },
+    "dependencies": {}
 }
