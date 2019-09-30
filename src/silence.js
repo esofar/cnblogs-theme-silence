@@ -538,7 +538,7 @@
                         }
                         const n = cb_blogUserGuid;
                         $.ajax({
-                            url: "/mvc/Follow/FollowBlogger.aspx",
+                            url: `${getAjaxBaseUrl()}Follow/FollowBlogger.aspx`,
                             data: '{"blogUserGuid":"' + n + '"}',
                             dataType: "text",
                             type: "post",
