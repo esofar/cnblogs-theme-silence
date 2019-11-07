@@ -1,11 +1,7 @@
-// @import "./themes/default.less";
-// @import "./themes/goddess.less";
-// @import "./themes/dark.less";
-
 body {
     background: @blog-bg-color;
     min-height: 100% !important;
-    color: @blog-font-color !important;
+    color: @blog-font-color  !important;
     font-family: 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif !important;
 }
 
@@ -81,7 +77,6 @@ a {
             width: auto;
             margin-left: 0px;
             margin-top: 12px;
-            padding-left: 15px;
 
             a {
                 color: @blog-title-color;
@@ -184,10 +179,6 @@ a {
     min-height: 750px;
     padding: 0px;
 
-    #blog-news {
-        padding-left: 15px;
-    }
-
     #profile_block {
         margin-top: 10px;
         font-size: 15px;
@@ -205,14 +196,15 @@ a {
 .catListTitle {
     position: relative;
     text-align: left;
-    margin-top: 20px;
+    margin-top: 15px;
+    margin-bottom: 15px;
     padding-left: 15px;
     font-size: 20px;
     font-weight: 300;
     border-bottom: none;
 
     &::before {
-        content: '♢';
+        content: '\2662';
         color: @blog-font-color;
         position: absolute;
         top: 1px;
@@ -220,17 +212,18 @@ a {
     }
 }
 
-#sidebar_toptags li,
-#sidebar_categories li {
-    font-size: 15px;
-    height: 40px;
-    margin: 0;
-    padding-left: 15px;
-    padding-right: 15px;
-    line-height: 42px;
+#sidebar_toptags li {
+    font-size: 14px;
+    height: 19px;
+    line-height: 20px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    padding: 5px 8px;
+    border: 1px solid @blog-border-color;
+    margin: 0 6px 6px 0;
+    display: inline-grid;
+    transition: all 0.3s;
 
     a {
         color: @blog-font-color;
@@ -239,27 +232,48 @@ a {
     &:link,
     &:visited,
     &:active {
-        text-decoration: none;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
+        border-color: @blog-border-color;
     }
 
     &:hover {
-        margin-left: 10px;
-        border-radius: 5px;
-        margin: 0 5px;
-        font-size: 17px;
+        border-color: @blog-theme-color;
     }
+}
+
+#sidebar_categories li {
+    font-size: 15px;
+    height: 40px;
+    padding-left: 3px;
+    padding-right: 15px;
+    line-height: 30px;
+    white-space: nowrap;
+    overflow: hidden;
+    transition: all 0.5s;
+    text-overflow: ellipsis;
+    list-style: inside;
+
+    &:hover {
+        margin-left: 10px;
+    }
+
+    a {
+        color: @blog-font-color;
+    }
+
+
 }
 
 #sidebar_topviewedposts li,
 #sidebar_topdiggedposts li {
-    margin: 12px 0;
+    margin: 0px 15px 10px 0px;
     font-size: 15px;
-    padding-left: 15px;
-    padding-right: 15px;
+    padding: 8px 6px;
     text-align: justify;
+    border: 1px solid @blog-border-color;
+
+    &:hover {
+        border: 1px solid @blog-theme-color;
+    }
 
     a {
 
@@ -402,7 +416,6 @@ a {
 
 /* 博文内容 */
 
-
 .postHeader(@fontSize) {
     font-size: @fontSize  !important;
     color: @blog-font-color;
@@ -468,7 +481,7 @@ a {
         }
 
         p {
-            line-height: inherit !important;
+            margin: 13px auto;
         }
 
         hr {
@@ -565,7 +578,7 @@ a {
         }
 
         #BlogPostCategory {
-            font-size: 13px;
+            font-size: 14px;
             margin-bottom: 0px;
 
             a {
@@ -574,7 +587,7 @@ a {
         }
 
         #EntryTag {
-            font-size: 13px;
+            font-size: 14px;
             color: @blog-font-color;
 
             a {
@@ -667,21 +680,15 @@ a {
 
 #footer {
     border-top: 1px solid @blog-border-color;
+    font-size: 13px;
     font-weight: 300;
 
-    div {
-        margin: 5px auto;
+    .esa-copyright {
+        a {
+            color: @blog-font-color;
+        }
     }
 
-    a {
-        color: @blog-font-color;
-    }
-
-    &:after {
-        content: '❤';
-        color: #ef6b6b;
-        font-size: 16px;
-    }
 }
 
 
@@ -707,17 +714,16 @@ a {
         }
 
         tr td a {
-            display: inline-block;
-            font-size: 12px;
-            line-height: 1;
+            display: block;
+            font-size: 14px;
             padding: 5px;
-            margin: 0;
-            width: 100%;
+            font-weight: 300;
+            height: 19px;
+            line-height: 20px;
             text-align: center;
-            border: 1px solid @blog-font-color;
+            border: 1px solid @blog-border-color;
             border-radius: 2px;
             color: @blog-font-color;
-            background-color: transparent;
 
             &:hover {
                 color: @blog-theme-color  !important;
@@ -829,10 +835,9 @@ a {
 
 /* 博主头像 */
 .esa-profile-avatar {
-    margin-left: 15px;
     margin-top: 15px;
     border-radius: 3px;
-    width: 200px;
+    width: 215px;
 }
 
 .esa-follow-button {
@@ -907,7 +912,7 @@ a {
     color: @post-catalog-font-color;
 
     &:before {
-        content: '☲';
+        content: '\2632';
         margin-right: 5px;
     }
 }
@@ -1043,7 +1048,7 @@ a {
     display: inline-block;
 }
 
-/* 推荐|收藏|反对 */
+/* 推荐|反对 */
 
 #div_digg {
     position: static;
@@ -1079,12 +1084,12 @@ a {
     }
 
     .buryit {
-        background-color: #f90;
-        border-color: #f90;
+        background-color: #ed4014;
+        border-color: #ed4014;
 
         &:hover {
-            background-color: #ffad33;
-            border-color: #ffad33;
+            background-color: #f16643;
+            border-color: #f16643;
         }
     }
 }
@@ -1100,13 +1105,13 @@ a {
 }
 
 #div_digg .diggit .diggnum:before {
-    content: '推荐';
+    content: '\63a8\8350';
     font-size: 15px;
     margin-right: 5px;
 }
 
 #div_digg .buryit .burynum:before {
-    content: '反对';
+    content: '\53cd\5bf9';
     font-size: 15px;
     margin-right: 5px;
 }
@@ -1185,7 +1190,6 @@ a {
         border-radius: 3px;
         padding: 8px;
         margin-top: 5px;
-        margin-right: 10px;
         margin-left: 6px;
         font-size: 13px;
         display: block;
@@ -1210,7 +1214,7 @@ a {
 .feedback_area_title {
     border-bottom: 1px solid @blog-border-color;
     margin-bottom: 15px;
-    font-size: 13px;
+    font-size: 20px;
     font-weight: 300;
     padding-left: 0px;
     padding-bottom: 5px;

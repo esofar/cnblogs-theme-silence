@@ -64,7 +64,7 @@ npm run build                                                   # 重新构建
 ```
 然后，在`build`构建命令中追加上述样式文件编译命令`theme-example`：
 ```
-... & npm run theme-goddess
+... & npm run theme-example
 ```
 
 最后，在终端中执行`npm run build`命令重新构建项目，新增的主题风格`example`便会被输出至项目`./dist`发布目录。

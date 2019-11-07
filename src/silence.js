@@ -162,8 +162,7 @@
          */
         buildCopyright() {
             // please don't delete this function.
-            var content = `<div> Powered By <a href="https://www.cnblogs.com" target="_blank">Cnblogs</a> |
-            Theme <a href="https://github.com/esofar/cnblogs-theme-silence" target="_blank">Silence v${this.version}</a></div>`;
+            var content = `<span class="esa-copyright">& Theme <a href="https://github.com/esofar/cnblogs-theme-silence" target="_blank">Silence v${this.version}</a></span>`;
             $(this.cnblogs.footer).append(content);
         }
 
