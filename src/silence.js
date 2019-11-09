@@ -155,6 +155,28 @@
             $('.esa-mobile-menu').on('click', () => {
                 $(this.cnblogs.navigator).fadeToggle(200);
             });
+
+            $(this.cnblogs.navigator).append(`
+                <svg t="1573264861612" class="icon esa-search" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="7386" width="32" height="32" data-spm-anchor-id="a313x.7781069.0.i8">
+                    <path fill="#314659" d="M616.362667 580.608h-23.808l-8.533334-8.128a196.16 196.16 0 1 0-21.098666 21.098667l8.128 8.533333v23.808l150.805333 150.165333 44.8-44.8z m-180.8 0a135.594667 135.594667 0 1 1 135.594666-135.594667 135.402667 135.402667 0 0 1-135.573333 135.594667z" p-id="7387"></path>
+                </svg>`);
+
+            $(this.cnblogs.navigator).append(`
+                <svg t="1573265135257" class="icon esa-search-close" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="15367" width="32" height="32">
+                    <path fill="#314659" d="M515.23600182 491.06853843L378.27564815 354.10818478a17.09155825 17.09155825 0 1 0-24.17885764 24.15606913l136.96035332 136.97174792-136.96035331 136.97174789a17.09155825 17.09155825 0 1 0 24.16746339 24.16746337l136.97174791-136.96035366 136.9717479 136.96035366a17.09155825 17.09155825 0 1 0 24.16746337-24.15606912l-136.96035366-136.98314215 136.96035366-136.96035367a17.09155825 17.09155825 0 1 0-24.16746337-24.16746337l-136.96035366 136.96035364z" p-id="15368"></path>
+                </svg>`);
+
+            $('.esa-search').on('click', () => {
+                $('#sidebar_search_box').slideDown();
+                $('.esa-search-close').show();
+                $('.esa-search').hide();
+            }).find('path').attr('fill', $('body').css('color'));
+
+            $('.esa-search-close').on('click', () => {
+                $('#sidebar_search_box').slideUp();
+                $('.esa-search-close').hide();
+                $('.esa-search').show();
+            }).find('path').attr('fill', $('body').css('color'));
         }
 
         /**

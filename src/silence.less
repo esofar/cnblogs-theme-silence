@@ -19,7 +19,7 @@ a {
 .blogStats,
 .dayTitle,
 .c_ad_block,
-#sidebar_search,
+#sidebar_search .catListTitle,
 #ad_t2,
 #ad_c1,
 #ad_c2,
@@ -191,6 +191,48 @@ a {
             color: @blog-font-color;
         }
     }
+
+    #sidebar_search_box {
+        display: none;
+        position: fixed;
+        top: 61px;
+        height: 60px;
+        background-color: #fff;
+        width: 960px;
+        text-align: center;
+        opacity: .95;
+        border-bottom: 1px @blog-border-color solid;
+        z-index: 999;
+
+        .div_my_zzk{
+            margin-top: 13px;
+        }
+
+        .input_my_zzk {
+            color: @blog-font-color;
+            border: solid 1px @blog-border-color;
+            width: 45%;
+            height: 32px;
+            padding: 0px 7px;
+            border-right: none;
+            font-size: 16px;
+            font-weight: 300;
+            border-radius: 2px 0 0 2px;
+            outline: none;
+            background-color: #fff;
+        }
+
+        .btn_my_zzk {
+            height: 34px;
+            margin-left: -5px;
+            background-color: @blog-theme-color;
+            border: none;
+            color: #fff;
+            cursor: pointer;
+            width: 70px;
+            outline: none;
+        }
+    }
 }
 
 .catListTitle {
@@ -224,6 +266,7 @@ a {
     margin: 0 6px 6px 0;
     display: inline-grid;
     transition: all 0.3s;
+    border-radius: 2px;
 
     a {
         color: @blog-font-color;
@@ -271,6 +314,7 @@ a {
     transition: all .3s;
     text-align: justify;
     border: 1px solid @blog-border-color;
+    border-radius: 2px;
 
     &:hover {
         border: 1px solid @blog-theme-color;
@@ -750,9 +794,7 @@ a {
     a {
         padding: 3px 7px;
         border: 1px solid @blog-font-color;
-        ;
-        border-radius: 4px;
-        font-family: Monospaced Number;
+        border-radius: 2px;
         margin: 0 3px;
         text-decoration: none;
         color: inherit;
@@ -775,6 +817,17 @@ a {
     background-color: @blog-theme-color;
 }
 
+.esa-search{
+    display: block;
+    padding: 14px 0;
+    cursor: pointer;
+}
+
+.esa-search-close{
+    display: none;
+    padding: 14px 0;
+    cursor: pointer;
+}
 /* 代码复制 */
 
 .esa-clipboard-button {
@@ -1681,7 +1734,6 @@ a {
         top: 0;
         left: 0;
         z-index: 1;
-        background-color: rgba(255, 255, 255, 0.3);
         display: none;
         perspective: 400px;
         width: 100%;
