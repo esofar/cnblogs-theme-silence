@@ -196,17 +196,14 @@ a {
         display: none;
         position: fixed;
         top: 61px;
-        height: 60px;
+        height: auto;
+        padding: 10px 0px;
         background-color: #fff;
         width: 960px;
         text-align: center;
         opacity: .95;
         border-bottom: 1px @blog-border-color solid;
         z-index: 999;
-
-        .div_my_zzk{
-            margin-top: 13px;
-        }
 
         .input_my_zzk {
             color: @blog-font-color;
@@ -229,7 +226,7 @@ a {
             border: none;
             color: #fff;
             cursor: pointer;
-            width: 70px;
+            width: 75px;
             outline: none;
         }
     }
@@ -346,15 +343,15 @@ a {
     margin-top: 15px;
 }
 
-/* 标签列表 */
+/* 随笔列表 */
 #myposts {
     margin-left: 0px;
 
     .PostList {
-        font-size: 13px;
+        font-size: 14px;
         font-weight: 300;
         border-bottom: 1px solid @blog-border-color;
-        padding: 6px 0px 10px 0px;
+        padding: 5px 0px 9px 0px;
         margin-right: 0px;
     }
 
@@ -560,8 +557,8 @@ a {
             max-width: 930px !important;
             display: block;
             margin: 15px auto 30px auto;
-            box-shadow: 0px 0px 10px #c4c4c4;
             border-radius: 3px;
+            box-shadow: 0 1px 15px rgba(27, 31, 35, .15), 0 0 1px rgba(106, 115, 125, .35);
         }
 
         ul,
@@ -817,17 +814,18 @@ a {
     background-color: @blog-theme-color;
 }
 
-.esa-search{
+.esa-search {
     display: block;
     padding: 14px 0;
     cursor: pointer;
 }
 
-.esa-search-close{
+.esa-search-close {
     display: none;
     padding: 14px 0;
     cursor: pointer;
 }
+
 /* 代码复制 */
 
 .esa-clipboard-button {

@@ -89,7 +89,7 @@
             if (options) {
                 $.extend(true, this.defaluts, options);
             }
-            this.buildCustomElements();
+            this.buildCustomNavigator();
             this.buildGithubCorner();
             this.buildCopyright();
             this.buildBloggerProfile();
@@ -133,14 +133,9 @@
         }
 
         /**
-         * 构建自定义 DOM 元素
+         * 构建自定义导航栏。
          */
-        buildCustomElements() {
-            // Change page title.
-            const blogTitle = $(this.cnblogs.blogTitle).find('h1 a').html();
-            const autherName = $(this.cnblogs.publicProfile).find('a:eq(0)').html();
-            let $title = $('head').find('title');
-            $title.html($title.html().replace(`${autherName} - 博客园`, `${blogTitle}`));
+        buildCustomNavigator() {
 
             // Build a tags button on mobile browser.
             let $navList = $(this.cnblogs.navList);
@@ -166,17 +161,24 @@
                     <path fill="#314659" d="M515.23600182 491.06853843L378.27564815 354.10818478a17.09155825 17.09155825 0 1 0-24.17885764 24.15606913l136.96035332 136.97174792-136.96035331 136.97174789a17.09155825 17.09155825 0 1 0 24.16746339 24.16746337l136.97174791-136.96035366 136.9717479 136.96035366a17.09155825 17.09155825 0 1 0 24.16746337-24.15606912l-136.96035366-136.98314215 136.96035366-136.96035367a17.09155825 17.09155825 0 1 0-24.16746337-24.16746337l-136.96035366 136.96035364z" p-id="15368"></path>
                 </svg>`);
 
-            $('.esa-search').on('click', () => {
-                $('#sidebar_search_box').slideDown();
-                $('.esa-search-close').show();
-                $('.esa-search').hide();
-            }).find('path').attr('fill', $('body').css('color'));
+            var $searchBox = $('#sidebar_search_box');
+            var $search = $('.esa-search');
+            var $searchClose = $('.esa-search-close');
+            var themeColor = $('body').css('color');
 
-            $('.esa-search-close').on('click', () => {
-                $('#sidebar_search_box').slideUp();
-                $('.esa-search-close').hide();
-                $('.esa-search').show();
-            }).find('path').attr('fill', $('body').css('color'));
+            $search.on('click', () => {
+                $searchBox.slideDown();
+                $searchClose.show();
+                $search.hide();
+            }).find('path').attr('fill', themeColor);
+
+            $searchClose.on('click', () => {
+                $searchBox.slideUp();
+                $searchClose.hide();
+                $search.show();
+            }).find('path').attr('fill', themeColor);
+
+            $searchBox.find('.input_my_zzk').attr('placeholder', '请输入搜索关键字');
         }
 
         /**
