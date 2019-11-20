@@ -151,8 +151,15 @@
                 $(this.cnblogs.navigator).fadeToggle(200);
             });
 
+            $(this.cnblogs.header).append(`
+                <div class="esa-search-box">
+                    <div class="div_my_zzk">
+                        <input type="text" id="q" onkeydown="return zzk_go_enter(event);" class="input_my_zzk" placeholder="Type to Search">&nbsp;<input onclick="zzk_go()" type="button" value="搜 索" id="btnZzk" class="btn_my_zzk">
+                    </div>
+                </div>`);
+
             $(this.cnblogs.navigator).append(`
-                <svg t="1573264861612" class="icon esa-search" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="7386" width="32" height="32" data-spm-anchor-id="a313x.7781069.0.i8">
+                <svg t="1573264861612" class="icon esa-search-btn" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="7386" width="32" height="32" data-spm-anchor-id="a313x.7781069.0.i8">
                     <path fill="#314659" d="M616.362667 580.608h-23.808l-8.533334-8.128a196.16 196.16 0 1 0-21.098666 21.098667l8.128 8.533333v23.808l150.805333 150.165333 44.8-44.8z m-180.8 0a135.594667 135.594667 0 1 1 135.594666-135.594667 135.402667 135.402667 0 0 1-135.573333 135.594667z" p-id="7387"></path>
                 </svg>`);
 
@@ -161,24 +168,22 @@
                     <path fill="#314659" d="M515.23600182 491.06853843L378.27564815 354.10818478a17.09155825 17.09155825 0 1 0-24.17885764 24.15606913l136.96035332 136.97174792-136.96035331 136.97174789a17.09155825 17.09155825 0 1 0 24.16746339 24.16746337l136.97174791-136.96035366 136.9717479 136.96035366a17.09155825 17.09155825 0 1 0 24.16746337-24.15606912l-136.96035366-136.98314215 136.96035366-136.96035367a17.09155825 17.09155825 0 1 0-24.16746337-24.16746337l-136.96035366 136.96035364z" p-id="15368"></path>
                 </svg>`);
 
-            var $searchBox = $('#sidebar_search_box');
-            var $search = $('.esa-search');
+            var $searchBox = $('.esa-search-box');
+            var $search = $('.esa-search-btn');
             var $searchClose = $('.esa-search-close');
             var themeColor = $('body').css('color');
 
             $search.on('click', () => {
-                $searchBox.slideDown();
+                $searchBox.slideDown('fast');
                 $searchClose.show();
                 $search.hide();
             }).find('path').attr('fill', themeColor);
 
             $searchClose.on('click', () => {
-                $searchBox.slideUp();
+                $searchBox.slideUp('fast');
                 $searchClose.hide();
                 $search.show();
             }).find('path').attr('fill', themeColor);
-
-            $searchBox.find('.input_my_zzk').attr('placeholder', '请输入搜索关键字');
         }
 
         /**
@@ -259,18 +264,18 @@
             }
 
             $('#blog_post_info').prepend(`
-            <div class="esa-sponsor">
-                <a class="github" href="${github.enable ? github.link : 'https://github.com/Kaiyuan/donate-page'}" target="_blank" class="posa tr3" title="Github"></a>
-                <div class="text tr3">${sponsor.text || 'Sponsor'}</div>
-                <ul class="box posa tr3">
-                    <li class="paypal">PayPal</li>
-                    <li class="alipay">AliPay</li>
-                    <li class="wechat">WeChat</li>
-                </ul>
-                <div id="QRBox" class="posa left-100">
-                    <div id="MainBox"></div>
-                </div>
-            </div>`);
+                <div class="esa-sponsor">
+                    <a class="github" href="${github.enable ? github.link : 'https://github.com/Kaiyuan/donate-page'}" target="_blank" class="posa tr3" title="Github"></a>
+                    <div class="text tr3">${sponsor.text || 'Sponsor'}</div>
+                    <ul class="box posa tr3">
+                        <li class="paypal">PayPal</li>
+                        <li class="alipay">AliPay</li>
+                        <li class="wechat">WeChat</li>
+                    </ul>
+                    <div id="QRBox" class="posa left-100">
+                        <div id="MainBox"></div>
+                    </div>
+                </div>`);
 
             const $sponsor = $('.esa-sponsor');
             const QRBox = $('#QRBox');

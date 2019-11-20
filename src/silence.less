@@ -1,6 +1,7 @@
 body {
     background: @blog-bg-color;
-    min-height: 100% !important;
+    min-height: 100%;
+    height: 100%;
     color: @blog-font-color  !important;
     font-family: 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif !important;
 }
@@ -13,8 +14,6 @@ a {
         text-decoration: none !important;
     }
 }
-
-/* 隐藏 DOM */
 
 .blogStats,
 .dayTitle,
@@ -31,6 +30,7 @@ a {
 #green_channel,
 #blogTitle h2,
 #blogCalendar,
+#sidebar_search,
 #sidebar_shortcut,
 #sidebar_recentposts,
 #sidebar_scorerank,
@@ -47,9 +47,8 @@ a {
 
 #home {
     width: 100%;
+    height: 100%;
 }
-
-/* 页头 */
 
 #header {
     width: 960px;
@@ -150,7 +149,7 @@ a {
 #main {
     width: 960px;
     margin: 0 auto;
-    min-height: 750px;
+    min-height: calc(100% - 135px);
     padding: 70px 10px 0px 10px;
     animation-name: fadeIn;
     animation-duration: 1s;
@@ -189,45 +188,6 @@ a {
 
         a {
             color: @blog-font-color;
-        }
-    }
-
-    #sidebar_search_box {
-        display: none;
-        position: fixed;
-        top: 61px;
-        height: auto;
-        padding: 10px 0px;
-        background-color: #fff;
-        width: 960px;
-        text-align: center;
-        opacity: .95;
-        border-bottom: 1px @blog-border-color solid;
-        z-index: 999;
-
-        .input_my_zzk {
-            color: @blog-font-color;
-            border: solid 1px @blog-border-color;
-            width: 45%;
-            height: 32px;
-            padding: 0px 7px;
-            border-right: none;
-            font-size: 16px;
-            font-weight: 300;
-            border-radius: 2px 0 0 2px;
-            outline: none;
-            background-color: #fff;
-        }
-
-        .btn_my_zzk {
-            height: 34px;
-            margin-left: -5px;
-            background-color: @blog-theme-color;
-            border: none;
-            color: #fff;
-            cursor: pointer;
-            width: 75px;
-            outline: none;
         }
     }
 }
@@ -719,21 +679,19 @@ a {
     }
 }
 
-/* 页脚 */
-
 #footer {
     border-top: 1px solid @blog-border-color;
     font-size: 13px;
     font-weight: 300;
+    margin: 10px 0px 0px 0px;
+    padding: 10px 0px;
 
     .esa-copyright {
         a {
             color: @blog-font-color;
         }
     }
-
 }
-
 
 .cnblogs-markdown pre {
     white-space: pre !important;
@@ -812,18 +770,6 @@ a {
     margin: 0 3px;
     text-decoration: none;
     background-color: @blog-theme-color;
-}
-
-.esa-search {
-    display: block;
-    padding: 14px 0;
-    cursor: pointer;
-}
-
-.esa-search-close {
-    display: none;
-    padding: 14px 0;
-    cursor: pointer;
 }
 
 /* 代码复制 */
@@ -939,6 +885,57 @@ a {
         content: '\2630';
         font-size: 1.5em;
         font-family: 'fontello';
+    }
+}
+
+.esa-search-btn {
+    display: block;
+    padding: 14px 0;
+    cursor: pointer;
+}
+
+.esa-search-close {
+    display: none;
+    padding: 14px 0;
+    cursor: pointer;
+}
+
+.esa-search-box {
+    display: none;
+    position: fixed;
+    top: 61px;
+    height: auto;
+    padding: 10px 0px;
+    background-color: #fff;
+    width: 960px;
+    text-align: center;
+    opacity: .95;
+    border-bottom: 1px @blog-border-color solid;
+    z-index: 999;
+
+    .input_my_zzk {
+        color: @blog-font-color;
+        border: solid 1px @blog-border-color;
+        width: 45%;
+        height: 32px;
+        padding: 0px 7px;
+        border-right: none;
+        font-size: 16px;
+        font-weight: 300;
+        border-radius: 2px 0 0 2px;
+        outline: none;
+        background-color: #fff;
+    }
+
+    .btn_my_zzk {
+        height: 34px;
+        margin-left: -5px;
+        background-color: @blog-theme-color;
+        border: none;
+        color: #fff;
+        cursor: pointer;
+        width: 75px;
+        outline: none;
     }
 }
 
