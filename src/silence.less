@@ -96,7 +96,7 @@ a {
     #navList {
         height: inherit;
 
-        li {
+        &>li {
             position: relative;
 
             &:hover i {
@@ -104,11 +104,31 @@ a {
                 left: 0;
             }
 
-            #blog_nav_tags {
-                display: none;
+            &>a {
+
+                &:link,
+                &:visited,
+                &:active {
+                    font-size: 16px;
+                    padding-top: 0px;
+                    border-right: 0px;
+                    color: @blog-font-color;
+                    display: block;
+                    font-weight: 300;
+                    width: auto;
+                    padding: 20px 16px;
+                    height: inherit;
+                    -webkit-transition: all .3s;
+                    transition: all .3s;
+                }
+
+                &:hover {
+                    background: transparent;
+                }
+
             }
 
-            i {
+            &>i {
                 width: 0;
                 height: 4px;
                 background-color: @blog-theme-color;
@@ -120,25 +140,38 @@ a {
             }
         }
 
-        a {
+        .open {
+            transform: rotate(180deg) scaleX(-1);
+        }
 
-            &:link,
-            &:visited,
-            &:active {
-                font-size: 16px;
-                padding-top: 0px;
-                border-right: 0px;
-                color: @blog-font-color;
-                display: block;
-                font-weight: 300;
-                padding: 20px 0;
-                height: inherit;
-                -webkit-transition: all .3s;
-                transition: all .3s;
-            }
+        .esa-sub-navs {
+            background-color: @blog-bg-color;
+            position: absolute;
+            width: 130px;
+            top: 65px;
+            left: calc(50% - 65px);
+            border-radius: 3px;
+            box-shadow: 0 1px 15px rgba(27, 31, 35, 0.15);
+            display: none;
 
-            &:hover {
-                background: transparent;
+            li {
+                float: none;
+
+                a {
+                    font-size: 15px;
+                    border-right: 0;
+                    color: #314659;
+                    display: block;
+                    width: 100%;
+                    font-weight: 300;
+                    padding: 10px 0px;
+                    height: inherit;
+
+                    &:hover {
+                        background: transparent;
+                        color: @blog-theme-color;
+                    }
+                }
             }
         }
     }
@@ -176,7 +209,7 @@ a {
     font-weight: 300;
     display: none;
     min-height: 750px;
-    padding: 0px;
+    padding: 0px 15px 0px 0px;
 
     #profile_block {
         margin-top: 10px;
@@ -195,8 +228,7 @@ a {
 .catListTitle {
     position: relative;
     text-align: left;
-    margin-top: 15px;
-    margin-bottom: 15px;
+    margin: 15px 0px;
     padding-left: 15px;
     font-size: 20px;
     font-weight: 300;
@@ -244,7 +276,6 @@ a {
     font-size: 15px;
     height: 40px;
     padding-left: 3px;
-    padding-right: 15px;
     line-height: 30px;
     white-space: nowrap;
     overflow: hidden;
@@ -265,17 +296,11 @@ a {
 
 #sidebar_topviewedposts li,
 #sidebar_topdiggedposts li {
-    margin: 0px 15px 10px 0px;
     font-size: 15px;
-    padding: 8px 6px;
+    padding: 10px 0px;
     transition: all .3s;
     text-align: justify;
-    border: 1px solid @blog-border-color;
-    border-radius: 2px;
-
-    &:hover {
-        border: 1px solid @blog-theme-color;
-    }
+    border-bottom: 1px solid @blog-border-color;
 
     a {
 
@@ -410,9 +435,10 @@ a {
 }
 
 .entrylistDescription {
-    text-align: left;
     color: @blog-font-color;
     font-size: 13px;
+    font-weight: 300;
+    padding-right: 0px;
 }
 
 
@@ -836,7 +862,7 @@ a {
 .esa-profile-avatar {
     margin-top: 15px;
     border-radius: 3px;
-    width: 215px;
+    width: 100%;
 }
 
 .esa-follow-button {
@@ -906,10 +932,9 @@ a {
     top: 61px;
     height: auto;
     padding: 10px 0px;
-    background-color: #fff;
+    background-color: @blog-bg-color;
     width: 960px;
     text-align: center;
-    opacity: .95;
     border-bottom: 1px @blog-border-color solid;
     z-index: 999;
 

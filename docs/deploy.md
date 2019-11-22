@@ -90,10 +90,32 @@ https://blog-static.cnblogs.com/files/esofar/silence.min.js
 ```
 <script type="text/javascript">
     $.silence({
-	base: {
-            avatar: 'http://images.cnblogs.com/cnblogs_com/esofar/972540/o_avatar.jpg',
-            favicon: 'https://files.cnblogs.com/files/esofar/favicon.ico',
-        },
+        avatar: 'http://images.cnblogs.com/cnblogs_com/esofar/972540/o_avatar.jpg',
+        favicon: 'https://files.cnblogs.com/files/esofar/favicon.ico',
+        navigation: [
+            {
+                itle: '标签',
+                url: 'https://www.cnblogs.com/esofar/tag/'
+            },
+            {
+                title: '归档',
+                url: 'https://www.cnblogs.com/esofar/p/'
+            },
+            {
+                title: '导航',
+                url: 'https://www.cnblogs.com/esofar/p/',
+                chilren: [
+                    {
+                        title: '谷歌',
+                        url: 'https://www.google.com/',
+                    },
+                    {
+                        title: '百度',
+                        url: 'https://www.baidu.com/',
+                    },
+                ]
+            },
+        ],
         catalog: {
             enable: true,
             move: true,
@@ -135,7 +157,7 @@ https://blog-static.cnblogs.com/files/esofar/silence.min.js
     </thead>
     <tbody>
         <tr>
-            <td rowspan="2" align="center">base（基础信息）</td>
+            <td rowspan="3" align="center">公共模块</td>
             <td>avatar</td>
             <td>博主头像</td>
             <td>String</td>
@@ -145,6 +167,12 @@ https://blog-static.cnblogs.com/files/esofar/silence.min.js
             <td>favicon</td>
             <td>网页标题图标</td>
             <td>String</td>
+            <td>null</td>
+        </tr>
+        <tr>
+            <td>navigation</td>
+            <td>自定义导航</td>
+            <td>Array</td>
             <td>null</td>
         </tr>
         <tr>
@@ -189,31 +217,31 @@ https://blog-static.cnblogs.com/files/esofar/silence.min.js
             <td>enable</td>
             <td>是否启用</td>
             <td>Boolean</td>
-            <td>false</td>
+            <td>true</td>
         </tr>
         <tr>
             <td>auther</td>
             <td>作者名字</td>
             <td>String</td>
-            <td>[Blog Nickname]</td>
-        </tr>
-        <tr>
-            <td>home</td>
-            <td>作者主页</td>
-            <td>String</td>
-            <td>https://www.cnblogs.com</td>
+            <td>[Cnblogs Nickname]</td>
         </tr>
         <tr>
             <td>license</td>
-            <td>许可证名称</td>
+            <td>知识共享许可协议名称</td>
             <td>String</td>
-            <td>CC BY 4.0</td>
+            <td>署名-非商业性使用-相同方式共享 4.0 国际</td>
         </tr>
         <tr>
             <td>link</td>
-            <td>许可证链接</td>
+            <td>知识共享许可协议链接</td>
             <td>String</td>
-            <td>https://creativecommons.org/licenses/by/4.0</td>
+            <td>https://creativecommons.org/licenses/by-nc-sa/4.0/</td>
+        </tr>
+        <tr>
+            <td>remark</td>
+            <td>其他备注</td>
+            <td>String</td>
+            <td>null</td>
         </tr>
         <tr>
             <td rowspan="5" align="center">sponsor（博文赞赏）</td>
