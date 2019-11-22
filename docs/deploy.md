@@ -103,7 +103,6 @@ https://blog-static.cnblogs.com/files/esofar/silence.min.js
             },
             {
                 title: '导航',
-                url: 'https://www.cnblogs.com/esofar/p/',
                 chilren: [
                     {
                         title: '谷歌',
