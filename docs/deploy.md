@@ -137,7 +137,8 @@ https://blog-static.cnblogs.com/files/esofar/silence.min.js
         },
         github: {
             enable: true,
-            link: 'https://github.com/esofar'
+            link: 'https://github.com/esofar',
+	    target: '_self'
         }
     });
 </script>
@@ -274,7 +275,7 @@ https://blog-static.cnblogs.com/files/esofar/silence.min.js
             <td>null</td>
         </tr>
         <tr>
-            <td rowspan="4" align="center">github（GitHub Corners）</td>
+            <td rowspan="5" align="center">github（GitHub Corners）</td>
             <td>enable</td>
             <td>是否启用</td>
             <td>Boolean</td>
@@ -297,6 +298,12 @@ https://blog-static.cnblogs.com/files/esofar/silence.min.js
             <td>Github 链接</td>
             <td>String</td>
             <td>null</td>
+        </tr>
+	<tr>
+            <td>target</td>
+            <td>Github 打开方式</td>
+            <td>String</td>
+            <td>_self</td>
         </tr>
     </tbody>
 </table>
