@@ -94,7 +94,7 @@ https://blog-static.cnblogs.com/files/esofar/silence.min.js
         favicon: 'https://files.cnblogs.com/files/esofar/favicon.ico',
         navigation: [
             {
-                itle: '标签',
+                title: '标签',
                 url: 'https://www.cnblogs.com/esofar/tag/'
             },
             {
@@ -125,9 +125,9 @@ https://blog-static.cnblogs.com/files/esofar/silence.min.js
         },
         signature: {
             enable: true,
-            home: 'http://blog.esofar.cn',
-            license: 'CC BY 4.0',
-            link: 'https://creativecommons.org/licenses/by/4.0'
+            license: '署名-非商业性使用-相同方式共享 4.0 国际',
+            link: 'https://creativecommons.org/licenses/by-nc-sa/4.0/',
+            remark: null
         },
         sponsor: {
             enable: true,
@@ -137,7 +137,8 @@ https://blog-static.cnblogs.com/files/esofar/silence.min.js
         },
         github: {
             enable: true,
-            link: 'https://github.com/esofar'
+            link: 'https://github.com/esofar',
+	    target: '_self'
         }
     });
 </script>
@@ -226,13 +227,13 @@ https://blog-static.cnblogs.com/files/esofar/silence.min.js
         </tr>
         <tr>
             <td>license</td>
-            <td>知识共享许可协议名称</td>
+            <td>共享许可协议名称</td>
             <td>String</td>
             <td>署名-非商业性使用-相同方式共享 4.0 国际</td>
         </tr>
         <tr>
             <td>link</td>
-            <td>知识共享许可协议链接</td>
+            <td>共享许可协议链接</td>
             <td>String</td>
             <td>https://creativecommons.org/licenses/by-nc-sa/4.0/</td>
         </tr>
@@ -274,7 +275,7 @@ https://blog-static.cnblogs.com/files/esofar/silence.min.js
             <td>null</td>
         </tr>
         <tr>
-            <td rowspan="4" align="center">github（GitHub Corners）</td>
+            <td rowspan="5" align="center">github（GitHub Corners）</td>
             <td>enable</td>
             <td>是否启用</td>
             <td>Boolean</td>
@@ -297,6 +298,12 @@ https://blog-static.cnblogs.com/files/esofar/silence.min.js
             <td>Github 链接</td>
             <td>String</td>
             <td>null</td>
+        </tr>
+	<tr>
+            <td>target</td>
+            <td>Github 打开方式</td>
+            <td>String</td>
+            <td>_self</td>
         </tr>
     </tbody>
 </table>
