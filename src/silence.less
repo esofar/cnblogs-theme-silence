@@ -109,14 +109,14 @@ a {
                 &:link,
                 &:visited,
                 &:active {
-                    font-size: 16px;
+                    font-size: 17px;
                     padding-top: 0px;
                     border-right: 0px;
                     color: @blog-font-color;
                     display: block;
                     font-weight: 300;
                     width: auto;
-                    padding: 20px 16px;
+                    padding: 19px 16px;
                     height: inherit;
                     -webkit-transition: all .3s;
                     transition: all .3s;
@@ -153,6 +153,7 @@ a {
             border-radius: 3px;
             box-shadow: 0 1px 15px rgba(27, 31, 35, 0.15);
             display: none;
+            padding: 10px;
 
             li {
                 float: none;
@@ -160,7 +161,7 @@ a {
                 a {
                     font-size: 15px;
                     border-right: 0;
-                    color: #314659;
+                    color: @blog-font-color;
                     display: block;
                     width: 100%;
                     font-weight: 300;
@@ -183,7 +184,7 @@ a {
     width: 960px;
     margin: 0 auto;
     min-height: calc(100% - 135px);
-    padding: 70px 10px 0px 10px;
+    padding: 75px 10px 0px 10px;
     animation-name: fadeIn;
     animation-duration: 1s;
     animation-iteration-count: 1;
@@ -426,7 +427,7 @@ a {
 .post .postDesc {
     font-size: 13px;
     font-weight: 300;
-    padding-right: 0px;
+    padding-right: 0px !important;
     color: @blog-font-color  !important;
 
     a {
@@ -454,12 +455,12 @@ a {
     }
 }
 
-.post {
+#topics {
     .postTitle {
-        font-size: 20px !important;
-        font-weight: 300 !important;
-        padding-left: 15px !important;
-        border-bottom: none !important;
+        font-size: 20px;
+        font-weight: 300;
+        padding-left: 0px;
+        border-bottom: none;
 
         a {
             color: @blog-font-color;
@@ -469,7 +470,7 @@ a {
     .postBody {
         font-weight: 300;
         font-size: 16px;
-        padding: 5px 15px;
+        padding: 10px 0px;
         line-height: 1.75;
         color: @blog-font-color;
         border-bottom: 1px solid @blog-border-color;
@@ -567,7 +568,7 @@ a {
             empty-cells: show;
             border: 1px solid @post-table-border-color;
             width: 100%;
-            margin-bottom: 24px;
+            margin: 13px 0px;
 
             th {
                 font-family: inherit;
@@ -804,10 +805,10 @@ a {
     font-size: 12px;
     cursor: pointer;
     position: absolute;
-    right: 6px;
-    top: 6px;
+    right: 13px;
+    top: 10px;
     box-shadow: 0 0 15px 0 rgba(0, 0, 0, .1);
-    color: #5e6687;
+    color: @blog-font-color;
     padding: 0px 6px;
     border-radius: 5px;
 }
@@ -940,6 +941,7 @@ a {
 
     .input_my_zzk {
         color: @blog-font-color;
+        background-color: @blog-bg-color;
         border: solid 1px @blog-border-color;
         width: 45%;
         height: 32px;
@@ -954,6 +956,8 @@ a {
 
     .btn_my_zzk {
         height: 34px;
+        font-size: 14px;
+        font-weight: 300;
         margin-left: -5px;
         background-color: @blog-theme-color;
         border: none;
@@ -984,7 +988,7 @@ a {
     border-bottom: 1px solid @blog-border-color;
     font-size: 12px;
     font-weight: 600;
-    color: @post-catalog-font-color;
+    color: @blog-font-color;
 
     &:before {
         content: '\2632';
@@ -997,7 +1001,6 @@ a {
     right: 15px;
     top: 10px;
     cursor: pointer;
-    color: @post-catalog-font-color;
 }
 
 .esa-catalog-contents {
@@ -1023,7 +1026,7 @@ a {
             overflow: hidden;
             text-overflow: ellipsis;
             cursor: pointer;
-            color: @post-catalog-font-color;
+            color: @blog-font-color;
 
             code {
                 font-family: inherit;
@@ -1102,7 +1105,7 @@ a {
 
 .esa-layer {
     position: fixed;
-    top: 5px;
+    top: 70px;
     text-align: center;
     line-height: 25px;
     font-size: 15px;
@@ -1116,10 +1119,10 @@ a {
     position: relative;
     background: rgba(0, 0, 0, .7);
     max-width: 250px;
-    padding: 3px 9px;
-    font-size: 13px;
+    padding: 5px 10px;
+    font-size: 14px;
     border-radius: 5px;
-    color: #FFF;
+    color: #e0e0e0;
     display: inline-block;
 }
 
@@ -1262,13 +1265,14 @@ a {
     }
 
     .blog_comment_body {
+        font-size: 14px;
+        font-weight: 300;
         border-radius: 3px;
         padding: 8px;
         margin-top: 5px;
         margin-left: 6px;
-        font-size: 13px;
         display: block;
-        color: @comment-font-color;
+        color: @blog-font-color;
         background-color: @comment-bg-color;
         width: auto;
 
@@ -1364,11 +1368,13 @@ a {
         color: #fff;
         background-color: @blog-theme-color;
         border-color: @blog-theme-color;
+        font-weight: 300;
         user-select: none;
         padding: 5px 20px;
         font-size: 12px;
         border-radius: 5px;
-        transition: color .2s linear, background-color .2s linear, border .2s linear, box-shadow .2s linear;
+        outline: none;
+        transition: all .3s;
 
         &:hover {
             opacity: .7;
@@ -1391,7 +1397,7 @@ a {
         margin-top: 5px;
         font-size: 13px;
         display: block;
-        color: @comment-font-color;
+        color: @blog-font-color;
         background-color: @comment-bg-color;
         border: none;
         border-radius: 3px;
@@ -1863,4 +1869,10 @@ a {
             transform: rotateZ(40deg) scale(0.6, 0.6);
         }
     }
+}
+
+::selection,
+::-moz-selection {
+    background-color: @blog-theme-color;
+    color: #e1e1e1;
 }
