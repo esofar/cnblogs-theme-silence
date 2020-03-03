@@ -541,9 +541,9 @@ a {
         }
 
         img {
-            max-width: 930px !important;
+            max-width: 960px !important;
             display: block;
-            margin: 15px auto 30px auto;
+            margin: 15px 0px 30px 0px;
             border-radius: 3px;
             box-shadow: 0 1px 15px rgba(27, 31, 35, .15), 0 0 1px rgba(106, 115, 125, .35);
         }
@@ -1011,6 +1011,7 @@ a {
     min-width: 150px;
     opacity: 1;
     font-size: inherit;
+    font-weight: 300;
     background-color: @post-catalog-bg-color;
     z-index: 19941112;
 
@@ -1244,7 +1245,6 @@ a {
 
     .esa-comment-avatar {
         float: left;
-        margin-right: 10px;
 
         img {
             border-radius: 50%;
@@ -1268,13 +1268,10 @@ a {
         font-size: 14px;
         font-weight: 300;
         border-radius: 3px;
-        padding: 8px;
-        margin-top: 5px;
-        margin-left: 6px;
-        display: block;
+        padding: 10px;
+        margin-left: 55px;
         color: @blog-font-color;
         background-color: @comment-bg-color;
-        width: auto;
 
         a {
             color: @blog-theme-color;
@@ -1314,27 +1311,17 @@ a {
     }
 
     .commentbox_title {
+
+        border-bottom: 1px solid @blog-border-color;
+
         .commentbox_title_right {
             height: 30px;
-            float: left;
-        }
-
-        .comment_icon {
-            width: 16px;
-            height: 16px;
-            border: 1px solid @blog-border-color;
-            border-radius: 3px;
-            background-color: @blog-bg-color;
-            padding: 3px;
-            cursor: pointer;
         }
     }
 
     .comment_textarea {
-        width: 100% !important;
-        height: 200px !important;
+        width: 100%;
         border: 1px solid @blog-border-color;
-        border-radius: 6px;
         padding: 5px;
         font-family: inherit;
         font-size: 15px;
