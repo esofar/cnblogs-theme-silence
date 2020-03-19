@@ -71,7 +71,7 @@
                 postBody: '#cnblogs_post_body',
                 postDigg: '#div_digg',
                 postCommentBody: '.blog_comment_body',
-                feedbackContent: '.feedbackCon',
+                feedbackContent: '.feedbackItem > .feedbackCon',
                 postSignature: '#MySignature',
                 footer: '#footer',
             };
