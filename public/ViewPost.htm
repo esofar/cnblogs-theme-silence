@@ -1,0 +1,827 @@
+<!DOCTYPE html
+	public "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head id="Head">
+	<title>文章阅读页面</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta id="metaKeywords" name="keywords" content="From Switches to Targets: A Standardista's Journey" />
+	<script src="http://libs.baidu.com/jquery/1.7.2/jquery.min.js"></script>
+	<link id="MainCss" type="text/css" rel="stylesheet" href="style.css" />
+	<link type="text/css" rel="stylesheet" href="../dist/themes/default.css" />
+	<script type="text/javascript" src="../src/silence.js"></script>
+	<script type="text/javascript" src="../src/silence.es5.js"></script>
+</head>
+
+<body>
+
+	<div id="home">
+		<div id="header">
+			<div id="blogTitle">
+				<a id="lnkBlogLogo" href="#">
+					<img id="blogLogo" src="images/logo.gif" alt="博客logo" /></a>
+				<h1><a class="headermaintitle" href="http://justinyoung.cnblogs.com/">Yes!B/S!</a></h1>
+				<h2>Justin Young&#39;s blog</h2>
+			</div>
+			<!--end: blogTitle 博客的标题和副标题 -->
+			<div id="navigator">
+				<ul id="navList">
+					<li><a class="menu" href="default.htm">首页</a></li>
+					<li><a class="menu" href="ViewPost.htm">文章</a></li>
+					<li><a class="menu" href="PostsList.htm">文章列表</a></li>
+					<li><a class="menu" href="PostsList2.htm">评论列表</a></li>
+					<li><a class="menu" href="EntryList.htm">分类</a></li>
+					<li><a class="menu" href="GalleryThumbNailViewer.htm">相册</a></li>
+					<li><a href="Profile.htm" class="menu">留言</a></li>
+					<li><a class="menu" href="#">订阅</a>
+						<a class="aHeaderXML" href="#">
+							<img src="images/rss.gif" alt="订阅" /></a></li>
+				</ul>
+				<div class="blogStats">
+					随笔- 99999&nbsp; 文章- 99999&nbsp; 评论- 9999999&nbsp; </div>
+				<!--end: blogStats -->
+			</div>
+			<!--end: navigator 博客导航栏 -->
+		</div>
+		<!--end: header 头部 -->
+		<div id="main">
+			<div id="mainContent">
+				<div class="forFlow">
+					<div id="topics">
+						<div class="post">
+							<h1 class="postTitle"><a class="postTitle2" href="#">From
+									Switches to Targets: A Standardista&#39;s Journey</a> </h1>
+							<div class="clear">
+							</div>
+							<div class="postBody">
+								<!--开始：文章主题 -->
+								<p>As I read through Aaron Gustafson’s <a href="#">Beyond
+										<code>DOCTYPE</code>: Web Standards, Forward Compatibility,
+										and <span class="caps">IE8</span></a>, my immediate
+									gut reaction was deeply negative. The version-targeting
+									mechanism Aaron described was just wrong, completely
+									backwards, the exact opposite of what we ought to be
+									doing. Every one of my instincts, honed over a decade-plus
+									of web development, was in opposition.</p>
+								<p>Why did I react that way? Partly because version
+									targeting looked like the revenge of <a href="#">browser
+										sniffing</a>. True, before browsers supported standards
+									correctly, sniffing was often a necessary way of coping
+									with their incompatibilities, but it never really worked
+									in the long run. No sooner did you finish uploading
+									your script than a new version of an old browser came
+									along to break it. The fragile, self-defeating nature
+									of browser sniffing was one of the forces behind the
+									rebellion that eventually brought standards to our browsers.
+									And here it was, I thought, being legitimized and enshrined
+									in the code base of a web browser.</p>
+								<p>Primarily, though, I was bothered by version targeting
+									because it runs contrary to the principle of forward-compatible
+									development. This has been the best practice of our
+									industry for years now, a way-of-being learned the hard
+									way in the browser wars. We develop with an eye to the
+									future, using features that are widely and stably implemented
+									and only adding “cutting-edge” features when they don’t
+									impair use of the site—this last practice known as
+									<a href="#">progressive enhancement</a>. One example
+									of this approach is the techniques described in “<a href="#">Going
+										To Print</a>”, which add URLs in printed pages for advanced
+									browsers but don’t prevent or break printing in less
+									capable browsers.</p>
+								<p>With version targeting, the incentive to plan ahead,
+									to be forward-looking, is almost entirely destroyed.
+									Instead, the browser makes a promise to always be backwards
+									compatible. In effect, version targeting is like
+									<a href="#">Time Machine</a> for web browsers. The idea
+									is that when <span class="caps">IE10</span> loads up
+									my <span class="caps">IE7</span> page, it rewinds itself
+									to act like <span class="caps">IE7</span> did, all those
+									years ago—no matter what changed in the meantime.</p>
+								<p>Thus, as a developer, there’s no need to look beyond
+									the current state of browsers. I can just assume that
+									browsers will always support what I’ve done even if
+									it’s the worst kind of short-sighted, browser-specific,
+									who-needs-standards-anyway type of development possible.
+									And as for the expected direction of browser support
+									for <span class="caps">CSS</span> or JavaScript or
+									<span class="caps">HTML5</span> or whatever…who cares?</p>
+								<h2>Reality check</h2>
+								<p>Well, who does care? The readers of <cite>A List
+										Apart</cite>, surely, and there are a great many of
+									us. But as <a href="#">survey</a> after <a href="#">
+										analysis</a> shows, the vast majority of web content
+									is produced without much regard for standards-based,
+									forward-compatible principles.</p>
+								<p>Yes, we have made great strides; yes, the work of
+									educating developers has borne some fruit. Still, we
+									need to be honest about this. We’re not reaching everyone,
+									and probably never will. Some sites will be developed
+									according to what the browser-of-the-moment does, no
+									matter how incorrect that might be in comparison to
+									a specification or even other browsers’ behaviors.</p>
+								<p>This creates a dilemma for browser vendors when faced
+									with bugs in their implementations: fix it or preserve
+									it? The classic example of this was <a href="#">the
+										original implementation of <code>height</code> and
+										<code>width</code> in Internet Explorer</a>, which was
+									wrong per the <span class="caps">CSS</span> specifications.
+									The IE team at the time became aware of this fairly
+									soon after they shipped it in <span class="caps">IE3</span>…and
+									yet the problem wasn’t fixed until
+									<span class="caps">IE6</span>, a delay that slowed the
+									adoption of <span class="caps">CSS</span> and gave rise
+									to a whole family of JavaScript sniffers and
+									<a href="#">CSS hacks</a>.</p>
+								<p><a href="#"><code>DOCTYPE</code> switching</a> came
+									to the rescue there, of course, allowing
+									<span class="caps">IE6</span> to preserve its old (wrong)
+									behavior in “quirks mode” and do the right thing in
+									“standards mode”—a mechanism introduced in
+									<span class="caps">IE5</span> for the Macintosh and
+									quickly adopted by other browsers.</p>
+								<p>Let’s consider that for a moment. With the <code>
+							DOCTYPE</code> switch, web browsers effectively recognized
+									two version states: old and current. There was the way
+									things were done in Ye Olden Days, before <code>DOCTYPE</code>
+									switching, and the latest and greatest.</p>
+								<h2>Speeding advances</h2>
+								<p>So we already have an example of version targeting
+									in the <code>DOCTYPE</code> switch. Once I came to that
+									realization, my instincts were thrown into confusion.
+									After all, I was a big proponent of <code>DOCTYPE</code>
+									switching, and still rely on it to this day. Did I hate
+									this whole idea, or not?</p>
+								<p>Like <code>DOCTYPE</code> switching did in 2000,
+									version targeting negates the vendor argument that existing
+									behaviors can’t be changed for fear of breaking web
+									sites. If <span class="caps">IE8</span> botches its
+									implementation of some <span class="caps">CSS</span>
+									property or <span class="caps">DOM</span> method, the
+									mistake can be fixed in <span class="caps">IE9</span>
+									without breaking sites developed in the
+									<span class="caps">IE8</span> era.</p>
+								<p>This actually makes browser vendors more susceptible
+									to pressure to fix their bugs, and less fearful of doing
+									so. That’s <em>huge</em>, as fundamentally game changing
+									as was <code>DOCTYPE</code> switching, but on an ongoing
+									basis. Just imagine how much sooner “<code>height</code>”
+									and “<code>width</code>” could have been fixed in IE,
+									had this mechanism been in place from the beginning.</p>
+								<p>Furthermore, if this all works as advertised, it’s
+									eventually going to make web development a lot less
+									reliant on virtual machines. If you need to support
+									the current and previous versions of a browser, you
+									just change your <code>X-UA-Compatible</code> value
+									to the older version and see how things are—no copy
+									of <a href="#">VirtualPC</a> required. That won’t happen
+									right away, but it’s a reasonable eventual outcome.</p>
+								<h2>The new sniff test</h2>
+								<p>We’re over browser sniffing, though, aren’t we? Didn’t
+									somebody call it “fragile” and “self-defeating”? (Ahem.)</p>
+								<p>Well, yes, but there are crucial differences between
+									“browser sniffing” as we know it and the proposed version
+									targeting. For one thing, “browser sniffing” at present
+									means “writing code to check what browser is being used
+									and make adjustments to the markup/CSS/JS/server response/whatever
+									accordingly.” Version targeting reverses that completely,
+									making it “the browser checking the page to see when
+									it was developed and making adjustments to its behavior
+									accordingly.” In other words, version targeting frees
+									web developers from sniffing and places the onus on
+									browser developers instead.</p>
+								<p>That’s not a change to be lightly dismissed. Browser
+									implementors, for all they frustrate us with (often
+									justified) pleas of limited resources, still command
+									far more resources and expertise in regression testing
+									than any of us can muster. Furthermore, browser developers
+									have a far more vested interest in making sure the version
+									targeting works as promised and doesn’t break old sites
+									than site authors do in updating their old sites to
+									work in new browsers.</p>
+								<h3>The benefits of hindsight</h3>
+								<p>The second major difference between browser sniffing
+									and version targeting is that browser sniffing looks
+									forward while version targeting looks back. Looking
+									forward is one big reason browser sniffing is fragile:
+									it’s hard to predict the future. To pick one example,
+									Safari’s inclusion of “like Gecko” in its user-agent
+									identifier broke a fair number of sniffer scripts—even
+									those that were comparatively well done. The authors
+									of those scripts had simply failed to predict that a
+									non-Gecko browser from Apple would include the word
+									“Gecko” in its user-agent identifier.</p>
+								<p>Now we have the prospect that browser sniffing will
+									be done by the browsers, and will look back. This is
+									inherently far more stable: the past is always a lot
+									easier to predict than the future.</p>
+								<p>Besides which, we’ve written enough scripts and hacks
+									to make our pages adjust to browsers. Isn’t it about
+									time browsers started adjusting to our pages?</p>
+								<h2>To sum up</h2>
+								<p>We know forward-compatible development works. More
+									to the point, though, it’s all we’ve had. Since the
+									inception of the web, with the sole exception of
+									<code>DOCTYPE</code> switching, browsers have been a
+									“what I do is what you get” proposition. Developers
+									have been forced to conform to past browsers’ behaviors
+									while making educated guesses about what future browsers
+									would do.</p>
+								<p>Forward-compatible development and its cousin, progressive
+									enhancement, were necessary and proper because they
+									were the only hope we had of sites continuing to work
+									into the future. The mantra of forward compatibility
+									was necessitated by the world in which we worked.</p>
+								<p>In a world where browsers had done version targeting
+									from the outset, there would have been another option.
+									Who knows what might have happened? Perhaps we’d find
+									the very idea of forward-compatible development hopelessly
+									fragile, even laughable.</p>
+								<p>We say forward-compatible development is the mark
+									of a professional because that’s what the profession
+									demands. With the advent of version targeting, that
+									need may simply evaporate, rendered not wrong but moot.
+									And though my deeply-ingrained instincts still fight
+									that conclusion, I have to do my best to look at this
+									possible future and ask myself if it looks better or
+									worse than what we’ve known.</p>
+								<p>It looks better.</p>
+								<p>So in the end, and much to my surprise, it turned
+									out that I don’t hate the idea after all. Version targeting
+									allows browsers to much more easily develop new features
+									and fix bugs and shortcomings in existing features,
+									which has the potential to speed up the evolution of
+									web design and development. That alone is reason enough
+									to give it a chance.</p>
+								<h2>Yes, but…</h2>
+								<p>Of course, I still have concerns.</p>
+								<p>The biggest concern is fidelity. Will the backwards-compatible
+									code for <span class="caps">IE8</span> always act exactly
+									like <span class="caps">IE8</span> did, or will there
+									be subtle changes that still break old sites? Might
+									there even be, dare we mention it, new bugs that affect
+									the backwards compatibility of future browsers? After
+									all, the door swings both ways: vendors might get lax
+									about their backward-looking code just as developers
+									might get lax about their forward-looking code. Talk
+									about irony.</p>
+								<p>A small concern is the effect of version-targeting
+									code on the size of browser applications themselves.
+									Could this be a step toward browsers becoming bloatware?
+									Someone will chime in with “Who cares? Hard drives are
+									huge now!” but I remain solidly unconvinced by “resources
+									are cheap” arguments. No matter how cheap they are,
+									people still keep filling them up. I sincerely hope
+									the browser of the future won’t require a gigabyte or
+									two of storage space, chained to every previous version
+									of itself like Jacob Marley to his past misdeeds.</p>
+								<h3>Terminology</h3>
+								<p>I’m definitely not a fan of the “<code>edge</code>”
+									keyword. The reason for its existence seems to be so
+									that nobody has to hack their way around the targeting
+									mechanism with “<code>IE=1024</code>” or some other
+									large number. The problem is that providing a keyword
+									equivalent for that creates an aura of official blessing
+									that I don’t think Microsoft wants to give. It’s in
+									their interest to have everyone use this mechanism,
+									and the keyword acts as a wink and a nod to people who
+									want to avoid it. I’m all for people hacking around
+									the targeting mechanism if they want—I may well do it
+									myself—but that should be done with a hack, not an official
+									keyword.</p>
+								<h3><code>DOCTYPE</code> as version targeting</h3>
+								<p>I wish I could be happy about the way pages are handled
+									in the absence of any version-targeting information.
+									If a page doesn’t have any version-targting information,
+									then the <code>DOCTYPE</code> will be used as a proxy
+									for version targeting. For example, all the
+									<span class="caps">HTML4</span> and
+									<span class="caps">XHTML1 </span><code>DOCTYPE</code>s
+									will be targeted to <span class="caps">IE7</span> by
+									default. In the future, <span class="caps">HTML5
+									</span><code>DOCTYPE</code>s might by default be targeted
+									to <span class="caps">IE9</span> or
+									<span class="caps">IE10</span>, depending on how things
+									shake out.</p>
+								<p>Of course, a developer can avoid all that by providing
+									an explicit browser version: an <span class="caps">HTML2</span>
+									document can be targeted to <span class="caps">IE9</span>;
+									an <span class="caps">HTML6</span> document can be targeted
+									to <span class="caps">IE7</span>. But in the absence
+									of explicit version-targeting information, the <code>
+							DOCTYPE</code> will be used as a stand-in and map to
+									a specific version. From Microsoft’s point of view,
+									this is necessary: without this, untargeted pages could
+									be broken by new versions of IE. I get that. But it
+									means that in order to have pages handled they way they’ve
+									always been, essentially moving forward with browsers,
+									you have to hack around the targeting mechanism with
+									a really large version number—or the <code>edge</code>
+									keyword, if it doesn’t get dropped.</p>
+								<p>The biggest challenge, it seems, will be to make
+									sure that version targeting is done in such a way that
+									it will work into the future and not break down over
+									time like <code>DOCTYPE</code> switching did. In other
+									words, we need to make sure it’s forward-compatible.</p>
+								<p>I guess those instincts came in handy after all.</p>
+								<div id="EntryTag">
+									Tag标签: <a href="#">IE</a>,<a href="#">CSS</a>,<a href="#">xhtml</a></div>
+							</div>
+							<div class="postDesc">
+								发表于 2008-01-30 15:30 <a href="http://justinyoung.cnblogs.com/">杨正祎</a> 阅读(999991)
+								<a href="#">评论(999)</a>&nbsp; <a href="#">编辑</a>&nbsp;
+								<a href="#">收藏</a> 所属分类: <a href="#">新分类</a>
+								<a class="aPostDescFav" href="#">网摘收藏</a></div>
+						</div>
+					</div>
+					<!--end: topics 文章、评论容器-->
+					<div id="AjaxHolder_UpdatePanel1">
+						<div class="feedback_area_title">
+							发表评论</div>
+						<div class="feedbackNoItems">
+						</div>
+						<div class="feedbackItem">
+							<div class="feedbackListSubtitle">
+								<div class="feedbackManage">
+									&nbsp; <a href="#">回复</a>&nbsp; <a href="#">引用</a>&nbsp;
+									<a href="#">
+										删除</a>&nbsp;
+									<a id="AjaxHolder_Comments_CommentList_ctl00_EditLink" causesvalidation="False"
+										href="#">
+										修改</a> </div>
+								<a href="#">#1楼</a>&nbsp;<a name="1089695"></a><span
+									class="louzhu">[楼主]</span>2008-01-31 16:43 |
+								<a href="#" target="_blank">
+									<b>杨正祎</b></a>
+							</div>
+							<div class="feedbackCon">
+								我们建议你通过只修改css文件的方式来建立新的皮肤。 <br>
+								<br>
+								不建议对静态页面进行结构上的修改（非结构上的修改是允许的，例如图片地址的修正等）。<br>
+							</div>
+						</div>
+						<div class="feedbackItem">
+							<div class="feedbackListSubtitle">
+								<div class="feedbackManage">
+									&nbsp; <a href="#">回复</a>&nbsp; <a href="#">引用</a>&nbsp;
+									<a id="AjaxHolder_Comments_CommentList_ctl01_DeleteLink" href="#">
+										删除</a>&nbsp;
+									<a id="AjaxHolder_Comments_CommentList_ctl01_EditLink" href="#">
+										修改</a> </div>
+								<a href="#">#2楼</a>&nbsp;<a name="1089695"></a><span
+									class="louzhu">[楼主]</span>2008-01-31 16:46 |
+								<a id="AjaxHolder_Comments_CommentList_ctl01_NameLink" href="#" target="_blank">
+									<b>杨正祎</b></a>
+							</div>
+							<div class="feedbackCon">
+								内部可以通过地址： <br>
+								<a href="http://192.168.18.221/nimand" target="_new">
+									http://192.168.18.221/nimand</a> 访问新的博客皮肤示例。<br>
+							</div>
+						</div>
+						<div class="feedbackItem">
+							<div class="feedbackListSubtitle">
+								<div class="feedbackManage">
+									&nbsp; <a href="#">回复</a>&nbsp; <a href="#">引用</a>&nbsp;
+									<a id="AjaxHolder_Comments_CommentList_ctl02_DeleteLink" href="#">
+										删除</a>&nbsp;
+									<a id="AjaxHolder_Comments_CommentList_ctl02_EditLink" causesvalidation="False">
+									</a>&nbsp;</div>
+								<a href="#">#3楼</a>&nbsp; 2008-01-31 17:06 |
+								<a id="AjaxHolder_Comments_CommentList_ctl02_NameLink" href="#" target="_blank">
+									<b>horsegy</b></a>
+							</div>
+							<div class="feedbackCon">
+								yeah ~ <br>
+								太好了～<br>
+							</div>
+						</div>
+						<div class="feedbackItem">
+							<div class="feedbackListSubtitle">
+								<div class="feedbackManage">
+									&nbsp; <a href="#">回复</a>&nbsp; <a href="#">引用</a>&nbsp;
+									<a id="AjaxHolder_Comments_CommentList_ctl03_DeleteLink" href="#">
+										删除</a>&nbsp;
+									<a id="AjaxHolder_Comments_CommentList_ctl03_EditLink" href="#">
+										修改</a> </div>
+								<a href="#">#4楼</a>&nbsp; 2008-01-31 17:20 |
+								<a id="AjaxHolder_Comments_CommentList_ctl03_NameLink" href="#" target="_blank">
+									<b>壹壹</b></a>
+							</div>
+							<div class="feedbackCon">
+								附：IE6和IE7共存方法—— <br>
+								<a href="http://www.cnblogs.com/JustinYoung/archive/2007/09/11/889801.html"
+									target="_new">
+									http://www.cnblogs.com/JustinYoung/archive/2007/09/11/889801.html</a><br>
+							</div>
+						</div>
+						<div class="feedbackItem">
+							<div class="feedbackListSubtitle">
+								<div class="feedbackManage">
+									&nbsp; <a href="#">回复</a>&nbsp; <a href="#">引用</a>&nbsp;
+									<a id="AjaxHolder_Comments_CommentList_ctl04_DeleteLink" href="#">
+										删除</a>&nbsp;
+									<a id="AjaxHolder_Comments_CommentList_ctl04_EditLink">
+									</a>&nbsp;</div>
+								<a href="#">#5楼</a>&nbsp; 2008-01-31 21:00 |
+								<a id="AjaxHolder_Comments_CommentList_ctl04_NameLink" href="#" target="_blank">
+									<b>jinyuan_1985</b></a>
+							</div>
+							<div class="feedbackCon">
+								慢慢琢磨……<br>
+							</div>
+						</div>
+					</div>
+					<div id="divRefreshComments">
+						<a href="#">刷新评论列表</a>&nbsp; </div>
+					<div class="commentform">
+						<span id="AjaxHolder_PostComment_ltSubmitMsg" style="color: Red;">
+						</span><br />
+						<a name="Feedback"></a>
+						<div id="AjaxHolder_PostComment_divCommnentArea">
+							<table cellspacing="1" cellpadding="1" border="0">
+								<tr>
+									<td width="75"></td>
+									<td></td>
+									<td></td>
+								</tr>
+								<tr>
+									<td width="55">标题</td>
+									<td>
+										<input type="text"
+											value="re: From Switches to Targets: A Standardista's Journey"
+											class="commenttb" style="width: 320px" /></td>
+									<td>
+										<span id="AjaxHolder_PostComment_RequiredFieldValidator1"
+											style="color: Red; visibility: hidden;">
+											请输入标题</span></td>
+								</tr>
+								<tr>
+									<td>姓名</td>
+									<td>
+										<input name="AjaxHolder$PostComment$tbName" type="text" value="杨正祎"
+											readonly="readonly" class="commenttb" style="width: 320px" /></td>
+									<td>
+										<span id="AjaxHolder_PostComment_RequiredFieldValidator2"
+											style="color: Red; visibility: hidden;">
+											请输入你的姓名</span></td>
+								</tr>
+								<tr>
+									<td align="left" colspan="3"></td>
+								</tr>
+								<tr>
+									<td colspan="3">内容(提交失败后,可以通过“恢复上次提交”恢复刚刚提交的内容)
+										<span id="AjaxHolder_PostComment_RequiredFieldValidator3"
+											style="color: Red; visibility: hidden;">
+											请输入评论内容</span><br />
+										<textarea name="AjaxHolder$PostComment$tbComment" rows="10" cols="40"
+											class="commentTextBox"
+											onkeydown="ctlent(event,'AjaxHolder_PostComment_tbComment')"
+											style="Width: 400px; Height: 220px"></textarea></td>
+								</tr>
+								<tr>
+									<td colspan="3">
+										<span id="AjaxHolder_PostComment_Message" style="color: Red;">
+										</span></td>
+								</tr>
+								<tr>
+									<td colspan="3">
+										<input id="AjaxHolder_PostComment_chkIsNotify" type="checkbox"
+											name="AjaxHolder$PostComment$chkIsNotify" tabindex="-1" /><label
+											for="AjaxHolder_PostComment_chkIsNotify">有回复时邮件通知我</label></td>
+								</tr>
+								<tr>
+									<td height="23">
+										<input type="submit" name="AjaxHolder$PostComment$btnSubmit" value=" 提 交 "
+											id="AjaxHolder_PostComment_btnSubmit" />
+									</td>
+									<td colspan="2" height="23">&nbsp;
+										<a id="AjaxHolder_PostComment_lnkLogin" href="#">
+											注销</a>&nbsp;&nbsp;&nbsp; <a href="#">新用户注册</a>&nbsp;
+										<a href="#">返回页首</a>&nbsp;
+										<a id="AjaxHolder_PostComment_lbRestore" href="#">
+											恢复上次提交</a>&nbsp;&nbsp;&nbsp;
+										<a id="AjaxHolder_PostComment_btnSubscibe" href="#">
+											订阅回复</a>&nbsp;&nbsp; </td>
+								</tr>
+								<tr>
+									<td colspan="3">[使用Ctrl+Enter键可以直接提交]</td>
+								</tr>
+								<tr>
+									<td colspan="3">该文被作者在 2008-01-30 15:32 编辑过</td>
+								</tr>
+								<tr>
+									<td colspan="3" height="5">&nbsp;</td>
+								</tr>
+								<tr>
+									<td colspan="3" height="5"><a href="#">看看谁阅读了该文章</a></td>
+								</tr>
+								<tr>
+									<td colspan="3" height="5"></td>
+								</tr>
+								<tr>
+									<td colspan="3"></td>
+								</tr>
+								<tr>
+									<td colspan="3"></td>
+								</tr>
+							</table>
+						</div>
+						<div style="color: Red; display: none;">
+						</div>
+					</div>
+				</div>
+				<!--end: forFlow -->
+			</div>
+			<!--end: mainContent 主体内容容器-->
+			<div id="sideBar">
+				<div id="sideBarMain">
+					<!--done-->
+					<div class="newsItem">
+						<h3 class="catListTitle">公告</h3>
+						这里是公告。这里是公告。这里是公告。这里是公告。这里是公告。这里是公告。这里是公告。这里是公告。这里是公告。这里是公告。
+					</div>
+					<div id="calendar">
+						<table id="Calendar1_entryCal" class="Cal" cellspacing="0" cellpadding="0" title="Calendar"
+							border="0">
+							<tr>
+								<td colspan="7">
+									<table class="CalTitle" cellspacing="0" border="0">
+										<tr>
+											<td class="CalNextPrev">
+												<a href="#" style="color: Black" title="Go to the previous month">
+													&lt;</a></td>
+											<td align="center">2008年2月</td>
+											<td class="CalNextPrev" align="right">
+												<a href="#" style="color: Black" title="Go to the next month">
+													&gt;</a></td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+							<tr>
+								<th class="CalDayHeader" align="center" abbr="日" scope="col">
+									日</th>
+								<th class="CalDayHeader" align="center" abbr="一" scope="col">
+									一</th>
+								<th class="CalDayHeader" align="center" abbr="二" scope="col">
+									二</th>
+								<th class="CalDayHeader" align="center" abbr="三" scope="col">
+									三</th>
+								<th class="CalDayHeader" align="center" abbr="四" scope="col">
+									四</th>
+								<th class="CalDayHeader" align="center" abbr="五" scope="col">
+									五</th>
+								<th class="CalDayHeader" align="center" abbr="六" scope="col">
+									六</th>
+							</tr>
+							<tr>
+								<td class="CalOtherMonthDay" align="center">27</td>
+								<td class="CalOtherMonthDay" align="center">28</td>
+								<td class="CalOtherMonthDay" align="center">29</td>
+								<td class="CalOtherMonthDay" align="center">30</td>
+								<td class="CalOtherMonthDay" align="center">31</td>
+								<td align="center">
+									<a href="http://192.168.18.221/nimand/archive/2008/02/01.html">
+										<u>1</u></a></td>
+								<td class="CalWeekendDay" align="center">2</td>
+							</tr>
+							<tr>
+								<td class="CalWeekendDay" align="center">3</td>
+								<td align="center">4</td>
+								<td align="center">5</td>
+								<td align="center">6</td>
+								<td align="center">7</td>
+								<td align="center">8</td>
+								<td class="CalWeekendDay" align="center">9</td>
+							</tr>
+							<tr>
+								<td class="CalWeekendDay" align="center">10</td>
+								<td align="center">11</td>
+								<td align="center">12</td>
+								<td align="center">13</td>
+								<td class="CalTodayDay" align="center">14</td>
+								<td align="center">15</td>
+								<td class="CalWeekendDay" align="center">16</td>
+							</tr>
+							<tr>
+								<td class="CalWeekendDay" align="center">17</td>
+								<td align="center">18</td>
+								<td align="center">19</td>
+								<td align="center">20</td>
+								<td align="center">21</td>
+								<td align="center">22</td>
+								<td class="CalWeekendDay" align="center">23</td>
+							</tr>
+							<tr>
+								<td class="CalWeekendDay" align="center">24</td>
+								<td align="center">25</td>
+								<td align="center">26</td>
+								<td align="center">27</td>
+								<td align="center">28</td>
+								<td align="center">29</td>
+								<td class="CalOtherMonthDay" align="center">1</td>
+							</tr>
+							<tr>
+								<td class="CalOtherMonthDay" align="center">2</td>
+								<td class="CalOtherMonthDay" align="center">3</td>
+								<td class="CalOtherMonthDay" align="center">4</td>
+								<td class="CalOtherMonthDay" align="center">5</td>
+								<td class="CalOtherMonthDay" align="center">6</td>
+								<td class="CalOtherMonthDay" align="center">7</td>
+								<td class="CalOtherMonthDay" align="center">8</td>
+							</tr>
+						</table>
+					</div>
+					<div id="leftcontentcontainer">
+						<div class="catListEssay">
+							<h3 class="catListTitle">最新随笔</h3>
+							<ul>
+								<li><a href="#">1. 测试新文章发布111222</a></li>
+								<li><a href="#">2. 测试新文章发布</a></li>
+								<li><a href="#">3. Conscientiously Objecting the Living
+										Room War</a></li>
+								<li><a href="#">4. 新的带标签</a></li>
+								<li><a href="#">5. 发一篇带标签的文章</a></li>
+								<li><a href="#">6. 发一篇标签的文章看看啊</a></li>
+								<li><a href="#">7. 不会记录的把sdfsdfsdfsdfs212222</a></li>
+								<li><a href="#">8. 来记录一个把</a></li>
+								<li><a href="#">9. 我发正常的，应该不记录</a></li>
+								<li><a href="#">10. test默认测试不记录的</a></li>
+							</ul>
+						</div>
+						<div class="catListLink">
+							<h3 class="catListTitle">常用链接</h3>
+							<ul>
+								<li><a href="#">我的随笔</a></li>
+								<li><a href="#">我的文章</a></li>
+								<li><a href="#">我的评论</a></li>
+								<li><a href="#">我的参与</a></li>
+								<li><a href="#">我的阅读</a></li>
+								<li><a href="#">最新评论</a></li>
+							</ul>
+						</div>
+						<div class="catListNoteBook">
+							<h3 class="catListTitle">留言簿</h3>
+							<ul>
+								<li><a href="#">给我留言</a> </li>
+								<li><a href="#">查看公开留言</a>(5) </li>
+								<li><a href="#">查看私人留言</a></li>
+							</ul>
+						</div>
+						<div class="catListTag">
+							<h3 class="catListTitle">我的标签</h3>
+							<ul>
+								<li><a href="#">标签名称1(19)</a></li>
+								<li><a href="#">测试(2)</a></li>
+								<li><a href="#">护甲(1)</a></li>
+								<li><a href="#">恶意标签eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee(1)</a></li>
+								<li><a href="#">标签啊(1)</a></li>
+								<li><a href="#">标签一下(1)</a></li>
+								<li><a href="#">标签库(1)</a></li>
+								<li><a href="#">回家(1)</a></li>
+								<li><a href="#">标签(1)</a></li>
+							</ul>
+						</div>
+						<div class="catListPostCategory">
+							<h3 class="catListTitle">随笔分类</h3>
+							<ul>
+								<li><a href="#">新分类(2)</a> <a href="#">(rss)</a></li>
+								<li><a href="#">新分类2(1)</a> <a href="#">(rss)</a></li>
+								<li><a href="#">新分类3(1)</a> <a href="#">(rss)</a></li>
+								<li><a href="#">新分类4(1)</a> <a href="#">(rss)</a></li>
+								<li><a href="#">新分类5</a> <a href="#">(rss)</a></li>
+								<li><a href="#">新分类名称6(1)</a> <a href="#">(rss)</a></li>
+							</ul>
+						</div>
+						<div class="catListPostArchive">
+							<h3 class="catListTitle">随笔档案</h3>
+							<ul>
+								<li><a href="#">2008年1月 (12)</a> </li>
+								<li><a href="#">2007年12月 (15)</a> </li>
+								<li><a href="#">2007年9月 (2)</a> </li>
+								<li><a href="#">2007年7月 (2)</a> </li>
+							</ul>
+						</div>
+						<div class="catListArticleArchive">
+							<h3 class="catListTitle">文章档案</h3>
+							<ul>
+								<li><a href="#">2008年1月 (1)</a> </li>
+								<li><a href="#">2007年12月 (7)</a> </li>
+								<li><a href="#">2007年11月 (1)</a> </li>
+							</ul>
+						</div>
+						<div class="catListImageCategory">
+							<h3 class="catListTitle">相册</h3>
+							<ul>
+								<li><a href="#">相册的标题</a> </li>
+							</ul>
+						</div>
+						<div class="mySearch">
+							<h3 class="catListTitle">搜索</h3>
+							<div>
+								<input type="text" name="" id="q" />
+								<input type="button" name="" value="搜索" /> </div>
+						</div>
+						<div class="catListComment">
+							<h3 class="catListTitle">最新评论<a href="#"><img src="images/xml.gif" alt="RSS最新的评论" /></a>
+							</h3>
+							<div class="divRecentCommentAticle">
+								<a class="listitem" href="#">1. re:
+									文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题</a>
+							</div>
+							<div class="divRecentComment">
+								我要评论一下我要评论一下我要评论一下我要评论一下我要评论一下我要评论一下我要评论一下我要评论一下我要评论一下我要评论一下要评论一下我要评论一下我要评论一下我要评论一下我要评论一下我要评论一下我要评论...
+								(杨正祎) </div>
+							<div class="divRecentCommentAticle">
+								<a class="listitem" href="#">2. re: Conscientiously
+									Objecting the Living Room War</a> </div>
+							<div class="divRecentComment">
+								这里是评论这里是评论这里是评论这里是评论这里是评论这里是评论这里是评论这里是评论这里是评论这里是评论这里是评论这里是评论这里是评论这里是评论这里是评论这里是评论这里是评论这里是评论这里是评论这里是评论...
+								(杨正祎) </div>
+							<div class="divRecentCommentAticle">
+								<a class="listitem" href="#">3. re: Conscientiously
+									Objecting the Living Room War</a> </div>
+							<div class="divRecentComment">
+								这里是评论 (杨正祎) </div>
+							<div class="divRecentCommentAticle">
+								<a class="listitem" href="#">4. re: 标签文章</a> </div>
+							<div class="divRecentComment">
+								我记得EditPlus是收费软件吧？ 我一直用Crimson Editor 这款软件，也不错，不知道和Editplus哪个好..
+								杨兄可以对比对比 (杨正祎) </div>
+							<div class="divRecentCommentAticle">
+								<a class="listitem" href="#">5. re: 标签文章</a> </div>
+							<div class="divRecentComment">
+								我已经下载过模板看过了。
+								我一直有一个问题，就是图片是怎么上传的，例如这篇博文最后一个图片的网址是：在images文件夹下的，请问怎么跟文章一起上传图片，还是先一张张图片上传了，然后再在博文中添加...
+								(杨正祎) </div>
+							<div class="divRecentCommentAticle">
+								<a class="listitem" href="#">6. re: 发一篇带标签的文章</a>
+							</div>
+							<div class="divRecentComment">
+								无再次发表了评论 (杨正祎) </div>
+							<div class="divRecentCommentAticle">
+								<a class="listitem" href="#">7. re: 发一篇带标签的文章</a>
+							</div>
+							<div class="divRecentComment">
+								我有发表了评论 (杨正祎) </div>
+							<div class="divRecentCommentAticle">
+								<a class="listitem" href="#">8. re: 发一篇带标签的文章</a>
+							</div>
+							<div class="divRecentComment">
+								我发表了评论 (杨正祎) </div>
+						</div>
+						<div class="catListView">
+							<h3 class="catListTitle">阅读排行榜</h3>
+							<ul>
+								<li><a href="#">1. test2222(68)</a> </li>
+								<li><a href="#">2. testt(53)</a> </li>
+								<li><a href="#">3. Conscientiously Objecting the Living
+										Room War(15)</a> </li>
+								<li><a href="#">4. 测试一下我的博客发布(9)</a> </li>
+								<li><a href="#">5. 发一篇带标签的文章(8)</a> </li>
+								<li><a href="#">6. 新的带标签(6)</a> </li>
+								<li><a href="#">7. 不会记录的把sdfsdfsdfsdfs212222(6)</a>
+								</li>
+								<li><a href="#">8. 来记录一个把(5)</a> </li>
+								<li><a href="#">9. 测试置顶的发布文章(5)</a> </li>
+								<li><a href="#">10. 测试新文章发布111222(5)</a> </li>
+							</ul>
+						</div>
+						<div class="catListFeedback">
+							<h3 class="catListTitle">评论排行榜</h3>
+							<ul>
+								<li><a href="#">1. 发一篇带标签的文章(3)</a> </li>
+								<li><a href="#">2. Conscientiously Objecting the Living
+										Room War(2)</a> </li>
+								<li><a href="#">3. 文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题文章标题(1)</a>
+								</li>
+								<li><a href="#">4. test默认测试不记录的(0)</a> </li>
+								<li><a href="#">5. 测试置顶的发布文章(0)</a> </li>
+								<li><a href="#">6. 我发正常的，应该不记录(0)</a> </li>
+								<li><a href="#">7. 不会记录的把sdfsdfsdfsdfs212222(0)</a>
+								</li>
+								<li><a href="#">8. 来记录一个把(0)</a> </li>
+								<li><a href="#">9. 发一篇标签的文章看看啊(0)</a> </li>
+								<li><a href="#">10. 测试新文章发布(0)</a> </li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<!--end: sideBarMain -->
+				<div class="clear">
+				</div>
+				<!--end: sideBar 侧边栏容器 -->
+			</div>
+		</div>
+		<!--end: main -->
+		<div class="clear">
+		</div>
+		<div id="footer">
+			Copyright ©2008 杨正祎</div>
+		<!--end: footer -->
+	</div>
+	<!--end: home 自定义的最大容器 -->
+
+</body>
+
+</html>
