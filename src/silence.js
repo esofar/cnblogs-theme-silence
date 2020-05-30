@@ -374,7 +374,7 @@
                 let $catalog = $(
                     `<div class="esa-catalog">
                         <div class="esa-catalog-contents">
-                            <div class="esa-catalog-title">目录</div>
+                            <div class="esa-catalog-title">CONTENTS</div>
                             <a class="esa-catalog-close">✕</a>
                         </div>
                     </div>`);
