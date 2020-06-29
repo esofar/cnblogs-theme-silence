@@ -49,11 +49,11 @@
                     color: '#fff',
                     fill: null,
                     link: null,
-		    target: '_self',
+		            target: '_self',
                 }
             };
 
-            this.version = '2.0.2';
+            this.version = '2.0.3';
         }
 
         get cnblogs() {
@@ -120,16 +120,11 @@
         }
 
         /**
-         * 显示左侧边栏
+         * 显示侧边栏
          */
         showSideBar() {
-            let $win = $(window);
-            if ($win.width() > 767) {
-                $(this.cnblogs.forFlow).css({
-                    marginLeft: '22em'
-                });
-                $(this.cnblogs.sideBar).fadeIn(600);
-            }
+            $(this.cnblogs.forFlow).css({ marginLeft: '260px'});
+            $(this.cnblogs.sideBar).show();
         }
 
         /**
@@ -152,9 +147,9 @@
                         $navList.find('li').eq(1).after(`
                             <li class="esa-has-subnavs">
                                 <a class="menu" href="javascript:void(0);">${nav.title}
-                                    <svg class="arrow" width="12px" height="8px" viewBox="0 0 14 8" xml:space="preserve" fill="none" stroke="${themeColor}"><path d="M1,1l6.2,6L13,1"></path></svg>
+                                    <svg class="arrow" width="9px" height="9px" viewBox="0 0 13 7" xml:space="preserve" fill="none" stroke="${themeColor}"><path d="M1,1l6.2,6L13,1"></path></svg>
                                 </a>
-                                <ul class="esa-sub-navs">${subnavs.join('')}</ul>
+                                <div class="esa-sub-navs"><div class="caret"></div><ul>${subnavs.join('')}</ul></div>
                             </li>`);
 
                     } else {
@@ -162,17 +157,12 @@
                     }
                 });
 
-                var opened = false;
-                $('.esa-has-subnavs').on('click', function () {
-                    $('.esa-sub-navs').hide();
-                    $('.arrow').removeClass('open');
-                    if (!opened) {
-                        $(this).find('svg').addClass('open');
-                        $(this).find('ul').show();
-                        opened = true;
-                    } else {
-                        opened = false;
-                    }
+                $('li.esa-has-subnavs').hover(function () {
+                    $(this).find('svg').addClass('open');
+                    $(this).find('.esa-sub-navs').fadeIn('fast');
+                },function () {
+                    $(this).find('svg').removeClass('open');
+                    $(this).find('.esa-sub-navs').hide();
                 });
             }
 
@@ -184,39 +174,6 @@
             $('body').prepend(`<div class="esa-mobile-menu"></div>`);
             $('.esa-mobile-menu').on('click', () => {
                 $(this.cnblogs.navigator).fadeToggle(200);
-            });
-
-            $(this.cnblogs.header).append(`
-                <div class="esa-search-box">
-                    <div class="div_my_zzk">
-                        <input type="text" id="q" onkeydown="return zzk_go_enter(event);" class="input_my_zzk" placeholder="Type to Search">&nbsp;<input onclick="zzk_go()" type="button" value="搜 索" id="btnZzk" class="btn_my_zzk">
-                    </div>
-                </div>`);
-
-            $(this.cnblogs.navigator).append(`
-                <svg t="1573264861612" class="icon esa-search-btn" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="7386" width="32" height="32" data-spm-anchor-id="a313x.7781069.0.i8">
-                    <path fill="${themeColor}" d="M616.362667 580.608h-23.808l-8.533334-8.128a196.16 196.16 0 1 0-21.098666 21.098667l8.128 8.533333v23.808l150.805333 150.165333 44.8-44.8z m-180.8 0a135.594667 135.594667 0 1 1 135.594666-135.594667 135.402667 135.402667 0 0 1-135.573333 135.594667z" p-id="7387"></path>
-                </svg>`);
-
-            $(this.cnblogs.navigator).append(`
-                <svg t="1573265135257" class="icon esa-search-close" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="15367" width="32" height="32">
-                    <path fill="${themeColor}" d="M515.23600182 491.06853843L378.27564815 354.10818478a17.09155825 17.09155825 0 1 0-24.17885764 24.15606913l136.96035332 136.97174792-136.96035331 136.97174789a17.09155825 17.09155825 0 1 0 24.16746339 24.16746337l136.97174791-136.96035366 136.9717479 136.96035366a17.09155825 17.09155825 0 1 0 24.16746337-24.15606912l-136.96035366-136.98314215 136.96035366-136.96035367a17.09155825 17.09155825 0 1 0-24.16746337-24.16746337l-136.96035366 136.96035364z" p-id="15368"></path>
-                </svg>`);
-
-            var $searchBox = $('.esa-search-box');
-            var $search = $('.esa-search-btn');
-            var $searchClose = $('.esa-search-close');
-
-            $search.on('click', () => {
-                $searchBox.slideDown('fast');
-                $searchClose.show();
-                $search.hide();
-            });
-
-            $searchClose.on('click', () => {
-                $searchBox.slideUp('fast');
-                $searchClose.hide();
-                $search.show();
             });
         }
 

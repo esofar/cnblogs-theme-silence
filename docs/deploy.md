@@ -1,6 +1,6 @@
 # 部署文档
 
-> 操作之前请先确保您的博客园账号已正常登陆并且已经成功申请开通了 JS 权限。
+> 操作之前请先确保您的博客园账号已正常登陆，并且已经成功申请开通了 JS 权限。
 
 ## 主题下载
 
@@ -28,7 +28,7 @@
 │      theme_dark.png                                         
 │      theme_default.png                                      
 │      theme_goddess.png                                      
-└─src                            // 源码存放目录                               
+└─src                            // 源码存放目录                           │  base.less             
     │  silence.js                                             
     │  silence.less                                           
     │                                                         
@@ -138,7 +138,7 @@ https://blog-static.cnblogs.com/files/esofar/silence.min.js
         github: {
             enable: true,
             link: 'https://github.com/esofar',
-	    target: '_self'
+	        target: '_blank'
         }
     });
 </script>
@@ -312,16 +312,11 @@ https://blog-static.cnblogs.com/files/esofar/silence.min.js
 
 ## 其他配置
 
-进入『[设置](https://i.cnblogs.com/Configure.aspx)』界面，在「标题」文本框中设置博客标题，注意不支持显示「子标题」；在「博客皮肤」处选择博客园官方标准模板 **Custom**；把「禁用模板默认CSS」复选框取消勾选。最后，点击「保存」按钮保存上述 3 步操作。
+进入『[设置](https://i.cnblogs.com/Configure.aspx)』界面，在「标题」文本框中设置博客标题，注意不支持显示「子标题」；在「博客皮肤」处选择博客园官方标准模板 **Custom**；把「禁用模板默认CSS」复选框需要勾选。最后，点击「保存」按钮保存上述 3 步操作。
 
-进入『[选项](https://i.cnblogs.com/Preferences.aspx)』界面，在「控件显示设置」中需要勾选的博客园官方功能模块如下几个：
+进入『[选项](https://i.cnblogs.com/Preferences.aspx)』界面，在「控件显示设置」中自定义勾选博客园官方控件，主题不支持「Google站内搜索」，其他控件均可按需启用。最后，点击「SAVE」按钮保存操作。
 
-- 必须要勾选：公告、我的标签、随笔分类、阅读排行榜、推荐排行榜
-- 自定义勾选：博客园链接、首页链接、RSS订阅、联系
-
-其他模块取消勾选(可选操作)。最后，点击「SAVE」按钮保存操作。
-
-> 至此，主题部署完成。
+主题部署完成。
 
 ## 写在最后
 

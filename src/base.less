@@ -1,0 +1,62 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  background: @blog-bg-color;
+  height: 100%;
+  color: @blog-font-color;
+  font-family: "Lato", "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+td {
+  padding: 5px;
+}
+fieldset,
+img {
+  border: 0;
+}
+ul {
+  word-break: break-all;
+}
+li {
+  list-style: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: 100%;
+  font-weight: normal;
+}
+
+a {
+  color: @blog-font-color;
+  text-decoration: none;
+  transition: all 0.3s ease;
+
+  &:hover {
+    color: @blog-theme-color;
+  }
+}
+
+::selection {
+  background: @blog-theme-color;
+  color: #fff;
+}
+
+

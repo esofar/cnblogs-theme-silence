@@ -1,11 +1,15 @@
 # 更新日志
 
 ## v2.0.3
+
+> 本次更新作为 V2 的最后一个版本，近期将正式迎来 V3 版，敬请期待。
+
 * 博文图片添加阴影效果，增加文字与图片的区别，提升布局效果 [#43](https://github.com/esofar/cnblogs-theme-silence/issues/43) 。
 * 修复 CSS 伪元素`content`属性中文字符乱码问题 [#45](https://github.com/esofar/cnblogs-theme-silence/issues/45) 。
 * 增加比较实用的站内搜索功能 [#20](https://github.com/esofar/cnblogs-theme-silence/issues/20) 。
 * 可自定义增加顶部导航栏目，支持二级导航。
-* 整体优化左侧栏区域内容显示效果。
+* 整合 Custom 模板默认 CSS，提升页面加载体验。
+* 支持博客园的原生控件显示设置，可在后台自定义显示。
 
 ## v2.0.2
 * 优化项目工程结构，包括去除全局工具依赖、封装构建命令等。
