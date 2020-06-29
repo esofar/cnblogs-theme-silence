@@ -153,7 +153,6 @@
           width: 100%;
           padding: 10px 0px;
           height: inherit;
-          border-top: 1px solid transparent;
           border-bottom: 1px solid transparent;
 
           &:hover {
@@ -200,18 +199,28 @@
   padding: 0 15px 0 0;
 
   #profile_block {
-    margin-top: 10px;
     font-size: 15px;
     line-height: 1.6;
 
     #p_b_follow {
-      margin-top: 10px;
+      margin: 15px 0 10px 0;
+      text-align: center;
+      a {
+        border: 1px solid @blog-border-color;
+        font-size: 13px;
+        padding: 7px 89px;
+        border-radius: 4px;
+
+        &:hover{
+          border-color: @blog-theme-color;
+        }
+      }
     }
   }
 }
 
 .newsItem {
-  margin-bottom: 8px;
+  margin-bottom: 10px;
 
   .catListTitle {
     display: none;
@@ -269,6 +278,7 @@
       width: 59px;
       outline: 0;
       border: 1px solid @blog-border-color;
+      border-radius: 4px;
       transition: all 0.5s ease;
 
       &:hover {
@@ -392,6 +402,7 @@
 .myposts_title,
 #taglist_title {
   font-size: 20px;
+  font-weight: 300;
   margin-top: 10px;
   text-align: left;
 }
@@ -426,17 +437,6 @@
     clear: both;
     padding-top: 10px;
   }
-
-  .pager:first-of-type {
-    display: none;
-  }
-
-  // a {
-  //   &:link,
-  //   &:visited {
-  //     color: @blog-font-color;
-  //   }
-  // }
 }
 
 .postSeparator {
@@ -484,7 +484,7 @@
     display: table;
 
     &:after {
-      content: " »";
+      content: " \00bb";
     }
 
     &:hover {
@@ -791,7 +791,6 @@
   float: right;
 }
 
-
 .feedbackItem .feedbackCon {
   margin-bottom: 10px;
   padding: 10px 0px;
@@ -874,12 +873,15 @@
 .pager,
 #nav_next_page {
   text-align: right;
+  margin-right: 0px !important;
+  color: @blog-font-color;
 
   a {
-    padding: 3px 7px;
+    padding: 5px 10px;
     border: 1px solid @blog-border-color;
     border-radius: 4px;
-    margin: 0px 0 0 7px;
+    margin: 0px 0 0 5px;
+    color: initial;
 
     &:hover {
       color: @blog-theme-color;
