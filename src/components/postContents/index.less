@@ -1,0 +1,56 @@
+.esa-contents {
+  box-shadow: -2px 0 3px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--contents-bg-color);
+  overflow-y: auto;
+  user-select: none;
+  padding: 1rem 0;
+  width: 252px;
+  transform: translate3d(252px, 0, 0);
+  z-index: 1000;
+
+  ul {
+    padding: 0px 15px;
+    overflow-y: auto;
+
+    li {
+      padding: 5px 0px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      cursor: pointer;
+      color: var(--text-color);
+
+      .level1 {
+        margin-left: 0px;
+      }
+
+      .level2 {
+        margin-left: 10px;
+      }
+
+      .level3 {
+        margin-left: 26px;
+      }
+    }
+  }
+}
+
+.esa-anchor {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  margin-left: 8px;
+}
+
+.active {
+  transition-duration: 378ms;
+  transform: translate3d(0px, 0px, 0px);
+}
+
+.noactive {
+  transition-duration: 378ms;
+  transform: translate3d(252px, 0, 0);
+}

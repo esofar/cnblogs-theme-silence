@@ -1,0 +1,1125 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="referrer" content="origin" />
+    <meta
+      property="og:description"
+      content="先决条件 本教程假定 RabbitMQ 已经安装，并运行在 标准端口（5672）。如果你使用不同的主机、端口或证书，则需要调整连接设置。 从哪里获得帮助 如果您在阅读本教程时遇到困难，可以通过邮件列表"
+    />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>[译]RabbitMQ教程C#版 - 远程过程调用(RPC) - Esofar - 博客园</title>
+    <link
+      id="favicon"
+      rel="shortcut icon"
+      href="//common.cnblogs.com/favicon.ico?v=20200522"
+      type="image/x-icon"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://www.cnblogs.com/css/blog-common.min.css"
+    />
+
+    <!-- <link
+      type="text/css"
+      rel="stylesheet"
+      href="https://www.cnblogs.com/esofar/custom.css?v=ghMByeCn4/x2RdVWV0z2YwedKGw="
+    /> -->
+    <link
+      id="mobile-style"
+      media="only screen and (max-width: 767px)"
+      type="text/css"
+      rel="stylesheet"
+      href="https://www.cnblogs.com/skins/custom/bundle-custom-mobile.min.css"
+    />
+
+    <link
+      type="application/rss+xml"
+      rel="alternate"
+      href="https://www.cnblogs.com/esofar/rss"
+    />
+    <link
+      type="application/rsd+xml"
+      rel="EditURI"
+      href="https://www.cnblogs.com/esofar/rsd.xml"
+    />
+    <link
+      type="application/wlwmanifest+xml"
+      rel="wlwmanifest"
+      href="https://www.cnblogs.com/esofar/wlwmanifest.xml"
+    />
+    <script>
+      var currentBlogId = 235702;
+      var currentBlogApp = "esofar";
+      var cb_enable_mathjax = false;
+      var isLogined = true;
+      var isBlogOwner = true;
+      var skinName = "Custom";
+      var visitorUserId = "5946b2ef-f42a-e511-b908-9dcfd8948a71";
+    </script>
+    <script>
+      var currentPostDateAdded = "2018-11-17 10:59";
+    </script>
+    <script src="https://common.cnblogs.com/scripts/jquery-2.2.0.min.js"></script>
+    <script src="https://www.cnblogs.com/js/blog-common.min.js"></script>
+  </head>
+  <body>
+    <a name="top"></a>
+    
+    <div class="esa-loader">
+        <div class="box">
+            <div class="figure"></div>
+            <p class="label">Loading</p>
+        </div>
+    </div>
+
+
+    <!--done-->
+    <div id="home">
+      <div id="header">
+        <div id="blogTitle">
+          <a id="lnkBlogLogo" href="https://www.cnblogs.com/esofar/"
+            ><img
+              id="blogLogo"
+              src="/skins/custom/images/logo.gif"
+              alt="返回主页"
+          /></a>
+
+          <!--done-->
+          <h1>
+            <a
+              id="Header1_HeaderTitle"
+              class="headermaintitle HeaderMainTitle"
+              href="https://www.cnblogs.com/esofar/"
+              >Esofar's Blog</a
+            >
+          </h1>
+          <h2></h2>
+        </div>
+        <!--end: blogTitle 博客的标题和副标题 -->
+        <div id="navigator">
+          <ul id="navList">
+            <li>
+              <a
+                id="blog_nav_sitehome"
+                class="menu"
+                href="https://www.cnblogs.com/"
+              >
+                博客园</a
+              >
+            </li>
+            <li>
+              <a
+                id="blog_nav_myhome"
+                class="menu"
+                href="https://www.cnblogs.com/esofar/"
+              >
+                首页</a
+              >
+            </li>
+            <li></li>
+            <li>
+              <a
+                id="blog_nav_contact"
+                class="menu"
+                href="https://msg.cnblogs.com/send/Esofar"
+              >
+                联系</a
+              >
+            </li>
+            <li>
+              <!--<partial name="./Shared/_XmlLink.cshtml" model="Model" /></li>-->
+            </li>
+            <li>
+              <a id="blog_nav_admin" class="menu" href="https://i.cnblogs.com/">
+                管理</a
+              >
+            </li>
+          </ul>
+
+          <div class="blogStats">
+            <span id="stats_post_count">随笔 - 28&nbsp; </span>
+            <span id="stats_article_count">文章 - 0&nbsp; </span>
+            <span id="stats-comment_count">评论 - 492</span>
+          </div>
+          <!--end: blogStats -->
+        </div>
+        <!--end: navigator 博客导航栏 -->
+      </div>
+      <!--end: header 头部 -->
+
+      <div id="main">
+        <div id="mainContent">
+          <div class="forFlow">
+            <div id="post_detail">
+              <!--done-->
+              <div id="topics">
+                <div class="post">
+                  <h1 class="postTitle">
+                    <a
+                      id="cb_post_title_url"
+                      class="postTitle2 vertical-middle"
+                      href="https://www.cnblogs.com/esofar/p/rabbitmq-rpc.html"
+                    >
+                      <span>[译]RabbitMQ教程C#版 - 远程过程调用(RPC)</span>
+                    </a>
+                  </h1>
+                  <div class="clear"></div>
+                  <div class="postBody">
+                    <div
+                      id="cnblogs_post_body"
+                      class="blogpost-body cnblogs-markdown"
+                    >
+                      <blockquote>
+                        <p>
+                          <strong>先决条件</strong><br />
+                          本教程假定 RabbitMQ 已经安装，并运行在<code
+                            >localhost </code
+                          >标准端口（5672）。如果你使用不同的主机、端口或证书，则需要调整连接设置。
+                        </p>
+                        <p>
+                          <strong>从哪里获得帮助</strong><br />
+                          如果您在阅读本教程时遇到困难，可以通过邮件列表
+                          <a
+                            href="https://groups.google.com/forum/#!forum/rabbitmq-users"
+                            >联系我们</a
+                          >。
+                        </p>
+                      </blockquote>
+                      <p>
+                        在第
+                        <a
+                          href="https://www.cnblogs.com/esofar/p/rabbitmq-work-queues.html"
+                          >教程[2]</a
+                        >
+                        中，我们学习了如何使用工作队列在多个工作单元之间分配耗时任务。
+                      </p>
+                      <p>
+                        但是如果我们想要运行一个在远程计算机上的函数并等待其结果呢？这将是另外一回事了。这种模式通常被称为
+                        <em>远程过程调用</em> 或 <em>RPC</em> 。
+                      </p>
+                      <p>
+                        在本篇教程中，我们将使用 RabbitMQ 构建一个 RPC
+                        系统：一个客户端和一个可扩展的 RPC
+                        服务器。由于我们没有什么耗时任务值得分发，那干脆就创建一个返回斐波那契数列的虚拟
+                        RPC 服务吧。
+                      </p>
+                      <h2 id="客户端接口">客户端接口</h2>
+                      <p>
+                        为了说明如何使用 RPC
+                        服务，我们将创建一个简单的客户端类。该类将暴露一个名为<code>Call</code>的方法，用来发送
+                        RPC 请求并且保持阻塞状态，直到接收到应答为止。
+                      </p>
+                      <pre><code class="language-c#">var rpcClient = new RPCClient();
+
+Console.WriteLine(&quot; [x] Requesting fib(30)&quot;);
+var response = rpcClient.Call(&quot;30&quot;);
+Console.WriteLine(&quot; [.] Got '{0}'&quot;, response);
+
+rpcClient.Close();
+</code></pre>
+                      <blockquote>
+                        <p><strong>关于 RPC 的说明</strong></p>
+                        <p>
+                          尽管 RPC
+                          在计算机中是一种很常见的模式，但它经常受到批评。问题出现在当程序员不知道一个函数是本地调用还是一个耗时的
+                          RPC
+                          请求。这样的混淆，会导致系统不可预测，以及给调试增加不必要的复杂性。误用
+                          RPC 可能会导致不可维护的混乱代码，而不是简化软件。
+                        </p>
+                        <p>牢记这些限制，请考虑如下建议：</p>
+                        <ul>
+                          <li>
+                            确保可以明显区分哪些函数是本地调用，哪些是远程调用。
+                          </li>
+                          <li>为您的系统编写文档，明确组件之间的依赖关系。</li>
+                          <li>
+                            捕获异常，当 RPC 服务长时间宕机时客户端该如何应对。
+                          </li>
+                        </ul>
+                        <p>
+                          当有疑问的时候可以先避免使用
+                          RPC。如果可以的话，考虑使用异步管道 - 而不是类似 RPC
+                          的阻塞，其会将结果以异步的方式推送到下一个计算阶段。
+                        </p>
+                      </blockquote>
+                      <h2 id="回调队列">回调队列</h2>
+                      <p>
+                        一般来讲，基于 RabbitMQ 进行 RPC
+                        通信是非常简单的，客户端发送一个请求消息，然后服务端用一个响应消息作为应答。为了能接收到响应，我们需要在发送请求过程中指定一个'callback'队列地址。
+                      </p>
+                      <pre><code class="language-c#">var props = channel.CreateBasicProperties();
+props.ReplyTo = replyQueueName;
+
+var messageBytes = Encoding.UTF8.GetBytes(message);
+channel.BasicPublish(exchange: &quot;&quot;,
+                     routingKey: &quot;rpc_queue&quot;,
+                     basicProperties: props,
+                     body: messageBytes);
+
+// ... then code to read a response message from the callback_queue ...
+</code></pre>
+                      <blockquote>
+                        <p><strong>消息属性</strong></p>
+                        <p>
+                          AMQP 0-9-1 协议在消息中预定义了一个包含 14
+                          个属性的集合，大多数属性很少使用，但以下情况除外：<br />
+                          <code>Persistent</code
+                          >：将消息标记为持久的（值为2）或者瞬时的（其他值），可以参考
+                          <a
+                            href="https://www.cnblogs.com/esofar/p/rabbitmq-work-queues.html"
+                            >教程[2]</a
+                          >。<br />
+                          <code>DeliveryMode</code>：熟悉 AMQP
+                          协议的人可以选择此属性而不是熟悉协议的人可以选择使用此属性而不是<code>Persistent</code>，它们控制的东西是一样的。<br />
+                          <code>ContentType</code>：用于描述编码的 mime
+                          类型。例如，对于经常使用的 JSON
+                          编码，将此属性设置为：<code>application/json</code>是一种很好的做法。<br />
+                          <code>ReplyTo</code>：通常用于命名回调队列。<br />
+                          <code>CorrelationId</code>：用于将 RPC
+                          响应与请求相关联。
+                        </p>
+                      </blockquote>
+                      <h2 id="关联id">关联ID</h2>
+                      <p>
+                        在上面介绍的方法中，我们建议为每个 RPC
+                        请求创建一个回调队列，但是这种方式效率低。幸运的是我们有一种更好的方式，那就是为每个客户端创建一个独立的回调队列。
+                      </p>
+                      <p>
+                        这种方式会引出一个新的问题，在收到响应的回调队列中，它无法区分响应属于哪一个请求，此时便是<code>CorrelationId</code>属性的所用之处。我们将为每个请求的<code>CorrelationId</code>设置一个唯一值。之后当我们在回调队列接收到响应的时候，再去检查下这个属性是否和请求中的值匹配，如此一来，我们就可以把响应和请求关联起来了。如果出现一个未知的<code>CorrelationId</code>值，我们可以安全的销毁这个消息，因为这个消息不属于我们的请求。
+                      </p>
+                      <p>
+                        你可能会问，为什么我们应该忽略回调队列中的未知的消息，而不是用错误来标识失败呢？这是因为于服务器端可能存在竞争条件。虽然不太可能，但是
+                        RPC
+                        服务器可能在仅发送了响应消息而未发送消息确认的情况下挂掉，如果出现这种情况，RPC
+                        服务器重启之后将会重新处理该请求。这就是为什么在客户端上我们必须优雅地处理重复的响应，并且理想情况下
+                        RPC 应该是幂等的。
+                      </p>
+                      <h2 id="总结">总结</h2>
+                      <p>
+                        <img
+                          src="https://img2018.cnblogs.com/blog/785976/201811/785976-20181117212349010-1581646652.png"
+                          alt=""
+                          loading="lazy"
+                        />
+                      </p>
+                      <p>我们的 RPC 会是这样工作：</p>
+                      <ul>
+                        <li>客户端启动时，会创建一个匿名的独占回调队列。</li>
+                        <li>
+                          对于 RPC
+                          请求，客户端发送带有两个属性的消息：<code>ReplyTo</code>（设置为回调队列）和<code>CorrelationId</code>（为每个请求设置唯一值）。
+                        </li>
+                        <li>请求被发送到<code>rpc_queue</code>队列。</li>
+                        <li>
+                          RPC
+                          工作线程（或者叫：服务器）正在等待该队列上的请求。当出现请求时，它会执行该作业，并使用<code>ReplyTo</code>属性设置的队列将带有结果的消息发送回客户端。
+                        </li>
+                        <li>
+                          客户端等待回调队列上的数据。出现消息时，它会检查<code>CorrelationId</code>属性。如果它与请求中的值匹配，则返回对应用程序的响应。
+                        </li>
+                      </ul>
+                      <h2 id="组合在一起">组合在一起</h2>
+                      <p>斐波纳契 任务：</p>
+                      <pre><code>private static int fib(int n)
+{
+    if (n == 0 || n == 1) return n;
+    return fib(n - 1) + fib(n - 2);
+}
+</code></pre>
+                      <p>
+                        我们宣布我们的斐波那契函数。并假定只允许有效的正整数输入。
+                        （不要期望这个适用于大数字，它可能是最慢的递归实现）。
+                      </p>
+                      <p>
+                        我们的 RPC 服务端代码
+                        <a
+                          href="https://github.com/rabbitmq/rabbitmq-tutorials/blob/master/dotnet/RPCServer/RPCServer.cs"
+                          >RPCServer.cs</a
+                        >
+                        看起来如下所示：
+                      </p>
+                      <pre><code>using System;
+using RabbitMQ.Client;
+using RabbitMQ.Client.Events;
+using System.Text;
+
+class RPCServer
+{
+    public static void Main()
+    {
+        var factory = new ConnectionFactory() { HostName = &quot;localhost&quot; };
+        using (var connection = factory.CreateConnection())
+        using (var channel = connection.CreateModel())
+        {
+            channel.QueueDeclare(queue: &quot;rpc_queue&quot;, durable: false,
+              exclusive: false, autoDelete: false, arguments: null);
+            channel.BasicQos(0, 1, false);
+            var consumer = new EventingBasicConsumer(channel);
+            channel.BasicConsume(queue: &quot;rpc_queue&quot;,
+              autoAck: false, consumer: consumer);
+            Console.WriteLine(&quot; [x] Awaiting RPC requests&quot;);
+
+            consumer.Received += (model, ea) =&gt;
+            {
+                string response = null;
+
+                var body = ea.Body;
+                var props = ea.BasicProperties;
+                var replyProps = channel.CreateBasicProperties();
+                replyProps.CorrelationId = props.CorrelationId;
+
+                try
+                {
+                    var message = Encoding.UTF8.GetString(body);
+                    int n = int.Parse(message);
+                    Console.WriteLine(&quot; [.] fib({0})&quot;, message);
+                    response = fib(n).ToString();
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(&quot; [.] &quot; + e.Message);
+                    response = &quot;&quot;;
+                }
+                finally
+                {
+                    var responseBytes = Encoding.UTF8.GetBytes(response);
+                    channel.BasicPublish(exchange: &quot;&quot;, routingKey: props.ReplyTo,
+                      basicProperties: replyProps, body: responseBytes);
+                    channel.BasicAck(deliveryTag: ea.DeliveryTag,
+                      multiple: false);
+                }
+            };
+
+            Console.WriteLine(&quot; Press [enter] to exit.&quot;);
+            Console.ReadLine();
+        }
+    }
+
+    /// 
+
+    /// Assumes only valid positive integer input.
+    /// Don't expect this one to work for big numbers, and it's
+    /// probably the slowest recursive implementation possible.
+    /// 
+    private static int fib(int n)
+    {
+        if (n == 0 || n == 1)
+        {
+            return n;
+        }
+
+        return fib(n - 1) + fib(n - 2);
+    }
+}
+</code></pre>
+                      <p>服务端代码非常简单：</p>
+                      <ul>
+                        <li>像往常一样，首先建立连接，通道和声明队列。</li>
+                        <li>
+                          我们可能希望运行多个服务器进程。为了在多个服务器上平均分配负载，我们需要设置<code>channel.BasicQos</code>中的<code>prefetchCount</code>值。
+                        </li>
+                        <li>
+                          使用<code>BasicConsume</code>访问队列，然后注册一个交付处理程序，并在其中完成工作并发回响应。
+                        </li>
+                      </ul>
+                      <p>
+                        我们的 RPC 客户端
+                        <a
+                          href="https://github.com/rabbitmq/rabbitmq-tutorials/blob/master/dotnet/RPCClient/RPCClient.cs"
+                          >RPCClient.cs</a
+                        >
+                        代码：
+                      </p>
+                      <pre><code>using System;
+using System.Collections.Concurrent;
+using System.Text;
+using RabbitMQ.Client;
+using RabbitMQ.Client.Events;
+
+public class RpcClient
+{
+    private readonly IConnection connection;
+    private readonly IModel channel;
+    private readonly string replyQueueName;
+    private readonly EventingBasicConsumer consumer;
+    private readonly BlockingCollection&lt;string&gt; respQueue = new BlockingCollection&lt;string&gt;();
+    private readonly IBasicProperties props;
+
+public RpcClient()
+{
+        var factory = new ConnectionFactory() { HostName = &quot;localhost&quot; };
+
+        connection = factory.CreateConnection();
+        channel = connection.CreateModel();
+        replyQueueName = channel.QueueDeclare().QueueName;
+        consumer = new EventingBasicConsumer(channel);
+
+        props = channel.CreateBasicProperties();
+        var correlationId = Guid.NewGuid().ToString();
+        props.CorrelationId = correlationId;
+        props.ReplyTo = replyQueueName;
+
+        consumer.Received += (model, ea) =&gt;
+        {
+            var body = ea.Body;
+            var response = Encoding.UTF8.GetString(body);
+            if (ea.BasicProperties.CorrelationId == correlationId)
+            {
+                respQueue.Add(response);
+            }
+        };
+    }
+
+    public string Call(string message)
+    {
+        var messageBytes = Encoding.UTF8.GetBytes(message);
+        channel.BasicPublish(
+            exchange: &quot;&quot;,
+            routingKey: &quot;rpc_queue&quot;,
+            basicProperties: props,
+            body: messageBytes);
+
+        channel.BasicConsume(
+            consumer: consumer,
+            queue: replyQueueName,
+            autoAck: true);
+
+        return respQueue.Take(); ;
+    }
+
+    public void Close()
+    {
+        connection.Close();
+    }
+}
+
+public class Rpc
+{
+    public static void Main()
+    {
+        var rpcClient = new RpcClient();
+
+        Console.WriteLine(&quot; [x] Requesting fib(30)&quot;);
+        var response = rpcClient.Call(&quot;30&quot;);
+
+        Console.WriteLine(&quot; [.] Got '{0}'&quot;, response);
+        rpcClient.Close();
+    }
+}
+</code></pre>
+                      <p>客户端代码稍微复杂一些：</p>
+                      <ul>
+                        <li>
+                          建立连接和通道，并为响应声明一个独有的 'callback'
+                          队列。
+                        </li>
+                        <li>
+                          订阅这个 'callback' 队列，以便可以接收到 RPC 响应。
+                        </li>
+                        <li><code>Call</code>方法用来生成实际的 RPC 请求。</li>
+                        <li>
+                          在这里，我们首先生成一个唯一的<code>CorrelationId</code>编号并保存它，while
+                          循环会使用该值来捕获匹配的响应。
+                        </li>
+                        <li>
+                          接下来，我们发布请求消息，其中包含两个属性：<code>ReplyTo</code>和<code>CorrelationId</code>。
+                        </li>
+                        <li>
+                          此时，我们可以坐下来稍微一等，直到指定的响应到来。
+                        </li>
+                        <li>
+                          while
+                          循环做的工作非常简单，对于每个响应消息，它都会检查<code>CorrelationId</code>是否是我们正在寻找的那一个。如果是这样，它就会保存该响应。
+                        </li>
+                        <li>最后，我们将响应返回给用户。</li>
+                      </ul>
+                      <p>客户发出请求：</p>
+                      <pre><code>var rpcClient = new RPCClient();
+
+Console.WriteLine(&quot; [x] Requesting fib(30)&quot;);
+var response = rpcClient.Call(&quot;30&quot;);
+Console.WriteLine(&quot; [.] Got '{0}'&quot;, response);
+
+rpcClient.Close();
+</code></pre>
+                      <p>
+                        现在是查看
+                        <a
+                          href="https://github.com/rabbitmq/rabbitmq-tutorials/blob/master/dotnet/RPCClient/RPCClient.cs"
+                          >RPCClient.cs</a
+                        >
+                        和
+                        <a
+                          href="https://github.com/rabbitmq/rabbitmq-tutorials/blob/master/dotnet/RPCServer/RPCServer.cs"
+                          >RPCServer.cs</a
+                        >
+                        的完整示例源代码（包括基本异常处理）的好时机哦。
+                      </p>
+                      <p>
+                        像往常一样设置（请参见
+                        <a
+                          href="https://www.cnblogs.com/esofar/p/rabbitmq-hello-world.html"
+                          >教程[1]</a
+                        >）：
+                      </p>
+                      <p>我们的 RPC 服务现已准备就绪，现在可以启动服务端：</p>
+                      <pre><code>cd RPCServer
+dotnet run
+# =&gt; [x] Awaiting RPC requests
+</code></pre>
+                      <p>要请求斐波纳契数，请运行客户端：</p>
+                      <pre><code>cd RPCClient
+dotnet run
+# =&gt; [x] Requesting fib(30)
+</code></pre>
+                      <p>
+                        这里介绍的设计并不是 RPC
+                        服务的唯一可能实现，但它仍具有一些重要优势：
+                      </p>
+                      <ul>
+                        <li>
+                          如果 RPC
+                          服务器太慢，您可以通过运行另一个服务器来扩展。尝试在新开一个控制台，运行第二个
+                          RPCServer。
+                        </li>
+                        <li>
+                          在客户端，RPC
+                          只需要发送和接收一条消息。不需要像<code>QueueDeclare</code>一样同步调用。因此，对于单个
+                          RPC 请求，RPC 客户端只需要一次网络往返。
+                        </li>
+                      </ul>
+                      <p>
+                        我们的代码很简单，也并没有尝试去解决更复杂（但很重要）的问题，比如就像：
+                      </p>
+                      <ul>
+                        <li>如果服务端没有运行，客户端应该如何反应？</li>
+                        <li>客户端是否应该为 RPC 设置某种超时机制？</li>
+                        <li>
+                          如果服务端出现故障并引发异常，是否应将其转发给客户端？
+                        </li>
+                        <li>
+                          在处理之前防止无效的传入消息（例如：检查边界、类型）。
+                        </li>
+                      </ul>
+                      <blockquote>
+                        <p>
+                          如果您想进行实验，您可能会发现
+                          <a href="http://www.rabbitmq.com/management.html"
+                            >管理 UI</a
+                          >
+                          对于查看队列非常有用。
+                        </p>
+                      </blockquote>
+                      <h2 id="写在最后">写在最后</h2>
+                      <p>
+                        本文翻译自 RabbitMQ 官方教程 C#
+                        版本。如本文介绍内容与官方有所出入，请以官方最新内容为准。水平有限，翻译的不好请见谅，如有翻译错误还请指正。
+                      </p>
+                      <ul>
+                        <li>
+                          原文链接：<a
+                            href="http://www.rabbitmq.com/tutorials/tutorial-six-dotnet.html"
+                            >RabbitMQ tutorial - Remote procedure call (RPC)</a
+                          >
+                        </li>
+                        <li>
+                          实验环境：RabbitMQ 3.7.4 、.NET Core 2.1.3、Visual
+                          Studio Code
+                        </li>
+                        <li>最后更新：2018-11-17</li>
+                      </ul>
+                    </div>
+                    <div id="MySignature"></div>
+                    <div class="clear"></div>
+                    <div id="blog_post_info_block">
+                      <div id="BlogPostCategory">
+                        分类:
+                        <a
+                          href="https://www.cnblogs.com/esofar/category/1192446.html"
+                          target="_blank"
+                          >文章翻译</a
+                        >,
+                        <a
+                          href="https://www.cnblogs.com/esofar/category/1177622.html"
+                          target="_blank"
+                          >消息队列</a
+                        >
+                      </div>
+                      <div id="EntryTag">
+                        标签:
+                        <a href="https://www.cnblogs.com/esofar/tag/C%23/">C#</a
+                        >,
+                        <a href="https://www.cnblogs.com/esofar/tag/RabbitMQ/"
+                          >RabbitMQ</a
+                        >
+                      </div>
+                      <div id="blog_post_info">
+               
+                        <div id="green_channel">
+                                <a href="javascript:void(0);" id="green_channel_digg" onclick="DiggIt(9944038,cb_blogId,1);green_channel_success(this,'谢谢推荐！');">好文要顶</a>
+                                <a id="green_channel_follow" onclick="follow('5946b2ef-f42a-e511-b908-9dcfd8948a71');" href="javascript:void(0);">关注我</a>
+                            <a id="green_channel_favorite" onclick="AddToWz(cb_entryId);return false;" href="javascript:void(0);">收藏该文</a>
+                            <a id="green_channel_weibo" href="javascript:void(0);" title="分享至新浪微博" onclick="ShareToTsina()"><img src="https://common.cnblogs.com/images/icon_weibo_24.png" alt=""></a>
+                            <a id="green_channel_wechat" href="javascript:void(0);" title="分享至微信" onclick="shareOnWechat()"><img src="https://common.cnblogs.com/images/wechat.png" alt=""></a>
+                        </div>
+                        <div id="author_profile">
+                            <div id="author_profile_info" class="author_profile_info">
+                                    <a href="https://home.cnblogs.com/u/esofar/" target="_blank"><img src="https://pic.cnblogs.com/face/785976/20180518094818.png" class="author_avatar" alt=""></a>
+                                <div id="author_profile_detail" class="author_profile_info">
+                                    <a href="https://home.cnblogs.com/u/esofar/">Esofar</a><br>
+                                    <a href="https://home.cnblogs.com/u/esofar/followees/">关注 - 29</a><br>
+                                    <a href="https://home.cnblogs.com/u/esofar/followers/">粉丝 - 474</a>
+                                </div>
+                            </div>
+                            <div class="clear"></div>
+                            <div id="author_profile_honor"></div>
+                            <div id="author_profile_follow">
+                            </div>
+                        </div>
+                        <div id="div_digg" style="
+                            display: block;
+                        ">
+                            <div class="diggit" onclick="votePost(9944038,'Digg')">
+                                <span class="diggnum" id="digg_count">5</span>
+                            </div>
+                            <div class="buryit" onclick="votePost(9944038,'Bury')">
+                                <span class="burynum" id="bury_count">0</span>
+                            </div>
+                            <div class="clear"></div>
+                            <div class="diggword" id="digg_tips">
+                            </div>
+                        </div>
+                        
+                        <script type="text/javascript">
+                            currentDiggType = 0;
+                        </script></div>
+                      <div class="clear"></div>
+                      <div id="post_next_prev"></div>
+                    </div>
+                  </div>
+                  <div class="postDesc">
+                    posted @ <span id="post-date">2018-11-17 22:59</span>&nbsp;
+                    <a href="https://www.cnblogs.com/esofar/">Esofar</a>&nbsp;
+                    阅读(<span id="post_view_count">2084</span>)&nbsp;
+                    评论(<span id="post_comment_count">2</span>)&nbsp;
+                    <a
+                      href="https://www.cnblogs.com/esofar/p/rabbitmq-rpc.md"
+                      target="_blank"
+                      >MD</a
+                    >&nbsp;
+                    <a
+                      href="https://i.cnblogs.com/EditPosts.aspx?postid=9944038"
+                      rel="nofollow"
+                      >编辑</a
+                    >&nbsp;
+                    <a
+                      href="javascript:void(0)"
+                      onclick="AddToWz(9944038);return false;"
+                      >收藏</a
+                    >
+                  </div>
+                </div>
+              </div>
+              <!--end: topics 文章、评论容器-->
+            </div>
+            <script src="https://common.cnblogs.com/highlight/9.12.0/highlight.min.js"></script>
+            <script>
+              markdown_highlight();
+            </script>
+            <script>
+              var allowComments = true,
+                cb_blogId = 235702,
+                cb_blogApp = "esofar",
+                cb_blogUserGuid = "5946b2ef-f42a-e511-b908-9dcfd8948a71";
+              var cb_entryId = 9944038,
+                cb_entryCreatedDate = "2018-11-17 22:59",
+                cb_postType = 1;
+              loadViewCount(cb_entryId);
+              loadSideColumnAd();
+            </script>
+            <a name="!comments"></a>
+            <div id="blog-comments-placeholder">
+
+              <div id="comment_pager_top">
+                  
+              </div>
+              
+              <br>
+              <div class="feedback_area_title">评论列表</div>
+              <div class="feedbackNoItems"><div class="feedbackNoItems"></div></div>	
+                  <div class="feedbackItem">
+                    <div class="feedbackListSubtitle">
+                      <div class="feedbackManage">
+                        &nbsp;&nbsp;
+              
+              <span class="comment_actions">
+                  <a href="javascript:void(0);" onclick="return ReplyComment(4116848, 'cml17CWj2ddfUnadM4Vy4cKviFrrp4DZG7GHurnmQGZ8UBMILukkWQ==')">
+                      回复
+                  </a>
+                  <a href="javascript:void(0);" onclick="return QuoteComment(4116848, 'cml17CWj2ddfUnadM4Vy4cKviFrrp4DZG7GHurnmQGZ8UBMILukkWQ==')">
+                      引用
+                  </a>
+                  
+                  <a href="javascript:void(0);" onclick="return DelComment(4116848, this,'9944038')">
+                      删除
+                  </a>
+              </span>
+              
+              
+                      </div>
+                      
+              <a href="#4116848" class="layer">#1楼</a>
+              <a name="4116848" id="comment_anchor_4116848"></a>
+              
+               
+              <span class="comment_date">2018-11-18 08:19</span>
+              
+               
+              
+                          <a id="a_comment_author_4116848" href="https://www.cnblogs.com/ghd258/" target="_blank">高海东</a>
+              
+                    </div>
+                    <div class="feedbackCon">
+                      
+              <div class="esa-comment-avatar"><a target="_blank" href="https://www.cnblogs.com/ghd258/"></div><div id="comment_body_4116848" data-format-type="Ubb" class="blog_comment_body cnblogs-ubb">
+                  学习 谢谢分享
+              </div>
+                      <div class="comment_vote">
+                          <span class="comment_error" style="color: red"></span>
+                          <a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(4116848, 'Digg', this.parentElement, false);">
+                              支持(0)
+                          </a>
+                          <a href="javascript:void(0);" class="comment_burry" onclick="return voteComment(4116848, 'Bury', this.parentElement, false);">
+                              反对(0)
+                          </a>
+                      </div>
+                      
+              
+                    </div>
+                  </div>
+                  <div class="feedbackItem">
+                    <div class="feedbackListSubtitle">
+                      <div class="feedbackManage">
+                        &nbsp;&nbsp;
+              
+              <span class="comment_actions">
+                  <a href="javascript:void(0);" onclick="return ReplyComment(4542615, 'NjWJIRTPeU/CXSZWnrKM1tYdDXLgYVO6rikxuSLD003VmgiR/dX5ew==')">
+                      回复
+                  </a>
+                  <a href="javascript:void(0);" onclick="return QuoteComment(4542615, 'NjWJIRTPeU/CXSZWnrKM1tYdDXLgYVO6rikxuSLD003VmgiR/dX5ew==')">
+                      引用
+                  </a>
+                  
+                  <a href="javascript:void(0);" onclick="return DelComment(4542615, this,'9944038')">
+                      删除
+                  </a>
+              </span>
+              
+              
+                      </div>
+                      
+              <a href="#4542615" class="layer">#2楼</a>
+              <a name="4542615" id="comment_anchor_4542615"></a>
+              
+                      <span id="comment-maxId" style="display:none">4542615</span>
+                      <span id="comment-maxDate" style="display:none">2020/4/5 下午9:17:25</span>
+               
+              <span class="comment_date">2020-04-05 21:17</span>
+              
+               
+              
+                          <a id="a_comment_author_4542615" href="https://www.cnblogs.com/zaijianba/" target="_blank">ChooseTodo</a>
+              
+                    </div>
+                    <div class="feedbackCon">
+                      
+              <div class="esa-comment-avatar"><a target="_blank" href="https://www.cnblogs.com/zaijianba/"></a></div><div id="comment_body_4542615" data-format-type="Markdown" class="blog_comment_body cnblogs-markdown">
+                  <p>这个博客风格好棒~</p>
+              
+              </div>
+                      <div class="comment_vote">
+                          <span class="comment_error" style="color: red"></span>
+                          <a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(4542615, 'Digg', this.parentElement, false);">
+                              支持(0)
+                          </a>
+                          <a href="javascript:void(0);" class="comment_burry" onclick="return voteComment(4542615, 'Bury', this.parentElement, false);">
+                              反对(0)
+                          </a>
+                      </div>
+                      <span id="comment_4542615_avatar" style="display:none">
+                          https://pic.cnblogs.com/face/1389614/20181112113837.png
+                      </span>
+              
+                    </div>
+                  </div>
+              
+              <div id="comment_pager_bottom">
+                  
+              </div>
+              
+              
+              </div>
+            <script>
+              // var commentManager = new blogCommentManager();
+              // commentManager.renderComments(0);
+            </script>
+            <div id="comment_form" class="commentform">
+              <a name="commentform"></a>
+              <div id="divCommentShow"></div>
+              <div id="comment_nav">
+                <span id="span_refresh_tips"></span
+                ><a
+                  href="javascript:void(0);"
+                  onclick="return RefreshCommentList();"
+                  id="lnk_RefreshComments"
+                  runat="server"
+                  clientidmode="Static"
+                  >刷新评论</a
+                ><a href="#" onclick="return RefreshPage();">刷新页面</a
+                ><a href="#top">返回顶部</a>
+              </div>
+              <div id="comment_form_container" style="visibility: visible;"><script type="text/javascript" src="https://mention.cnblogs.com//bundles/mention.js?id=20160615"></script>
+                <div id="commentform_title">发表评论</div>
+                <span id="tip_comment" style="color:Red"></span>
+                <div class="commentbox_main comment_textarea">
+                    <div class="commentbox_title">
+                        <div class="commentbox_title_left">
+                            <span id="btn_edit_comment" class="commentbox_tab active" title="编辑评论">编辑</span>
+                            <span id="btn_preview_comment" class="commentbox_tab" title="Markdown 预览">预览</span>
+                        </div>
+                        <div class="commentbox_title_right" style="display: flex;">
+                            <span id="ubb_bold" class="comment_icon" alt="粗体" title="添加粗体(Ctrl + B)">
+                                <svg class="comment_svg" version="1.1" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <g fill-rule="evenodd">
+                                        <path d="m13.221 19c1.4414 0 2.5793-0.27451 3.3759-0.82353 0.92931-0.66667 1.4034-1.7059 1.4034-3.1176 0-0.94118-0.22759-1.7059-0.66379-2.2549-0.45517-0.56863-1.119-0.94118-2.0103-1.1176 0.68276-0.27451 1.1948-0.64706 1.5552-1.1569 0.36034-0.54902 0.55-1.2157 0.55-2 0-1.0588-0.36034-1.902-1.0621-2.5294-0.75862-0.66667-1.8207-1-3.1672-1h-6.2017v14h6.2207zm-0.82196-8h-3.3987v-4h3.4367c0.91139 0 1.557 0.15686 1.9747 0.47059 0.37975 0.29412 0.58861 0.78431 0.58861 1.451 0 0.72549-0.20886 1.2549-0.58861 1.5882-0.39873 0.31373-1.0633 0.4902-2.0127 0.4902zm0.52612 6h-3.9249v-4h3.9855c1.052 0 1.8208 0.16216 2.3064 0.48649 0.46532 0.32432 0.70809 0.84685 0.70809 1.5856 0 0.72072-0.3237 1.2252-0.9711 1.5495-0.50578 0.25225-1.2139 0.37838-2.104 0.37838z" fill-rule="nonzero" stroke-width=".35"></path>
+                                    </g>
+                                </svg>
+                            </span>
+                            <span id="ubb_url" class="comment_icon" title="添加链接(Ctrl + K)" alt="链接">
+                                <svg class="comment_svg comment_svg_stroke" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <g fill-rule="evenodd">
+                                        <g transform="translate(4 4)" fill-rule="nonzero" stroke-width=".4">
+                                            <path d="m6.304 9.696c-0.288-0.288-0.512-0.608-0.704-0.992-0.16-0.32-0.032-0.704 0.288-0.864 0.32-0.16 0.704-0.032 0.864 0.288 0.128 0.224 0.256 0.448 0.448 0.64 0.928 0.928 2.432 0.928 3.36 0l3.36-3.328c0.928-0.928 0.928-2.432 0-3.36s-2.432-0.928-3.36 0l-2.272 2.272c-0.256 0.256-0.64 0.256-0.896 0-0.256-0.256-0.256-0.64 0-0.896l2.272-2.272c1.44-1.44 3.744-1.44 5.184 0 1.44 1.44 1.44 3.744 0 5.184l-3.36 3.296c-0.704 0.704-1.632 1.088-2.592 1.088-0.928 0-1.856-0.352-2.592-1.056z"></path>
+                                            <path d="m3.776 15.808c-0.992 0-1.888-0.384-2.592-1.056-1.44-1.44-1.44-3.744 0-5.184l3.328-3.328c1.44-1.44 3.744-1.44 5.184 0 0.288 0.288 0.544 0.64 0.736 1.024 0.16 0.32 0 0.704-0.32 0.864-0.32 0.16-0.704 0-0.864-0.32-0.128-0.256-0.288-0.48-0.48-0.672-0.928-0.928-2.432-0.928-3.36 0l-3.296 3.328c-0.928 0.928-0.928 2.432 0 3.36 0.448 0.448 1.056 0.704 1.664 0.704 0.608 0 1.248-0.256 1.664-0.704l2.112-2.112c0.256-0.256 0.64-0.256 0.896 0s0.256 0.64 0 0.896l-2.112 2.112c-0.672 0.704-1.568 1.088-2.56 1.088z"></path>
+                                        </g>
+                                    </g>
+                                </svg>
+                            </span>
+                            <span id="ubb_code" class="comment_icon" title="添加代码(Ctrl + `)" alt="代码">
+                                <svg class="comment_svg comment_svg_stroke" version="1.1" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <g fill-rule="evenodd">
+                                        <g transform="translate(16 6)" stroke-linecap="round" stroke-width="2">
+                                            <line x1=".5" x2="4.5" y1=".7" y2="6.3"></line>
+                                            <line transform="translate(2.5 9.1) scale(1 -1) translate(-2.5 -9.1)" x1=".5" x2="4.5" y1="6.3" y2="11.9"></line>
+                                        </g>
+                                        <g transform="translate(3 6.1)" stroke-linecap="round" stroke-width="2">
+                                            <line transform="translate(2.5 3.5) scale(-1 1) translate(-2.5 -3.5)" x1=".5" x2="4.5" y1=".7" y2="6.3"></line>
+                                            <line transform="translate(2.5 9.1) scale(-1) translate(-2.5 -9.1)" x1=".5" x2="4.5" y1="6.3" y2="11.9"></line>
+                                        </g>
+                                        <path transform="translate(12 12.5) scale(1 -1) translate(-12 -12.5)" d="m10.778 7.1249c0.50008-0.11366 0.9978 0.16911 1.1643 0.64128l0.032406 0.11223 2 8.8c0.1224 0.53855-0.21496 1.0744-0.75351 1.1968-0.50008 0.11366-0.9978-0.16911-1.1643-0.64128l-0.032406-0.11223-2-8.8c-0.1224-0.53855 0.21496-1.0744 0.75351-1.1968z" fill-rule="nonzero" stroke-width=".25"></path>
+                                    </g>
+                                </svg>
+                            </span>
+                            <span id="ubb_quote" class="comment_icon" title="添加引用(Ctrl + Q)" alt="引用">
+                                <svg class="comment_svg" version="1.1" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <g fill-rule="evenodd">
+                                        <g transform="translate(5 4)" fill-rule="nonzero" stroke-width=".25">
+                                            <path d="m5.0013 15v-5.2702h-2.8008c-0.13413-3.3762 1.2004-6.2143 4.0009-8.5135l-1.2-1.2163c-3.335 2.2996-5.0013 5.8119-5.0013 10.54v4.4595h5.0013-1.285e-5zm8.7987 0v-5.2702h-2.8008c-0.13453-3.3762 1.2-6.2143 4.0009-8.5135l-1.2-1.2163c-3.335 2.2996-5.0013 5.8119-5.0013 10.54v4.4595h5.0013-1.28e-5z"></path>
+                                        </g>
+                                    </g>
+                                </svg>
+                            </span>
+                            <span id="ubb_img" class="comment_icon" alt="图片" title="上传图片(Ctrl + I)">
+                                <svg class="comment_svg" version="1.1" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <g fill-rule="evenodd">
+                                        <g transform="translate(3 3.8)" fill-rule="nonzero">
+                                            <path d="m14.1 0.58235h-11.2c-1.32 0-2.4 1.0482-2.4 2.3294v10.871c0 1.2812 1.08 2.3294 2.4 2.3294h11.2c1.32 0 2.4-1.0482 2.4-2.3294v-10.871c0-1.2812-1.08-2.3294-2.4-2.3294zm0.7 13.569-3.63-3.4165 1.33-1.2909c0.21-0.20382 0.59-0.20382 0.8 0l1.6 1.5529v2.7856c0 0.13588-0.04 0.26206-0.1 0.36882zm-11.9-12.016h11.2c0.44 0 0.8 0.34941 0.8 0.77647v5.8915l-0.47-0.45618c-0.84-0.825-2.22-0.825-3.07 0l-1.35 1.3103-2.39-2.2421c-0.85-0.825-2.22-0.825-3.05-0.019412l-2.48 2.2615v-6.7456c0.01-0.42706 0.37-0.77647 0.81-0.77647zm-0.8 11.647v-1.9897l3.6-3.2806c0.21-0.20382 0.58-0.21353 0.81 0.0097059l6.43 6.0371h-10.04c-0.44 0-0.8-0.33971-0.8-0.77647z"></path>
+                                            <ellipse cx="10.5" cy="6.4059" rx="1" ry="1"></ellipse>
+                                        </g>
+                                    </g>
+                                </svg>
+                            </span>
+                        </div>
+                    </div>
+                    <div style="display:none">
+                        <span id="comment_edit_id"></span>
+                        <span id="span_parentcomment_id"></span>
+                        <span id="span_parent_id"></span>
+                        <span id="span_comment_replyto"></span>
+                        <span id="span_comment_posted"></span>
+                        <span id="span_current_user_id">5946b2ef-f42a-e511-b908-9dcfd8948a71</span>
+                    </div>
+                    <textarea id="tbCommentBody" placeholder="支持 Markdown" style="display: inline-block;"></textarea>
+                    <div id="tbCommentBodyPreview" class="feedbackCon" style="display: none;">
+                        <div id="tbCommentBodyPreviewBody" class="blog_comment_body comment_preview cnblogs-markdown"></div>
+                    </div>
+                    <div class="commentbox_footer" style="display: none;">
+                        <a class="comment_option">Markdown 帮助</a>
+                        <span id="btn_comment_options" class="comment_option">
+                            <input id="ubb_auto_completion" class="inline_middle" type="checkbox">
+                            <label class="inline_middle" for="ubb_auto_completion">自动补全</label>
+                        </span>
+                    </div>
+                </div>
+                <p id="commentbox_opt">
+                    <input id="btn_comment_submit" type="button" class="comment_btn" title="提交评论(Ctrl + Enter)" value="提交评论">
+                    <span id="span_comment_canceledit" style="display:none"><a href="javascript:void(0);" onclick="return CancelCommentEdit()">不改了</a></span>
+                    <a href="javascript:void(0);" onclick="return logout();">退出</a>
+                </p>
+                <div id="tip_comment2" style="color:Red"></div>
+                <p>[Ctrl+Enter快捷键提交]</p>
+                <script>var commentEditor = initCommentEditor("tbCommentBody");</script>
+                </div>
+              <div
+                class="ad_text_commentbox"
+                id="ad_text_under_commentbox"
+              ></div>
+              <div id="ad_t2"></div>
+              <div id="opt_under_post"></div>
+              <div id="cnblogs_c1" class="c_ad_block">
+                <div
+                  id="div-gpt-ad-1592365906576-0"
+                  style="width: 300px; height: 250px;"
+                ></div>
+              </div>
+              <div id="under_post_news"></div>
+              <div id="cnblogs_c2" class="c_ad_block">
+                <div
+                  id="div-gpt-ad-1592366332455-0"
+                  style="width: 468px; height: 60px;"
+                ></div>
+              </div>
+              <div id="under_post_kb"></div>
+              <div id="HistoryToday" class="c_ad_block"></div>
+              <script type="text/javascript">
+                fixPostBody();
+                deliverBigBanner();
+                deliverT2();
+                deliverC1C2();
+                loadNewsAndKb();
+                loadBlogSignature();
+                LoadPostCategoriesTags(cb_blogId, cb_entryId);
+                LoadPostInfoBlock(
+                  cb_blogId,
+                  cb_entryId,
+                  cb_blogApp,
+                  cb_blogUserGuid
+                );
+                GetPrevNextPost(
+                  cb_entryId,
+                  cb_blogId,
+                  cb_entryCreatedDate,
+                  cb_postType
+                );
+                loadOptUnderPost();
+                GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);
+              </script>
+            </div>
+          </div>
+          <!--end: forFlow -->
+        </div>
+        <!--end: mainContent 主体内容容器-->
+
+        <div id="sideBar">
+          <div id="sideBarMain">
+            <div id="sidebar_news" class="newsItem">
+              <script>
+                loadBlogNews();
+              </script>
+            </div>
+
+            <div id="sidebar_ad"></div>
+            <div id="blog-calendar" style="display: none;"></div>
+            <script>
+              loadBlogDefaultCalendar();
+            </script>
+
+            <div id="leftcontentcontainer">
+              <div id="blog-sidecolumn"></div>
+              <script>
+                loadBlogSideColumn();
+              </script>
+            </div>
+          </div>
+          <!--end: sideBarMain -->
+        </div>
+        <!--end: sideBar 侧边栏容器 -->
+        <div class="clear"></div>
+      </div>
+      <!--end: main -->
+      <div class="clear"></div>
+      <div id="footer">
+        <!--done-->
+        Copyright &copy; 2020 Esofar
+        <br /><span id="poweredby">Powered by .NET Core on Kubernetes</span>
+      </div>
+      <!--end: footer -->
+    </div>
+    <!--end: home 自定义的最大容器 -->
+  </body>
+</html>
+
+<script>
+  $.silence({
+    avatar: "http://images.cnblogs.com/cnblogs_com/esofar/972540/o_avatar.jpg",
+    favicon: "https://files.cnblogs.com/files/esofar/favicon.ico",
+    customNavs: [
+      {
+        title: "标签",
+        url: "https://www.cnblogs.com/esofar/tag/",
+      },
+      {
+        title: "归档",
+        url: "https://www.cnblogs.com/esofar/p/",
+      },
+      {
+        title: "其他",
+        chilren: [
+          {
+            title: "博客园主题",
+            url: "https://github.com/esofar/cnblogs-theme-silence/",
+          },
+          {
+            title: "开发者导航",
+            url: "https://openmarks.cn/",
+          },
+        ],
+      },
+    ],
+    catalog: {
+      enable: true,
+      move: true,
+      index: true,
+      level1: "h2",
+      level2: "h3",
+      level3: "h4",
+    },
+    signature: {
+      enable: true,
+      author: null,
+      license: "署名 - 非商业性使用 - 相同方式共享 4.0 国际",
+      link: "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+      remark:
+        "博主系自由职业者，专注于 .NET CORE 应用开发，现寻找远程工作或合作机会，欢迎有意向的单位或个人私信我。",
+    },
+    sponsor: {
+      enable: true,
+      paypal: null,
+      wechat:
+        "https://images.cnblogs.com/cnblogs_com/esofar/972540/o_wechat.png",
+      alipay:
+        "https://images.cnblogs.com/cnblogs_com/esofar/972540/o_alipay.png",
+    },
+    github: {
+      enable: true,
+      color: "#fff",
+      // fill: '#ccc',
+      link: "https://github.com/esofar",
+    },
+  });
+</script>

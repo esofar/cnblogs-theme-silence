@@ -1,0 +1,131 @@
+.esa-toolbar {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 45px;
+  height: 45px;
+  z-index: 1001;
+
+  .bars {
+    position: relative;
+    width: inherit;
+    height: inherit;
+    cursor: pointer;
+    border-radius: 50%;
+    background: var(--theme-color);
+    z-index: 1;
+    text-align: center;
+    font-size: 24px;
+    line-height: 46px;
+    color: #fff;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px 1px rgba(0, 0, 0, 0.2);
+  }
+
+  .up,
+  .down,
+  .skin,
+  .contents {
+    position: absolute;
+    cursor: pointer;
+    bottom: 0px;
+    right: 0px;
+    height: 35px;
+    width: 35px;
+    text-align: center;
+    line-height: 35px;
+    z-index: 0;
+    opacity: 0;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px 1px rgba(0, 0, 0, 0.2);
+    background-color: var(--panel-bg-color);
+    transition: all 0.3s ease;
+
+    &:hover {
+      color: #fff;
+      background-color: var(--theme-color);
+    }
+  }
+
+  .bars-show {
+    transform: rotate(270deg);
+  }
+  .up-show {
+    transform: translate3d(0, -200%, 0);
+    opacity: 1;
+  }
+  .down-show {
+    transform: translate3d(-140%, -140%, 0);
+    opacity: 1;
+  }
+  .skin-show {
+    transform: translate3d(-200%, 0, 0);
+    opacity: 1;
+  }
+  .contents-show {
+    transform: translate3d(-350%, 0, 0);
+    opacity: 1;
+  }
+
+  .skin-popup {
+    display: none;
+    position: fixed;
+    left: calc(50% - 100px);
+    bottom: 0px;
+    padding: 10px 25px;
+    opacity: 1;
+    width: 150px;
+    height: 200px;
+    border-radius: 15px 15px 0px 0px;
+    background-clip: border-box;
+    box-shadow: 0 2px 4px 1px rgba(0, 0, 0, 0.2);
+    background-color: var(--panel-bg-color);
+
+    .item {
+      text-align: center;
+    }
+
+    .title {
+      font-size: 17px;
+      margin-top: 1em;
+      margin-bottom: 0.5em;
+    }
+
+    .modes {
+      a {
+        margin: 3px;
+        width: 1.5rem;
+        height: 1.5rem;
+        border-radius: 1rem;
+        background-size: 60px !important;
+        font-size: 1.5rem;
+        cursor: pointer;
+        -webkit-transition: -webkit-transform 0.15s;
+        transition: -webkit-transform 0.15s;
+        transition: transform 0.15s;
+        transition: transform 0.15s, -webkit-transform 0.15s;
+      }
+    }
+
+    .themes {
+      button {
+        font-size: 1em;
+        position: relative;
+        width: calc(1.75em - 5px);
+        height: calc(1.75em - 5px);
+        border-radius: 0.15em;
+        cursor: pointer;
+        margin: 2.5px;
+        flex-shrink: 0;
+        justify-self: center;
+        transition: all 0.15s;
+        overflow: hidden;
+        background: transparent;
+        z-index: 1;
+        box-sizing: border-box;
+        outline: none;
+        border: none;
+      }
+    }
+  }
+}

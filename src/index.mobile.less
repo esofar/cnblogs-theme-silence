@@ -1,0 +1,135 @@
+@media only screen and (max-width: 1080px) {
+  .github-corner {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 990px) {
+  .esa-mobile-menu {
+    display: block !important;
+  }
+  #header {
+    width: auto;
+    display: block !important;
+    position: fixed !important;
+    background: var(--blog-bg-color);
+
+    #blogTitle {
+      margin-left: 15px;
+    }
+
+    #navigator {
+      display: none;
+      left: 0;
+      top: 61px;
+
+      #navList {
+        > li {
+          float: none;
+          background: var(--blog-bg-color);
+          height: 2.5em;
+          width: 120px;
+          border-bottom: 1px solid var(--border-color);
+          border-right: 1px solid var(--border-color);
+
+          > a {
+            padding: 0.4em 1em;
+
+            .arrow {
+              position: absolute;
+              top: 0.8rem;
+              right: 0.8rem;
+              transform: rotate(270deg) scaleX(-1);
+            }
+          }
+
+          .esa-sub-navs {
+            position: fixed;
+            width: 130px;
+            top: 61px;
+            left: 121px;
+
+            .caret {
+              display: none;
+            }
+
+            ul {
+              box-shadow: none;
+              padding: 0px;
+              border-radius: 0;
+
+              li {
+                height: 2.5em;
+                border: 1px solid var(--border-color);
+                border-top: none;
+
+                a {
+                  padding: 0.5em 0.8em;
+                  text-align: left;
+
+                  &:hover {
+                    height: inherit;
+                    color: var(--theme-color);
+                    background: none;
+                    border-radius: 0;
+                  }
+                }
+              }
+            }
+          }
+
+          i {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+
+  #sideBar {
+    display: none !important;
+  }
+
+  #home {
+    min-width: auto !important;
+  }
+  #main {
+    width: 100% !important;
+    padding: 70px 0px 0px 0px !important;
+
+    .forFlow {
+      margin-left: 0px !important;
+      padding-left: 15px;
+      padding-right: 15px;
+
+      .postBody {
+        padding: 0px !important;
+      }
+
+      .postDesc{
+        display: none;
+      }
+
+      #comment_form {
+        padding: 0px !important;
+      }
+
+      .commentform{
+        margin-left: 0px !important;
+      }
+
+      .day .postDesc,
+      .entrylist .entrylistItemPostDesc {
+        display: none;
+      }
+    }
+  }
+
+  .esa-toolbar .skin-popup {
+    bottom: calc(50% - 110px) !important;
+    border-radius: 15px !important;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 980px) {
+}
