@@ -30,6 +30,11 @@ module.exports = {
             filename: 'post.html',
             hash: true
         }),
+        new HtmlWebpackPlugin({
+            template: './src/templates/tag.html',
+            filename: 'tag.html',
+            hash: true
+        }),
     ],
     module: {
         rules: [
