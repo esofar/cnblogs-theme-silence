@@ -8,7 +8,7 @@ function buildBloggerProfile() {
         $('#sideBarMain').prepend(`<img class="esa-profile-avatar" src="${avatar}" />`);
     };
     if (favicon) {
-        $('#favicon').attr('hre', favicon);
+        $('#favicon').attr('href', favicon);
     }
 }
 

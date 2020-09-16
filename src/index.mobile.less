@@ -26,14 +26,18 @@
       #navList {
         > li {
           float: none;
+          position: relative;
           background: var(--blog-bg-color);
-          height: 2.5em;
+          height: 34px;
+          line-height: 34px;
           width: 120px;
           border-bottom: 1px solid var(--border-color);
           border-right: 1px solid var(--border-color);
 
           > a {
-            padding: 0.4em 1em;
+            float: none;
+            width: inherit;
+            padding: 0 10px;
 
             .arrow {
               position: absolute;
@@ -46,8 +50,9 @@
           .esa-sub-navs {
             position: fixed;
             width: 130px;
-            top: 61px;
+            top: 0px;
             left: 121px;
+            top: 61px;
 
             .caret {
               display: none;
@@ -59,20 +64,14 @@
               border-radius: 0;
 
               li {
-                height: 2.5em;
+                height: 34px;
+                line-height: 34px;
                 border: 1px solid var(--border-color);
                 border-top: none;
 
                 a {
-                  padding: 0.5em 0.8em;
                   text-align: left;
-
-                  &:hover {
-                    height: inherit;
-                    color: var(--theme-color);
-                    background: none;
-                    border-radius: 0;
-                  }
+                  padding: 0 10px;
                 }
               }
             }
@@ -106,7 +105,7 @@
         padding: 0px !important;
       }
 
-      .postDesc{
+      .postDesc {
         display: none;
       }
 
@@ -114,7 +113,7 @@
         padding: 0px !important;
       }
 
-      .commentform{
+      .commentform {
         margin-left: 0px !important;
       }
 
@@ -125,8 +124,15 @@
     }
   }
 
+  #myposts .postDesc2 {
+    text-align: right !important;
+    span {
+      display: none;
+    }
+  }
+
   .esa-toolbar .skin-popup {
-    bottom: calc(50% - 110px) !important;
+    bottom: calc(50% - 67px) !important;
     border-radius: 15px !important;
   }
 }

@@ -23,7 +23,7 @@
   }
 
   .up,
-  .down,
+  .mode,
   .skin,
   .contents {
     position: absolute;
@@ -54,7 +54,7 @@
     transform: translate3d(0, -200%, 0);
     opacity: 1;
   }
-  .down-show {
+  .mode-show {
     transform: translate3d(-140%, -140%, 0);
     opacity: 1;
   }
@@ -72,10 +72,10 @@
     position: fixed;
     left: calc(50% - 100px);
     bottom: 0px;
-    padding: 10px 25px;
+    padding: 25px;
     opacity: 1;
     width: 150px;
-    height: 200px;
+    height: auto;
     border-radius: 15px 15px 0px 0px;
     background-clip: border-box;
     box-shadow: 0 2px 4px 1px rgba(0, 0, 0, 0.2);
@@ -87,24 +87,7 @@
 
     .title {
       font-size: 17px;
-      margin-top: 1em;
       margin-bottom: 0.5em;
-    }
-
-    .modes {
-      a {
-        margin: 3px;
-        width: 1.5rem;
-        height: 1.5rem;
-        border-radius: 1rem;
-        background-size: 60px !important;
-        font-size: 1.5rem;
-        cursor: pointer;
-        -webkit-transition: -webkit-transform 0.15s;
-        transition: -webkit-transform 0.15s;
-        transition: transform 0.15s;
-        transition: transform 0.15s, -webkit-transform 0.15s;
-      }
     }
 
     .themes {

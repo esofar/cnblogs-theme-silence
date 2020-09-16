@@ -8,7 +8,7 @@ function buildToolbar() {
     $('body').append(`<div class="esa-toolbar">
         <div class="bars"><i class="fa fa-ellipsis-h"></i></div>
         <span class="up" title="返回顶部"><i class="fa fa-chevron-up"></i></span>
-        <span class="down" title="跳转底部"><i class="fa fa-chevron-down"></i></span>
+        <span class="mode" title="切换模式"><i class="fa fa-adjust"></i></span>
         <span class="skin" title="主题设置"><i class="fa fa-cog"></i></span>
         <div class="skin-popup">
             <div class="item">
@@ -26,13 +26,6 @@ function buildToolbar() {
                     <button data-theme="j1" style="background: #906f61;"></button>
                 </div>
             </div>
-            <div class="item">
-                <div class="title">选择模式</div>
-                <div class="modes">
-                    <a title="日间模式" data-mode="light">🌖</a>
-                    <a title="夜间模式" data-mode="dark">🌒</a>
-                </div>
-            </div>
         </div>
         </div>
     </div>`);
@@ -40,7 +33,7 @@ function buildToolbar() {
     const showContents = isPostPage() && options.catalog.enable;
 
     if (showContents) {
-        $('.esa-toolbar').append(`<span class="contents"><i class="fa fa-list-ul"></i></span>`);
+        $('.esa-toolbar').append(`<span class="contents" title="阅读目录"><i class="fa fa-list-ul"></i></span>`);
     }
 
     const modeKey = `silence-mode-${currentBlogApp}`;
@@ -59,7 +52,7 @@ function buildToolbar() {
         if (!show) {
             $toolbar.find('.bars').addClass('bars-show');
             $toolbar.find('.up').addClass('up-show');
-            $toolbar.find('.down').addClass('down-show');
+            $toolbar.find('.mode').addClass('mode-show');
             $toolbar.find('.skin').addClass('skin-show');
             if (showContents) {
                 $toolbar.find('.contents').addClass('contents-show');
@@ -67,7 +60,7 @@ function buildToolbar() {
         } else {
             $toolbar.find('.bars').removeClass('bars-show');
             $toolbar.find('.up').removeClass('up-show');
-            $toolbar.find('.down').removeClass('down-show');
+            $toolbar.find('.mode').removeClass('mode-show');
             $toolbar.find('.skin').removeClass('skin-show');
             if (showContents) {
                 $toolbar.find('.contents').removeClass('contents-show');
@@ -80,19 +73,14 @@ function buildToolbar() {
         $('html, body').animate({ scrollTop: 0 }, 450);
     });
 
-    $toolbar.find('.down').click(() => {
-        let position = $('#footer').offset().top;
-        $('html, body').animate({ scrollTop: position }, 450);
+    $toolbar.find('.mode').click(() => {
+        const mode = $('html').attr('mode') == 'light' ? 'dark' : 'light';
+        sessionStorage.setItem(modeKey, mode);
+        $('html').attr('mode', mode);
     });
 
     $toolbar.find('.skin').click(() => {
         $skinPopup.slideToggle();
-    });
-
-    $skinPopup.find('.modes a').click(function() {
-        const mode = $(this).data('mode');
-        sessionStorage.setItem(modeKey, mode);
-        $('html').attr('mode', mode);
     });
 
     $skinPopup.find('.themes button').click(function() {
