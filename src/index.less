@@ -21,34 +21,34 @@
   --code-bg-color: #3a3a3a;
 }
 
-:root[theme="a1"] {
+:root[theme="a"] {
   --theme-color: #2d8cf0;
 }
-:root[theme="b1"] {
+:root[theme="b"] {
   --theme-color: #fa7298;
 }
-:root[theme="c1"] {
+:root[theme="c"] {
   --theme-color: #42b983;
 }
-:root[theme="d1"] {
+:root[theme="d"] {
   --theme-color: #607d8b;
 }
-:root[theme="e1"] {
+:root[theme="e"] {
   --theme-color: #5e72e4;
 }
-:root[theme="f1"] {
+:root[theme="f"] {
   --theme-color: #ff9700;
 }
-:root[theme="g1"] {
+:root[theme="g"] {
   --theme-color: #ff5722;
 }
-:root[theme="h1"] {
+:root[theme="h"] {
   --theme-color: #009688;
 }
-:root[theme="i1"] {
+:root[theme="i"] {
   --theme-color: #673bb7;
 }
-:root[theme="j1"] {
+:root[theme="j"] {
   --theme-color: #906f61;
 }
 
@@ -622,16 +622,10 @@ a {
 }
 
 .postSeparator {
-  margin-top: 15px;
-  margin-bottom: 25px;
-  border-top: 1px solid var(--border-color);
-  margin: 0;
-  border: none;
-}
-
-.entrylist .postSeparator {
-  margin: 0;
-  border: none;
+  border-bottom: 1px solid var(--border-color);
+  text-align: justify;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
 }
 
 .day,
@@ -653,8 +647,9 @@ a {
   padding: 10px 0;
 
   img {
-    max-height: 150px;
-    max-width: 200px;
+    height: 150px;
+    width: 150px;
+    border-radius: 4px;
     margin-left: 10px;
   }
 
@@ -684,7 +679,13 @@ a {
   }
 }
 
+.toc-container-header{
+  font-size: 20px;
+  font-weight: bold;
+}
+
 #topics {
+  
   .postTitle {
     font-size: 21px;
     font-weight: 300;

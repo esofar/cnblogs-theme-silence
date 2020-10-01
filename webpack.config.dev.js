@@ -10,7 +10,7 @@ module.exports = {
         filename: 'silence.js',
     },
     devServer: {
-        port: 3000,
+        port: 3050,
         progress: true,
         open: true,
         hot: true,
@@ -31,8 +31,8 @@ module.exports = {
             hash: true
         }),
         new HtmlWebpackPlugin({
-            template: './src/templates/tag.html',
-            filename: 'tag.html',
+            template: './src/templates/archive.html',
+            filename: 'archive.html',
             hash: true
         }),
     ],

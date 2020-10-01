@@ -1,12 +1,11 @@
 
 import './index.less';
-import defaultOptions from '@consts/options';
+import options from '@consts/options';
 import { isPostPage, showSidebar } from '@consts/tools';
-
 import buildGithubCorner from '@components/githubCorner';
-import buildCustomNavList from '@components/customNavList';
+import buildCustomHeader from '@components/customHeader';
 import buildCustomFooter from '@components/customFooter';
-import buildBloggerProfile from '@components/bloggerProfile';
+import buildProfile from '@components/profile';
 import buildPostContents from '@components/postContents';
 import buildPostLightbox from '@components/postLightbox';
 import buildHljsLineNumber from '@components/hljsLineNumber';
@@ -22,22 +21,19 @@ class Silence {
     }
 
     init() {
-        $.extend({
-            silence: options => {
-                if (options) {
-                    $.extend(true, defaultOptions, options);
-                }
-                this.building();
-            },
-        })
+        const userOptions = window.$silence;
+        if (userOptions) {
+            $.extend(true, options, userOptions);
+        }
+        this.building();
     }
 
     building() {
-        buildBloggerProfile();
-        buildGithubCorner();
+        buildCustomHeader();
         buildCustomFooter();
-        buildCustomNavList();
+        buildProfile();
         buildToolbar();
+        buildGithubCorner();
         if (isPostPage()) {
             buildPostContents();
             buildPostLightbox();

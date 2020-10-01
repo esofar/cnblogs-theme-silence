@@ -66,6 +66,46 @@
     </script>
     <script src="https://common.cnblogs.com/scripts/jquery-2.2.0.min.js"></script>
     <script src="https://www.cnblogs.com/js/blog-common.min.js"></script>
+    <script>
+      window.$silence = {
+         avatar: 'http://images.cnblogs.com/cnblogs_com/esofar/972540/o_avatar.jpg',
+         favicon: 'https://files.cnblogs.com/files/esofar/favicon.ico',
+         github: 'https://github.com/esofar',
+         navbars: [{
+                title: '标签',
+                url: 'https://www.cnblogs.com/esofar/tag/'
+            }, {
+                title: '朋友',
+                chilren: [{
+                    title: '百度',
+                    target: '_blank',
+                    url: 'https://www.baidu.com',
+                }, {
+                    title: '谷歌',
+                    target: '_blank',
+                    url: 'https://www.google.com',
+                }]
+            }],
+         showNavAdmin: true,
+         catalog: {
+             enable: true,
+             index: true,
+             active: true,
+             levels: ['h2', 'h3', 'h4'],
+         },
+       signature: {
+                     enable: true,
+                     author: null,
+                     license: ['署名-非商业性使用-相同方式共享 4.0 国际', 'https://creativecommons.org/licenses/by-nc-sa/4.0/'],
+                 },
+         sponsor: {
+             enable: true,
+             paypal: null,
+             wechat: 'https://images.cnblogs.com/cnblogs_com/esofar/972540/o_wechat.png',
+             alipay: 'https://images.cnblogs.com/cnblogs_com/esofar/972540/o_alipay.png'
+         },
+     };
+ </script>
   </head>
   <body>
     <a name="top"></a>
@@ -1063,61 +1103,3 @@ dotnet run
     <!--end: home 自定义的最大容器 -->
   </body>
 </html>
-
-<script>
-  $.silence({
-    avatar: "http://images.cnblogs.com/cnblogs_com/esofar/972540/o_avatar.jpg",
-    favicon: "https://files.cnblogs.com/files/esofar/favicon.ico",
-    customNavs: [
-      {
-        title: "标签",
-        url: "https://www.cnblogs.com/esofar/tag/",
-      },
-      {
-        title: "归档",
-        url: "https://www.cnblogs.com/esofar/p/",
-      },
-      {
-        title: "其他",
-        chilren: [
-          {
-            title: "博客园主题",
-            url: "https://github.com/esofar/cnblogs-theme-silence/",
-          },
-          {
-            title: "开发者导航",
-            url: "https://openmarks.cn/",
-          },
-        ],
-      },
-    ],
-    catalog: {
-      enable: true,
-      move: true,
-      index: true,
-      level1: "h2",
-      level2: "h3",
-      level3: "h4",
-    },
-    signature: {
-      enable: true,
-      author: 'Esofar',
-      license: "署名 - 非商业性使用 - 相同方式共享 4.0 国际",
-      link: "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    },
-    sponsor: {
-      enable: true,
-      paypal: null,
-      wechat:
-        "https://images.cnblogs.com/cnblogs_com/esofar/972540/o_wechat.png",
-      alipay:
-        "https://images.cnblogs.com/cnblogs_com/esofar/972540/o_alipay.png",
-    },
-    github: {
-      enable: true,
-      color: "#fff",
-      // fill: '#ccc',
-      link: "https://github.com/esofar",
-    },
-  });
-</script>

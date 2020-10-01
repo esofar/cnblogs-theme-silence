@@ -1,50 +1,21 @@
-# Silence
+# Cnblogs Theme - Silence
 
 [![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/esofar/cnblogs-theme-silence?include_prereleases&style=flat-square)](https://github.com/esofar/cnblogs-theme-silence/releases)
 [![](https://data.jsdelivr.com/v1/package/gh/esofar/cnblogs-theme-silence/badge)](https://www.jsdelivr.com/package/gh/esofar/cnblogs-theme-silence)
 [![Gitter](https://img.shields.io/gitter/room/esofar/cnblogs-theme-silence?style=flat-square)](https://gitter.im/cnblogs-theme-silence/community)
 
-一款专注阅读的博客园主题，主要面向于经常混迹博客园的朋友。其追求大道至简的终极真理，界面追求简洁、运行追求高效、部署追求简单。
+❤️ 一款专注阅读的博客园主题，其追求大道至简的终极真理，界面追求简洁、运行追求高效、部署追求简单。
 
-## 目录
+## 快速安装
 
-- [Security](#security)
-- [Background](#background)
-- [Install](#install)
-- [Usage](#usage)
-- [API](#api)
-- [Maintainers](#maintainers)
-- [Contributing](#contributing)
-- [License](#license)
+📖 [https://github.com/esofar/cnblogs-theme-silence](https://github.com/esofar/cnblogs-theme-silence)
 
-## Security
 
-## Background
+## 贡献代码
 
-## Install
+如果您在使用该主题时遇到问题，或者有什么好主意，可以在 Github 仓库 发表 Issue 或者 PR 。
 
-```
-```
 
-## Usage
-
-```
-```
-
-## API
-
-## Maintainers
-
-[@esofar](https://github.com/esofar)
-
-## Contributing
-
-See [the contributing file](contributing.md)!
-
-PRs accepted.
-
-Small note: If editing the README, please conform to the [standard-readme](https://github.com/RichardLitt/standard-readme) specification.
-
-## License
+## 开源许可
 
 MIT © 2020 esofar

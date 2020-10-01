@@ -28,6 +28,51 @@
         var isLogined = true;
         var skinName = 'Custom';
     </script>
+    <script>
+        window.$silence = {
+            avatar: 'http://images.cnblogs.com/cnblogs_com/esofar/972540/o_avatar.jpg',
+            favicon: 'https://files.cnblogs.com/files/esofar/favicon.ico',
+            navbars: [{
+                title: '标签',
+                url: 'https://www.cnblogs.com/esofar/tag/'
+            }, {
+                title: '朋友',
+                chilren: [{
+                    title: '百度',
+                    target: '_blank',
+                    url: 'https://www.baidu.com',
+                }, {
+                    title: '谷歌',
+                    target: '_blank',
+                    url: 'https://www.google.com',
+                }]
+            }],
+           showNavAdmin: true,
+           catalog: {
+               enable: true,
+               index: true,
+               levels: ['h2', 'h3', 'h4'],
+           },
+         signature: {
+                       enable: true,
+                       author: null,
+                       license: ['署名-非商业性使用-相同方式共享 4.0 国际', 'https://creativecommons.org/licenses/by-nc-sa/4.0/'],
+                   },
+           sponsor: {
+               enable: true,
+               paypal: null,
+               wechat: 'https://images.cnblogs.com/cnblogs_com/esofar/972540/o_wechat.png',
+               alipay: 'https://images.cnblogs.com/cnblogs_com/esofar/972540/o_alipay.png'
+           },
+           github: {
+               enable: true,
+               color: '#fff',
+               // fill: '#ccc',
+               link: 'https://github.com/esofar'
+           }
+       };
+   </script>
+   
 </head>
 <body>
     <!-- <div id="loading"><div class="box"></div></div> -->
@@ -1526,70 +1571,3 @@ Copyright &copy; 2020 Esofar
 </body>
 </html>
 
-<script>
-     $.silence({
-        avatar: 'http://images.cnblogs.com/cnblogs_com/esofar/972540/o_avatar.jpg',
-        favicon: 'https://files.cnblogs.com/files/esofar/favicon.ico',
-        customNavs: [
-                    {
-                        title: '标签',
-                        url: 'https://www.cnblogs.com/esofar/tag/'
-                    },
-                    {
-                        title: '友链',
-                        chilren: [
-                            {
-                                title: '小明',
-                                url: 'https://github.com/esofar/cnblogs-theme-silence/',
-                            }, {
-                                title: 'UZI',
-                                url: 'https://openmarks.cn/',
-                            }
-                        ]
-                    },
-                    {
-                        title: '归档',
-                        url: 'https://www.cnblogs.com/esofar/p/'
-                    },
-                    {
-                        title: '其他',
-                        chilren: [
-                            {
-                                title: '博客园主题',
-                                url: 'https://github.com/esofar/cnblogs-theme-silence/',
-                            }, {
-                                title: '开发者导航',
-                                url: 'https://openmarks.cn/',
-                            }
-                        ]
-                    }
-                ],
-        catalog: {
-            enable: true,
-            move: true,
-            index: true,
-            level1: 'h2',
-            level2: 'h3',
-            level3: 'h4',
-        },
-      signature: {
-                    enable: true,
-                    author: null,
-                    license: '署名 - 非商业性使用 - 相同方式共享 4.0 国际',
-                    link: 'https://creativecommons.org/licenses/by-nc-sa/4.0/',
-                    'remark': '博主系自由职业者，专注于 .NET CORE 应用开发，现寻找远程工作或合作机会，欢迎有意向的单位或个人私信我。'
-                },
-        sponsor: {
-            enable: true,
-            paypal: null,
-            wechat: 'https://images.cnblogs.com/cnblogs_com/esofar/972540/o_wechat.png',
-            alipay: 'https://images.cnblogs.com/cnblogs_com/esofar/972540/o_alipay.png'
-        },
-        github: {
-            enable: true,
-            color: '#fff',
-            // fill: '#ccc',
-            link: 'https://github.com/esofar'
-        }
-    });
-</script>

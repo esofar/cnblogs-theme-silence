@@ -5,6 +5,10 @@ import { message } from '@/components/layer';
 function buildPostSponsor() {
     const config = options.sponsor;
 
+    if (!config.enable) {
+        return false;
+    }
+
     $('#blog_post_info').prepend(`
                 <div class="esa-sponsor">
                     <div class="title">${config.text}</div>
@@ -23,13 +27,13 @@ function buildPostSponsor() {
     $sponsor.find('.box li').hover(function () {
         const type = $(this).attr('class');
         if (type == 'paypal' && !config.paypal) {
-            return message('没有设置 PayPal 收款二维码😅');
+            return message('未设置 PayPal 收款二维码');
         }
         if (type == 'alipay' && !config.alipay) {
-            return message('没有设置支付宝收款二维码😅');
+            return message('未设置支付宝收款二维码');
         }
         if (type == 'wechat' && !config.wechat) {
-            return message('没有设置微信收款二维码😅');
+            return message('未设置微信收款二维码');
         }
         var qrcode = null;
         switch (type) {

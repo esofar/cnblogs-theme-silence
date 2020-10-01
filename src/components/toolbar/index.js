@@ -1,7 +1,5 @@
 import "./index.less";
 import { isPostPage } from '@consts/tools';
-import { message } from '@/components/layer';
-
 import options from '@/consts/options';
 
 function buildToolbar() {
@@ -14,16 +12,16 @@ function buildToolbar() {
             <div class="item">
                 <div class="title">主题色彩</div>
                 <div class="themes">
-                    <button data-theme="a1" style="background: #2D8CF0;"></button>
-                    <button data-theme="b1" style="background: #FA7298;"></button>
-                    <button data-theme="c1" style="background: #42B983;"></button>
-                    <button data-theme="d1" style="background: #607D8B;"></button>
-                    <button data-theme="e1" style="background: #5E72E4;"></button>
-                    <button data-theme="f1" style="background: #FF9700;"></button>
-                    <button data-theme="g1" style="background: #FF5722;"></button>
-                    <button data-theme="h1" style="background: #009688;"></button>
-                    <button data-theme="i1" style="background: #673BB7;"></button>
-                    <button data-theme="j1" style="background: #906f61;"></button>
+                    <button data-theme="a" style="background: #2D8CF0;"></button>
+                    <button data-theme="b" style="background: #FA7298;"></button>
+                    <button data-theme="c" style="background: #42B983;"></button>
+                    <button data-theme="d" style="background: #607D8B;"></button>
+                    <button data-theme="e" style="background: #5E72E4;"></button>
+                    <button data-theme="f" style="background: #FF9700;"></button>
+                    <button data-theme="g" style="background: #FF5722;"></button>
+                    <button data-theme="h" style="background: #009688;"></button>
+                    <button data-theme="i" style="background: #673BB7;"></button>
+                    <button data-theme="j" style="background: #906f61;"></button>
                 </div>
             </div>
         </div>
@@ -38,8 +36,11 @@ function buildToolbar() {
 
     const modeKey = `silence-mode-${currentBlogApp}`;
     const themeKey = `silence-theme-${currentBlogApp}`;
-    const modeLoading = sessionStorage.getItem(modeKey) || 'light';
-    const themeLoading = sessionStorage.getItem(themeKey) || 'a1';
+
+    const hour = new Date().getHours();
+
+    const themeLoading = sessionStorage.getItem(themeKey) || options.defaultTheme;
+    const modeLoading = sessionStorage.getItem(modeKey) || (options.defaultMode == 'auto' ? (hour >= 6 && hour < 18 ? 'light' : 'dark') : options.defaultMode);
 
     $('html').attr('mode', modeLoading);
     $('html').attr('theme', themeLoading);
@@ -83,7 +84,7 @@ function buildToolbar() {
         $skinPopup.slideToggle();
     });
 
-    $skinPopup.find('.themes button').click(function() {
+    $skinPopup.find('.themes button').click(function () {
         const theme = $(this).data('theme');
         sessionStorage.setItem(themeKey, theme);
         $('html').attr('theme', theme);
