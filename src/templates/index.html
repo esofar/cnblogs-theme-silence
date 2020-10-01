@@ -32,44 +32,46 @@
         window.$silence = {
             avatar: 'http://images.cnblogs.com/cnblogs_com/esofar/972540/o_avatar.jpg',
             favicon: 'https://files.cnblogs.com/files/esofar/favicon.ico',
+            github:  'https://github.com/esofar',
+            defaultMode: 'auto',
+            defaultTheme: 'c',
+            showNavAdmin: true,
             navbars: [{
                 title: '标签',
                 url: 'https://www.cnblogs.com/esofar/tag/'
             }, {
-                title: '朋友',
+                title: '归档',
+                url: 'https://www.cnblogs.com/esofar/p/'
+            }, {
+                title: '其他',
                 chilren: [{
-                    title: '百度',
+                    title: '博客园主题',
                     target: '_blank',
-                    url: 'https://www.baidu.com',
+                    url: 'https://github.com/esofar/cnblogs-theme-silence/',
                 }, {
-                    title: '谷歌',
+                    title: '开发者导航',
                     target: '_blank',
-                    url: 'https://www.google.com',
+                    url: 'https://openmarks.cn/',
                 }]
             }],
-           showNavAdmin: true,
-           catalog: {
-               enable: true,
-               index: true,
-               levels: ['h2', 'h3', 'h4'],
+            catalog: {
+                enable: true,
+                index: true,
+                active: false,
+                levels: ['h2', 'h3', 'h4'],
+            },
+            signature: {
+                enable: true,
+                author: null,
+                license: ['署名-非商业性使用-相同方式共享 4.0 国际', 'https://creativecommons.org/licenses/by-nc-sa/4.0/'],
+            },
+            sponsor: {
+                enable: true,
+                text: 'Buy me a cup of coffee ☕.',
+                paypal: null,
+                wechat: 'https://images.cnblogs.com/cnblogs_com/esofar/972540/o_wechat.png',
+                alipay: 'https://images.cnblogs.com/cnblogs_com/esofar/972540/o_alipay.png'
            },
-         signature: {
-                       enable: true,
-                       author: null,
-                       license: ['署名-非商业性使用-相同方式共享 4.0 国际', 'https://creativecommons.org/licenses/by-nc-sa/4.0/'],
-                   },
-           sponsor: {
-               enable: true,
-               paypal: null,
-               wechat: 'https://images.cnblogs.com/cnblogs_com/esofar/972540/o_wechat.png',
-               alipay: 'https://images.cnblogs.com/cnblogs_com/esofar/972540/o_alipay.png'
-           },
-           github: {
-               enable: true,
-               color: '#fff',
-               // fill: '#ccc',
-               link: 'https://github.com/esofar'
-           }
        };
    </script>
    

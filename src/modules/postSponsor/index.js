@@ -1,6 +1,6 @@
 import "./index.less";
 import options from '@/consts/options';
-import { message } from '@/components/layer';
+import { message } from '@/modules/layer';
 
 function buildPostSponsor() {
     const config = options.sponsor;
