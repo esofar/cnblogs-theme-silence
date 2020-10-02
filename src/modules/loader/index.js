@@ -4,11 +4,11 @@ const loader = {
 }
 
 loader.show = () => {
-    $('.esa-loader').show();
+    $('.esa-loader, .dark-loading').show();
 }
 
 loader.hide = () => {
-    $('.esa-loader').fadeOut();
+    $('.esa-loader, .dark-loading').fadeOut();
 }
 
 export default loader;

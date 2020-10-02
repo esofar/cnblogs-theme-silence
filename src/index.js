@@ -30,9 +30,9 @@ class Silence {
     building() {
         buildCustomHeader();
         buildCustomFooter();
+        buildGithubCorner();
         buildProfile();
         buildToolbar();
-        buildGithubCorner();
         if (isPostPage()) {
             buildPostContents();
             buildPostLightbox();
