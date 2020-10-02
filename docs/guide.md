@@ -5,11 +5,11 @@
 ## 获取文件
 
 ```
-https://cdn.jsdelivr.net/gh/esofar/cnblogs-theme-silence@3.0.0-alpha/dist/silence.min.css
-https://cdn.jsdelivr.net/gh/esofar/cnblogs-theme-silence@3.0.0-alpha/dist/silence.min.js
+https://cdn.jsdelivr.net/gh/esofar/cnblogs-theme-silence@3.0.0-beta1/dist/silence.min.css
+https://cdn.jsdelivr.net/gh/esofar/cnblogs-theme-silence@3.0.0-beta1/dist/silence.min.js
 ```
 
-注意`3.0.0-alpha`是需要使用的版本号，发行版本请参见 [releases](https://github.com/esofar/cnblogs-theme-silence/releases)，强烈建议使用最新版本。
+注意`3.0.0-beta1`是需要使用的版本号，发行版本请参见 [releases](https://github.com/esofar/cnblogs-theme-silence/releases)，强烈建议使用最新版本。
 
 ## 配置 CSS 
 

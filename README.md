@@ -8,7 +8,7 @@
 
 ## 部署指南
 
-[https://esofar.github.io/cnblogs-theme-silence/](https://esofar.github.io/cnblogs-theme-silence/)
+[点击访问](https://esofar.github.io/cnblogs-theme-silence/)
 
 ## 贡献代码
 
