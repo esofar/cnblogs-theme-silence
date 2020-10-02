@@ -1,8 +1,8 @@
-# Silence
+# 配置选项
 
-您可以配置在`window.$silence`里。
+下列所有选项均需要配置在「博客侧边栏公告」处的`window.$silence`里。
 
-```html
+```js
 <script>
   window.$silence = {
     // ...
