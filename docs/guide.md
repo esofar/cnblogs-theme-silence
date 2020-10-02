@@ -4,6 +4,13 @@
 
 ## 获取文件
 
+使用最新开发版本：
+```
+https://cdn.jsdelivr.net/gh/esofar/cnblogs-theme-silence/dist/silence.min.css
+https://cdn.jsdelivr.net/gh/esofar/cnblogs-theme-silence/dist/silence.min.js
+```
+
+使用稳定指定版本：
 ```
 https://cdn.jsdelivr.net/gh/esofar/cnblogs-theme-silence@3.0.0-beta1/dist/silence.min.css
 https://cdn.jsdelivr.net/gh/esofar/cnblogs-theme-silence@3.0.0-beta1/dist/silence.min.js
