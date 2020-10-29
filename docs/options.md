@@ -178,7 +178,7 @@ window.$silence = {
 
 其属性详细介绍参考如下：
 
-### enable
+**enable** 
 
 - 类型：`Boolean`
 - 默认值：`false`
@@ -187,7 +187,7 @@ window.$silence = {
 
 若在博文中未使用标题`h1~h6`，即使启用也不会生成悬浮目录。
 
-### index
+**index**
 
 - 类型：`Boolean`
 - 默认值：`true`
@@ -196,7 +196,7 @@ window.$silence = {
 
 部分园友习惯在写文时直接在标题前面加上索引，这种情况可能需要将该属性值设为`false`，不然生成的标题链接会出现索引重复的情况。
 
-### active
+**active**
 
 - 类型：`Boolean`
 - 默认值：`false`
@@ -205,7 +205,7 @@ window.$silence = {
 
 不直接显示情况下会在页面右下角的工具栏中生成一个按钮用来控制悬浮目录的显示和隐藏。
 
-### levels
+**levels**
 
 - 类型：`Arrary`
 - 默认值：`['h2', 'h3', 'h4']`
@@ -235,30 +235,28 @@ window.$silence = {
 
 其属性详细介绍参考如下：
 
-### enable
+**enable**
 
 - 类型：`Boolean`
 - 默认值：`false`
 
 是否启用签名生成功能。
 
-### author
+**author**
 
 - 类型：`String`
 - 默认值：`null`
 
 自定义作者名称，未设置则默认使用博客园显示名称。
 
-
-### license
+**license**
 
 - 类型：`Arrary`
 - 默认值：`['署名-非商业性使用-相同方式共享 4.0 国际', 'https://creativecommons.org/licenses/by-nc-sa/4.0/']`
 
 设置您分享的作品需要采用的 [知识共享许可协议](https://creativecommons.org/licenses/)。
 
-
-### remark
+**remark**
 
 - 类型：`String`
 - 默认值：`null`
@@ -287,36 +285,35 @@ window.$silence = {
 
 其属性详细介绍参考如下：
 
-### enable
+**enable**
 
 - 类型：`Boolean`
 - 默认值：`false`
 
 是否启用赞赏按钮生成功能。
 
-
-### text
+**text**
 
 - 类型：`String`
 - 默认值：`'Buy me a cup of coffee ☕.'`
 
 设置赞赏友好提示。
 
-### paypal
+**paypal**
 
 - 类型：`String`
 - 默认值：`null`
 
 设置 PayPal 收款二维码。
 
-### wechat
+**wechat**
 
 - 类型：`String`
 - 默认值：`null`
 
 设置微信收款二维码。
 
-### alipay
+**alipay**
 
 - 类型：`String`
 - 默认值：`null`
