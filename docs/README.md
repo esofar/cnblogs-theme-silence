@@ -31,7 +31,7 @@ npm run build                                                   // 编译生成
 
 ## 案例
 
-您可以在 [演示案例](https://esofar.github.io/cnblogs-theme-silence/#/sponsors) 中瞧瞧一些园友使用 Silence 主题的博客整体效果。
+您可以在 [演示案例](https://esofar.github.io/cnblogs-theme-silence/#/showcase) 中瞧瞧一些园友使用 Silence 主题的博客整体效果。
 
 ## 赞赏
 
