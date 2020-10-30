@@ -49,8 +49,16 @@
   [![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/esofar/cnblogs-theme-silence?include_prereleases&style=flat-square)](https://github.com/esofar/cnblogs-theme-silence/releases)
   [![](https://data.jsdelivr.com/v1/package/gh/esofar/cnblogs-theme-silence/badge)](https://www.jsdelivr.com/package/gh/esofar/cnblogs-theme-silence)
   [![Gitter](https://img.shields.io/gitter/room/esofar/cnblogs-theme-silence?style=flat-square)](https://gitter.im/cnblogs-theme-silence/community)
+<<<<<<< HEAD
   
 </p>
+=======
+
+  专 注 于 阅 读 的 博 客 园 主 题
+
+
+</center>
+>>>>>>> 76e70ae67f3a442274b79cf9999bcdb93213a758
 
 ## 特性
 
