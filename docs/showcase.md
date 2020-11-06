@@ -6,3 +6,4 @@
 - [静雅斋数学](https://www.cnblogs.com/wanghai0666/) - 静雅斋数学作者，专注于高中数学的教与学，用心将高中数学学习中的全要素都整合到云端。
 - [WeihanLi's Blog](https://www.cnblogs.com/weihanli/) - .NET WEB 全栈工程师，目前主要做 .NET Core 后端开发。
 - [Finley's Blog](https://www.cnblogs.com/Finley/) - 后端工程师，喜欢写 Golang。
+- [yi念之间](https://www.cnblogs.com/wucy/) - .NET 程序员，架构相关工作，分享 .NET Core 源码笔记和通用解决方案。
