@@ -1,12 +1,51 @@
-.cnblogs-markdown .hljs {
+.cnblogs-markdown .hljs,
+.cnblogs-markdown .hljsln {
   display: block;
   overflow-x: auto;
-  padding: .5em 1em .5em 3em !important;
+  padding: 0.5em 1em 0.5em 3em !important;
   background: #2b2b2b !important;
   border: 1px solid #2c2a2a !important;
   color: #bababa;
   font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace !important;
   font-size: 15px !important;
+
+  &::-webkit-scrollbar {
+    height: 5px;
+  }
+}
+
+.ln-bg {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  width: 2.4em;
+  height: 100%;
+  background: #333;
+  border-radius: 4px 0px 0px 4px;
+}
+
+.ln-num {
+  position: absolute;
+  z-index: 2;
+  left: 0;
+  width: 2.4em;
+  text-align: center;
+  display: inline-block;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
+  &::before {
+    color: #777;
+    font-style: normal;
+    font-weight: normal;
+    text-align: center;
+    content: attr(data-num);
+  }
 }
 
 .hljs-comment,
@@ -78,60 +117,10 @@
   text-decoration: underline;
 }
 
-.hljs-keyword, 
-.hljs-selector-tag, 
-.hljs-built_in, 
-.hljs-name, 
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-built_in,
+.hljs-name,
 .hljs-tag {
   color: #7171bf;
 }
-
-
-
-.hljsln {
-  display: block;
-  margin-left: 2.4em;
-  padding-left: 0.7em !important;
-}
-.hljsln::-webkit-scrollbar {
-  height: 8px;
-}
-.hljsln::-webkit-scrollbar-thumb {
-  background: #314659;
-}
-.hljsln::-webkit-scrollbar-thumb:hover {
-  background: var(--theme-color);
-}
-
-.hljsln .ln-bg {
-  position: absolute;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  width: 2.4em;
-  height: 100%;
-  background: #333;
-  border-radius: 4px;
-}
-.hljsln .ln-num {
-  position: absolute;
-  z-index: 2;
-  left: 0;
-  width: 2.4em;
-  text-align: center;
-  display: inline-block;
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-.hljsln .ln-num::before {
-  color: #777;
-  font-style: normal;
-  font-weight: normal;
-  text-align: center;
-  content: attr(data-num);
-}
-
