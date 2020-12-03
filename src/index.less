@@ -3,7 +3,7 @@
 
 :root[mode="light"] {
   --blog-bg-color: #fff;
-  --text-color: #314659;
+  --text-color: #596172;
   --border-color: #eef2f8;
   --catalog-bg-color: #fff;
   --panel-bg-color: #f8f8f8;
@@ -137,7 +137,7 @@ a {
 #home {
   width: 100%;
   height: 100%;
-  margin: 0 auto;
+  transition: all 378ms;
 }
 
 #header {
@@ -191,28 +191,33 @@ a {
     }
 
     & > a {
-      &:link,
-      &:visited,
-      &:active {
-        float: left;
-        font-size: 17px;
-        border-right: 0px;
-        font-weight: 300;
-        text-align: center;
-        width: auto;
-        padding: 19px 16px;
-      }
-    }
+      float: left;
+      font-size: 17px;
+      border-right: 0px;
+      font-weight: 300;
+      text-align: center;
+      width: auto;
+      padding: 19px 16px;
 
-    & > i {
-      width: 0;
-      height: 4px;
-      background-color: var(--theme-color);
-      content: "";
-      position: absolute;
-      left: 50%;
-      bottom: 0;
-      transition: 0.7s;
+      &::after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 4px;
+        bottom: 0;
+        left: 0;
+        background-color: var(--theme-color);
+        visibility: hidden;
+        transform: scaleX(0);
+        transition: 0.4s ease-in-out;
+      }
+
+      &:hover {
+        &::after {
+          visibility: visible;
+          transform: scaleX(1);
+        }
+      }
     }
   }
 
@@ -377,8 +382,7 @@ a {
 }
 
 #blog-calendar {
-  border: 1px solid var(--border-color);
-  border-radius: 4px;
+  border-top: 1px solid var(--border-color);
 
   .CalDayHeader {
     font-weight: 300;
@@ -552,7 +556,7 @@ a {
 }
 
 .entrylistDescription {
-  margin: 10px auto;
+  margin: 15px auto;
   border-left: 4px solid var(--border-color);
   text-align: justify;
   padding-left: 7px;
@@ -623,7 +627,7 @@ a {
   }
 }
 
-.postSeparator {
+.day > .postSeparator {
   border-bottom: 1px solid var(--border-color);
   text-align: justify;
   margin-bottom: 10px;
@@ -640,7 +644,29 @@ a {
 
 .day .postTitle,
 .entrylist .entrylistPosttitle {
-  font-size: 20px;
+  font-size: 19px;
+
+  & > a {
+    position: relative;
+
+    &:after {
+      content: "";
+      display: block;
+      width: 0;
+      height: 1px;
+      position: absolute;
+      left: 0;
+      bottom: -2px;
+      background: var(--theme-color);
+      transition: all 0.3s ease-in-out;
+    }
+
+    &:hover {
+      &::after {
+        width: 100%;
+      }
+    }
+  }
 }
 
 .day .postCon,
@@ -649,8 +675,8 @@ a {
   padding: 10px 0;
 
   img {
+    width: 200px;
     height: 150px;
-    width: 150px;
     border-radius: 4px;
     margin-left: 10px;
   }
@@ -697,17 +723,25 @@ a {
     line-height: 1.75;
 
     a {
-      transition: all 0.3s ease;
+      color: var(--theme-color);
+      position: relative;
 
-      &:hover {
-        text-decoration: underline;
+      &:after {
+        content: "";
+        display: block;
+        width: 0;
+        height: 1px;
+        position: absolute;
+        left: 0;
+        bottom: -2px;
+        background: var(--theme-color);
+        transition: all 0.3s ease-in-out;
       }
 
-      &:link,
-      &:visited,
-      &:active {
-        color: var(--theme-color);
-        text-decoration: none;
+      &:hover {
+        &::after {
+          width: 100%;
+        }
       }
     }
 
@@ -747,8 +781,9 @@ a {
     blockquote {
       border: none;
       margin: 15px 0px;
+      color: inherit;
       border-radius: 4px;
-      padding: 1px 10px;
+      padding: 1px 15px;
       border-left: 4px solid var(--theme-color);
       background-color: var(--panel-bg-color);
     }
@@ -841,6 +876,10 @@ a {
           color: #fff;
           background-color: var(--theme-color);
         }
+
+        &::after {
+          content: none;
+        }
       }
     }
 
@@ -862,7 +901,10 @@ a {
   }
 
   .postDesc {
-    display: none;
+    border-top: 1px solid var(--border-color);
+    padding-top: 5px;
+    margin-top: 5px;
+    text-align: right;
   }
 }
 
@@ -1007,7 +1049,6 @@ a {
       display: block;
       padding: 5px;
       font-weight: 300;
-      height: 19px;
       line-height: 20px;
       text-align: center;
       border: 1px solid var(--border-color);
@@ -1108,13 +1149,16 @@ a {
   padding-bottom: 5px;
 }
 
-.commentform {
-  #commentform_title {
-    background-image: none;
-    padding-left: 0;
-    font-size: 20px;
+#commentform_title {
+  background-image: none;
+  padding-left: 0;
+  font-size: 20px;
+  & > a {
+    display: none;
   }
+}
 
+.commentform {
   #tip_comment {
     color: var(--theme-color) !important;
     margin: 15px 0px;
@@ -1212,11 +1256,10 @@ a {
 }
 
 ::-webkit-scrollbar {
-  width: 5px;
+  width: 3px;
 }
 
 ::-webkit-scrollbar-thumb {
-  border-radius: 4px;
   background-color: var(--text-color);
   &:hover {
     background-color: var(--theme-color);

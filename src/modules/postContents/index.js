@@ -9,11 +9,18 @@ function buildPostContents() {
         const level2 = levels[1];
         const level3 = levels[2];
         let $headers = $('#cnblogs_post_body').find(levels.join(','));
+        let $toolbar = $('.esa-toolbar');
         if (!$headers.length) {
+            $toolbar.find('.contents').remove();
             return false;
         }
 
-        $('body').append(`<div class="esa-contents ${config.active ? 'active' : 'noactive'}"></div>`);
+        $('body').append(`<div class="esa-contents noactive"></div>`);
+
+        if (config.active) {
+            $toolbar.find('.bars').trigger('click'); 
+            $toolbar.find('.contents').trigger('click');
+        }
 
         let h1c = 0;
         let h2c = 0;

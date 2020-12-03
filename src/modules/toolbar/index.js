@@ -90,6 +90,7 @@ function buildToolbar() {
         $('html').attr('theme', theme);
     });
 
+    let showcontents = false;
     $toolbar.find('.contents').click(() => {
         $('.esa-contents').toggleClass(function () {
             if ($(this).hasClass('active')) {
@@ -100,6 +101,16 @@ function buildToolbar() {
                 return 'active';
             }
         });
+
+        if (!showcontents) {
+            $('#home').css({ "width": "calc(100% - 252px)"});
+            showcontents = true;
+        } else {
+            $('#home').css({ "width": "100%" });
+            showcontents = false;
+        }
+
+        
     });
 }
 

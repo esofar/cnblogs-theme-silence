@@ -26,15 +26,6 @@ function buildPostSponsor() {
 
     $sponsor.find('.box li').hover(function () {
         const type = $(this).attr('class');
-        if (type == 'paypal' && !config.paypal) {
-            return message('未设置 PayPal 收款二维码');
-        }
-        if (type == 'alipay' && !config.alipay) {
-            return message('未设置支付宝收款二维码');
-        }
-        if (type == 'wechat' && !config.wechat) {
-            return message('未设置微信收款二维码');
-        }
         var qrcode = null;
         switch (type) {
             case 'paypal':
@@ -47,7 +38,8 @@ function buildPostSponsor() {
                 qrcode = config.wechat;
                 break;
         }
-        $sponsor.find('.qrshow').html(`<img src="${qrcode}">`).show();
+        let content = !qrcode ? `<div class="noconfig">未配置</div>` : `<img src="${qrcode}">`;
+        $sponsor.find('.qrshow').html(content).show();
     }, function () {
         $sponsor.find('.qrshow').hide();
     });
