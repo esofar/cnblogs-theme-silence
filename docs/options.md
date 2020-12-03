@@ -45,7 +45,7 @@ window.$silence = {
 - 类型：`String`
 - 默认值：`null`
 
-该配置项用来设置个人 Github 主页地址，会在页面左上角渲染一个 [GitHub Corner](https://github.com/tholman/github-corners) 挂件，未设置则不会渲染。
+该配置项用来设置个人 Github 主页地址，会在页面左上角渲染一个 [GitHub Corner](https://github.com/tholman/github-corners) 挂件，未设置则不会渲染，浏览器窗口宽度小于`1366px`时也不会渲染。
 
 ```js
 window.$silence = {
