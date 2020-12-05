@@ -7,10 +7,10 @@
 因为该主题在 Github 上开源，故可以直接使用 [jsDelivr](https://www.jsdelivr.com/) 提供的免费 CDN 服务。
  
 ```
-https://cdn.jsdelivr.net/gh/esofar/cnblogs-theme-silence@3.0.0-beta2/dist/silence.min.css
-https://cdn.jsdelivr.net/gh/esofar/cnblogs-theme-silence@3.0.0-beta2/dist/silence.min.js
+https://cdn.jsdelivr.net/gh/esofar/cnblogs-theme-silence@3.0.0-beta3/dist/silence.min.css
+https://cdn.jsdelivr.net/gh/esofar/cnblogs-theme-silence@3.0.0-beta3/dist/silence.min.js
 ```
-> 注意`@3.0.0-beta2`是需要使用的版本号，目前发行版本请参见 [releases](https://github.com/esofar/cnblogs-theme-silence/releases)，建议使用最新版本。
+> 注意`@3.0.0-beta3`是需要使用的版本号，目前发行版本请参见 [releases](https://github.com/esofar/cnblogs-theme-silence/releases)，建议使用最新版本。
 
 
 ## 配置 CSS 
@@ -19,22 +19,11 @@ https://cdn.jsdelivr.net/gh/esofar/cnblogs-theme-silence@3.0.0-beta2/dist/silenc
 
 ![配置 CSS](_media/cfg-css.png)
 
-> 若 CSS 文件通过`link`标签的方式载入，页面效果渲染会有延迟，严重影响用户体验，只好将样式代码手动粘贴到此处。
-
 ## 配置 JS
 
 在「博客侧边栏公告」处，配置用户选项并加载 JS 脚本文件。`window.$silence`取值请参见 [配置选项](/options?id=配置选项)。
 
 ![配置 JS](_media/cfg-js.png)
-
-```
-<script>
-  window.$silence = {
-    // ...
-  };
-</script>
-<script src="https://cdn.jsdelivr.net/gh/esofar/cnblogs-theme-silence@3.0.0-beta2/dist/silence.min.js"></script>
-```
 
 ## 配置 Loading
 

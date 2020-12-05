@@ -156,6 +156,20 @@ window.$silence = {
 };
 ```
 
+
+## hljsln
+
+- 类型：`Boolean`
+- 默认值：`false`
+
+该配置项用来控制是否显示代码块行号。
+
+```js
+window.$silence = {
+    hljsln: true
+};
+```
+
 ## catalog
 
 - 类型：`Object`
