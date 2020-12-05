@@ -1,5 +1,6 @@
 import "./index.less";
 import options from '@/consts/options';
+import { isPostPage } from '@consts/tools';
 
 function buildPostContents() {
     const config = options.catalog;
@@ -18,7 +19,6 @@ function buildPostContents() {
         $('body').append(`<div class="esa-contents noactive"></div>`);
 
         if (config.active) {
-            $toolbar.find('.bars').trigger('click'); 
             $toolbar.find('.contents').trigger('click');
         }
 

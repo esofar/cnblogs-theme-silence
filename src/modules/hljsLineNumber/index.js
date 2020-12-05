@@ -1,15 +1,20 @@
 import "./index.less";
+import options from '@/consts/options';
 
 function buildHljsLineNumber() {
     let $codes = $('.postBody .cnblogs-markdown').find('pre code');
     if (!$codes.length) {
         return false;
     }
+
     $.each($codes, (_, code) => {
         if (!$(code).hasClass('hljsln')) {
-            var html = $(code).html();
-            html = addLineNumbersFor(html);
-            $(code).html(html).addClass('hljsln');
+            $(code).addClass('hljsln');
+            if (!options.hljsln) {
+                $(code).addClass('ln-hide');
+                return true;
+            }
+            $(code).html(addLineNumbersFor($(code).html()));
             var $lastNum = $('span[data-num]:last');
             if (!$lastNum.html()) {
                 $lastNum.remove();

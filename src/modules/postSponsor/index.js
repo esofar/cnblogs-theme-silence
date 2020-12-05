@@ -1,6 +1,5 @@
 import "./index.less";
 import options from '@/consts/options';
-import { message } from '@/modules/layer';
 
 function buildPostSponsor() {
     const config = options.sponsor;
@@ -38,8 +37,9 @@ function buildPostSponsor() {
                 qrcode = config.wechat;
                 break;
         }
-        let content = !qrcode ? `<div class="noconfig">未配置</div>` : `<img src="${qrcode}">`;
-        $sponsor.find('.qrshow').html(content).show();
+        if (qrcode) {
+            $sponsor.find('.qrshow').html(`<img src="${qrcode}">`).show();
+        }
     }, function () {
         $sponsor.find('.qrshow').hide();
     });

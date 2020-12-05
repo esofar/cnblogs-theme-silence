@@ -109,9 +109,11 @@ function buildToolbar() {
             $('#home').css({ "width": "100%" });
             showcontents = false;
         }
-
-        
     });
+
+    if (isPostPage()) {
+        $toolbar.find('.bars').trigger('click');
+    }
 }
 
 export default buildToolbar;
