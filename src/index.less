@@ -181,6 +181,9 @@ a {
   & > li {
     position: relative;
     float: left;
+    line-height: 60px;
+    padding: 0px 15px;
+    font-size: 17px;
 
     &:hover i {
       width: 100%;
@@ -188,14 +191,6 @@ a {
     }
 
     & > a {
-      float: left;
-      font-size: 17px;
-      border-right: 0px;
-      font-weight: 300;
-      text-align: center;
-      width: auto;
-      padding: 19px 16px;
-
       &::after {
         content: "";
         position: absolute;
@@ -292,7 +287,7 @@ a {
 #sideBar {
   width: 230px;
   border-right: 1px solid var(--border-color);
-  font-weight: 300;
+  font-weight: inherit;
   display: none;
   min-height: 750px;
   padding: 0 15px 0 0;
@@ -346,7 +341,6 @@ a {
           text-overflow: ellipsis;
           overflow: hidden;
           width: 100%;
-          font-weight: 400;
         }
       }
     }
@@ -398,7 +392,7 @@ a {
   text-align: left;
   margin: 20px 0;
   font-size: 20px;
-  font-weight: 300;
+  font-weight: inherit;
   border-left: 4px solid var(--theme-color);
   border-radius: 4px;
   padding-left: 7px;
@@ -707,7 +701,7 @@ a {
 #topics {
   .postTitle {
     font-size: 21px;
-    font-weight: 300;
+    font-weight: inherit;
   }
 
   .postBody {
