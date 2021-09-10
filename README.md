@@ -4,7 +4,7 @@
     CNBLOGS THEME SILENCE
   </h2>
   <p align="center">
-    专 注 于 阅 读 的 博 客 园 主 题
+    秦 浩 毅 专 注 于 阅 读 的 博 客 园 主 题
   </p> 
 
   [文档](https://esofar.github.io/cnblogs-theme-silence/) | [演示](https://www.cnblogs.com/esofar/)
