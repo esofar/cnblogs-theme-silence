@@ -22,30 +22,39 @@
 :root[theme="a"] {
   --theme-color: #2d8cf0;
 }
+
 :root[theme="b"] {
   --theme-color: #fa7298;
 }
+
 :root[theme="c"] {
   --theme-color: #42b983;
 }
+
 :root[theme="d"] {
   --theme-color: #607d8b;
 }
+
 :root[theme="e"] {
   --theme-color: #5e72e4;
 }
+
 :root[theme="f"] {
   --theme-color: #ff9700;
 }
+
 :root[theme="g"] {
   --theme-color: #ff5722;
 }
+
 :root[theme="h"] {
   --theme-color: #009688;
 }
+
 :root[theme="i"] {
   --theme-color: #673bb7;
 }
+
 :root[theme="j"] {
   --theme-color: #906f61;
 }
@@ -72,16 +81,20 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
+
 td {
   padding: 5px;
 }
+
 fieldset,
 img {
   border: 0;
 }
+
 ul {
   word-break: break-all;
 }
+
 li {
   list-style: none;
 }
@@ -110,6 +123,7 @@ a {
   background: var(--theme-color);
   color: #fff;
 }
+
 .navbar,
 .blogStats,
 .dayTitle,
@@ -118,6 +132,7 @@ a {
 #ad_c1,
 #ad_c2,
 .c_ad_block,
+.under-post-card,
 #under_post_news,
 #under_post_kb,
 #author_profile,
@@ -178,7 +193,7 @@ a {
   height: inherit;
   float: left;
 
-  & > li {
+  &>li {
     position: relative;
     float: left;
     line-height: 60px;
@@ -190,7 +205,7 @@ a {
       left: 0;
     }
 
-    & > a {
+    &>a {
       &::after {
         content: "";
         position: absolute;
@@ -315,9 +330,11 @@ a {
       &:nth-child(3):after {
         content: "\56ed\9f84";
       }
+
       &:nth-child(5):after {
         content: "\7c89\4e1d";
       }
+
       &:nth-child(7):after {
         content: "\5173\6ce8";
       }
@@ -348,6 +365,7 @@ a {
     #p_b_follow {
       margin: 15px 0 10px 0;
       text-align: center;
+
       a {
         border: 1px solid var(--border-color);
         font-size: 13px;
@@ -378,6 +396,7 @@ a {
   .CalDayHeader {
     font-weight: 300;
   }
+
   .CalTodayDay {
     color: var(--theme-color);
     font-weight: 600;
@@ -434,6 +453,7 @@ a {
       }
     }
   }
+
   #widget_my_google {
     display: none;
   }
@@ -456,6 +476,7 @@ a {
 
   a {
     transition: inherit;
+
     .tag-count {
       display: none;
     }
@@ -471,6 +492,7 @@ a {
     border-color: var(--theme-color);
   }
 }
+
 #sidebar_shortcut li,
 #sidebar_scorerank li,
 #sidebar_categories li {
@@ -555,6 +577,7 @@ a {
     &:first-of-type {
       border-top: 1px solid var(--border-color);
     }
+
     border-bottom: 1px solid var(--border-color);
     padding: 0px;
     margin: 0px;
@@ -571,7 +594,7 @@ a {
     margin-bottom: 10px;
     font-size: 14px;
 
-    & > a {
+    &>a {
       display: none;
     }
 
@@ -613,46 +636,46 @@ a {
   }
 }
 
-.day > .postSeparator {
+.day>.postSeparator {
   border-bottom: 1px solid var(--border-color);
   text-align: justify;
   margin-bottom: 10px;
   padding-bottom: 10px;
+}
+
+.day .postTitle2 span {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.day .postTitle2 span span {
+  order: 1;
+  font-size: 0;
+}
+
+.day .postTitle2 span span:after {
+  content: "置顶";
+  margin-left: 10px;
+  padding: 2px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  color: var(--theme-color);
+  background-color: var(--panel-bg-color);
+  border: 1px solid var(--border-color);
 }
 
 .day,
 .entrylistItem {
   border-bottom: 1px solid var(--border-color);
   text-align: justify;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
   padding-bottom: 10px;
 }
 
 .day .postTitle,
 .entrylist .entrylistPosttitle {
   font-size: 19px;
-
-  & > a {
-    position: relative;
-
-    &:after {
-      content: "";
-      display: block;
-      width: 0;
-      height: 1px;
-      position: absolute;
-      left: 0;
-      bottom: -2px;
-      background: var(--theme-color);
-      transition: all 0.3s ease-in-out;
-    }
-
-    &:hover {
-      &::after {
-        width: 100%;
-      }
-    }
-  }
 }
 
 .day .postCon,
@@ -688,7 +711,7 @@ a {
 .entrylist .entrylistItemPostDesc {
   text-align: right;
 
-  & > a {
+  &>a {
     display: none;
   }
 }
@@ -837,14 +860,15 @@ a {
     h4 code,
     h5 code,
     h6 code,
-    p > code,
-    li > code,
+    p>code,
+    li>code,
     table code {
       line-height: 1.2;
       font-family: consolas !important;
       vertical-align: middle;
       margin: 0 3px;
       background-color: var(--code-bg-color) !important;
+      color: var(--text-color);
       font-size: 14px !important;
       padding: 0.2em 0.3em !important;
       border-radius: 3px !important;
@@ -854,6 +878,7 @@ a {
     #BlogPostCategory,
     #EntryTag {
       font-size: 14px;
+
       a {
         font-size: 13px;
         border-radius: 4px;
@@ -995,13 +1020,24 @@ a {
   float: right;
 }
 
-.feedbackItem .feedbackCon {
-  margin-bottom: 10px;
-  padding: 10px 0px;
-  border-bottom: 1px solid var(--border-color);
+.feedbackItem {
 
-  .comment_vote {
-    margin-top: 12px;
+  .layer {
+    color: var(--theme-color);
+    background-color: var(--panel-bg-color);
+    border: 1px solid var(--border-color);
+    padding: 1px 10px;
+    border-radius: 4px;
+  }
+
+  .feedbackCon {
+    margin-bottom: 10px;
+    padding: 10px 0px;
+    border-bottom: 1px solid var(--border-color);
+
+    .comment_vote {
+      margin-top: 12px;
+    }
   }
 }
 
@@ -1062,13 +1098,14 @@ a {
     background: none;
     height: auto;
     width: auto;
-    min-width: 60px;
+    min-width: 75px;
     margin: 0;
     font-size: 17px;
     border-radius: 4px;
     padding: 3px 10px;
     background-color: var(--panel-bg-color);
-    transition: all 0.3s;
+    border: 1px solid var(--border-color);
+    color: var(--theme-color);
 
     span {
       font-size: inherit;
@@ -1144,7 +1181,8 @@ a {
   background-image: none;
   padding-left: 0;
   font-size: 20px;
-  & > a {
+
+  &>a {
     display: none;
   }
 }
@@ -1166,6 +1204,7 @@ a {
       outline: 0;
     }
   }
+
   .commentbox_title {
     border-bottom: 1px solid var(--border-color);
 
@@ -1190,6 +1229,22 @@ a {
         fill: var(--theme-color);
         stroke: var(--theme-color);
       }
+    }
+  }
+
+  .commentbox_footer {
+    border-top: 1px solid var(--border-color);
+  }
+
+  .comment_option {
+    margin-bottom: 10px;
+    margin-right: 10px;
+    fill: var(--text-color);
+    color: var(--text-color);
+
+    &:hover {
+      fill: var(--theme-color);
+      color: var(--theme-color);
     }
   }
 
@@ -1229,7 +1284,7 @@ a {
   }
 
   .comment_my_posted {
-    & > img {
+    &>img {
       display: none;
     }
   }
