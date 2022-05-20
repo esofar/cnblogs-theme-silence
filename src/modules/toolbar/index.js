@@ -4,13 +4,13 @@ import options from '@/consts/options';
 
 function buildToolbar() {
     $('body').append(`<div class="esa-toolbar">
-        <div class="bars"><i class="fa fa-ellipsis-h"></i></div>
-        <span class="up" title="返回顶部"><i class="fa fa-chevron-up"></i></span>
-        <span class="mode" title="切换模式"><i class="fa fa-adjust"></i></span>
-        <span class="skin" title="主题设置"><i class="fa fa-cog"></i></span>
+        <div class="material-symbols-outlined bars">workspaces</div>
+        <span class="material-symbols-outlined up" title="返回顶部">keyboard_arrow_up</span>
+        <span class="material-symbols-outlined mode" title="切换模式">dark_mode</span>
+        <span class="material-symbols-outlined skin" title="切换主题">palette</span>
         <div class="skin-popup">
             <div class="item">
-                <div class="title">主题色彩</div>
+                <div class="title">选择主题</div>
                 <div class="themes">
                     <button data-theme="a" style="background: #2D8CF0;"></button>
                     <button data-theme="b" style="background: #FA7298;"></button>
@@ -31,7 +31,7 @@ function buildToolbar() {
     const showContents = isPostPage() && options.catalog.enable;
 
     if (showContents) {
-        $('.esa-toolbar').append(`<span class="contents" title="阅读目录"><i class="fa fa-list-ul"></i></span>`);
+        $('.esa-toolbar').append(`<span class="material-symbols-outlined contents" title="目录导航">menu</span>`);
     }
 
     const modeKey = `silence-mode-${currentBlogApp}`;
@@ -47,6 +47,9 @@ function buildToolbar() {
 
     const $toolbar = $('.esa-toolbar');
     const $skinPopup = $('.skin-popup');
+
+    $toolbar.find('.mode').html(modeLoading == 'light' ? 'dark_mode' : 'light_mode');
+
     var skinPopEl = document.getElementsByClassName('skin-popup')[0];
 
     let show = false;
@@ -75,10 +78,12 @@ function buildToolbar() {
         $('html, body').animate({ scrollTop: 0 }, 450);
     });
 
-    $toolbar.find('.mode').click(() => {
-        const mode = $('html').attr('mode') == 'light' ? 'dark' : 'light';
-        sessionStorage.setItem(modeKey, mode);
-        $('html').attr('mode', mode);
+    $toolbar.find('.mode').click(function() {
+        let curMode = $('html').attr('mode');
+        let newMode = curMode == 'light' ? 'dark' : 'light';
+        sessionStorage.setItem(modeKey, newMode);
+        $(this).html(`${curMode}_mode`);
+        $('html').attr('mode', newMode);
     });
 
     $toolbar.find('.skin').click((e) => {

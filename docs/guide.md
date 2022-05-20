@@ -4,13 +4,13 @@
 
 ## 获取库文件
 
-因为该主题在 Github 上开源，故可以直接使用 [jsDelivr](https://www.jsdelivr.com/) 提供的免费 CDN 服务。
+因为该主题在 Github 上开源，可以直接使用 [jsDelivr](https://www.jsdelivr.com/) 提供的免费 CDN 服务获取 JS/CSS 文件。
  
 ```
-https://cdn.jsdelivr.net/gh/esofar/cnblogs-theme-silence@3.0.0-beta3/dist/silence.min.css
-https://cdn.jsdelivr.net/gh/esofar/cnblogs-theme-silence@3.0.0-beta3/dist/silence.min.js
+https://fastly.jsdelivr.net/gh/esofar/cnblogs-theme-silence@3.0.0-beta3/dist/silence.min.css
+https://fastly.jsdelivr.net/gh/esofar/cnblogs-theme-silence@3.0.0-beta3/dist/silence.min.js
 ```
-> 注意`@3.0.0-beta3`是需要使用的版本号，目前发行版本请参见 [releases](https://github.com/esofar/cnblogs-theme-silence/releases)，建议使用最新版本。
+> 已发行版本请参见 [releases](https://github.com/esofar/cnblogs-theme-silence/releases)，建议使用最新版本。
 
 
 ## 配置 CSS 

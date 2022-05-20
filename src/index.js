@@ -7,7 +7,6 @@ import buildCustomFooter from '@modules/customFooter';
 import buildProfile from '@modules/profile';
 import buildPostContents from '@modules/postContents';
 import buildPostLightbox from '@modules/postLightbox';
-import buildHljsLineNumber from '@modules/hljsLineNumber';
 import buildPostSignature from '@modules/postSignature';
 import buildPostSponsor from '@modules/postSponsor';
 import buildPostCommentAvatars from '@modules/postCommentAvatars';
@@ -36,7 +35,6 @@ class Silence {
         if (isPostPage()) {
             buildPostContents();
             buildPostLightbox();
-            buildHljsLineNumber();
             buildPostSignature();
             buildPostSponsor();
             buildPostCommentAvatars();

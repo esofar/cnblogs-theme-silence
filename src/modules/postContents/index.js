@@ -1,6 +1,5 @@
 import "./index.less";
 import options from '@/consts/options';
-import { isPostPage } from '@consts/tools';
 
 function buildPostContents() {
     const config = options.catalog;

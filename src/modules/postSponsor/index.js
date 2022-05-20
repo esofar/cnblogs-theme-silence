@@ -8,7 +8,7 @@ function buildPostSponsor() {
         return false;
     }
 
-    $('#blog_post_info').prepend(`
+    $('#blog_post_info').before(`
                 <div class="esa-sponsor">
                     <div class="title">${config.text}</div>
                     <ul class="box">

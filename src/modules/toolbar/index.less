@@ -19,7 +19,7 @@
     line-height: 46px;
     color: #fff;
     transition: all 0.3s ease;
-    box-shadow: 0 2px 4px 1px rgba(0, 0, 0, 0.2);
+    box-shadow: var(--toolbar-box-shadow);
   }
 
   .up,
@@ -37,8 +37,8 @@
     z-index: 0;
     opacity: 0;
     border-radius: 4px;
-    box-shadow: 0 2px 4px 1px rgba(0, 0, 0, 0.2);
-    background-color: var(--panel-bg-color);
+    box-shadow: var(--toolbar-box-shadow);
+    background-color: var(--blog-bg-color);
     transition: all 0.3s ease;
 
     &:hover {
@@ -76,10 +76,10 @@
     opacity: 1;
     width: 150px;
     height: auto;
-    border-radius: 15px 15px 0px 0px;
+    border-radius: 4px 4px 0px 0px;
     background-clip: border-box;
-    box-shadow: 0 2px 4px 1px rgba(0, 0, 0, 0.2);
-    background-color: var(--panel-bg-color);
+    box-shadow: var(--toolbar-box-shadow);
+    background-color: var(--blog-bg-color);
 
     .item {
       text-align: center;
