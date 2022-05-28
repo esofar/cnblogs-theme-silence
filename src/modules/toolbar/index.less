@@ -15,10 +15,11 @@
     background: var(--theme-color);
     z-index: 1;
     text-align: center;
-    font-size: 24px;
+    font-size: 28px;
+    font-weight: bold;
     line-height: 46px;
     color: #fff;
-    transition: all 0.3s ease;
+    transition: transform 0.3s ease;
     box-shadow: var(--toolbar-box-shadow);
   }
 
@@ -50,18 +51,22 @@
   .bars-show {
     transform: rotate(270deg);
   }
+
   .up-show {
     transform: translate3d(0, -200%, 0);
     opacity: 1;
   }
+
   .mode-show {
     transform: translate3d(-140%, -140%, 0);
     opacity: 1;
   }
+
   .skin-show {
     transform: translate3d(-200%, 0, 0);
     opacity: 1;
   }
+
   .contents-show {
     transform: translate3d(-350%, 0, 0);
     opacity: 1;
