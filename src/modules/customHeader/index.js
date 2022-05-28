@@ -8,8 +8,8 @@ function buildCustomHeader() {
     if (navs && navs.length) {
         navs.reverse().forEach((nav) => {
             nav.target = nav.target || '_self';
-            if (nav.chilren && nav.chilren.length) {
-                var subnavs = nav.chilren.map(subnav => {
+            if (nav.children && nav.children.length) {
+                var subnavs = nav.children.map(subnav => {
                     subnav.target = subnav.target || '_self';
                     return `<li><a class="menu" target="${subnav.target}" href="${subnav.url}">${subnav.title}</a></li>`;
                 });
@@ -40,7 +40,7 @@ function buildCustomHeader() {
         }
     });
 
-    $('#header').prepend(`<div class="esa-mobile-menu"><i class="fa fa-bars"></i></div>`);
+    $('#header').prepend(`<div class="esa-mobile-menu material-symbols-outlined">menu</div>`);
     $('.esa-mobile-menu').on('click', () => {
         $('#navigator').fadeToggle();
     });

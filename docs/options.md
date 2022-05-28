@@ -1,6 +1,6 @@
-# 配置选项
+# 🔨 配置选项
 
-下列所有选项均需要配置在「博客侧边栏公告」处的`window.$silence`里。
+下列所有选项均需要配置在「页脚 HTML 代码」处的`window.$silence`中。
 
 ```js
 <script>
@@ -119,7 +119,7 @@ window.$silence = {
 
 该配置项用来在导航栏中追加自定义菜单项。
 
-注意目前仅支持到二级菜单，一级菜单项通过`chilren`属性配置纵向悬浮二级菜单。若希望链接页面总是在一个新打开的窗口中载入，则需要在菜单项中多配置一个值为`'_blank'`的`target`属性。
+注意目前仅支持到二级菜单，一级菜单项通过`children`属性配置纵向悬浮二级菜单。若希望链接页面总是在一个新打开的窗口中载入，则需要在菜单项中多配置一个值为`'_blank'`的`target`属性。
 
 ```js
 window.$silence = {
@@ -128,7 +128,7 @@ window.$silence = {
         url: 'https://www.cnblogs.com/esofar/tag/'
     }, {
         title: '朋友',
-        chilren: [{
+        children: [{
             title: '百度',
             target: '_blank',
             url: 'https://www.baidu.com',
@@ -153,20 +153,6 @@ window.$silence = {
 ```js
 window.$silence = {
     showNavAdmin: false
-};
-```
-
-
-## hljsln
-
-- 类型：`Boolean`
-- 默认值：`false`
-
-该配置项用来控制是否显示代码块行号。
-
-```js
-window.$silence = {
-    hljsln: true
 };
 ```
 
@@ -242,7 +228,7 @@ window.$silence = {
         enable: true,
         author: null,
         license: ['署名-非商业性使用-相同方式共享 4.0 国际', 'https://creativecommons.org/licenses/by-nc-sa/4.0/'],
-        remark: '你可以在这里自定义其他内容',
+        remark: '备注：你可以在这里自定义其他内容，支持 HTML',
     }
 };
 ```
@@ -289,8 +275,7 @@ window.$silence = {
 window.$silence = {
     sponsor: {
         enable: true,
-        text: '',
-        paypal: 'https://images.cnblogs.com/cnblogs_com/esofar/972540/o_wechat.png',
+        text: 'Buy me a cup of coffee ☕.',
         wechat: 'https://images.cnblogs.com/cnblogs_com/esofar/972540/o_wechat.png',
         alipay: 'https://images.cnblogs.com/cnblogs_com/esofar/972540/o_alipay.png'
     }
@@ -304,7 +289,7 @@ window.$silence = {
 - 类型：`Boolean`
 - 默认值：`false`
 
-是否启用赞赏按钮生成功能。
+是否启用赞赏按钮生成功能。注意启用后 PayPal、微信或支付宝收款地址请至少设置一种，否则等效`false`。
 
 **text**
 

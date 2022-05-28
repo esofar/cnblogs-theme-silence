@@ -15,16 +15,7 @@
   }
 }
 
-.dark-loading {
-  background: #222;
-}
-
-.light-loading {
-  background: #fff;
-}
-
-.dark-loading,
-.light-loading {
+.loading {
   position: fixed;
   top: 0;
   left: 0;
@@ -40,6 +31,7 @@
   -ms-flex-align: center;
   align-items: center;
   z-index: 99999;
+  background: var(--loading-bg-color);
 
   .box {
     h2 {

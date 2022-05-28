@@ -4,11 +4,11 @@ const loader = {
 }
 
 loader.show = () => {
-    $('.light-loading, .dark-loading').show();
+    $('.loading').show();
 }
 
 loader.hide = () => {
-    $('.light-loading, .dark-loading').fadeOut();
+    $('.loading').fadeOut();
 }
 
 export default loader;

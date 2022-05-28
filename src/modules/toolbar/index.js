@@ -4,7 +4,7 @@ import options from '@/consts/options';
 
 function buildToolbar() {
     $('body').append(`<div class="esa-toolbar">
-        <div class="material-symbols-outlined bars">workspaces</div>
+        <div class="material-symbols-outlined bars">more_horiz</div>
         <span class="material-symbols-outlined up" title="返回顶部">keyboard_arrow_up</span>
         <span class="material-symbols-outlined mode" title="切换模式">dark_mode</span>
         <span class="material-symbols-outlined skin" title="切换主题">palette</span>

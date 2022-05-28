@@ -1,48 +1,54 @@
+<div id="intro" align="center"></div>
 
-# cnblogs-theme-silence
-
-> 一款专注于阅读的博客园主题
+> 专 注 于 阅 读 的 博 客 园 主 题
 
 ## 特性
 
-- 界面简洁优雅。
-- 响应式网页设计。
-- 容易使用并且轻量。
-- 代码简单且可高度定制。
-- 支持多种色彩主题。
-- 支持日间/夜间模式。
-- 支持自定义导航栏菜单项。
-- 支持悬浮标题目录。
-- 支持生成文章版权签名。
-- 提供赞赏功能。
-
+- 界面简洁优雅，响应式网页设计。
+- 轻量配置，文档给力，非常容易使用。
+- 提供暗黑模式和多种色彩主题，可随时切换。
+- 支持自定义导航栏菜单项、悬浮标题目录等。
+- 提供文章版权签名、赞赏功能等。
+- 项目结构清晰，代码简单，可实现高度定制化开发。
 
 ## 开发
 
-项目采用主流的前端模块化工具构建，熟悉前端开发的园友可参考下面的命令进行二次开发，定制化属于自己的独特主题风格。
+该项目基于模块化工具 webpack 构建，熟悉前端开发的园友可以 fork 当前仓库，然后参考如下命令进行二次开发，定制化自己独特的主题风格。
 
 ```
-git clone https://github.com/esofar/cnblogs-theme-silence.git   // 克隆代码
-cd cnblogs-theme-silence                                        // 进入目录
-npm install                                                     // 安装依赖
-npm start                                                       // 本地调试
-npm run build                                                   // 编译生成
+// 克隆代码
+git clone https://github.com/esofar/cnblogs-theme-silence.git
+
+// 进入目录
+cd cnblogs-theme-silence
+
+// 安装依赖
+npm install
+
+// 本地调试
+npm start
+
+// 编译发布
+npm run build
 ```
 
 ## 贡献
 
-若您在使用中发现 Bug 可以直接在 Github 仓库中直接提交 [Issue](https://github.com/esofar/cnblogs-theme-silence/issues) 或者 [Pull Requests](https://github.com/esofar/cnblogs-theme-silence/pulls) 。若您希望添加新的功能模块或者在使用体验方面有什么好的想法，可以在 [Gitter](https://gitter.im/cnblogs-theme-silence/community) 中讨论。
-
+如果你在使用中发现 bug 可以通过 [Issue](https://github.com/esofar/cnblogs-theme-silence/issues) 进行反馈，或者可以直接提 [Pull Requests](https://github.com/esofar/cnblogs-theme-silence/pulls) 进行修复。另外，如果你在使用功能或交互体验方面有什么好的想法或其他问题，可以在 [Gitter](https://gitter.im/cnblogs-theme-silence/community) 中讨论，我会及时关注。
 
 ## 案例
 
-您可以在 [演示案例](https://esofar.github.io/cnblogs-theme-silence/#/showcase) 中瞧瞧一些园友使用 Silence 主题的博客整体效果。
+你可以在 [演示案例](https://esofar.github.io/cnblogs-theme-silence/#/showcase) 中看到一些正在使用该主题的园友博客。同时，如果若也目前也在使用该主题，并且希望展示给大家，可以在 [这里](https://github.com/esofar/cnblogs-theme-silence/issues/119) 提交申请，我会不定时更新。
 
 ## 赞赏
 
-如果您觉得 Silence 主题做的还不错，或者想对我微小的工作一点激励，欢迎赞赏支持。
+如果您觉得该主题做的还不错，想对我微小的工作一点激励，欢迎赞赏支持。
+
+<div align="center">
 
 ![](./_media/sponsor.png)
+
+</div>
 
 ## 许可
 

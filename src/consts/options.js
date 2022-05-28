@@ -1,5 +1,5 @@
 const options = {
-    version:'3.0.0',
+    version:'3.0.0-rc2',
     avatar: null,
     favicon: null,
     github: null,
@@ -7,7 +7,6 @@ const options = {
     defaultTheme: 'a',
     navbars: [],
     showNavAdmin: true,
-    hljsln: false,
     catalog: {
         enable: false,
         index: true,
