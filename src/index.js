@@ -12,7 +12,7 @@ import buildPostSponsor from '@modules/postSponsor';
 import buildPostCommentAvatars from '@modules/postCommentAvatars';
 import buildToolbar from '@modules/toolbar';
 import loader from '@modules/loader';
-
+import deleteAD from '@modules/deleteAD'
 class Silence {
     constructor() {
         this.init();
@@ -38,6 +38,7 @@ class Silence {
             buildPostSignature();
             buildPostSponsor();
             buildPostCommentAvatars();
+            deleteAD();
         } else {
             showSidebar();
         }

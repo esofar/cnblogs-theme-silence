@@ -1,12 +1,12 @@
 const options = {
     version:'3.0.0-rc2',
-    avatar: null,
+    avatar: 'https://images.cnblogs.com/cnblogs_com/esofar/972540/o_avatar.jpg',
     favicon: null,
     github: null,
     defaultMode: 'auto',
     defaultTheme: 'a',
     navbars: [],
-    showNavAdmin: true,
+    showNavAdmin: false,
     catalog: {
         enable: false,
         index: true,
