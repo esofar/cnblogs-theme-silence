@@ -16,6 +16,7 @@
   --pane-box-shadow: 0px 1px 15px #e6e6e6;
   --toolbar-box-shadow: 0 2px 4px 1px #e8e8e8;
   --loading-bg-color: #fff;
+  --blockquote-bg-color: #ffc;
 }
 
 :root[mode="dark"] {
@@ -29,6 +30,7 @@
   --pane-box-shadow: 0px 1px 15px #0a0a0a;
   --toolbar-box-shadow: 0 2px 4px 1px #151515;
   --loading-bg-color: #222;
+  --blockquote-bg-color: #5e5e5e;
 }
 
 :root[theme="a"] {
@@ -64,7 +66,7 @@
 }
 
 :root[theme="i"] {
-  --theme-color: #673bb7;
+  --theme-color: #895bde;
 }
 
 :root[theme="j"] {
@@ -280,7 +282,7 @@ a {
           align-items: center;
 
           &:hover {
-            color: var(--theme-color);
+            color: var(--text-color);
             background: var(--panel-bg-color);
             border-radius: 4px;
           }
@@ -797,12 +799,20 @@ a {
 
     blockquote {
       border: none;
-      margin: 15px 0px;
+      margin: 15px 0;
       color: inherit;
       border-radius: 4px;
-      padding: 1px 15px;
-      border-left: 4px solid var(--theme-color);
-      background-color: var(--panel-bg-color);
+      padding: 1px 10px;
+      background-color: var(--blockquote-bg-color);
+      padding-left: 35px;
+      position: relative;
+
+      &::before {
+        content: '💡';
+        position: absolute;
+        top: 14px;
+        left: 12px;
+      }
     }
 
     em {
@@ -898,13 +908,42 @@ a {
       color: var(--text-color) !important;
     }
 
-    #post_next_prev {
-      font-size: 14px;
-      margin-top: 10px;
+    #BlogPostCategory,
+    #EntryTag {
+      font-size: 0px;
+      margin: 0px;
 
       a {
+        font-size: 14px;
+        border-radius: 4px;
+        padding: 4px 6px;
+        background-color: var(--panel-bg-color);
+        margin-left: 5px;
         color: var(--text-color);
+
+        &:hover {
+          color: #fff;
+          background-color: var(--theme-color);
+          opacity: 1;
+          transition: all 0.3s ease;
+        }
       }
+    }
+
+    #BlogPostCategory:before {
+      font-family: 'Material Symbols Outlined';
+      content: "\e617";
+      font-size: 20px;
+      position: relative;
+      top: 3px;
+    }
+
+    #EntryTag:before {
+      font-family: 'Material Symbols Outlined';
+      content: "\f05b";
+      font-size: 20px;
+      position: relative;
+      top: 3px;
     }
   }
 
@@ -914,49 +953,18 @@ a {
     margin-top: 5px;
     text-align: right;
   }
+}
 
+#blog_post_info_block {
+  margin-top: 15px;
+}
 
-  #BlogPostCategory,
-  #EntryTag {
-    font-size: 14px;
-    margin-bottom: 5px;
+#post_next_prev {
+  font-size: 15px;
+  margin-top: 10px;
 
-    a {
-      font-size: 13px;
-      border-radius: 4px;
-      padding: 4px 6px;
-      background-color: var(--panel-bg-color);
-      margin-right: 5px;
-      transition: none;
-      color: var(--text-color);
-
-      &:hover {
-        color: #fff;
-        background-color: var(--theme-color);
-        opacity: 1;
-        transition: all 0.3s ease;
-      }
-
-      &::after {
-        content: none;
-      }
-    }
-  }
-
-  #BlogPostCategory:before {
-    font-family: 'Material Symbols Outlined';
-    content: "\e574";
-    font-size: 17px;
-    position: relative;
-    top: 3px;
-  }
-
-  #EntryTag:before {
-    font-family: 'Material Symbols Outlined';
-    content: "\f05b";
-    font-size: 17px;
-    position: relative;
-    top: 3px;
+  a {
+    color: var(--text-color);
   }
 }
 
